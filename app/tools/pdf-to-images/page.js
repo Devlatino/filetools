@@ -1,11 +1,18 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import * as pdfjsLib from "pdfjs-dist/build/pdf";
-import pdfjsWorker from "pdfjs-dist/build/pdf.worker.entry";
 import JSZip from "jszip";
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
+// pdfjs-dist viene caricato dinamicamente lato client per evitare errori di build su Vercel
+let pdfjsLib = null;
+async function getPdfJs() {
+  if (pdfjsLib) return pdfjsLib;
+  const mod = await import("pdfjs-dist");
+  pdfjsLib = mod.default || mod;
+  const version = pdfjsLib.version || "4.0.379";
+  pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${version}/pdf.worker.min.mjs`;
+  return pdfjsLib;
+}
 
 function formatBytes(bytes) {
   if (!bytes) return "0 B";
@@ -49,8 +56,9 @@ export default function PdfToImagesPage() {
     setPages([]);
 
     try {
+      const lib = await getPdfJs();
       const data = await pdfFile.arrayBuffer();
-      const pdf = await pdfjsLib.getDocument({ data }).promise;
+      const pdf = await lib.getDocument({ data }).promise;
       const pageCount = pdf.numPages;
       const out = [];
 
