@@ -115,6 +115,66 @@
       "short": "Open and download files from an archive.",
       "metaTitle": "Extract ZIP Online Free",
       "metaDescription": "Extract and download files from ZIP. No account, in the browser."
+    },
+    "svgToPng": {
+      "label": "SVG to PNG",
+      "short": "Convert SVG to PNG at any size.",
+      "metaTitle": "SVG to PNG Online Free",
+      "metaDescription": "Convert SVG to PNG online. Choose output width, preview and download. No account, in the browser."
+    },
+    "removeBackground": {
+      "label": "Remove background",
+      "short": "Remove image background with transparency.",
+      "metaTitle": "Remove Image Background Online Free",
+      "metaDescription": "Remove background from images online. Get PNG with transparency. Works in the browser with no upload."
+    },
+    "mergeImages": {
+      "label": "Merge images",
+      "short": "Combine two images side by side.",
+      "metaTitle": "Merge Images Online Free",
+      "metaDescription": "Merge two images horizontally or vertically. Preview and download. No account, in the browser."
+    },
+    "pdfToText": {
+      "label": "PDF to text",
+      "short": "Extract text from PDF.",
+      "metaTitle": "PDF to Text Online Free",
+      "metaDescription": "Extract text from PDF online. Copy or download as TXT. No account, in the browser."
+    },
+    "addWatermark": {
+      "label": "Add watermark",
+      "short": "Add text watermark to images.",
+      "metaTitle": "Add Watermark to Image Online Free",
+      "metaDescription": "Add text watermark to images. Choose position, opacity and size. Preview and download. In the browser."
+    },
+    "colorConverter": {
+      "label": "Color converter",
+      "short": "Convert HEX, RGB and HSL.",
+      "metaTitle": "Color Converter HEX RGB HSL Free",
+      "metaDescription": "Convert colors between HEX, RGB and HSL. Live preview. No account, in the browser."
+    },
+    "faviconGenerator": {
+      "label": "Favicon generator",
+      "short": "Generate favicons from an image.",
+      "metaTitle": "Favicon Generator Online Free",
+      "metaDescription": "Generate favicons (16x16, 32x32, 48x48, 180x180) from an image. Download single or ZIP. In the browser."
+    },
+    "compressVideo": {
+      "label": "Compress video",
+      "short": "Compress MP4 in the browser.",
+      "metaTitle": "Compress Video Online Free",
+      "metaDescription": "Compress MP4 video online. Choose quality, see progress, download. Works in the browser with WebAssembly."
+    },
+    "extractAudio": {
+      "label": "Extract audio",
+      "short": "Extract MP3 from video.",
+      "metaTitle": "Extract Audio from Video Online Free",
+      "metaDescription": "Extract audio from MP4 video as MP3. Progress bar, download. Works in the browser."
+    },
+    "wordCounter": {
+      "label": "Word counter",
+      "short": "Count words, characters, reading time.",
+      "metaTitle": "Word Counter and Text Stats Free",
+      "metaDescription": "Count words, characters, sentences, paragraphs. Reading time and top words. No account, in the browser."
     }
   }
 }

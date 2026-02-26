@@ -115,6 +115,16 @@
       "short": "आर्काइव से फ़ाइलें खोलें और डाउनलोड करें।",
       "metaTitle": "मुफ्त ऑनलाइन ZIP एक्सट्रैक्ट",
       "metaDescription": "ZIP से फ़ाइलें एक्सट्रैक्ट और डाउनलोड करें। बिना अकाउंट, ब्राउज़र में।"
-    }
+    },
+    "svgToPng": { "label": "SVG से PNG", "short": "SVG को PNG में बदलें।", "metaTitle": "मुफ्त ऑनलाइन SVG से PNG", "metaDescription": "SVG को PNG में ऑनलाइन बदलें। ब्राउज़र में।" },
+    "removeBackground": { "label": "बैकग्राउंड हटाएं", "short": "इमेज का बैकग्राउंड हटाएं।", "metaTitle": "मुफ्त ऑनलाइन बैकग्राउंड हटाएं", "metaDescription": "इमेज से बैकग्राउंड हटाएं। पारदर्शी PNG। ब्राउज़र में।" },
+    "mergeImages": { "label": "इमेज मर्ज करें", "short": "दो इमेज जोड़ें।", "metaTitle": "मुफ्त ऑनलाइन इमेज मर्ज", "metaDescription": "दो इमेज हॉरिजॉन्टल या वर्टिकल जोड़ें। ब्राउज़र में।" },
+    "pdfToText": { "label": "PDF से टेक्स्ट", "short": "PDF से टेक्स्ट निकालें।", "metaTitle": "मुफ्त ऑनलाइन PDF से टेक्स्ट", "metaDescription": "PDF से टेक्स्ट निकालें। कॉपी या TXT डाउनलोड। ब्राउज़र में।" },
+    "addWatermark": { "label": "वॉटरमार्क जोड़ें", "short": "इमेज पर टेक्स्ट वॉटरमार्क।", "metaTitle": "मुफ्त ऑनलाइन वॉटरमार्क जोड़ें", "metaDescription": "इमेज पर वॉटरमार्क जोड़ें। पोजिशन, ओपैसिटी। ब्राउज़र में।" },
+    "colorConverter": { "label": "कलर कन्वर्टर", "short": "HEX, RGB, HSL कन्वर्ट करें।", "metaTitle": "मुफ्त HEX RGB HSL कन्वर्टर", "metaDescription": "HEX, RGB, HSL के बीच कलर कन्वर्ट करें। लाइव प्रीव्यू।" },
+    "faviconGenerator": { "label": "फैविकॉन जनरेटर", "short": "इमेज से फैविकॉन बनाएं।", "metaTitle": "मुफ्त ऑनलाइन फैविकॉन जनरेटर", "metaDescription": "फैविकॉन (16x16, 32x32 आदि) बनाएं। ZIP डाउनलोड। ब्राउज़र में।" },
+    "compressVideo": { "label": "वीडियो कंप्रेस करें", "short": "ब्राउज़र में MP4 कंप्रेस।", "metaTitle": "मुफ्त ऑनलाइन वीडियो कंप्रेस", "metaDescription": "MP4 वीडियो कंप्रेस करें। प्रोग्रेस बार। WebAssembly।" },
+    "extractAudio": { "label": "ऑडियो निकालें", "short": "वीडियो से MP3 निकालें।", "metaTitle": "मुफ्त ऑनलाइन वीडियो से ऑडियो", "metaDescription": "MP4 से ऑडियो MP3 में निकालें। प्रोग्रेस बार। ब्राउज़र में।" },
+    "wordCounter": { "label": "शब्द गणक", "short": "शब्द, अक्षर, पढ़ने का समय।", "metaTitle": "मुफ्त शब्द गणक और स्टैट्स", "metaDescription": "शब्द, अक्षर, वाक्य गिनें। पढ़ने का समय और शीर्ष शब्द।" }
   }
 }

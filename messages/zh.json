@@ -115,6 +115,16 @@
       "short": "打开并下载压缩包中的文件。",
       "metaTitle": "免费在线解压 ZIP",
       "metaDescription": "解压并下载 ZIP 中的文件。无需注册，在浏览器中完成。"
-    }
+    },
+    "svgToPng": { "label": "SVG 转 PNG", "short": "将 SVG 转换为 PNG。", "metaTitle": "免费在线 SVG 转 PNG", "metaDescription": "在线将 SVG 转为 PNG。预览和下载在浏览器中完成。" },
+    "removeBackground": { "label": "去除背景", "short": "去除图片背景。", "metaTitle": "免费在线去除图片背景", "metaDescription": "去除图片背景，获得透明 PNG。在浏览器中完成。" },
+    "mergeImages": { "label": "合并图片", "short": "将两张图片合并。", "metaTitle": "免费在线合并图片", "metaDescription": "横向或纵向合并两张图片。在浏览器中完成。" },
+    "pdfToText": { "label": "PDF 转文字", "short": "从 PDF 提取文字。", "metaTitle": "免费在线 PDF 转文字", "metaDescription": "从 PDF 提取文字。复制或下载为 TXT。在浏览器中完成。" },
+    "addWatermark": { "label": "添加水印", "short": "为图片添加文字水印。", "metaTitle": "免费在线添加图片水印", "metaDescription": "为图片添加文字水印。位置、透明度、大小。在浏览器中完成。" },
+    "colorConverter": { "label": "颜色转换器", "short": "转换 HEX、RGB 和 HSL。", "metaTitle": "免费 HEX RGB HSL 颜色转换", "metaDescription": "在 HEX、RGB 和 HSL 之间转换颜色。实时预览。" },
+    "faviconGenerator": { "label": "Favicon 生成器", "short": "从图片生成 favicon。", "metaTitle": "免费在线 Favicon 生成器", "metaDescription": "生成 favicon（16x16、32x32 等）。ZIP 下载。在浏览器中完成。" },
+    "compressVideo": { "label": "压缩视频", "short": "在浏览器中压缩 MP4。", "metaTitle": "免费在线压缩视频", "metaDescription": "压缩 MP4 视频。进度条。WebAssembly 在浏览器中运行。" },
+    "extractAudio": { "label": "提取音频", "short": "从视频提取 MP3。", "metaTitle": "免费在线从视频提取音频", "metaDescription": "从 MP4 提取音频为 MP3。进度条。在浏览器中完成。" },
+    "wordCounter": { "label": "字数统计", "short": "统计字数、字符、阅读时间。", "metaTitle": "免费字数统计与文本分析", "metaDescription": "统计字数、字符、句子。阅读时间和高频词。在浏览器中完成。" }
   }
 }

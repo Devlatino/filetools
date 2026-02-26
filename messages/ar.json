@@ -115,6 +115,16 @@
       "short": "فتح وتحميل الملفات من أرشيف.",
       "metaTitle": "استخراج ZIP أونلاين مجاناً",
       "metaDescription": "استخراج وتحميل الملفات من ZIP. بدون حساب، في المتصفح."
-    }
+    },
+    "svgToPng": { "label": "SVG إلى PNG", "short": "تحويل SVG إلى PNG.", "metaTitle": "SVG إلى PNG أونلاين مجاناً", "metaDescription": "تحويل SVG إلى PNG أونلاين. معاينة وتنزيل في المتصفح." },
+    "removeBackground": { "label": "إزالة الخلفية", "short": "إزالة خلفية الصورة.", "metaTitle": "إزالة خلفية الصورة أونلاين مجاناً", "metaDescription": "إزالة خلفية الصور. PNG شفاف. في المتصفح." },
+    "mergeImages": { "label": "دمج الصور", "short": "دمج صورتين.", "metaTitle": "دمج الصور أونلاين مجاناً", "metaDescription": "دمج صورتين أفقياً أو عمودياً. في المتصفح." },
+    "pdfToText": { "label": "PDF إلى نص", "short": "استخراج النص من PDF.", "metaTitle": "PDF إلى نص أونلاين مجاناً", "metaDescription": "استخراج النص من PDF. نسخ أو تنزيل TXT. في المتصفح." },
+    "addWatermark": { "label": "إضافة علامة مائية", "short": "إضافة علامة مائية نصية.", "metaTitle": "إضافة علامة مائية أونلاين مجاناً", "metaDescription": "إضافة علامة مائية للصور. موضع، شفافية، حجم. في المتصفح." },
+    "colorConverter": { "label": "محول الألوان", "short": "تحويل HEX و RGB و HSL.", "metaTitle": "محول HEX RGB HSL مجاناً", "metaDescription": "تحويل الألوان بين HEX و RGB و HSL. معاينة مباشرة." },
+    "faviconGenerator": { "label": "مولد الأيقونة", "short": "إنشاء أيقونات من صورة.", "metaTitle": "مولد الأيقونة أونلاين مجاناً", "metaDescription": "إنشاء أيقونات (16x16، 32x32، إلخ). تنزيل ZIP. في المتصفح." },
+    "compressVideo": { "label": "ضغط الفيديو", "short": "ضغط MP4 في المتصفح.", "metaTitle": "ضغط الفيديو أونلاين مجاناً", "metaDescription": "ضغط فيديو MP4. شريط تقدم. WebAssembly في المتصفح." },
+    "extractAudio": { "label": "استخراج الصوت", "short": "استخراج MP3 من الفيديو.", "metaTitle": "استخراج الصوت من الفيديو أونلاين مجاناً", "metaDescription": "استخراج الصوت من MP4 إلى MP3. شريط تقدم. في المتصفح." },
+    "wordCounter": { "label": "عداد الكلمات", "short": "عد الكلمات والأحرف ووقت القراءة.", "metaTitle": "عداد الكلمات والإحصائيات مجاناً", "metaDescription": "عد الكلمات والأحرف والجمل. وقت القراءة والكلمات المتكررة." }
   }
 }

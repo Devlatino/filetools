@@ -115,6 +115,16 @@
       "short": "Ouvrir et télécharger les fichiers d'une archive.",
       "metaTitle": "Extraire un ZIP en ligne gratuitement",
       "metaDescription": "Extraire et télécharger les fichiers d'un ZIP. Sans compte, dans le navigateur."
-    }
+    },
+    "svgToPng": { "label": "SVG en PNG", "short": "Convertir SVG en PNG.", "metaTitle": "SVG en PNG en ligne gratuit", "metaDescription": "Convertir SVG en PNG en ligne. Aperçu et téléchargement dans le navigateur." },
+    "removeBackground": { "label": "Supprimer l'arrière-plan", "short": "Supprimer l'arrière-plan d'une image.", "metaTitle": "Supprimer l'arrière-plan en ligne gratuit", "metaDescription": "Supprimer l'arrière-plan des images. PNG avec transparence. Dans le navigateur." },
+    "mergeImages": { "label": "Fusionner des images", "short": "Combiner deux images.", "metaTitle": "Fusionner des images en ligne gratuit", "metaDescription": "Fusionner deux images horizontalement ou verticalement. Dans le navigateur." },
+    "pdfToText": { "label": "PDF en texte", "short": "Extraire le texte d'un PDF.", "metaTitle": "PDF en texte en ligne gratuit", "metaDescription": "Extraire le texte des PDF. Copier ou télécharger en TXT. Dans le navigateur." },
+    "addWatermark": { "label": "Ajouter un filigrane", "short": "Ajouter un filigrane texte aux images.", "metaTitle": "Ajouter un filigrane en ligne gratuit", "metaDescription": "Ajouter un filigrane texte. Position, opacité, taille. Dans le navigateur." },
+    "colorConverter": { "label": "Convertisseur de couleurs", "short": "Convertir HEX, RGB et HSL.", "metaTitle": "Convertisseur HEX RGB HSL gratuit", "metaDescription": "Convertir les couleurs entre HEX, RGB et HSL. Aperçu en direct." },
+    "faviconGenerator": { "label": "Générateur de favicon", "short": "Générer des favicons à partir d'une image.", "metaTitle": "Générateur de favicon en ligne gratuit", "metaDescription": "Générer des favicons (16x16, 32x32, etc.). Téléchargement ZIP. Dans le navigateur." },
+    "compressVideo": { "label": "Compresser une vidéo", "short": "Compresser un MP4 dans le navigateur.", "metaTitle": "Compresser une vidéo en ligne gratuit", "metaDescription": "Compresser des vidéos MP4. Barre de progression. WebAssembly dans le navigateur." },
+    "extractAudio": { "label": "Extraire l'audio", "short": "Extraire le MP3 d'une vidéo.", "metaTitle": "Extraire l'audio d'une vidéo en ligne gratuit", "metaDescription": "Extraire l'audio d'un MP4 en MP3. Barre de progression. Dans le navigateur." },
+    "wordCounter": { "label": "Compteur de mots", "short": "Compter les mots, caractères, temps de lecture.", "metaTitle": "Compteur de mots et statistiques gratuit", "metaDescription": "Compter les mots, caractères, phrases. Temps de lecture et mots les plus fréquents." }
   }
 }

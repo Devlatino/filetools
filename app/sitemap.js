@@ -14,6 +14,16 @@ const TOOL_PATHS = [
   "/tools/pdf-to-images",
   "/tools/create-zip",
   "/tools/extract-zip",
+  "/tools/svg-to-png",
+  "/tools/remove-background",
+  "/tools/merge-images",
+  "/tools/pdf-to-text",
+  "/tools/add-watermark",
+  "/tools/color-converter",
+  "/tools/favicon-generator",
+  "/tools/compress-video",
+  "/tools/extract-audio",
+  "/tools/word-counter",
 ];
 
 /**

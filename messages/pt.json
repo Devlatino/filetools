@@ -115,6 +115,16 @@
       "short": "Abre e descarrega ficheiros de um arquivo.",
       "metaTitle": "Extrair ZIP Online Grátis",
       "metaDescription": "Extrai e descarrega ficheiros de ZIP. Sem conta, no browser."
-    }
+    },
+    "svgToPng": { "label": "SVG para PNG", "short": "Converter SVG para PNG.", "metaTitle": "SVG para PNG online grátis", "metaDescription": "Converter SVG para PNG online. Pré-visualização e download no browser." },
+    "removeBackground": { "label": "Remover fundo", "short": "Remover o fundo de uma imagem.", "metaTitle": "Remover fundo de imagem online grátis", "metaDescription": "Remover fundo de imagens. PNG com transparência. No browser." },
+    "mergeImages": { "label": "Unir imagens", "short": "Combinar duas imagens.", "metaTitle": "Unir imagens online grátis", "metaDescription": "Unir duas imagens horizontal ou verticalmente. No browser." },
+    "pdfToText": { "label": "PDF para texto", "short": "Extrair texto de um PDF.", "metaTitle": "PDF para texto online grátis", "metaDescription": "Extrair texto de PDF. Copiar ou descarregar como TXT. No browser." },
+    "addWatermark": { "label": "Adicionar marca de água", "short": "Adicionar marca de água de texto.", "metaTitle": "Adicionar marca de água online grátis", "metaDescription": "Adicionar marca de água a imagens. Posição, opacidade, tamanho. No browser." },
+    "colorConverter": { "label": "Conversor de cores", "short": "Converter HEX, RGB e HSL.", "metaTitle": "Conversor HEX RGB HSL grátis", "metaDescription": "Converter cores entre HEX, RGB e HSL. Pré-visualização em tempo real." },
+    "faviconGenerator": { "label": "Gerador de favicon", "short": "Gerar favicons a partir de uma imagem.", "metaTitle": "Gerador de favicon online grátis", "metaDescription": "Gerar favicons (16x16, 32x32, etc.). Download ZIP. No browser." },
+    "compressVideo": { "label": "Comprimir vídeo", "short": "Comprimir MP4 no browser.", "metaTitle": "Comprimir vídeo online grátis", "metaDescription": "Comprimir vídeo MP4. Barra de progresso. WebAssembly no browser." },
+    "extractAudio": { "label": "Extrair áudio", "short": "Extrair MP3 de um vídeo.", "metaTitle": "Extrair áudio de vídeo online grátis", "metaDescription": "Extrair áudio de MP4 para MP3. Barra de progresso. No browser." },
+    "wordCounter": { "label": "Contador de palavras", "short": "Contar palavras, caracteres, tempo de leitura.", "metaTitle": "Contador de palavras e estatísticas grátis", "metaDescription": "Contar palavras, caracteres, frases. Tempo de leitura e palavras frequentes." }
   }
 }

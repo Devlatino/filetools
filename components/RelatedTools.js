@@ -15,6 +15,16 @@ const ICON_BY_SLUG = {
   "pdf-to-images": "PDF",
   "create-zip": "ZIP",
   "extract-zip": "ZIP",
+  "svg-to-png": "SVG",
+  "remove-background": "BG",
+  "merge-images": "IMG",
+  "pdf-to-text": "TXT",
+  "add-watermark": "WM",
+  "color-converter": "COL",
+  "favicon-generator": "ICO",
+  "compress-video": "VID",
+  "extract-audio": "AUD",
+  "word-counter": "WRD",
 };
 
 const BG_BY_SLUG = {
@@ -28,6 +38,16 @@ const BG_BY_SLUG = {
   "pdf-to-images": "bg-amber-400",
   "create-zip": "bg-cyan-400",
   "extract-zip": "bg-cyan-500",
+  "svg-to-png": "bg-violet-500",
+  "remove-background": "bg-fuchsia-500",
+  "merge-images": "bg-teal-500",
+  "pdf-to-text": "bg-amber-500",
+  "add-watermark": "bg-slate-500",
+  "color-converter": "bg-pink-500",
+  "favicon-generator": "bg-orange-500",
+  "compress-video": "bg-red-500",
+  "extract-audio": "bg-purple-500",
+  "word-counter": "bg-lime-500",
 };
 
 export function RelatedTools({ locale, currentSlug }) {

@@ -16,6 +16,16 @@ const TOOL_IDS = [
   { id: "pdfToImages", href: "/tools/pdf-to-images", icon: "PDF", iconBg: "bg-amber-400" },
   { id: "createZip", href: "/tools/create-zip", icon: "ZIP", iconBg: "bg-cyan-400" },
   { id: "extractZip", href: "/tools/extract-zip", icon: "ZIP", iconBg: "bg-cyan-500" },
+  { id: "svgToPng", href: "/tools/svg-to-png", icon: "SVG", iconBg: "bg-violet-500" },
+  { id: "removeBackground", href: "/tools/remove-background", icon: "BG", iconBg: "bg-fuchsia-500" },
+  { id: "mergeImages", href: "/tools/merge-images", icon: "IMG", iconBg: "bg-teal-500" },
+  { id: "pdfToText", href: "/tools/pdf-to-text", icon: "TXT", iconBg: "bg-amber-500" },
+  { id: "addWatermark", href: "/tools/add-watermark", icon: "WM", iconBg: "bg-slate-500" },
+  { id: "colorConverter", href: "/tools/color-converter", icon: "COL", iconBg: "bg-pink-500" },
+  { id: "faviconGenerator", href: "/tools/favicon-generator", icon: "ICO", iconBg: "bg-orange-500" },
+  { id: "compressVideo", href: "/tools/compress-video", icon: "VID", iconBg: "bg-red-500" },
+  { id: "extractAudio", href: "/tools/extract-audio", icon: "AUD", iconBg: "bg-purple-500" },
+  { id: "wordCounter", href: "/tools/word-counter", icon: "WRD", iconBg: "bg-lime-500" },
 ];
 
 export default function Home() {

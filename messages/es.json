@@ -115,6 +115,16 @@
       "short": "Abre y descarga archivos de un ZIP.",
       "metaTitle": "Extraer ZIP Online Gratis",
       "metaDescription": "Extrae y descarga archivos de ZIP. Sin cuenta, en el navegador."
-    }
+    },
+    "svgToPng": { "label": "SVG a PNG", "short": "Convertir SVG a PNG.", "metaTitle": "SVG a PNG online gratis", "metaDescription": "Convertir SVG a PNG online. Vista previa y descarga en el navegador." },
+    "removeBackground": { "label": "Quitar fondo", "short": "Quitar el fondo de una imagen.", "metaTitle": "Quitar fondo de imagen online gratis", "metaDescription": "Quitar el fondo de imágenes. PNG con transparencia. En el navegador." },
+    "mergeImages": { "label": "Unir imágenes", "short": "Combinar dos imágenes.", "metaTitle": "Unir imágenes online gratis", "metaDescription": "Unir dos imágenes horizontal o verticalmente. En el navegador." },
+    "pdfToText": { "label": "PDF a texto", "short": "Extraer texto de un PDF.", "metaTitle": "PDF a texto online gratis", "metaDescription": "Extraer texto de PDF. Copiar o descargar como TXT. En el navegador." },
+    "addWatermark": { "label": "Añadir marca de agua", "short": "Añadir marca de agua de texto.", "metaTitle": "Añadir marca de agua online gratis", "metaDescription": "Añadir marca de agua a imágenes. Posición, opacidad, tamaño. En el navegador." },
+    "colorConverter": { "label": "Convertidor de colores", "short": "Convertir HEX, RGB y HSL.", "metaTitle": "Convertidor HEX RGB HSL gratis", "metaDescription": "Convertir colores entre HEX, RGB y HSL. Vista previa en vivo." },
+    "faviconGenerator": { "label": "Generador de favicon", "short": "Generar favicons desde una imagen.", "metaTitle": "Generador de favicon online gratis", "metaDescription": "Generar favicons (16x16, 32x32, etc.). Descarga ZIP. En el navegador." },
+    "compressVideo": { "label": "Comprimir video", "short": "Comprimir MP4 en el navegador.", "metaTitle": "Comprimir video online gratis", "metaDescription": "Comprimir video MP4. Barra de progreso. WebAssembly en el navegador." },
+    "extractAudio": { "label": "Extraer audio", "short": "Extraer MP3 de un video.", "metaTitle": "Extraer audio de video online gratis", "metaDescription": "Extraer audio de MP4 a MP3. Barra de progreso. En el navegador." },
+    "wordCounter": { "label": "Contador de palabras", "short": "Contar palabras, caracteres, tiempo de lectura.", "metaTitle": "Contador de palabras y estadísticas gratis", "metaDescription": "Contar palabras, caracteres, frases. Tiempo de lectura y palabras frecuentes." }
   }
 }
