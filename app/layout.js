@@ -1,35 +1,40 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import { getLocale } from "next-intl/server";
 import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://fileflip.it"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://fileflip.org"
   ),
   title: {
-    default: "FileFlip — Tool gratuiti per convertire e comprimere file",
+    default: "FileFlip — Free tools to convert and compress files",
     template: "%s — FileFlip",
   },
   description:
-    "Converti e comprimi file online gratis: immagini, PDF, ZIP. Nessun account, tutto nel browser. Comprimi immagini, unisci PDF, converti formati.",
+    "Convert and compress files online for free: images, PDFs, ZIPs. No account, everything in the browser.",
   openGraph: {
     siteName: "FileFlip",
     images: ["/og.png"],
   },
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const locale = await getLocale();
+  const dir = locale === "ar" ? "rtl" : "ltr";
   return (
-    <html lang="en">
+    <html lang={locale} dir={dir}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

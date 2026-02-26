@@ -1,5 +1,7 @@
+import { routing } from "@/i18n/routing";
+
 const BASE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://fileflip.it";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://fileflip.org";
 
 const TOOL_PATHS = [
   "/tools/compress-image",
@@ -14,23 +16,30 @@ const TOOL_PATHS = [
   "/tools/extract-zip",
 ];
 
-/** @type {import('next').MetadataRoute.Sitemap} */
+/**
+ * Genera la sitemap XML dinamica per Next.js App Router.
+ * @returns {import('next').MetadataRoute.Sitemap}
+ */
 export default function sitemap() {
-  const now = new Date().toISOString();
+  const lastModified = new Date().toISOString();
+  const entries = [];
 
-  const homepage = {
-    url: BASE_URL,
-    lastModified: now,
-    changeFrequency: "weekly",
-    priority: 1,
-  };
+  for (const locale of routing.locales) {
+    entries.push({
+      url: `${BASE_URL}/${locale}`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 1.0,
+    });
+    for (const path of TOOL_PATHS) {
+      entries.push({
+        url: `${BASE_URL}/${locale}${path}`,
+        lastModified,
+        changeFrequency: "monthly",
+        priority: 0.8,
+      });
+    }
+  }
 
-  const toolEntries = TOOL_PATHS.map((path) => ({
-    url: `${BASE_URL}${path}`,
-    lastModified: now,
-    changeFrequency: "monthly",
-    priority: 0.9,
-  }));
-
-  return [homepage, ...toolEntries];
+  return entries;
 }

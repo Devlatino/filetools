@@ -1,0 +1,120 @@
+{
+  "common": {
+    "siteName": "FileFlip",
+    "tagline": "转换和压缩文件",
+    "nav": {
+      "tools": "工具",
+      "howItWorks": "如何使用",
+      "faq": "常见问题"
+    },
+    "footer": {
+      "copyright": "让文件管理更简单的项目。",
+      "privacy": "隐私",
+      "terms": "条款",
+      "backToTop": "返回顶部"
+    },
+    "open": "打开",
+    "goToTool": "进入工具 →",
+    "breadcrumbHome": "首页",
+    "relatedTools": "相关工具"
+  },
+  "home": {
+    "badge": "100% 免费 • 无需注册 • 全部在浏览器中完成",
+    "title": "为您的文件准备的工具，",
+    "titleHighlight": "人人可用。",
+    "subtitle": "选择要执行的操作（例如压缩照片），上传文件并下载结果。无专业术语，只有清晰的按钮和简单说明。",
+    "cta": "选择操作",
+    "ctaSecondary": "三步了解如何使用",
+    "noWatermark": "无水印",
+    "worksEverywhere": "支持电脑、平板和手机",
+    "simpleInterface": "界面清晰，非技术用户也能轻松使用",
+    "howTitle": "如何使用 FileFlip",
+    "howSubtitle": "每个工具的操作流程都一样。",
+    "step1Title": "第一步",
+    "step1Desc": "选择操作。",
+    "step1Example": "例如：“压缩图片”或“创建 ZIP 压缩包”。",
+    "step2Title": "第二步",
+    "step2Desc": "点击大的“上传文件”按钮。",
+    "step2Note": "无需复杂设置，只保留必要选项。",
+    "step3Title": "第三步",
+    "step3Desc": "下载即可使用的新文件。",
+    "step3Note": "可随时重复操作。",
+    "toolsTitle": "选择要执行的操作",
+    "toolsSubtitle": "点击卡片打开工具并立即开始。",
+    "toolsCount": "共 {count} 个工具",
+    "faqTitle": "常见问题",
+    "faq1Q": "FileFlip 真的免费吗？",
+    "faq1A": "是的。我们的目标是为日常使用提供简单免费的工具，无隐藏费用。",
+    "faq2Q": "需要注册账号吗？",
+    "faq2A": "不需要。直接在浏览器中使用 FileFlip，无需注册。",
+    "faq3Q": "工具可以直接使用吗？",
+    "faq3A": "可以。工具区的每张卡片都会打开对应工具页面，即可使用。"
+  },
+  "meta": {
+    "defaultTitle": "FileFlip — 免费转换与压缩文件工具",
+    "defaultDescription": "在线免费转换和压缩文件：图片、PDF、ZIP。无需注册，全部在浏览器中完成。压缩图片、合并 PDF、转换格式。",
+    "titleTemplate": "%s — FileFlip"
+  },
+  "tools": {
+    "compressImage": {
+      "label": "压缩图片",
+      "short": "减小照片体积。",
+      "metaTitle": "免费在线压缩图片",
+      "metaDescription": "免费在线压缩 JPG、PNG、WebP 图片。在保持画质的同时减小文件大小。无需注册，在浏览器中完成。"
+    },
+    "mergePdf": {
+      "label": "合并 PDF",
+      "short": "将多个 PDF 合并为一个文件。",
+      "metaTitle": "免费在线合并 PDF",
+      "metaDescription": "在线将多个 PDF 合并为一个。拖拽调整顺序。无需注册，在浏览器中完成。"
+    },
+    "compressPdf": {
+      "label": "压缩 PDF",
+      "short": "减小 PDF 文档体积。",
+      "metaTitle": "免费在线压缩 PDF",
+      "metaDescription": "在线减小 PDF 文件大小。选择压缩级别。无需注册，在浏览器中完成。"
+    },
+    "jpgToPng": {
+      "label": "JPG → PNG",
+      "short": "将 JPG 转为 PNG。",
+      "metaTitle": "免费在线 JPG 转 PNG",
+      "metaDescription": "免费在线将 JPG 转为 PNG。无需注册，在浏览器中完成。"
+    },
+    "pngToJpg": {
+      "label": "PNG → JPG",
+      "short": "将 PNG 转为 JPG。",
+      "metaTitle": "免费在线 PNG 转 JPG",
+      "metaDescription": "免费在线将 PNG 转为 JPG。无需注册，在浏览器中完成。"
+    },
+    "imageToWebp": {
+      "label": "图片 → WebP",
+      "short": "转为 WebP 以减小体积。",
+      "metaTitle": "免费在线图片转 WebP",
+      "metaDescription": "在线将图片转为 WebP。无需注册，在浏览器中完成。"
+    },
+    "resizeImage": {
+      "label": "调整图片尺寸",
+      "short": "适配网站、简历和表格。",
+      "metaTitle": "免费在线调整图片尺寸",
+      "metaDescription": "按宽高调整图片尺寸。无需注册，在浏览器中完成。"
+    },
+    "pdfToImages": {
+      "label": "PDF → 图片",
+      "short": "将每页导出为 PNG。",
+      "metaTitle": "免费在线 PDF 转图片",
+      "metaDescription": "将 PDF 每页转为 PNG 图片。单张或 ZIP 下载。无需注册，在浏览器中完成。"
+    },
+    "createZip": {
+      "label": "创建 ZIP",
+      "short": "将多个文件打包为 ZIP。",
+      "metaTitle": "免费在线创建 ZIP",
+      "metaDescription": "在线创建 ZIP 压缩包。无需注册，在浏览器中完成。"
+    },
+    "extractZip": {
+      "label": "解压 ZIP",
+      "short": "打开并下载压缩包中的文件。",
+      "metaTitle": "免费在线解压 ZIP",
+      "metaDescription": "解压并下载 ZIP 中的文件。无需注册，在浏览器中完成。"
+    }
+  }
+}

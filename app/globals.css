@@ -12,17 +12,10 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #020617;
-    --foreground: #e5e7eb;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 /* Animazioni per wallpaper dinamico con waves */
@@ -50,24 +43,10 @@ body {
   }
 }
 
-@keyframes pulse-slow {
-  0%,
-  100% {
-    opacity: 0.45;
-  }
-  50% {
-    opacity: 0.9;
-  }
-}
-
 .animate-wave {
   animation: wave-move 18s ease-in-out infinite;
 }
 
 .animate-wave-slow {
   animation: wave-vertical 22s ease-in-out infinite;
-}
-
-.animate-pulse-slow {
-  animation: pulse-slow 12s ease-in-out infinite;
 }

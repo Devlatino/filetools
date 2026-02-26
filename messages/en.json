@@ -1,0 +1,120 @@
+{
+  "common": {
+    "siteName": "FileFlip",
+    "tagline": "Convert and compress files",
+    "nav": {
+      "tools": "Tools",
+      "howItWorks": "How it works",
+      "faq": "FAQ"
+    },
+    "footer": {
+      "copyright": "A project to make files easier to manage.",
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "backToTop": "Back to top"
+    },
+    "open": "Open",
+    "goToTool": "Go to tool →",
+    "breadcrumbHome": "Home",
+    "relatedTools": "Related tools"
+  },
+  "home": {
+    "badge": "100% free • No account • Everything in the browser",
+    "title": "Tools for your files,",
+    "titleHighlight": "made for everyone.",
+    "subtitle": "Choose what you want to do (e.g. compress a photo), upload the file and download the result. No jargon, just clear buttons and simple instructions.",
+    "cta": "Choose an action",
+    "ctaSecondary": "How it works in 3 steps",
+    "noWatermark": "No watermark",
+    "worksEverywhere": "Works on PC, tablet and smartphone",
+    "simpleInterface": "Clear interface even for non-technical users",
+    "howTitle": "How to use FileFlip",
+    "howSubtitle": "The same process for every tool.",
+    "step1Title": "Step 1",
+    "step1Desc": "Choose an action.",
+    "step1Example": "E.g. \"Compress image\" or \"Create ZIP archive\".",
+    "step2Title": "Step 2",
+    "step2Desc": "Click the big \"Upload file\" button.",
+    "step2Note": "No complicated settings, just the essentials.",
+    "step3Title": "Step 3",
+    "step3Desc": "Download the new file ready to use.",
+    "step3Note": "You can repeat as many times as you like.",
+    "toolsTitle": "Choose what you want to do",
+    "toolsSubtitle": "Click a card to open the tool and start right away.",
+    "toolsCount": "{count} tools available",
+    "faqTitle": "Frequently asked questions",
+    "faq1Q": "Is FileFlip really free?",
+    "faq1A": "Yes. The goal is to offer simple, free tools for everyday use, with no hidden costs.",
+    "faq2Q": "Do I need to create an account?",
+    "faq2A": "No. You use FileFlip directly in your browser, with no sign-up.",
+    "faq3Q": "Are the tools ready to use?",
+    "faq3A": "Yes. Each card in the Tools section goes to the corresponding tool page where you can use it right away."
+  },
+  "meta": {
+    "defaultTitle": "FileFlip — Free tools to convert and compress files",
+    "defaultDescription": "Convert and compress files online for free: images, PDFs, ZIPs. No account, everything in the browser. Compress images, merge PDFs, convert formats.",
+    "titleTemplate": "%s — FileFlip"
+  },
+  "tools": {
+    "compressImage": {
+      "label": "Compress image",
+      "short": "Reduce the size of your photos.",
+      "metaTitle": "Compress Images Online Free",
+      "metaDescription": "Compress JPG, PNG and WebP photos online for free. Reduce image size while keeping quality. No account, everything in the browser."
+    },
+    "mergePdf": {
+      "label": "Merge PDF",
+      "short": "Combine multiple PDFs into one file.",
+      "metaTitle": "Merge PDF Online Free",
+      "metaDescription": "Combine multiple PDF files into one online. Drag and drop to reorder. No account, works in the browser."
+    },
+    "compressPdf": {
+      "label": "Compress PDF",
+      "short": "Reduce the size of PDF documents.",
+      "metaTitle": "Compress PDF Online Free",
+      "metaDescription": "Reduce PDF file size online. Choose compression level. No account, in the browser."
+    },
+    "jpgToPng": {
+      "label": "JPG → PNG",
+      "short": "Convert JPG images to PNG.",
+      "metaTitle": "JPG to PNG Online Free",
+      "metaDescription": "Convert JPG to PNG online for free. No account, in the browser."
+    },
+    "pngToJpg": {
+      "label": "PNG → JPG",
+      "short": "Convert PNG images to JPG.",
+      "metaTitle": "PNG to JPG Online Free",
+      "metaDescription": "Convert PNG to JPG online for free. No account, in the browser."
+    },
+    "imageToWebp": {
+      "label": "Image → WebP",
+      "short": "Convert to WebP for smaller files.",
+      "metaTitle": "Image to WebP Online Free",
+      "metaDescription": "Convert images to WebP online. No account, in the browser."
+    },
+    "resizeImage": {
+      "label": "Resize images",
+      "short": "Fit photos to websites, CVs and forms.",
+      "metaTitle": "Resize Images Online Free",
+      "metaDescription": "Resize images by width and height. No account, in the browser."
+    },
+    "pdfToImages": {
+      "label": "PDF → Images",
+      "short": "Extract each page as PNG.",
+      "metaTitle": "PDF to Images Online Free",
+      "metaDescription": "Convert PDF pages to PNG images. Download single or ZIP. No account, in the browser."
+    },
+    "createZip": {
+      "label": "Create ZIP archive",
+      "short": "Bundle multiple files into one ZIP.",
+      "metaTitle": "Create ZIP Online Free",
+      "metaDescription": "Create ZIP archives online. No account, in the browser."
+    },
+    "extractZip": {
+      "label": "Extract ZIP",
+      "short": "Open and download files from an archive.",
+      "metaTitle": "Extract ZIP Online Free",
+      "metaDescription": "Extract and download files from ZIP. No account, in the browser."
+    }
+  }
+}
