@@ -47,7 +47,7 @@ export function Breadcrumb({ locale, homeLabel, toolsLabel, toolLabel, toolPath 
     <>
       <nav
         aria-label="Breadcrumb"
-        className="mb-6 flex items-center gap-2 text-sm text-slate-400"
+        className="mb-6 flex items-center gap-2 text-sm text-slate-300"
       >
         <Link
           href={`/${locale}/`}

@@ -49,7 +49,7 @@ export default function Home() {
               <span className="text-lg font-semibold tracking-tight">
                 {tCommon("siteName")}
               </span>
-              <span className="text-xs text-slate-400">
+              <span className="text-xs text-slate-300">
                 {tCommon("tagline")}
               </span>
             </div>
@@ -111,7 +111,7 @@ export default function Home() {
                 </a>
               </div>
 
-              <div className="flex flex-wrap justify-center gap-4 text-xs text-slate-400 sm:justify-start">
+              <div className="flex flex-wrap justify-center gap-4 text-xs text-slate-300 sm:justify-start">
                 <div className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
                   {t("noWatermark")}
@@ -138,35 +138,35 @@ export default function Home() {
               <h2 className="text-base font-semibold text-slate-50">
                 {t("howTitle")}
               </h2>
-              <p className="mt-2 text-xs text-slate-400">
+              <p className="mt-2 text-xs text-slate-300">
                 {t("howSubtitle")}
               </p>
             </div>
             <div className="grid flex-1 gap-4 text-sm sm:grid-cols-3">
               <div className="rounded-2xl border border-white/10 bg-slate-900 p-4">
-                <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+                <p className="text-xs font-semibold uppercase tracking-wide text-slate-300">
                   {t("step1Title")}
                 </p>
                 <p className="mt-2 text-slate-50">{t("step1Desc")}</p>
-                <p className="mt-1 text-xs text-slate-400">
+                <p className="mt-1 text-xs text-slate-300">
                   {t("step1Example")}
                 </p>
               </div>
               <div className="rounded-2xl border border-white/10 bg-slate-900 p-4">
-                <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+                <p className="text-xs font-semibold uppercase tracking-wide text-slate-300">
                   {t("step2Title")}
                 </p>
                 <p className="mt-2 text-slate-50">{t("step2Desc")}</p>
-                <p className="mt-1 text-xs text-slate-400">
+                <p className="mt-1 text-xs text-slate-300">
                   {t("step2Note")}
                 </p>
               </div>
               <div className="rounded-2xl border border-white/10 bg-slate-900 p-4">
-                <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+                <p className="text-xs font-semibold uppercase tracking-wide text-slate-300">
                   {t("step3Title")}
                 </p>
                 <p className="mt-2 text-slate-50">{t("step3Desc")}</p>
-                <p className="mt-1 text-xs text-slate-400">
+                <p className="mt-1 text-xs text-slate-300">
                   {t("step3Note")}
                 </p>
               </div>
@@ -181,7 +181,7 @@ export default function Home() {
                 <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
                   {t("toolsTitle")}
                 </h2>
-                <p className="mt-1 text-sm text-slate-400">
+                <p className="mt-1 text-sm text-slate-300">
                   {t("toolsSubtitle")}
                 </p>
               </div>
@@ -246,7 +246,7 @@ export default function Home() {
       </main>
 
       <footer className="border-t border-white/10 bg-slate-950">
-        <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 px-4 py-6 text-xs text-slate-500 sm:flex-row sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 px-4 py-6 text-xs text-slate-400 sm:flex-row sm:px-6 lg:px-8">
           <p>
             © {year} {tCommon("siteName")} · {tCommon("footer.copyright")}
           </p>
@@ -314,7 +314,7 @@ function LanguageSwitcher({ currentLocale }) {
         <span className="max-w-[4rem] truncate sm:max-w-none">
           {locales.find((l) => l.code === currentLocale)?.name ?? currentLocale}
         </span>
-        <svg className="h-3.5 w-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="h-3.5 w-3.5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>
       </button>

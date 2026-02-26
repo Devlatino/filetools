@@ -38,13 +38,14 @@ export default async function RootLayout({ children }) {
     <html lang={locale} dir={dir}>
       <head>
         <meta name="google-adsense-account" content="ca-pub-4903529383886232" />
+        <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Script
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4903529383886232"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           crossOrigin="anonymous"
         />
         {children}
