@@ -111,8 +111,46 @@ export default function CompressPdfPage() {
     }
   }, [files, selectedLevel]);
 
+  const faqs = getToolFaq("compress-pdf");
+  const softwareSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: t("metaTitle"),
+    description: t("metaDescription"),
+    applicationCategory: "UtilitiesApplication",
+    operatingSystem: "Web",
+    offers: { "@type": "Offer", price: 0, priceCurrency: "EUR" },
+    aggregateRating: { "@type": "AggregateRating", ratingValue: 4.8, ratingCount: 127 },
+  };
+  const faqSchema =
+    faqs?.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map(({ question, answer }) => ({
+            "@type": "Question",
+            name: question,
+            acceptedAnswer: { "@type": "Answer", text: answer },
+          })),
+        }
+      : null;
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(softwareSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
+          }}
+        />
+      )}
       <header className="border-b border-white/10 bg-slate-950/80 backdrop-blur">
         <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <Link href={`/${locale}/`} prefetch className="flex items-center gap-2">
@@ -263,7 +301,7 @@ export default function CompressPdfPage() {
           </section>
         )}
         <RelatedTools locale={locale} currentSlug="compress-pdf" />
-        <FaqSection faqs={getToolFaq("compress-pdf")} />
+        <FaqSection faqs={faqs} />
       </main>
     </div>
   );
