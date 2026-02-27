@@ -175,6 +175,16 @@
       "short": "Conta parole, caratteri, tempo di lettura.",
       "metaTitle": "Contatore Parole e Statistiche Testo Gratis",
       "metaDescription": "Conta parole, caratteri, frasi, paragrafi. Tempo di lettura e parole più frequenti. Nel browser."
-    }
+    },
+    "heicToJpg": { "label": "HEIC in JPG", "short": "Converti foto HEIC (iPhone) in JPG.", "metaTitle": "HEIC in JPG Online Gratis", "metaDescription": "Converti foto HEIC (iPhone) in JPG. Uno o più file, anteprima, scarica singolo o ZIP. Nel browser." },
+    "removeMetadata": { "label": "Rimuovi metadati", "short": "Elimina EXIF da JPG e PNG.", "metaTitle": "Rimuovi Metadati EXIF da Immagini Gratis", "metaDescription": "Rimuovi tutti i metadati EXIF da JPG e PNG. Vedi i metadati prima della rimozione, scarica immagine pulita. Nel browser." },
+    "pdfToPptx": { "label": "PDF in PowerPoint", "short": "Trasforma le pagine PDF in slide.", "metaTitle": "PDF in PowerPoint PPTX Online Gratis", "metaDescription": "Converti PDF in PowerPoint. Ogni pagina diventa una slide. Barra progresso, scarica PPTX. Nel browser." },
+    "colorPalette": { "label": "Palette colori", "short": "Estrai i colori dominanti da un'immagine.", "metaTitle": "Estrai Palette Colori da Immagine Gratis", "metaDescription": "Estrai 6 colori dominanti da un'immagine. HEX, RGB, HSL. Clic per copiare. Anteprima a strisce. Nel browser." },
+    "textDiff": { "label": "Confronto testi", "short": "Confronta due testi, vedi le differenze.", "metaTitle": "Confronta Due Testi Diff Gratis", "metaDescription": "Confronta due testi. Verde aggiunte, rosso rimozioni. Parola per parola. Statistiche. Nel browser." },
+    "encryptText": { "label": "Cifra testo", "short": "Cifra e decifra con password.", "metaTitle": "Cifra e Decifra Testo con Password Gratis", "metaDescription": "Cifra e decifra testo con AES-256 e password. La password non viene mai inviata. Nel browser." },
+    "markdownToHtml": { "label": "Markdown in HTML", "short": "Converti Markdown in HTML con anteprima.", "metaTitle": "Markdown in HTML Converter Gratis", "metaDescription": "Converti Markdown in HTML. Anteprima live, syntax highlighting. Scarica pagina completa o copia HTML. Nel browser." },
+    "qrGenerator": { "label": "Generatore QR code", "short": "Crea QR code personalizzati.", "metaTitle": "Generatore QR Code Personalizzato Gratis", "metaDescription": "Genera QR code. URL, email, telefono, WiFi. Dimensione, colori, logo. Scarica PNG o SVG. Nel browser." },
+    "extractFrames": { "label": "Estrai frame da video", "short": "Estrai immagini da un video.", "metaTitle": "Estrai Frame da Video Gratis", "metaDescription": "Estrai frame da video come JPG. Scegli numero o intervallo. Griglia anteprima, scarica singolo o ZIP. Nel browser." },
+    "csvTools": { "label": "Strumenti CSV", "short": "Unisci o dividi file CSV.", "metaTitle": "Unisci e Dividi CSV Gratis", "metaDescription": "Unisci più CSV o dividi uno per righe. Anteprima, download. Gestione intestazioni. Nel browser." }
   }
 }

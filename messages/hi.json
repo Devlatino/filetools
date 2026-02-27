@@ -125,6 +125,16 @@
     "faviconGenerator": { "label": "फैविकॉन जनरेटर", "short": "इमेज से फैविकॉन बनाएं।", "metaTitle": "मुफ्त ऑनलाइन फैविकॉन जनरेटर", "metaDescription": "फैविकॉन (16x16, 32x32 आदि) बनाएं। ZIP डाउनलोड। ब्राउज़र में।" },
     "compressVideo": { "label": "वीडियो कंप्रेस करें", "short": "ब्राउज़र में MP4 कंप्रेस।", "metaTitle": "मुफ्त ऑनलाइन वीडियो कंप्रेस", "metaDescription": "MP4 वीडियो कंप्रेस करें। प्रोग्रेस बार। WebAssembly।" },
     "extractAudio": { "label": "ऑडियो निकालें", "short": "वीडियो से MP3 निकालें।", "metaTitle": "मुफ्त ऑनलाइन वीडियो से ऑडियो", "metaDescription": "MP4 से ऑडियो MP3 में निकालें। प्रोग्रेस बार। ब्राउज़र में।" },
-    "wordCounter": { "label": "शब्द गणक", "short": "शब्द, अक्षर, पढ़ने का समय।", "metaTitle": "मुफ्त शब्द गणक और स्टैट्स", "metaDescription": "शब्द, अक्षर, वाक्य गिनें। पढ़ने का समय और शीर्ष शब्द।" }
+    "wordCounter": { "label": "शब्द गणक", "short": "शब्द, अक्षर, पढ़ने का समय।", "metaTitle": "मुफ्त शब्द गणक और स्टैट्स", "metaDescription": "शब्द, अक्षर, वाक्य गिनें। पढ़ने का समय और शीर्ष शब्द।" },
+    "heicToJpg": { "label": "HEIC से JPG", "short": "iPhone HEIC फोटो को JPG में बदलें।", "metaTitle": "HEIC से JPG मुफ्त", "metaDescription": "HEIC को JPG में बदलें। एक या कई फाइलें, ZIP डाउनलोड।" },
+    "removeMetadata": { "label": "मेटाडेटा हटाएं", "short": "JPG/PNG से EXIF हटाएं।", "metaTitle": "छवि EXIF मेटाडेटा हटाएं मुफ्त", "metaDescription": "सभी EXIF हटाएं। साफ छवि डाउनलोड।" },
+    "pdfToPptx": { "label": "PDF से PowerPoint", "short": "PDF पेज को स्लाइड बनाएं।", "metaTitle": "PDF से PPTX मुफ्त", "metaDescription": "हर पेज एक स्लाइड। PPTX डाउनलोड।" },
+    "colorPalette": { "label": "रंग पैलेट", "short": "छवि से प्रमुख रंग निकालें।", "metaTitle": "छवि से रंग पैलेट मुफ्त", "metaDescription": "6 रंग। HEX, RGB, HSL। कॉपी के लिए क्लिक।" },
+    "textDiff": { "label": "टेक्स्ट तुलना", "short": "दो टेक्स्ट की तुलना करें।", "metaTitle": "दो टेक्स्ट तुलना मुफ्त", "metaDescription": "हरा जोड़, लाल हटाव। आंकड़े।" },
+    "encryptText": { "label": "टेक्स्ट एन्क्रिप्ट", "short": "पासवर्ड से एन्क्रिप्ट/डिक्रिप्ट।", "metaTitle": "टेक्स्ट एन्क्रिप्ट डिक्रिप्ट मुफ्त", "metaDescription": "AES-256। पासवर्ड सर्वर पर नहीं जाता।" },
+    "markdownToHtml": { "label": "Markdown से HTML", "short": "Markdown को HTML में बदलें।", "metaTitle": "Markdown से HTML मुफ्त", "metaDescription": "लाइव प्रीव्यू। HTML डाउनलोड।" },
+    "qrGenerator": { "label": "QR कोड जनरेटर", "short": "कस्टम QR कोड बनाएं।", "metaTitle": "QR कोड जनरेटर मुफ्त", "metaDescription": "URL, ईमेल, WiFi। रंग, लोगो। PNG या SVG।" },
+    "extractFrames": { "label": "वीडियो फ्रेम निकालें", "short": "वीडियो से फ्रेम निकालें।", "metaTitle": "वीडियो से फ्रेम निकालें मुफ्त", "metaDescription": "फ्रेम JPG में। एक या ZIP डाउनलोड।" },
+    "csvTools": { "label": "CSV टूल्स", "short": "CSV मर्ज या स्प्लिट करें।", "metaTitle": "CSV मर्ज और स्प्लिट मुफ्त", "metaDescription": "कई CSV मर्ज करें या पंक्तियों से स्प्लिट।" }
   }
 }

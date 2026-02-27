@@ -111,17 +111,8 @@ export default function ResizeImagePage() {
       <header className="border-b border-white/10 bg-slate-950/80 backdrop-blur">
         <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <Link href={`/${locale}/`} prefetch className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-500 text-lg font-bold text-slate-950 shadow-sm">
-              F
-            </div>
-            <div className="flex flex-col leading-tight">
-              <span className="text-sm font-semibold tracking-tight sm:text-base">
-                {tCommon("siteName")}
-              </span>
-              <span className="text-[11px] text-slate-400">
-                {t("label")}
-              </span>
-            </div>
+            <img src="/fileflip-logo.svg" alt={tCommon("siteName")} className="h-9 w-auto" width={140} height={36} />
+            <span className="text-sm text-slate-400">{t("label")}</span>
           </Link>
         </div>
       </header>

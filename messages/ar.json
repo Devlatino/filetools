@@ -125,6 +125,16 @@
     "faviconGenerator": { "label": "مولد الأيقونة", "short": "إنشاء أيقونات من صورة.", "metaTitle": "مولد الأيقونة أونلاين مجاناً", "metaDescription": "إنشاء أيقونات (16x16، 32x32، إلخ). تنزيل ZIP. في المتصفح." },
     "compressVideo": { "label": "ضغط الفيديو", "short": "ضغط MP4 في المتصفح.", "metaTitle": "ضغط الفيديو أونلاين مجاناً", "metaDescription": "ضغط فيديو MP4. شريط تقدم. WebAssembly في المتصفح." },
     "extractAudio": { "label": "استخراج الصوت", "short": "استخراج MP3 من الفيديو.", "metaTitle": "استخراج الصوت من الفيديو أونلاين مجاناً", "metaDescription": "استخراج الصوت من MP4 إلى MP3. شريط تقدم. في المتصفح." },
-    "wordCounter": { "label": "عداد الكلمات", "short": "عد الكلمات والأحرف ووقت القراءة.", "metaTitle": "عداد الكلمات والإحصائيات مجاناً", "metaDescription": "عد الكلمات والأحرف والجمل. وقت القراءة والكلمات المتكررة." }
+    "wordCounter": { "label": "عداد الكلمات", "short": "عد الكلمات والأحرف ووقت القراءة.", "metaTitle": "عداد الكلمات والإحصائيات مجاناً", "metaDescription": "عد الكلمات والأحرف والجمل. وقت القراءة والكلمات المتكررة." },
+    "heicToJpg": { "label": "HEIC إلى JPG", "short": "تحويل صور HEIC (آيفون) إلى JPG.", "metaTitle": "HEIC إلى JPG أونلاين مجاناً", "metaDescription": "تحويل HEIC إلى JPG. ملف واحد أو عدة، تنزيل أو ZIP." },
+    "removeMetadata": { "label": "إزالة البيانات الوصفية", "short": "إزالة EXIF من JPG و PNG.", "metaTitle": "إزالة EXIF من الصور مجاناً", "metaDescription": "إزالة كل EXIF. تنزيل صورة نظيفة." },
+    "pdfToPptx": { "label": "PDF إلى باوربوينت", "short": "تحويل صفحات PDF إلى شرائح.", "metaTitle": "PDF إلى PowerPoint مجاناً", "metaDescription": "كل صفحة تصبح شريحة. تنزيل PPTX." },
+    "colorPalette": { "label": "لوحة ألوان", "short": "استخراج الألوان المهيمنة من الصورة.", "metaTitle": "استخراج لوحة ألوان مجاناً", "metaDescription": "6 ألوان. HEX, RGB, HSL. انقر للنسخ." },
+    "textDiff": { "label": "مقارنة نصوص", "short": "مقارنة نصين، عرض الفروقات.", "metaTitle": "مقارنة نصين مجاناً", "metaDescription": "أخضر للإضافات، أحمر للحذف. إحصائيات." },
+    "encryptText": { "label": "تشفير نص", "short": "تشفير وفك تشفير بكلمة مرور.", "metaTitle": "تشفير وفك تشفير النص مجاناً", "metaDescription": "AES-256. كلمة المرور لا ترسل أبداً." },
+    "markdownToHtml": { "label": "Markdown إلى HTML", "short": "تحويل Markdown إلى HTML.", "metaTitle": "Markdown إلى HTML مجاناً", "metaDescription": "معاينة مباشرة. تنزيل HTML." },
+    "qrGenerator": { "label": "مولد QR", "short": "إنشاء رموز QR مخصصة.", "metaTitle": "مولد رمز QR مجاناً", "metaDescription": "URL، بريد، WiFi. ألوان، شعار. PNG أو SVG." },
+    "extractFrames": { "label": "استخراج إطارات", "short": "استخراج صور من فيديو.", "metaTitle": "استخراج إطارات من فيديو مجاناً", "metaDescription": "إطارات كـ JPG. تنزيل واحد أو ZIP." },
+    "csvTools": { "label": "أدوات CSV", "short": "دمج أو تقسيم ملفات CSV.", "metaTitle": "دمج وتقسيم CSV مجاناً", "metaDescription": "دمج عدة CSV أو تقسيم حسب الصفوف." }
   }
 }

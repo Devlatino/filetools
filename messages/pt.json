@@ -125,6 +125,16 @@
     "faviconGenerator": { "label": "Gerador de favicon", "short": "Gerar favicons a partir de uma imagem.", "metaTitle": "Gerador de favicon online grátis", "metaDescription": "Gerar favicons (16x16, 32x32, etc.). Download ZIP. No browser." },
     "compressVideo": { "label": "Comprimir vídeo", "short": "Comprimir MP4 no browser.", "metaTitle": "Comprimir vídeo online grátis", "metaDescription": "Comprimir vídeo MP4. Barra de progresso. WebAssembly no browser." },
     "extractAudio": { "label": "Extrair áudio", "short": "Extrair MP3 de um vídeo.", "metaTitle": "Extrair áudio de vídeo online grátis", "metaDescription": "Extrair áudio de MP4 para MP3. Barra de progresso. No browser." },
-    "wordCounter": { "label": "Contador de palavras", "short": "Contar palavras, caracteres, tempo de leitura.", "metaTitle": "Contador de palavras e estatísticas grátis", "metaDescription": "Contar palavras, caracteres, frases. Tempo de leitura e palavras frequentes." }
+    "wordCounter": { "label": "Contador de palavras", "short": "Contar palavras, caracteres, tempo de leitura.", "metaTitle": "Contador de palavras e estatísticas grátis", "metaDescription": "Contar palavras, caracteres, frases. Tempo de leitura e palavras frequentes." },
+    "heicToJpg": { "label": "HEIC para JPG", "short": "Converte fotos HEIC para JPG.", "metaTitle": "HEIC para JPG online grátis", "metaDescription": "Converte HEIC em JPG. Download único ou ZIP." },
+    "removeMetadata": { "label": "Remover metadados", "short": "Remove EXIF de JPG e PNG.", "metaTitle": "Remover metadados EXIF grátis", "metaDescription": "Remove EXIF. Download imagem limpa." },
+    "pdfToPptx": { "label": "PDF para PowerPoint", "short": "Converte PDF em slides.", "metaTitle": "PDF para PPTX grátis", "metaDescription": "Cada página vira slide. Download PPTX." },
+    "colorPalette": { "label": "Paleta de cores", "short": "Extrai cores dominantes.", "metaTitle": "Extrair paleta grátis", "metaDescription": "6 cores. HEX, RGB, HSL. Clicar para copiar." },
+    "textDiff": { "label": "Comparar textos", "short": "Compara dois textos.", "metaTitle": "Comparar textos grátis", "metaDescription": "Verde adições, vermelho remoções." },
+    "encryptText": { "label": "Cifrar texto", "short": "Cifrar e decifrar com senha.", "metaTitle": "Cifrar decifrar texto grátis", "metaDescription": "AES-256. Senha nunca enviada." },
+    "markdownToHtml": { "label": "Markdown para HTML", "short": "Converte Markdown em HTML.", "metaTitle": "Markdown para HTML grátis", "metaDescription": "Pré-visualização. Download HTML." },
+    "qrGenerator": { "label": "Gerador QR", "short": "Cria códigos QR.", "metaTitle": "Gerador QR code grátis", "metaDescription": "URL, email, WiFi. PNG ou SVG." },
+    "extractFrames": { "label": "Extrair frames", "short": "Extrai imagens de vídeo.", "metaTitle": "Extrair frames grátis", "metaDescription": "Frames em JPG. Download ou ZIP." },
+    "csvTools": { "label": "Ferramentas CSV", "short": "Unir ou dividir CSV.", "metaTitle": "Unir e dividir CSV grátis", "metaDescription": "Unir vários CSV ou dividir por linhas." }
   }
 }

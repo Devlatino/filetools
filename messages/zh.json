@@ -125,6 +125,16 @@
     "faviconGenerator": { "label": "Favicon 生成器", "short": "从图片生成 favicon。", "metaTitle": "免费在线 Favicon 生成器", "metaDescription": "生成 favicon（16x16、32x32 等）。ZIP 下载。在浏览器中完成。" },
     "compressVideo": { "label": "压缩视频", "short": "在浏览器中压缩 MP4。", "metaTitle": "免费在线压缩视频", "metaDescription": "压缩 MP4 视频。进度条。WebAssembly 在浏览器中运行。" },
     "extractAudio": { "label": "提取音频", "short": "从视频提取 MP3。", "metaTitle": "免费在线从视频提取音频", "metaDescription": "从 MP4 提取音频为 MP3。进度条。在浏览器中完成。" },
-    "wordCounter": { "label": "字数统计", "short": "统计字数、字符、阅读时间。", "metaTitle": "免费字数统计与文本分析", "metaDescription": "统计字数、字符、句子。阅读时间和高频词。在浏览器中完成。" }
+    "wordCounter": { "label": "字数统计", "short": "统计字数、字符、阅读时间。", "metaTitle": "免费字数统计与文本分析", "metaDescription": "统计字数、字符、句子。阅读时间和高频词。在浏览器中完成。" },
+    "heicToJpg": { "label": "HEIC 转 JPG", "short": "将 iPhone HEIC 照片转为 JPG。", "metaTitle": "HEIC 转 JPG 免费在线", "metaDescription": "HEIC 转 JPG。单张或批量，预览，下载或 ZIP。" },
+    "removeMetadata": { "label": "移除元数据", "short": "清除 JPG、PNG 的 EXIF。", "metaTitle": "移除图片 EXIF 元数据免费", "metaDescription": "移除全部 EXIF。可查看后下载干净图片。" },
+    "pdfToPptx": { "label": "PDF 转 PPT", "short": "将 PDF 每页转为幻灯片。", "metaTitle": "PDF 转 PowerPoint 免费", "metaDescription": "每页 PDF 变为一页幻灯片。下载 PPTX。" },
+    "colorPalette": { "label": "取色板", "short": "从图片提取主色。", "metaTitle": "图片取色板免费", "metaDescription": "提取 6 个主色。HEX、RGB、HSL。点击复制。" },
+    "textDiff": { "label": "文本对比", "short": "对比两段文本差异。", "metaTitle": "文本对比 diff 免费", "metaDescription": "绿色为新增，红色为删除。统计信息。" },
+    "encryptText": { "label": "文本加密", "short": "用密码加密/解密文本。", "metaTitle": "文本加密解密免费", "metaDescription": "AES-256 加密。密码不上传服务器。" },
+    "markdownToHtml": { "label": "Markdown 转 HTML", "short": "将 Markdown 转为 HTML。", "metaTitle": "Markdown 转 HTML 免费", "metaDescription": "实时预览，代码高亮。下载 HTML。" },
+    "qrGenerator": { "label": "二维码生成", "short": "生成自定义二维码。", "metaTitle": "二维码生成器免费", "metaDescription": "URL、邮箱、WiFi。尺寸颜色 logo。PNG 或 SVG。" },
+    "extractFrames": { "label": "视频抽帧", "short": "从视频提取画面。", "metaTitle": "视频抽帧免费", "metaDescription": "提取帧为 JPG。单张或 ZIP 下载。" },
+    "csvTools": { "label": "CSV 工具", "short": "合并或拆分 CSV。", "metaTitle": "CSV 合并与拆分免费", "metaDescription": "合并多个 CSV 或按行拆分。预览。" }
   }
 }

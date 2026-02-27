@@ -24,29 +24,61 @@ const TOOL_PATHS = [
   "/tools/compress-video",
   "/tools/extract-audio",
   "/tools/word-counter",
+  "/tools/heic-to-jpg",
+  "/tools/remove-metadata",
+  "/tools/pdf-to-pptx",
+  "/tools/color-palette",
+  "/tools/text-diff",
+  "/tools/encrypt-text",
+  "/tools/markdown-to-html",
+  "/tools/qr-generator",
+  "/tools/extract-frames",
+  "/tools/csv-tools",
 ];
 
 /**
- * Genera la sitemap XML dinamica per Next.js App Router.
+ * Build alternates.languages for a path segment (e.g. "" for home or "/tools/compress-image").
+ * Returns absolute URLs for all locales plus x-default (English).
+ */
+function buildAlternatesLanguages(pathSegment) {
+  const languages = {};
+  for (const loc of routing.locales) {
+    const path = pathSegment ? `/${loc}${pathSegment}` : `/${loc}`;
+    languages[loc] = `${BASE_URL}${path}`;
+  }
+  languages["x-default"] = pathSegment ? `${BASE_URL}/en${pathSegment}` : `${BASE_URL}/en`;
+  return languages;
+}
+
+/**
+ * Genera la sitemap XML dinamica per Next.js App Router con alternates multilingua.
+ * Ogni URL include i tag xhtml:link per tutte le varianti lingua (hreflang).
  * @returns {import('next').MetadataRoute.Sitemap}
  */
 export default function sitemap() {
-  const lastModified = new Date().toISOString();
+  const lastModified = new Date();
   const entries = [];
 
+  const homeLanguages = buildAlternatesLanguages("");
   for (const locale of routing.locales) {
     entries.push({
       url: `${BASE_URL}/${locale}`,
       lastModified,
       changeFrequency: "weekly",
       priority: 1.0,
+      alternates: { languages: homeLanguages },
     });
-    for (const path of TOOL_PATHS) {
+  }
+
+  for (const path of TOOL_PATHS) {
+    const toolLanguages = buildAlternatesLanguages(path);
+    for (const locale of routing.locales) {
       entries.push({
         url: `${BASE_URL}/${locale}${path}`,
         lastModified,
         changeFrequency: "monthly",
         priority: 0.8,
+        alternates: { languages: toolLanguages },
       });
     }
   }

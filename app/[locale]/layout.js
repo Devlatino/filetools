@@ -6,6 +6,18 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const languages = {};
+  for (const loc of routing.locales) {
+    languages[loc] = `/${loc}`;
+  }
+  languages["x-default"] = "/en";
+  return {
+    alternates: { languages },
+  };
+}
+
 export default async function LocaleLayout({ children, params }) {
   const { locale } = await params;
   if (!routing.locales.includes(locale)) {

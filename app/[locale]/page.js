@@ -26,6 +26,16 @@ const TOOL_IDS = [
   { id: "compressVideo", href: "/tools/compress-video", icon: "VID", iconBg: "bg-red-500" },
   { id: "extractAudio", href: "/tools/extract-audio", icon: "AUD", iconBg: "bg-purple-500" },
   { id: "wordCounter", href: "/tools/word-counter", icon: "WRD", iconBg: "bg-lime-500" },
+  { id: "heicToJpg", href: "/tools/heic-to-jpg", icon: "HEIC", iconBg: "bg-amber-600" },
+  { id: "removeMetadata", href: "/tools/remove-metadata", icon: "EXIF", iconBg: "bg-slate-600" },
+  { id: "pdfToPptx", href: "/tools/pdf-to-pptx", icon: "PPTX", iconBg: "bg-orange-600" },
+  { id: "colorPalette", href: "/tools/color-palette", icon: "PAL", iconBg: "bg-pink-600" },
+  { id: "textDiff", href: "/tools/text-diff", icon: "DIFF", iconBg: "bg-cyan-600" },
+  { id: "encryptText", href: "/tools/encrypt-text", icon: "KEY", iconBg: "bg-emerald-600" },
+  { id: "markdownToHtml", href: "/tools/markdown-to-html", icon: "MD", iconBg: "bg-blue-600" },
+  { id: "qrGenerator", href: "/tools/qr-generator", icon: "QR", iconBg: "bg-violet-600" },
+  { id: "extractFrames", href: "/tools/extract-frames", icon: "FRM", iconBg: "bg-rose-600" },
+  { id: "csvTools", href: "/tools/csv-tools", icon: "CSV", iconBg: "bg-teal-600" },
 ];
 
 export default function Home() {
@@ -52,17 +62,8 @@ export default function Home() {
       <header className="relative z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <Link href={`/${locale}/`} prefetch className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-500 text-lg font-bold text-slate-950 shadow-sm">
-              F
-            </div>
-            <div className="flex flex-col leading-tight">
-              <span className="text-lg font-semibold tracking-tight">
-                {tCommon("siteName")}
-              </span>
-              <span className="text-xs text-slate-300">
-                {tCommon("tagline")}
-              </span>
-            </div>
+            <img src="/fileflip-logo.svg" alt={tCommon("siteName")} className="h-9 w-auto" width={140} height={36} />
+            <span className="hidden text-xs text-slate-300 sm:inline">{tCommon("tagline")}</span>
           </Link>
 
           <nav className="flex items-center gap-4">

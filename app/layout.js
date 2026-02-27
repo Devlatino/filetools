@@ -29,6 +29,10 @@ export const metadata = {
     siteName: "FileFlip",
     images: ["/og.png"],
   },
+  icons: {
+    icon: "/fileflip-icon.svg",
+    apple: "/fileflip-icon.svg",
+  },
 };
 
 export default async function RootLayout({ children }) {

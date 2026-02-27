@@ -125,6 +125,16 @@
     "faviconGenerator": { "label": "Générateur de favicon", "short": "Générer des favicons à partir d'une image.", "metaTitle": "Générateur de favicon en ligne gratuit", "metaDescription": "Générer des favicons (16x16, 32x32, etc.). Téléchargement ZIP. Dans le navigateur." },
     "compressVideo": { "label": "Compresser une vidéo", "short": "Compresser un MP4 dans le navigateur.", "metaTitle": "Compresser une vidéo en ligne gratuit", "metaDescription": "Compresser des vidéos MP4. Barre de progression. WebAssembly dans le navigateur." },
     "extractAudio": { "label": "Extraire l'audio", "short": "Extraire le MP3 d'une vidéo.", "metaTitle": "Extraire l'audio d'une vidéo en ligne gratuit", "metaDescription": "Extraire l'audio d'un MP4 en MP3. Barre de progression. Dans le navigateur." },
-    "wordCounter": { "label": "Compteur de mots", "short": "Compter les mots, caractères, temps de lecture.", "metaTitle": "Compteur de mots et statistiques gratuit", "metaDescription": "Compter les mots, caractères, phrases. Temps de lecture et mots les plus fréquents." }
+    "wordCounter": { "label": "Compteur de mots", "short": "Compter les mots, caractères, temps de lecture.", "metaTitle": "Compteur de mots et statistiques gratuit", "metaDescription": "Compter les mots, caractères, phrases. Temps de lecture et mots les plus fréquents." },
+    "heicToJpg": { "label": "HEIC en JPG", "short": "Convertir photos HEIC (iPhone) en JPG.", "metaTitle": "HEIC en JPG en ligne gratuit", "metaDescription": "Convertir HEIC en JPG. Un ou plusieurs fichiers, aperçu, télécharger en ZIP." },
+    "removeMetadata": { "label": "Supprimer métadonnées", "short": "Supprimer EXIF des JPG et PNG.", "metaTitle": "Supprimer métadonnées EXIF gratuit", "metaDescription": "Supprimer tous les EXIF. Télécharger image nettoyée." },
+    "pdfToPptx": { "label": "PDF en PowerPoint", "short": "Transformer PDF en diapositives.", "metaTitle": "PDF en PowerPoint PPTX gratuit", "metaDescription": "Chaque page PDF devient une slide. Télécharger PPTX." },
+    "colorPalette": { "label": "Palette de couleurs", "short": "Extraire couleurs dominantes.", "metaTitle": "Extraire palette d'image gratuit", "metaDescription": "6 couleurs dominantes. HEX, RGB, HSL. Cliquer pour copier." },
+    "textDiff": { "label": "Comparer textes", "short": "Comparer deux textes.", "metaTitle": "Comparer deux textes gratuit", "metaDescription": "Ajouts en vert, suppressions en rouge. Statistiques." },
+    "encryptText": { "label": "Chiffrer texte", "short": "Chiffrer et déchiffrer avec mot de passe.", "metaTitle": "Chiffrer déchiffrer texte gratuit", "metaDescription": "AES-256. Mot de passe jamais envoyé." },
+    "markdownToHtml": { "label": "Markdown en HTML", "short": "Convertir Markdown en HTML.", "metaTitle": "Markdown en HTML gratuit", "metaDescription": "Aperçu en direct. Télécharger HTML." },
+    "qrGenerator": { "label": "Générateur QR", "short": "Créer des QR personnalisés.", "metaTitle": "Générateur QR code gratuit", "metaDescription": "URL, email, WiFi. Couleurs, logo. PNG ou SVG." },
+    "extractFrames": { "label": "Extraire images vidéo", "short": "Extraire des images d'une vidéo.", "metaTitle": "Extraire images d'une vidéo gratuit", "metaDescription": "Frames en JPG. Télécharger ou ZIP." },
+    "csvTools": { "label": "Outils CSV", "short": "Fusionner ou diviser des CSV.", "metaTitle": "Fusionner et diviser CSV gratuit", "metaDescription": "Fusionner plusieurs CSV ou diviser par lignes." }
   }
 }

@@ -25,6 +25,16 @@ const ICON_BY_SLUG = {
   "compress-video": "VID",
   "extract-audio": "AUD",
   "word-counter": "WRD",
+  "heic-to-jpg": "HEIC",
+  "remove-metadata": "EXIF",
+  "pdf-to-pptx": "PPTX",
+  "color-palette": "PAL",
+  "text-diff": "DIFF",
+  "encrypt-text": "KEY",
+  "markdown-to-html": "MD",
+  "qr-generator": "QR",
+  "extract-frames": "FRM",
+  "csv-tools": "CSV",
 };
 
 const BG_BY_SLUG = {
@@ -48,6 +58,16 @@ const BG_BY_SLUG = {
   "compress-video": "bg-red-500",
   "extract-audio": "bg-purple-500",
   "word-counter": "bg-lime-500",
+  "heic-to-jpg": "bg-amber-600",
+  "remove-metadata": "bg-slate-600",
+  "pdf-to-pptx": "bg-orange-600",
+  "color-palette": "bg-pink-600",
+  "text-diff": "bg-cyan-600",
+  "encrypt-text": "bg-emerald-600",
+  "markdown-to-html": "bg-blue-600",
+  "qr-generator": "bg-violet-600",
+  "extract-frames": "bg-rose-600",
+  "csv-tools": "bg-teal-600",
 };
 
 export function RelatedTools({ locale, currentSlug }) {

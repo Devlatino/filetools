@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4f8ef7"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded square -->
+  <rect width="100" height="100" rx="22" fill="url(#bg)"/>
+
+  <!-- File shape LEFT (slightly rotated back) -->
+  <g transform="rotate(-8, 50, 50)">
+    <rect x="22" y="28" width="30" height="38" rx="4" fill="none" stroke="#4f8ef7" stroke-width="2.5" opacity="0.45"/>
+    <!-- dog-ear -->
+    <polyline points="43,28 43,37 52,37" fill="none" stroke="#4f8ef7" stroke-width="2.5" opacity="0.45"/>
+  </g>
+
+  <!-- File shape RIGHT (main, front) -->
+  <g transform="rotate(6, 50, 50)">
+    <rect x="34" y="32" width="30" height="38" rx="4" fill="url(#accent)" opacity="0.95"/>
+    <!-- dog-ear cut -->
+    <polygon points="55,32 64,41 64,70 34,70 34,32" fill="url(#accent)" opacity="0.95"/>
+    <polygon points="55,32 55,41 64,41" fill="#1a1a2e" opacity="0.4"/>
+    <!-- lines inside file -->
+    <line x1="40" y1="50" x2="58" y2="50" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+    <line x1="40" y1="57" x2="54" y2="57" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  </g>
+
+  <!-- Flip arrow — small arc bottom right -->
+  <path d="M 62 72 A 10 10 0 0 0 74 62" fill="none" stroke="#4f8ef7" stroke-width="2.5" stroke-linecap="round"/>
+  <polyline points="72,69 74,62 67,61" fill="none" stroke="#4f8ef7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

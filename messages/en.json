@@ -175,6 +175,16 @@
       "short": "Count words, characters, reading time.",
       "metaTitle": "Word Counter and Text Stats Free",
       "metaDescription": "Count words, characters, sentences, paragraphs. Reading time and top words. No account, in the browser."
-    }
+    },
+    "heicToJpg": { "label": "HEIC to JPG", "short": "Convert iPhone HEIC photos to JPG.", "metaTitle": "HEIC to JPG Online Free", "metaDescription": "Convert HEIC (iPhone) photos to JPG online. One or multiple files, preview, download single or ZIP. In the browser." },
+    "removeMetadata": { "label": "Remove metadata", "short": "Strip EXIF from JPG and PNG.", "metaTitle": "Remove Image Metadata EXIF Online Free", "metaDescription": "Remove all EXIF metadata from JPG and PNG images. See metadata before removal, download clean image. In the browser." },
+    "pdfToPptx": { "label": "PDF to PowerPoint", "short": "Turn PDF pages into slides.", "metaTitle": "PDF to PowerPoint PPTX Online Free", "metaDescription": "Convert PDF to PowerPoint. Each page becomes a slide. Progress bar, download PPTX. In the browser." },
+    "colorPalette": { "label": "Color palette", "short": "Extract dominant colors from image.", "metaTitle": "Extract Color Palette from Image Free", "metaDescription": "Extract 6 dominant colors from an image. HEX, RGB, HSL. Click to copy. Preview strips. In the browser." },
+    "textDiff": { "label": "Text diff", "short": "Compare two texts, see changes.", "metaTitle": "Text Diff Compare Two Texts Free", "metaDescription": "Compare two texts. Green for additions, red for removals. Word-by-word. Stats: added, removed, unchanged. In the browser." },
+    "encryptText": { "label": "Encrypt text", "short": "Encrypt and decrypt with password.", "metaTitle": "Encrypt Decrypt Text with Password Free", "metaDescription": "Encrypt and decrypt text with AES-256 and a password. Password never sent to server. In the browser." },
+    "markdownToHtml": { "label": "Markdown to HTML", "short": "Convert Markdown to HTML with preview.", "metaTitle": "Markdown to HTML Converter Free", "metaDescription": "Convert Markdown to HTML. Live preview, code highlighting. Download full page or copy content HTML. In the browser." },
+    "qrGenerator": { "label": "QR code generator", "short": "Create custom QR codes.", "metaTitle": "QR Code Generator Custom Free", "metaDescription": "Generate QR codes. URL, email, phone, WiFi. Custom size, colors, logo. Download PNG or SVG. In the browser." },
+    "extractFrames": { "label": "Extract video frames", "short": "Get still images from video.", "metaTitle": "Extract Frames from Video Free", "metaDescription": "Extract frames from video as JPG. Choose count or interval. Grid preview, download single or ZIP. In the browser." },
+    "csvTools": { "label": "CSV tools", "short": "Merge or split CSV files.", "metaTitle": "CSV Merge and Split Tools Free", "metaDescription": "Merge multiple CSVs or split one by row count. Preview, download. Handles headers. In the browser." }
   }
 }
