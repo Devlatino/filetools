@@ -45,7 +45,7 @@ export default function PdfToPptxPage() {
       return;
     }
     if (f.type !== "application/pdf" && !f.name.toLowerCase().endsWith(".pdf")) {
-      setError("Select a PDF file.");
+      setError(t("errorSelectPdf"));
       setFile(null);
       return;
     }
@@ -93,7 +93,7 @@ export default function PdfToPptxPage() {
       a.click();
       URL.revokeObjectURL(url);
     } catch (err) {
-      setError("Conversion failed. Try another PDF.");
+      setError(t("errorConversion"));
       console.error(err);
     } finally {
       setIsConverting(false);
@@ -119,9 +119,9 @@ export default function PdfToPptxPage() {
         </section>
         <section className="rounded-2xl border border-white/10 bg-slate-900/80 p-4 sm:p-5">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm font-medium text-slate-50">1. Upload PDF</p>
+            <p className="text-sm font-medium text-slate-50">{t("step1")}</p>
             <label className="inline-flex cursor-pointer items-center rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400">
-              Select PDF
+              {t("selectButton")}
               <input type="file" accept="application/pdf,.pdf" className="hidden" onChange={handleFile} />
             </label>
           </div>
@@ -129,7 +129,7 @@ export default function PdfToPptxPage() {
             <>
               <p className="mt-2 text-xs text-slate-400">{file.name}</p>
               <button type="button" disabled={isConverting} onClick={handleConvert} className="mt-3 rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400 disabled:opacity-50">
-                {isConverting ? "Converting…" : "2. Convert to PowerPoint"}
+                {isConverting ? tCommon("converting") : t("step2Convert")}
               </button>
               {isConverting && (
                 <div className="mt-2 w-full rounded-full bg-slate-700">
@@ -141,7 +141,7 @@ export default function PdfToPptxPage() {
           {error && <p className="mt-2 text-xs text-red-400">{error}</p>}
         </section>
         <RelatedTools locale={locale} currentSlug="pdf-to-pptx" />
-        <FaqSection faqs={getToolFaq("pdf-to-pptx")} />
+        <FaqSection namespace="tools.pdfToPptx" faqs={getToolFaq("pdf-to-pptx")} />
       </main>
     </div>
   );

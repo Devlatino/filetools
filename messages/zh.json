@@ -16,7 +16,12 @@
     "open": "打开",
     "goToTool": "进入工具 →",
     "breadcrumbHome": "首页",
-    "relatedTools": "相关工具"
+    "relatedTools": "相关工具",
+    "faqSectionTitle": "常见问题",
+    "download": "下载",
+    "copy": "复制",
+    "preview": "预览",
+    "converting": "转换中…"
   },
   "home": {
     "badge": "100% 免费 • 无需注册 • 全部在浏览器中完成",
@@ -126,7 +131,19 @@
     "compressVideo": { "label": "压缩视频", "short": "在浏览器中压缩 MP4。", "metaTitle": "免费在线压缩视频", "metaDescription": "压缩 MP4 视频。进度条。WebAssembly 在浏览器中运行。" },
     "extractAudio": { "label": "提取音频", "short": "从视频提取 MP3。", "metaTitle": "免费在线从视频提取音频", "metaDescription": "从 MP4 提取音频为 MP3。进度条。在浏览器中完成。" },
     "wordCounter": { "label": "字数统计", "short": "统计字数、字符、阅读时间。", "metaTitle": "免费字数统计与文本分析", "metaDescription": "统计字数、字符、句子。阅读时间和高频词。在浏览器中完成。" },
-    "heicToJpg": { "label": "HEIC 转 JPG", "short": "将 iPhone HEIC 照片转为 JPG。", "metaTitle": "HEIC 转 JPG 免费在线", "metaDescription": "HEIC 转 JPG。单张或批量，预览，下载或 ZIP。" },
+    "heicToJpg": {
+      "label": "HEIC 转 JPG",
+      "short": "将 iPhone HEIC 照片转为 JPG。",
+      "metaTitle": "HEIC 转 JPG 免费在线",
+      "metaDescription": "HEIC 转 JPG。单张或批量，预览，下载或 ZIP。",
+      "step1": "1. 上传 HEIC（一个或多个）",
+      "selectButton": "选择 HEIC",
+      "step2Convert": "2. 转换为 JPG",
+      "previewDownload": "预览与下载",
+      "downloadAllZip": "全部下载为 ZIP",
+      "errorHeicOnly": "请仅选择 HEIC 文件。",
+      "errorConversionFailed": "转换失败，请尝试其他 HEIC 文件。"
+    },
     "removeMetadata": { "label": "移除元数据", "short": "清除 JPG、PNG 的 EXIF。", "metaTitle": "移除图片 EXIF 元数据免费", "metaDescription": "移除全部 EXIF。可查看后下载干净图片。" },
     "pdfToPptx": { "label": "PDF 转 PPT", "short": "将 PDF 每页转为幻灯片。", "metaTitle": "PDF 转 PowerPoint 免费", "metaDescription": "每页 PDF 变为一页幻灯片。下载 PPTX。" },
     "colorPalette": { "label": "取色板", "short": "从图片提取主色。", "metaTitle": "图片取色板免费", "metaDescription": "提取 6 个主色。HEX、RGB、HSL。点击复制。" },

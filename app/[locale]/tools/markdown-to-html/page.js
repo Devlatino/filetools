@@ -84,17 +84,17 @@ export default function MarkdownToHtmlPage() {
               <textarea value={md} onChange={(e) => setMd(e.target.value)} placeholder="# Hello\n**bold** and *italic*…" className="mt-1 min-h-[300px] w-full rounded-lg border border-slate-700 bg-slate-950/60 p-3 font-mono text-sm text-slate-200 placeholder:text-slate-500" />
             </div>
             <div>
-              <label className="block text-xs font-medium text-slate-300">Preview (HTML)</label>
+              <label className="block text-xs font-medium text-slate-300">{t("previewHtml")}</label>
               <div ref={previewRef} className="prose prose-invert mt-1 min-h-[300px] rounded-lg border border-slate-700 bg-slate-950/60 p-4 text-sm text-slate-200" dangerouslySetInnerHTML={{ __html: html || "<p class=\"text-slate-500\">Rendered output appears here.</p>" }} />
             </div>
           </div>
           <div className="mt-4 flex gap-3">
-            <button type="button" onClick={handleDownload} className="rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400">Download full HTML page</button>
-            <button type="button" onClick={handleCopyContent} className="rounded-full border border-sky-400/50 px-4 py-2 text-xs font-semibold text-sky-200 hover:bg-slate-800">Copy content HTML</button>
+            <button type="button" onClick={handleDownload} className="rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400">{t("downloadFullPage")}</button>
+            <button type="button" onClick={handleCopyContent} className="rounded-full border border-sky-400/50 px-4 py-2 text-xs font-semibold text-sky-200 hover:bg-slate-800">{t("copyContentHtml")}</button>
           </div>
         </section>
         <RelatedTools locale={locale} currentSlug="markdown-to-html" />
-        <FaqSection faqs={getToolFaq("markdown-to-html")} />
+        <FaqSection namespace="tools.markdownToHtml" faqs={getToolFaq("markdown-to-html")} />
       </main>
     </div>
   );

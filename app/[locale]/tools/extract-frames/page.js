@@ -34,7 +34,7 @@ export default function ExtractFramesPage() {
       return;
     }
     if (!f.type.startsWith("video/")) {
-      setError("Select a video file.");
+      setError(t("errorSelectVideo"));
       setFile(null);
       return;
     }
@@ -47,7 +47,7 @@ export default function ExtractFramesPage() {
       URL.revokeObjectURL(url);
     };
     v.onerror = () => {
-      setError("Could not load video.");
+      setError(t("errorLoadVideo"));
       URL.revokeObjectURL(url);
     };
     v.src = url;
@@ -126,9 +126,9 @@ export default function ExtractFramesPage() {
         <section className="rounded-2xl border border-white/10 bg-slate-900/80 p-4 sm:p-5">
           <video ref={videoRef} className="hidden" muted playsInline />
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm font-medium text-slate-50">1. Upload video</p>
+            <p className="text-sm font-medium text-slate-50">{t("step1")}</p>
             <label className="inline-flex cursor-pointer items-center rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400">
-              Select video
+              {t("selectButton")}
               <input type="file" accept="video/*" className="hidden" onChange={handleFile} />
             </label>
           </div>
@@ -138,11 +138,11 @@ export default function ExtractFramesPage() {
               <div className="mt-3 flex flex-wrap gap-4">
                 <label className="flex items-center gap-2 text-sm text-slate-300">
                   <input type="radio" checked={mode === "count"} onChange={() => setMode("count")} />
-                  Number of frames
+                  {t("frameCount")}
                 </label>
                 <label className="flex items-center gap-2 text-sm text-slate-300">
                   <input type="radio" checked={mode === "interval"} onChange={() => setMode("interval")} />
-                  Every N seconds
+                  {t("intervalSeconds")}
                 </label>
               </div>
               {mode === "count" ? (
@@ -151,7 +151,7 @@ export default function ExtractFramesPage() {
                 <input type="number" min={0.5} step={0.5} value={intervalSec} onChange={(e) => setIntervalSec(Number(e.target.value))} className="mt-2 w-24 rounded border border-slate-700 bg-slate-950/60 px-2 py-1 text-sm text-slate-200" />
               )}
               <button type="button" disabled={isProcessing || duration <= 0} onClick={handleExtract} className="mt-3 rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400 disabled:opacity-50">
-                {isProcessing ? "Extracting…" : "2. Extract frames"}
+                {isProcessing ? t("extracting") : t("step2Extract")}
               </button>
               {isProcessing && (
                 <div className="mt-2 w-full rounded-full bg-slate-700">
@@ -168,18 +168,18 @@ export default function ExtractFramesPage() {
                 {frames.map((f) => (
                   <div key={f.index} className="flex flex-col items-center gap-1">
                     <img src={f.url} alt={`Frame ${f.index}`} className="h-20 w-full rounded border border-slate-700 object-cover" />
-                    <a href={f.url} download={`frame-${f.index}.jpg`} className="text-xs text-sky-300 hover:underline">Download</a>
+                    <a href={f.url} download={`frame-${f.index}.jpg`} className="text-xs text-sky-300 hover:underline">{tCommon("download")}</a>
                   </div>
                 ))}
               </div>
               <button type="button" onClick={handleDownloadZip} className="mt-3 rounded-full border border-sky-400/50 bg-slate-800 px-4 py-2 text-xs font-semibold text-sky-200 hover:bg-slate-700">
-                Download all as ZIP
+                {t("downloadAllZip")}
               </button>
             </div>
           )}
         </section>
         <RelatedTools locale={locale} currentSlug="extract-frames" />
-        <FaqSection faqs={getToolFaq("extract-frames")} />
+        <FaqSection namespace="tools.extractFrames" faqs={getToolFaq("extract-frames")} />
       </main>
     </div>
   );

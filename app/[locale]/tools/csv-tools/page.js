@@ -27,7 +27,7 @@ export default function CsvToolsPage() {
     setError("");
     setMergePreview(null);
     if (list.length < 2) {
-      setError("Select at least 2 CSV files.");
+      setError(t("errorMergeMinFiles"));
       setMergeFiles([]);
       return;
     }
@@ -61,7 +61,7 @@ export default function CsvToolsPage() {
       a.click();
       URL.revokeObjectURL(url);
     } catch (err) {
-      setError("Merge failed.");
+      setError(t("errorMergeFailed"));
     }
   }, [mergeFiles]);
 
@@ -102,7 +102,7 @@ export default function CsvToolsPage() {
       a.click();
       URL.revokeObjectURL(a.href);
     } catch (err) {
-      setError("Split failed.");
+      setError(t("errorSplitFailed"));
     }
   }, [splitFile, splitRows]);
 
@@ -124,38 +124,38 @@ export default function CsvToolsPage() {
         </section>
         <section className="rounded-2xl border border-white/10 bg-slate-900/80 p-4 sm:p-5">
           <div className="flex gap-2 border-b border-slate-700 pb-2">
-            <button type="button" onClick={() => setTab("merge")} className={`rounded-full px-4 py-2 text-xs font-semibold ${tab === "merge" ? "bg-sky-500 text-slate-950" : "text-slate-400 hover:text-slate-200"}`}>Merge CSV</button>
-            <button type="button" onClick={() => setTab("split")} className={`rounded-full px-4 py-2 text-xs font-semibold ${tab === "split" ? "bg-sky-500 text-slate-950" : "text-slate-400 hover:text-slate-200"}`}>Split CSV</button>
+            <button type="button" onClick={() => setTab("merge")} className={`rounded-full px-4 py-2 text-xs font-semibold ${tab === "merge" ? "bg-sky-500 text-slate-950" : "text-slate-400 hover:text-slate-200"}`}>{t("mergeTitle")}</button>
+            <button type="button" onClick={() => setTab("split")} className={`rounded-full px-4 py-2 text-xs font-semibold ${tab === "split" ? "bg-sky-500 text-slate-950" : "text-slate-400 hover:text-slate-200"}`}>{t("splitTitle")}</button>
           </div>
           {tab === "merge" && (
             <>
-              <p className="mt-3 text-sm text-slate-300">Upload 2 or more CSV files. Headers from the first file are used; duplicate headers in other files are skipped.</p>
+              <p className="mt-3 text-sm text-slate-300">{t("mergeDesc")}</p>
               <label className="mt-2 inline-flex cursor-pointer items-center rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400">
-                Select CSV files
+                {t("selectCsvFiles")}
                 <input type="file" multiple accept=".csv,text/csv" className="hidden" onChange={handleMergeFiles} />
               </label>
               {mergePreview && (
                 <div className="mt-3 rounded-lg border border-slate-700 bg-slate-950/60 p-3">
-                  <p className="text-xs text-slate-400">Preview (first file): {mergePreview.headers.join(", ")}</p>
+                  <p className="text-xs text-slate-400">{t("previewFirstFile")} {mergePreview.headers.join(", ")}</p>
                   <p className="text-xs text-slate-500">{mergeFiles.length} file(s) selected.</p>
-                  <button type="button" onClick={handleMerge} className="mt-2 rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400">Merge and download</button>
+                  <button type="button" onClick={handleMerge} className="mt-2 rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400">{t("mergeAndDownload")}</button>
                 </div>
               )}
             </>
           )}
           {tab === "split" && (
             <>
-              <p className="mt-3 text-sm text-slate-300">Upload one CSV. It will be split into parts (each with this many rows).</p>
+              <p className="mt-3 text-sm text-slate-300">{t("splitDesc")}</p>
               <label className="mt-2 inline-flex cursor-pointer items-center rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400">
-                Select CSV
+                {t("selectCsv")}
                 <input type="file" accept=".csv,text/csv" className="hidden" onChange={handleSplitFile} />
               </label>
               {splitFile && (
                 <div className="mt-3 space-y-2">
-                  <label className="block text-xs text-slate-400">Rows per file</label>
+                  <label className="block text-xs text-slate-400">{t("rowsPerFile")}</label>
                   <input type="number" min={1} value={splitRows} onChange={(e) => setSplitRows(Number(e.target.value))} className="w-28 rounded border border-slate-700 bg-slate-950/60 px-2 py-1 text-sm text-slate-200" />
-                  {splitPreview && <p className="text-xs text-slate-500">Preview: {splitPreview.headers.join(", ")}</p>}
-                  <button type="button" onClick={handleSplit} className="rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400">Split and download ZIP</button>
+                  {splitPreview && <p className="text-xs text-slate-500">{t("previewLabel")} {splitPreview.headers.join(", ")}</p>}
+                  <button type="button" onClick={handleSplit} className="rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400">{t("splitAndDownload")}</button>
                 </div>
               )}
             </>
@@ -163,7 +163,7 @@ export default function CsvToolsPage() {
           {error && <p className="mt-2 text-xs text-red-400">{error}</p>}
         </section>
         <RelatedTools locale={locale} currentSlug="csv-tools" />
-        <FaqSection faqs={getToolFaq("csv-tools")} />
+        <FaqSection namespace="tools.csvTools" faqs={getToolFaq("csv-tools")} />
       </main>
     </div>
   );

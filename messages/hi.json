@@ -16,7 +16,12 @@
     "open": "खोलें",
     "goToTool": "टूल पर जाएं →",
     "breadcrumbHome": "होम",
-    "relatedTools": "संबंधित टूल"
+    "relatedTools": "संबंधित टूल",
+    "faqSectionTitle": "अक्सर पूछे जाने वाले प्रश्न",
+    "download": "डाउनलोड",
+    "copy": "कॉपी",
+    "preview": "पूर्वावलोकन",
+    "converting": "कन्वर्ट हो रहा है…"
   },
   "home": {
     "badge": "100% मुफ्त • कोई अकाउंट नहीं • सब ब्राउज़र में",
@@ -126,7 +131,19 @@
     "compressVideo": { "label": "वीडियो कंप्रेस करें", "short": "ब्राउज़र में MP4 कंप्रेस।", "metaTitle": "मुफ्त ऑनलाइन वीडियो कंप्रेस", "metaDescription": "MP4 वीडियो कंप्रेस करें। प्रोग्रेस बार। WebAssembly।" },
     "extractAudio": { "label": "ऑडियो निकालें", "short": "वीडियो से MP3 निकालें।", "metaTitle": "मुफ्त ऑनलाइन वीडियो से ऑडियो", "metaDescription": "MP4 से ऑडियो MP3 में निकालें। प्रोग्रेस बार। ब्राउज़र में।" },
     "wordCounter": { "label": "शब्द गणक", "short": "शब्द, अक्षर, पढ़ने का समय।", "metaTitle": "मुफ्त शब्द गणक और स्टैट्स", "metaDescription": "शब्द, अक्षर, वाक्य गिनें। पढ़ने का समय और शीर्ष शब्द।" },
-    "heicToJpg": { "label": "HEIC से JPG", "short": "iPhone HEIC फोटो को JPG में बदलें।", "metaTitle": "HEIC से JPG मुफ्त", "metaDescription": "HEIC को JPG में बदलें। एक या कई फाइलें, ZIP डाउनलोड।" },
+    "heicToJpg": {
+      "label": "HEIC से JPG",
+      "short": "iPhone HEIC फोटो को JPG में बदलें।",
+      "metaTitle": "HEIC से JPG मुफ्त",
+      "metaDescription": "HEIC को JPG में बदलें। एक या कई फाइलें, ZIP डाउनलोड।",
+      "step1": "1. HEIC अपलोड करें (एक या अधिक)",
+      "selectButton": "HEIC चुनें",
+      "step2Convert": "2. JPG में बदलें",
+      "previewDownload": "पूर्वावलोकन और डाउनलोड",
+      "downloadAllZip": "सभी ZIP के रूप में डाउनलोड करें",
+      "errorHeicOnly": "केवल HEIC फाइलें चुनें।",
+      "errorConversionFailed": "रूपांतरण विफल। अन्य HEIC आज़माएं।"
+    },
     "removeMetadata": { "label": "मेटाडेटा हटाएं", "short": "JPG/PNG से EXIF हटाएं।", "metaTitle": "छवि EXIF मेटाडेटा हटाएं मुफ्त", "metaDescription": "सभी EXIF हटाएं। साफ छवि डाउनलोड।" },
     "pdfToPptx": { "label": "PDF से PowerPoint", "short": "PDF पेज को स्लाइड बनाएं।", "metaTitle": "PDF से PPTX मुफ्त", "metaDescription": "हर पेज एक स्लाइड। PPTX डाउनलोड।" },
     "colorPalette": { "label": "रंग पैलेट", "short": "छवि से प्रमुख रंग निकालें।", "metaTitle": "छवि से रंग पैलेट मुफ्त", "metaDescription": "6 रंग। HEX, RGB, HSL। कॉपी के लिए क्लिक।" },

@@ -34,7 +34,7 @@ export default function HeicToJpgPage() {
     if (!list.length) return;
     const heics = list.filter((f) => f.type?.includes("heic") || /\.heic$/i.test(f.name));
     if (!heics.length) {
-      setError("Select HEIC files only.");
+      setError(t("errorHeicOnly"));
       return;
     }
     setFiles(heics.map((file) => ({ id: file.name + file.size, name: file.name, file })));
@@ -66,7 +66,7 @@ export default function HeicToJpgPage() {
       }
       setResults(out);
     } catch (err) {
-      setError("Conversion failed. Try other HEIC files.");
+      setError(t("errorConversionFailed"));
       console.error(err);
     } finally {
       setIsConverting(false);
@@ -113,9 +113,9 @@ export default function HeicToJpgPage() {
         </section>
         <section className="rounded-2xl border border-white/10 bg-slate-900/80 p-4 sm:p-5">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm font-medium text-slate-50">1. Upload HEIC (one or more)</p>
+            <p className="text-sm font-medium text-slate-50">{t("step1")}</p>
             <label className="inline-flex cursor-pointer items-center rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400">
-              Select HEIC
+              {t("selectButton")}
               <input type="file" multiple accept="image/heic,image/heif,.heic,.heif" className="hidden" onChange={handleFiles} />
             </label>
           </div>
@@ -123,7 +123,7 @@ export default function HeicToJpgPage() {
             <>
               <p className="mt-2 text-xs text-slate-400">{files.length} file(s) · {formatBytes(files.reduce((a, f) => a + f.file.size, 0))}</p>
               <button type="button" disabled={isConverting} onClick={handleConvert} className="mt-3 rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400 disabled:opacity-50">
-                {isConverting ? "Converting…" : "2. Convert to JPG"}
+                {isConverting ? tCommon("converting") : t("step2Convert")}
               </button>
               {isConverting && (
                 <div className="mt-2 w-full rounded-full bg-slate-700">
@@ -135,24 +135,24 @@ export default function HeicToJpgPage() {
           {error && <p className="mt-2 text-xs text-red-400">{error}</p>}
           {results.length > 0 && (
             <div className="mt-4 space-y-2">
-              <p className="text-xs font-medium text-slate-100">Preview &amp; download</p>
+              <p className="text-xs font-medium text-slate-100">{t("previewDownload")}</p>
               <div className="flex flex-wrap gap-2">
                 {results.map((r) => (
                   <div key={r.id} className="flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-950/60 p-2">
                     <img src={r.url} alt="" className="h-12 w-12 rounded object-cover" />
                     <span className="max-w-[120px] truncate text-xs text-slate-300">{(r.originalName.replace(/\.heic$/i, "") || "image") + ".jpg"}</span>
-                    <button type="button" onClick={() => handleDownload(r)} className="rounded-full bg-sky-500/20 px-2 py-1 text-xs text-sky-200 hover:bg-sky-500/30">Download</button>
+                    <button type="button" onClick={() => handleDownload(r)} className="rounded-full bg-sky-500/20 px-2 py-1 text-xs text-sky-200 hover:bg-sky-500/30">{tCommon("download")}</button>
                   </div>
                 ))}
               </div>
               <button type="button" onClick={handleDownloadZip} className="rounded-full border border-sky-400/50 bg-slate-800 px-4 py-2 text-xs font-semibold text-sky-200 hover:bg-slate-700">
-                Download all as ZIP
+                {t("downloadAllZip")}
               </button>
             </div>
           )}
         </section>
         <RelatedTools locale={locale} currentSlug="heic-to-jpg" />
-        <FaqSection faqs={getToolFaq("heic-to-jpg")} />
+        <FaqSection namespace="tools.heicToJpg" faqs={getToolFaq("heic-to-jpg")} />
       </main>
     </div>
   );

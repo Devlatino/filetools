@@ -1,9 +1,37 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+
 /**
  * Sezione FAQ visibile in fondo alla pagina tool.
- * @param {{ question: string, answer: string }[]} faqs - Array di 5 domande e risposte
+ * Se namespace è fornito, le FAQ sono lette dalle traduzioni (faq1Q, faq1A, ... faq5Q, faq5A).
+ * Altrimenti si usa l'array faqs (fallback, es. da getToolFaq).
+ * @param {{ namespace?: string, faqs?: { question: string, answer: string }[] }} props
  */
-export function FaqSection({ faqs }) {
+export function FaqSection({ namespace, faqs: faqsProp }) {
+  const tCommon = useTranslations("common");
+  const t = useTranslations(namespace || "common");
+
+  const faqs = (() => {
+    if (namespace) {
+      const list = [];
+      for (let i = 1; i <= 5; i++) {
+        try {
+          const q = t(`faq${i}Q`);
+          const a = t(`faq${i}A`);
+          if (q && a) list.push({ question: q, answer: a });
+        } catch {
+          break;
+        }
+      }
+      if (list.length) return list;
+    }
+    return faqsProp ?? [];
+  })();
+
   if (!faqs?.length) return null;
+
+  const heading = tCommon("faqSectionTitle");
 
   return (
     <section
@@ -16,7 +44,7 @@ export function FaqSection({ faqs }) {
           id="faq-heading"
           className="mb-6 text-lg font-semibold text-slate-50 sm:text-xl"
         >
-          Frequently asked questions
+          {heading}
         </h2>
         <dl className="space-y-5">
           {faqs.map((faq, index) => (

@@ -29,7 +29,7 @@ export default function RemoveMetadataPage() {
       return;
     }
     if (!["image/jpeg", "image/png"].includes(f.type)) {
-      setError("Use JPG or PNG only.");
+      setError(t("errorFormat"));
       setFile(null);
       return;
     }
@@ -62,7 +62,7 @@ export default function RemoveMetadataPage() {
       );
     };
     img.onerror = () => {
-      setError("Failed to load image.");
+      setError(t("errorLoad"));
       setIsProcessing(false);
     };
     img.src = URL.createObjectURL(file);
@@ -86,9 +86,9 @@ export default function RemoveMetadataPage() {
         </section>
         <section className="rounded-2xl border border-white/10 bg-slate-900/80 p-4 sm:p-5">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm font-medium text-slate-50">1. Upload JPG or PNG</p>
+            <p className="text-sm font-medium text-slate-50">{t("step1")}</p>
             <label className="inline-flex cursor-pointer items-center rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400">
-              Select image
+              {t("selectButton")}
               <input type="file" accept="image/jpeg,image/png" className="hidden" onChange={handleFile} />
             </label>
           </div>
@@ -96,17 +96,17 @@ export default function RemoveMetadataPage() {
             <>
               {meta && Object.keys(meta).length > 0 && (
                 <div className="mt-4 rounded-lg border border-slate-700 bg-slate-950/60 p-3">
-                  <p className="mb-2 text-xs font-medium text-slate-300">Metadata found (will be removed)</p>
+                  <p className="mb-2 text-xs font-medium text-slate-300">{t("metadataFound")}</p>
                   <pre className="max-h-40 overflow-auto text-[11px] text-slate-400">{JSON.stringify(meta, null, 2)}</pre>
                 </div>
               )}
-              {meta && Object.keys(meta).length === 0 && <p className="mt-2 text-xs text-slate-500">No EXIF metadata detected.</p>}
+              {meta && Object.keys(meta).length === 0 && <p className="mt-2 text-xs text-slate-500">{t("noMetadata")}</p>}
               <button type="button" disabled={isProcessing} onClick={handleStrip} className="mt-3 rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400 disabled:opacity-50">
-                {isProcessing ? "Processing…" : "2. Remove metadata &amp; download"}
+                {isProcessing ? t("processing") : t("step2Button")}
               </button>
               {resultUrl && (
                 <a href={resultUrl} download={(file.name || "image").replace(/\.[^.]+$/, "") + (file.type === "image/png" ? ".png" : ".jpg")} className="mt-3 inline-block rounded-full border border-sky-400/50 bg-slate-800 px-4 py-2 text-xs font-semibold text-sky-200 hover:bg-slate-700">
-                  Download clean image
+                  {t("downloadClean")}
                 </a>
               )}
             </>
@@ -114,7 +114,7 @@ export default function RemoveMetadataPage() {
           {error && <p className="mt-2 text-xs text-red-400">{error}</p>}
         </section>
         <RelatedTools locale={locale} currentSlug="remove-metadata" />
-        <FaqSection faqs={getToolFaq("remove-metadata")} />
+        <FaqSection namespace="tools.removeMetadata" faqs={getToolFaq("remove-metadata")} />
       </main>
     </div>
   );

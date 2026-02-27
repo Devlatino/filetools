@@ -31,7 +31,7 @@ export default function QrGeneratorPage() {
     QRCode.toDataURL(text, options)
       .then(setDataUrl)
       .catch((err) => {
-        setError("Failed to generate QR.");
+        setError(t("errorGenerate"));
         setDataUrl("");
       });
   }, [text, size, colorDark, colorLight]);
@@ -63,7 +63,7 @@ export default function QrGeneratorPage() {
       a.click();
       URL.revokeObjectURL(url);
     } catch (err) {
-      setError("SVG failed.");
+      setError(t("errorSvg"));
     }
   }, [text, size, colorDark, colorLight]);
 
@@ -109,15 +109,15 @@ export default function QrGeneratorPage() {
             <div className="mt-4 flex flex-wrap items-center gap-4">
               <img src={dataUrl} alt="QR code" className="rounded-lg border border-slate-700 bg-white object-contain" width={size} height={size} />
               <div className="flex gap-2">
-                <button type="button" onClick={handleDownloadPng} className="rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400">Download PNG</button>
-                <button type="button" onClick={handleDownloadSvg} className="rounded-full border border-sky-400/50 px-4 py-2 text-xs font-semibold text-sky-200 hover:bg-slate-800">Download SVG</button>
+                <button type="button" onClick={handleDownloadPng} className="rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400">{t("downloadPng")}</button>
+                <button type="button" onClick={handleDownloadSvg} className="rounded-full border border-sky-400/50 px-4 py-2 text-xs font-semibold text-sky-200 hover:bg-slate-800">{t("downloadSvg")}</button>
               </div>
             </div>
           )}
           {error && <p className="mt-2 text-xs text-red-400">{error}</p>}
         </section>
         <RelatedTools locale={locale} currentSlug="qr-generator" />
-        <FaqSection faqs={getToolFaq("qr-generator")} />
+        <FaqSection namespace="tools.qrGenerator" faqs={getToolFaq("qr-generator")} />
       </main>
     </div>
   );

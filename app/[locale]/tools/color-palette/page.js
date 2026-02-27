@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { getToolFaq } from "@/lib/toolFaqs";
@@ -63,7 +63,7 @@ export default function ColorPalettePage() {
     if (previewUrl) URL.revokeObjectURL(previewUrl);
     setPreviewUrl("");
     if (!f) { setFile(null); return; }
-    if (!f.type.startsWith("image/")) { setError("Select an image."); setFile(null); return; }
+    if (!f.type.startsWith("image/")) { setError(t("errorSelectImage")); setFile(null); return; }
     setFile(f);
     setPreviewUrl(URL.createObjectURL(f));
   }, [previewUrl]);
@@ -82,7 +82,7 @@ export default function ColorPalettePage() {
       ctx.drawImage(img, 0, 0, w, h);
       setColors(getDominantColors(ctx.getImageData(0, 0, w, h), 6));
     };
-    img.onerror = () => setError("Failed to load image.");
+    img.onerror = () => setError(t("errorLoad"));
     img.src = previewUrl;
   }, [file, previewUrl]);
 
@@ -106,26 +106,26 @@ export default function ColorPalettePage() {
         </section>
         <section className="rounded-2xl border border-white/10 bg-slate-900/80 p-4 sm:p-5">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm font-medium text-slate-50">1. Upload image</p>
+            <p className="text-sm font-medium text-slate-50">{t("step1")}</p>
             <label className="inline-flex cursor-pointer items-center rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400">
-              Select image
+              {t("selectButton")}
               <input type="file" accept="image/*" className="hidden" onChange={handleFile} />
             </label>
           </div>
           {previewUrl && (
             <>
               <div className="mt-4 flex items-center gap-4">
-                <img src={previewUrl} alt="Preview" className="max-h-40 rounded-lg border border-slate-700 object-contain" />
+                <img src={previewUrl} alt={tCommon("preview")} className="max-h-40 rounded-lg border border-slate-700 object-contain" />
                 <button type="button" onClick={handleExtract} className="rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400">
-                  2. Extract palette
+                  {t("step2Extract")}
                 </button>
               </div>
               {colors.length > 0 && (
                 <div className="mt-4 space-y-3">
-                  <p className="text-xs font-medium text-slate-100">6 dominant colors (click HEX to copy)</p>
+                  <p className="text-xs font-medium text-slate-100">{t("colorsLabel")}</p>
                   <div className="flex flex-wrap gap-2">
                     {colors.map((c, i) => (
-                      <button key={i} type="button" onClick={() => copyHex(c.hex)} className="flex flex-col items-center rounded-lg border border-slate-700 overflow-hidden" title="Click to copy HEX">
+                      <button key={i} type="button" onClick={() => copyHex(c.hex)} className="flex flex-col items-center rounded-lg border border-slate-700 overflow-hidden" title={t("clickToCopy")}>
                         <div className="h-14 w-20" style={{ backgroundColor: c.hex }} />
                         <span className="w-20 truncate p-1 text-[10px] text-slate-300">{c.hex}</span>
                         <span className="w-20 truncate px-1 pb-1 text-[10px] text-slate-500">rgb({c.r},{c.g},{c.b})</span>
@@ -144,7 +144,7 @@ export default function ColorPalettePage() {
           {error && <p className="mt-2 text-xs text-red-400">{error}</p>}
         </section>
         <RelatedTools locale={locale} currentSlug="color-palette" />
-        <FaqSection faqs={getToolFaq("color-palette")} />
+        <FaqSection namespace="tools.colorPalette" faqs={getToolFaq("color-palette")} />
       </main>
     </div>
   );

@@ -24,14 +24,14 @@ export default function EncryptTextPage() {
   const handleEncrypt = useCallback(() => {
     setError("");
     if (!plainText.trim() || !password) {
-      setError("Enter text and password.");
+      setError(t("errorEnterEncrypt"));
       return;
     }
     try {
       const out = CryptoJS.AES.encrypt(plainText, password).toString();
       setEncrypted(out);
     } catch (err) {
-      setError("Encryption failed.");
+      setError(t("errorEncryptionFailed"));
     }
   }, [plainText, password]);
 
@@ -39,16 +39,16 @@ export default function EncryptTextPage() {
     setError("");
     setDecrypted("");
     if (!decryptInput.trim() || !decryptPassword) {
-      setError("Enter encrypted text and password.");
+      setError(t("errorEnterDecrypt"));
       return;
     }
     try {
       const bytes = CryptoJS.AES.decrypt(decryptInput, decryptPassword);
       const str = bytes.toString(CryptoJS.enc.Utf8);
-      if (!str) setError("Wrong password or invalid data.");
+      if (!str) setError(t("errorWrongPassword"));
       else setDecrypted(str);
     } catch (err) {
-      setError("Decryption failed.");
+      setError(t("errorDecryptionFailed"));
     }
   }, [decryptInput, decryptPassword]);
 
@@ -70,28 +70,28 @@ export default function EncryptTextPage() {
           <p className="text-xs text-slate-400">Password is never sent to any server. Everything runs in your browser (AES-256).</p>
         </section>
         <section className="rounded-2xl border border-white/10 bg-slate-900/80 p-4 sm:p-5">
-          <h2 className="mb-3 text-sm font-semibold text-slate-100">Encrypt</h2>
+          <h2 className="mb-3 text-sm font-semibold text-slate-100">{t("encryptTab")}</h2>
           <textarea value={plainText} onChange={(e) => setPlainText(e.target.value)} placeholder="Text to encrypt…" className="min-h-[100px] w-full rounded-lg border border-slate-700 bg-slate-950/60 p-3 text-sm text-slate-200 placeholder:text-slate-500" />
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" className="mt-2 w-full rounded-lg border border-slate-700 bg-slate-950/60 p-2 text-sm text-slate-200 placeholder:text-slate-500" />
-          <button type="button" onClick={handleEncrypt} className="mt-2 rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400">Encrypt</button>
+          <button type="button" onClick={handleEncrypt} className="mt-2 rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400">{t("encryptTab")}</button>
           {encrypted && (
             <div className="mt-3">
               <p className="text-xs text-slate-400">Encrypted (copy and share):</p>
               <textarea readOnly value={encrypted} className="mt-1 min-h-[80px] w-full rounded-lg border border-slate-700 bg-slate-950/60 p-3 text-xs text-slate-300" />
-              <button type="button" onClick={() => navigator.clipboard.writeText(encrypted)} className="mt-1 rounded-full border border-sky-400/50 px-3 py-1 text-xs text-sky-200 hover:bg-slate-800">Copy</button>
+              <button type="button" onClick={() => navigator.clipboard.writeText(encrypted)} className="mt-1 rounded-full border border-sky-400/50 px-3 py-1 text-xs text-sky-200 hover:bg-slate-800">{tCommon("copy")}</button>
             </div>
           )}
         </section>
         <section className="rounded-2xl border border-white/10 bg-slate-900/80 p-4 sm:p-5">
-          <h2 className="mb-3 text-sm font-semibold text-slate-100">Decrypt</h2>
+          <h2 className="mb-3 text-sm font-semibold text-slate-100">{t("decryptTab")}</h2>
           <textarea value={decryptInput} onChange={(e) => setDecryptInput(e.target.value)} placeholder="Paste encrypted text…" className="min-h-[80px] w-full rounded-lg border border-slate-700 bg-slate-950/60 p-3 text-sm text-slate-200 placeholder:text-slate-500" />
           <input type="password" value={decryptPassword} onChange={(e) => setDecryptPassword(e.target.value)} placeholder="Password" className="mt-2 w-full rounded-lg border border-slate-700 bg-slate-950/60 p-2 text-sm text-slate-200 placeholder:text-slate-500" />
-          <button type="button" onClick={handleDecrypt} className="mt-2 rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400">Decrypt</button>
+          <button type="button" onClick={handleDecrypt} className="mt-2 rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400">{t("decryptTab")}</button>
           {decrypted && <pre className="mt-3 whitespace-pre-wrap rounded-lg border border-slate-700 bg-slate-950/60 p-3 text-sm text-slate-200">{decrypted}</pre>}
           {error && <p className="mt-2 text-xs text-red-400">{error}</p>}
         </section>
         <RelatedTools locale={locale} currentSlug="encrypt-text" />
-        <FaqSection faqs={getToolFaq("encrypt-text")} />
+        <FaqSection namespace="tools.encryptText" faqs={getToolFaq("encrypt-text")} />
       </main>
     </div>
   );

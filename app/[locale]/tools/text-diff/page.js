@@ -49,7 +49,7 @@ export default function TextDiffPage() {
         <section className="rounded-2xl border border-white/10 bg-slate-900/80 p-4 sm:p-5">
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <label className="block text-xs font-medium text-slate-300">Original text</label>
+              <label className="block text-xs font-medium text-slate-300">{t("original")}</label>
               <textarea
                 value={original}
                 onChange={(e) => setOriginal(e.target.value)}
@@ -59,7 +59,7 @@ export default function TextDiffPage() {
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-slate-300">Modified text</label>
+              <label className="block text-xs font-medium text-slate-300">{t("modified")}</label>
               <textarea
                 value={modified}
                 onChange={(e) => setModified(e.target.value)}
@@ -70,9 +70,9 @@ export default function TextDiffPage() {
             </div>
           </div>
           <div className="mt-4 flex flex-wrap gap-4 text-xs">
-            <span className="rounded bg-emerald-500/20 px-2 py-1 text-emerald-300">Added: {result.added} words</span>
-            <span className="rounded bg-red-500/20 px-2 py-1 text-red-300">Removed: {result.removed} words</span>
-            <span className="rounded bg-slate-500/20 px-2 py-1 text-slate-300">Unchanged: {result.unchanged} words</span>
+            <span className="rounded bg-emerald-500/20 px-2 py-1 text-emerald-300">{t("statsAdded")}: {result.added} words</span>
+            <span className="rounded bg-red-500/20 px-2 py-1 text-red-300">{t("statsRemoved")}: {result.removed} words</span>
+            <span className="rounded bg-slate-500/20 px-2 py-1 text-slate-300">{t("statsUnchanged")}: {result.unchanged} words</span>
           </div>
           {result.parts.length > 0 && (
             <div className="mt-4 rounded-lg border border-slate-700 bg-slate-950/60 p-3">
@@ -97,7 +97,7 @@ export default function TextDiffPage() {
           )}
         </section>
         <RelatedTools locale={locale} currentSlug="text-diff" />
-        <FaqSection faqs={getToolFaq("text-diff")} />
+        <FaqSection namespace="tools.textDiff" faqs={getToolFaq("text-diff")} />
       </main>
     </div>
   );

@@ -16,7 +16,12 @@
     "open": "فتح",
     "goToTool": "انتقل إلى الأداة ←",
     "breadcrumbHome": "الرئيسية",
-    "relatedTools": "أدوات ذات صلة"
+    "relatedTools": "أدوات ذات صلة",
+    "faqSectionTitle": "الأسئلة الشائعة",
+    "download": "تحميل",
+    "copy": "نسخ",
+    "preview": "معاينة",
+    "converting": "جاري التحويل…"
   },
   "home": {
     "badge": "مجاني 100% • بدون حساب • كل شيء في المتصفح",
@@ -126,7 +131,19 @@
     "compressVideo": { "label": "ضغط الفيديو", "short": "ضغط MP4 في المتصفح.", "metaTitle": "ضغط الفيديو أونلاين مجاناً", "metaDescription": "ضغط فيديو MP4. شريط تقدم. WebAssembly في المتصفح." },
     "extractAudio": { "label": "استخراج الصوت", "short": "استخراج MP3 من الفيديو.", "metaTitle": "استخراج الصوت من الفيديو أونلاين مجاناً", "metaDescription": "استخراج الصوت من MP4 إلى MP3. شريط تقدم. في المتصفح." },
     "wordCounter": { "label": "عداد الكلمات", "short": "عد الكلمات والأحرف ووقت القراءة.", "metaTitle": "عداد الكلمات والإحصائيات مجاناً", "metaDescription": "عد الكلمات والأحرف والجمل. وقت القراءة والكلمات المتكررة." },
-    "heicToJpg": { "label": "HEIC إلى JPG", "short": "تحويل صور HEIC (آيفون) إلى JPG.", "metaTitle": "HEIC إلى JPG أونلاين مجاناً", "metaDescription": "تحويل HEIC إلى JPG. ملف واحد أو عدة، تنزيل أو ZIP." },
+    "heicToJpg": {
+      "label": "HEIC إلى JPG",
+      "short": "تحويل صور HEIC (آيفون) إلى JPG.",
+      "metaTitle": "HEIC إلى JPG أونلاين مجاناً",
+      "metaDescription": "تحويل HEIC إلى JPG. ملف واحد أو عدة، تنزيل أو ZIP.",
+      "step1": "1. رفع HEIC (واحد أو أكثر)",
+      "selectButton": "اختر HEIC",
+      "step2Convert": "2. تحويل إلى JPG",
+      "previewDownload": "معاينة وتنزيل",
+      "downloadAllZip": "تنزيل الكل كـ ZIP",
+      "errorHeicOnly": "اختر ملفات HEIC فقط.",
+      "errorConversionFailed": "فشل التحويل. جرّب ملفات HEIC أخرى."
+    },
     "removeMetadata": { "label": "إزالة البيانات الوصفية", "short": "إزالة EXIF من JPG و PNG.", "metaTitle": "إزالة EXIF من الصور مجاناً", "metaDescription": "إزالة كل EXIF. تنزيل صورة نظيفة." },
     "pdfToPptx": { "label": "PDF إلى باوربوينت", "short": "تحويل صفحات PDF إلى شرائح.", "metaTitle": "PDF إلى PowerPoint مجاناً", "metaDescription": "كل صفحة تصبح شريحة. تنزيل PPTX." },
     "colorPalette": { "label": "لوحة ألوان", "short": "استخراج الألوان المهيمنة من الصورة.", "metaTitle": "استخراج لوحة ألوان مجاناً", "metaDescription": "6 ألوان. HEX, RGB, HSL. انقر للنسخ." },

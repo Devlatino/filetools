@@ -16,7 +16,12 @@
     "open": "Ouvrir",
     "goToTool": "Aller à l'outil →",
     "breadcrumbHome": "Accueil",
-    "relatedTools": "Outils associés"
+    "relatedTools": "Outils associés",
+    "faqSectionTitle": "Questions fréquentes",
+    "download": "Télécharger",
+    "copy": "Copier",
+    "preview": "Aperçu",
+    "converting": "Conversion…"
   },
   "home": {
     "badge": "100 % gratuit • Sans compte • Tout dans le navigateur",
@@ -126,7 +131,19 @@
     "compressVideo": { "label": "Compresser une vidéo", "short": "Compresser un MP4 dans le navigateur.", "metaTitle": "Compresser une vidéo en ligne gratuit", "metaDescription": "Compresser des vidéos MP4. Barre de progression. WebAssembly dans le navigateur." },
     "extractAudio": { "label": "Extraire l'audio", "short": "Extraire le MP3 d'une vidéo.", "metaTitle": "Extraire l'audio d'une vidéo en ligne gratuit", "metaDescription": "Extraire l'audio d'un MP4 en MP3. Barre de progression. Dans le navigateur." },
     "wordCounter": { "label": "Compteur de mots", "short": "Compter les mots, caractères, temps de lecture.", "metaTitle": "Compteur de mots et statistiques gratuit", "metaDescription": "Compter les mots, caractères, phrases. Temps de lecture et mots les plus fréquents." },
-    "heicToJpg": { "label": "HEIC en JPG", "short": "Convertir photos HEIC (iPhone) en JPG.", "metaTitle": "HEIC en JPG en ligne gratuit", "metaDescription": "Convertir HEIC en JPG. Un ou plusieurs fichiers, aperçu, télécharger en ZIP." },
+    "heicToJpg": {
+      "label": "HEIC en JPG",
+      "short": "Convertir photos HEIC (iPhone) en JPG.",
+      "metaTitle": "HEIC en JPG en ligne gratuit",
+      "metaDescription": "Convertir HEIC en JPG. Un ou plusieurs fichiers, aperçu, télécharger en ZIP.",
+      "step1": "1. Envoyer des HEIC (un ou plusieurs)",
+      "selectButton": "Sélectionner HEIC",
+      "step2Convert": "2. Convertir en JPG",
+      "previewDownload": "Aperçu et téléchargement",
+      "downloadAllZip": "Tout télécharger en ZIP",
+      "errorHeicOnly": "Sélectionnez uniquement des fichiers HEIC.",
+      "errorConversionFailed": "Échec de la conversion. Essayez d'autres fichiers HEIC."
+    },
     "removeMetadata": { "label": "Supprimer métadonnées", "short": "Supprimer EXIF des JPG et PNG.", "metaTitle": "Supprimer métadonnées EXIF gratuit", "metaDescription": "Supprimer tous les EXIF. Télécharger image nettoyée." },
     "pdfToPptx": { "label": "PDF en PowerPoint", "short": "Transformer PDF en diapositives.", "metaTitle": "PDF en PowerPoint PPTX gratuit", "metaDescription": "Chaque page PDF devient une slide. Télécharger PPTX." },
     "colorPalette": { "label": "Palette de couleurs", "short": "Extraire couleurs dominantes.", "metaTitle": "Extraire palette d'image gratuit", "metaDescription": "6 couleurs dominantes. HEX, RGB, HSL. Cliquer pour copier." },
