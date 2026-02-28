@@ -805,12 +805,6 @@
       "metaTitle": "Extract ZIP Online Free",
       "metaDescription": "Extract and download files from ZIP. No account, in the browser."
     },
-    "svgToPng": {
-      "label": "SVG to PNG",
-      "short": "Convert SVG to PNG at any size.",
-      "metaTitle": "SVG to PNG Online Free",
-      "metaDescription": "Convert SVG to PNG online. Choose output width, preview and download. No account, in the browser."
-    },
     "removeBackground": {
       "label": "Remove background",
       "short": "Remove image background with transparency.",

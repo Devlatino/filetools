@@ -802,7 +802,6 @@
       "metaTitle": "Extraer ZIP Online Gratis",
       "metaDescription": "Extrae y descarga archivos de ZIP. Sin cuenta, en el navegador."
     },
-    "svgToPng": { "label": "SVG a PNG", "short": "Convertir SVG a PNG.", "metaTitle": "SVG a PNG online gratis", "metaDescription": "Convertir SVG a PNG online. Vista previa y descarga en el navegador." },
     "removeBackground": { "label": "Quitar fondo", "short": "Quitar el fondo de una imagen.", "metaTitle": "Quitar fondo de imagen online gratis", "metaDescription": "Quitar el fondo de imágenes. PNG con transparencia. En el navegador." },
     "mergeImages": { "label": "Unir imágenes", "short": "Combinar dos imágenes.", "metaTitle": "Unir imágenes online gratis", "metaDescription": "Unir dos imágenes horizontal o verticalmente. En el navegador." },
     "pdfToText": { "label": "PDF a texto", "short": "Extraer texto de un PDF.", "metaTitle": "PDF a texto online gratis", "metaDescription": "Extraer texto de PDF. Copiar o descargar como TXT. En el navegador." },

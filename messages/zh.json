@@ -752,12 +752,6 @@
       "metaTitle": "免费在线解压 ZIP",
       "metaDescription": "解压并下载 ZIP 中的文件。无需注册，在浏览器中完成。"
     },
-    "svgToPng": {
-      "label": "SVG 转 PNG",
-      "short": "将 SVG 转换为 PNG。",
-      "metaTitle": "免费在线 SVG 转 PNG",
-      "metaDescription": "在线将 SVG 转为 PNG。预览和下载在浏览器中完成。"
-    },
     "removeBackground": {
       "label": "去除背景",
       "short": "去除图片背景。",

@@ -752,12 +752,6 @@
       "metaTitle": "استخراج ZIP أونلاين مجاناً",
       "metaDescription": "استخراج وتحميل الملفات من ZIP. بدون حساب، في المتصفح."
     },
-    "svgToPng": {
-      "label": "SVG إلى PNG",
-      "short": "تحويل SVG إلى PNG.",
-      "metaTitle": "SVG إلى PNG أونلاين مجاناً",
-      "metaDescription": "تحويل SVG إلى PNG أونلاين. معاينة وتنزيل في المتصفح."
-    },
     "removeBackground": {
       "label": "إزالة الخلفية",
       "short": "إزالة خلفية الصورة.",

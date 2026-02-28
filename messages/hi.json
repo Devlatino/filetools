@@ -752,12 +752,6 @@
       "metaTitle": "मुफ्त ऑनलाइन ZIP एक्सट्रैक्ट",
       "metaDescription": "ZIP से फ़ाइलें एक्सट्रैक्ट और डाउनलोड करें। बिना अकाउंट, ब्राउज़र में।"
     },
-    "svgToPng": {
-      "label": "SVG से PNG",
-      "short": "SVG को PNG में बदलें।",
-      "metaTitle": "मुफ्त ऑनलाइन SVG से PNG",
-      "metaDescription": "SVG को PNG में ऑनलाइन बदलें। ब्राउज़र में।"
-    },
     "removeBackground": {
       "label": "बैकग्राउंड हटाएं",
       "short": "इमेज का बैकग्राउंड हटाएं।",
