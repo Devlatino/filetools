@@ -7,6 +7,9 @@ const TOOL_PATHS = [
   "/tools/compress-image",
   "/tools/merge-pdf",
   "/tools/heic-to-jpg",
+  "/tools/resize-image",
+  "/tools/jpg-to-png",
+  "/tools/pdf-to-jpg",
 ];
 
 /**

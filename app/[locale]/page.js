@@ -5,7 +5,7 @@ import { useMemo, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp } from "lucide-react";
+import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { locales, localeNames } from "@/i18n.js";
 
@@ -13,6 +13,9 @@ const TOOL_ICONS = {
   compressImage: Image,
   mergePdf: FileText,
   heicToJpg: Smartphone,
+  resizeImage: Maximize2,
+  jpgToPng: FileImage,
+  pdfToJpg: FileOutput,
 };
 
 const CATEGORIES = ["all", "images", "pdf"];
@@ -23,6 +26,9 @@ const TOOL_IDS = [
   { id: "compressImage", href: "/tools/compress-image", category: "images", active: true },
   { id: "mergePdf", href: "/tools/merge-pdf", category: "pdf", active: true },
   { id: "heicToJpg", href: "/tools/heic-to-jpg", category: "images", active: true },
+  { id: "resizeImage", href: "/tools/resize-image", category: "images", active: true },
+  { id: "jpgToPng", href: "/tools/jpg-to-png", category: "images", active: true },
+  { id: "pdfToJpg", href: "/tools/pdf-to-jpg", category: "pdf", active: true },
 ];
 
 const CATEGORY_COLORS = {
