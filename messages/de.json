@@ -55,6 +55,21 @@
     "text": "Text & Code",
     "utility": "Werkzeuge"
   },
+  "trust": {
+    "noData": "Keine Daten an Server",
+    "fast": "In Sekunden verarbeitet",
+    "languages": "9 Sprachen"
+  },
+  "howTo": {
+    "title": "So verwendest du FileFlip",
+    "subtitle": "Der gleiche Ablauf für jedes Tool.",
+    "step1Title": "Schritt 1",
+    "step1Text": "Wähle eine Aktion. Z.B. Bild komprimieren oder ZIP erstellen.",
+    "step2Title": "Schritt 2",
+    "step2Text": "Klicke auf den großen Upload-Button. Keine komplizierten Einstellungen.",
+    "step3Title": "Schritt 3",
+    "step3Text": "Lade die fertige Datei herunter. Beliebig oft wiederholbar."
+  },
   "common": {
     "siteName": "FileFlip",
     "tagline": "Dateien konvertieren und komprimieren",

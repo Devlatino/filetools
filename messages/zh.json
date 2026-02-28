@@ -1,4 +1,19 @@
 {
+  "trust": {
+    "noData": "零数据上传至服务器",
+    "fast": "秒级处理",
+    "languages": "9种语言"
+  },
+  "howTo": {
+    "title": "如何使用 FileFlip",
+    "subtitle": "每个工具的操作流程都一样。",
+    "step1Title": "步骤 1",
+    "step1Text": "选择操作。例如压缩图片或创建 ZIP。",
+    "step2Title": "步骤 2",
+    "step2Text": "点击上传按钮。无需复杂设置。",
+    "step3Title": "步骤 3",
+    "step3Text": "下载生成的文件。可随时重复使用。"
+  },
   "common": {
     "siteName": "FileFlip",
     "tagline": "转换和压缩文件",

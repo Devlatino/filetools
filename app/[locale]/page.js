@@ -34,6 +34,8 @@ const CATEGORY_COLORS = {
 
 export default function Home() {
   const t = useTranslations("home");
+  const tTrust = useTranslations("trust");
+  const tHowTo = useTranslations("howTo");
   const tCommon = useTranslations("common");
   const tTools = useTranslations("tools");
   const locale = useLocale();
@@ -354,19 +356,19 @@ export default function Home() {
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-800 text-sky-400">
                   <Lock size={18} strokeWidth={2} />
                 </span>
-                <span>{t("socialProof1")}</span>
+                <span>{tTrust("noData")}</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-800 text-amber-400">
                   <Zap size={18} strokeWidth={2} />
                 </span>
-                <span>{t("socialProof2")}</span>
+                <span>{tTrust("fast")}</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-800 text-emerald-400">
                   <Globe size={18} strokeWidth={2} />
                 </span>
-                <span>{t("socialProof3")}</span>
+                <span>{tTrust("languages")}</span>
               </div>
             </div>
 
@@ -379,19 +381,19 @@ export default function Home() {
                       <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-sky-400">
                         <Lock size={16} strokeWidth={2} />
                       </span>
-                      <span className="text-sm text-slate-300">{t("socialProof1")}</span>
+                      <span className="text-sm text-slate-300">{tTrust("noData")}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-amber-400">
                         <Zap size={16} strokeWidth={2} />
                       </span>
-                      <span className="text-sm text-slate-300">{t("socialProof2")}</span>
+                      <span className="text-sm text-slate-300">{tTrust("fast")}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-emerald-400">
                         <Globe size={16} strokeWidth={2} />
                       </span>
-                      <span className="text-sm text-slate-300">{t("socialProof3")}</span>
+                      <span className="text-sm text-slate-300">{tTrust("languages")}</span>
                     </div>
                   </div>
                 ))}
@@ -447,10 +449,10 @@ export default function Home() {
         >
           <div className="mx-auto max-w-5xl">
             <h2 className="text-center text-lg font-semibold text-slate-50 sm:text-xl">
-              {t("howTitle")}
+              {tHowTo("title")}
             </h2>
             <p className="mt-2 text-center text-sm text-slate-400">
-              {t("howSubtitle")}
+              {tHowTo("subtitle")}
             </p>
 
             {/* Desktop: horizontal layout with connecting line */}
@@ -474,20 +476,19 @@ export default function Home() {
               </div>
 
               {[
-                { num: 1, Icon: Search, titleKey: "step1Title", descKey: "step1Desc", noteKey: "step1Example" },
-                { num: 2, Icon: Upload, titleKey: "step2Title", descKey: "step2Desc", noteKey: "step2Note" },
-                { num: 3, Icon: Download, titleKey: "step3Title", descKey: "step3Desc", noteKey: "step3Note" },
-              ].map(({ num, Icon, titleKey, descKey, noteKey }) => (
+                { num: 1, Icon: Search, titleKey: "step1Title", textKey: "step1Text" },
+                { num: 2, Icon: Upload, titleKey: "step2Title", textKey: "step2Text" },
+                { num: 3, Icon: Download, titleKey: "step3Title", textKey: "step3Text" },
+              ].map(({ num, Icon, titleKey, textKey }) => (
                 <div key={num} className="flex flex-1 flex-col items-center">
                   <div className="relative z-10 flex h-28 w-28 flex-shrink-0 flex-col items-center justify-center rounded-full bg-gradient-to-br from-sky-500 to-blue-600 text-slate-50 shadow-lg shadow-sky-500/25">
                     <span className="text-2xl font-bold leading-none">{num}</span>
                     <Icon className="mt-2 h-7 w-7 opacity-95" strokeWidth={1.8} />
                   </div>
                   <h3 className="mt-5 text-sm font-semibold uppercase tracking-wide text-slate-200">
-                    {t(titleKey)}
+                    {tHowTo(titleKey)}
                   </h3>
-                  <p className="mt-1.5 text-center text-sm text-slate-50">{t(descKey)}</p>
-                  <p className="mt-1 text-center text-xs text-slate-400">{t(noteKey)}</p>
+                  <p className="mt-1.5 text-center text-sm text-slate-50">{tHowTo(textKey)}</p>
                 </div>
               ))}
             </div>
@@ -511,20 +512,19 @@ export default function Home() {
               </div>
               <div className="flex flex-col gap-8 pl-16">
                 {[
-                  { num: 1, Icon: Search, titleKey: "step1Title", descKey: "step1Desc", noteKey: "step1Example" },
-                  { num: 2, Icon: Upload, titleKey: "step2Title", descKey: "step2Desc", noteKey: "step2Note" },
-                  { num: 3, Icon: Download, titleKey: "step3Title", descKey: "step3Desc", noteKey: "step3Note" },
-                ].map(({ num, Icon, titleKey, descKey, noteKey }) => (
+                  { num: 1, Icon: Search, titleKey: "step1Title", textKey: "step1Text" },
+                  { num: 2, Icon: Upload, titleKey: "step2Title", textKey: "step2Text" },
+                  { num: 3, Icon: Download, titleKey: "step3Title", textKey: "step3Text" },
+                ].map(({ num, Icon, titleKey, textKey }) => (
                   <div key={num} className="flex flex-col">
                     <div className="flex h-16 w-16 flex-shrink-0 flex-col items-center justify-center rounded-full bg-gradient-to-br from-sky-500 to-blue-600 text-slate-50 shadow-lg shadow-sky-500/25">
                       <span className="text-xl font-bold leading-none">{num}</span>
                       <Icon className="mt-1.5 h-5 w-5 opacity-95" strokeWidth={1.8} />
                     </div>
                     <h3 className="mt-3 text-sm font-semibold uppercase tracking-wide text-slate-200">
-                      {t(titleKey)}
+                      {tHowTo(titleKey)}
                     </h3>
-                    <p className="mt-1 text-sm text-slate-50">{t(descKey)}</p>
-                    <p className="mt-0.5 text-xs text-slate-400">{t(noteKey)}</p>
+                    <p className="mt-1 text-sm text-slate-50">{tHowTo(textKey)}</p>
                   </div>
                 ))}
               </div>
