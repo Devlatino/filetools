@@ -182,6 +182,9 @@
     "titleTemplate": "%s — FileFlip"
   },
   "tools": {
+    "title": "Elige lo que quieres hacer",
+    "subtitle": "Haz clic en una tarjeta para abrir la herramienta.",
+    "available": "{count} herramientas disponibles",
     "compressImage": {
       "label": "Comprimir imagen",
       "short": "Reduce el tamaño de tus fotos.",

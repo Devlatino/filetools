@@ -132,6 +132,9 @@
     "titleTemplate": "%s — FileFlip"
   },
   "tools": {
+    "title": "चुनें कि आप क्या करना चाहते हैं",
+    "subtitle": "टूल खोलने के लिए कार्ड पर क्लिक करें।",
+    "available": "{count} टूल उपलब्ध",
     "compressImage": {
       "label": "इमेज कंप्रेस करें",
       "short": "फोटो का साइज घटाएं।",

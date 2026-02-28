@@ -185,6 +185,9 @@
     "titleTemplate": "%s — FileFlip"
   },
   "tools": {
+    "title": "Wähle was du tun möchtest",
+    "subtitle": "Klicke auf eine Karte, um das Tool zu öffnen.",
+    "available": "{count} Tools verfügbar",
     "compressImage": {
       "label": "Bild komprimieren",
       "short": "Reduziere die Größe deiner Fotos.",

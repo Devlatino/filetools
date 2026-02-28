@@ -537,14 +537,14 @@ export default function Home() {
             <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div className="space-y-2">
                 <h2 className="text-xl font-semibold tracking-tight text-slate-50 sm:text-2xl">
-                  {t("toolsTitle")}
+                  {tTools("title")}
                 </h2>
                 <p className="mt-1 text-sm text-slate-400">
-                  {t("toolsSubtitle")}
+                  {tTools("subtitle")}
                 </p>
               </div>
               <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">
-                {t("toolsCount", { count: filteredTools.length })}
+                {tTools("available", { count: filteredTools.length })}
               </span>
             </div>
 
