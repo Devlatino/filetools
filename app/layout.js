@@ -41,6 +41,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang={locale} dir={dir}>
       <head>
+        <meta name="theme-color" content="#1e40af" />
         <meta name="google-adsense-account" content="ca-pub-4903529383886232" />
         <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
       </head>

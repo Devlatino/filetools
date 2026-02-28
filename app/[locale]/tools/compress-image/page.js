@@ -1,16 +1,15 @@
 "use client";
 
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import imageCompression from "browser-image-compression";
-import { Image as ImageIcon, Loader2, Check, Download } from "lucide-react";
+import { Upload, Loader2, Check, Download, Zap } from "lucide-react";
 import { FaqSection } from "@/components/FaqSection";
 import { EditorialSection } from "@/components/EditorialSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
-import { ToolSteps } from "@/components/ToolSteps";
 
 function formatBytes(bytes) {
   if (!bytes) return "0 B";
@@ -18,6 +17,180 @@ function formatBytes(bytes) {
   const sizes = ["B", "KB", "MB", "GB", "TB"];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
   return `${parseFloat((bytes / Math.pow(k, i)).toFixed(2))} ${sizes[i]}`;
+}
+
+function StepIndicator({ step1, step2, step3, t }) {
+  return (
+    <div className="flex items-center justify-center gap-2 sm:gap-4">
+      <div className="flex items-center gap-1.5 sm:gap-2">
+        <span
+          className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-semibold sm:h-8 sm:w-8 ${
+            step1 === "done"
+              ? "bg-emerald-500 text-slate-950"
+              : step1 === "active"
+                ? "bg-sky-500 text-slate-950"
+                : "bg-slate-700 text-slate-400"
+          }`}
+        >
+          {step1 === "done" ? <Check size={14} strokeWidth={2.5} /> : "1"}
+        </span>
+        <span
+          className={`text-xs font-medium sm:text-sm ${
+            step1 === "active" ? "text-sky-300" : step1 === "done" ? "text-emerald-300" : "text-slate-500"
+          }`}
+        >
+          {t("stepIndicatorUpload")}
+        </span>
+      </div>
+      <div className="h-px w-4 bg-slate-600 sm:w-8" aria-hidden />
+      <div className="flex items-center gap-1.5 sm:gap-2">
+        <span
+          className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-semibold sm:h-8 sm:w-8 ${
+            step2 === "done"
+              ? "bg-emerald-500 text-slate-950"
+              : step2 === "active"
+                ? "bg-sky-500 text-slate-950"
+                : "bg-slate-700 text-slate-400"
+          }`}
+        >
+          {step2 === "done" ? <Check size={14} strokeWidth={2.5} /> : "2"}
+        </span>
+        <span
+          className={`text-xs font-medium sm:text-sm ${
+            step2 === "active" ? "text-sky-300" : step2 === "done" ? "text-emerald-300" : "text-slate-500"
+          }`}
+        >
+          {t("stepIndicatorSettings")}
+        </span>
+      </div>
+      <div className="h-px w-4 bg-slate-600 sm:w-8" aria-hidden />
+      <div className="flex items-center gap-1.5 sm:gap-2">
+        <span
+          className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-semibold sm:h-8 sm:w-8 ${
+            step3 === "done"
+              ? "bg-emerald-500 text-slate-950"
+              : step3 === "active"
+                ? "bg-sky-500 text-slate-950"
+                : "bg-slate-700 text-slate-400"
+          }`}
+        >
+          {step3 === "done" ? <Check size={14} strokeWidth={2.5} /> : "3"}
+        </span>
+        <span
+          className={`text-xs font-medium sm:text-sm ${
+            step3 === "active" ? "text-sky-300" : step3 === "done" ? "text-emerald-300" : "text-slate-500"
+          }`}
+        >
+          {t("stepIndicatorDownload")}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function BeforeAfterReveal({ originalUrl, compressedUrl, originalLabel, compressedLabel }) {
+  const containerRef = useRef(null);
+  const [position, setPosition] = useState(50);
+  const [isDragging, setIsDragging] = useState(false);
+
+  const handleMove = useCallback(
+    (clientX) => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const x = clientX - rect.left;
+      const pct = Math.max(0, Math.min(100, (x / rect.width) * 100));
+      setPosition(pct);
+    },
+    []
+  );
+
+  const handleMouseMove = useCallback(
+    (e) => {
+      if (isDragging) handleMove(e.clientX);
+    },
+    [isDragging, handleMove]
+  );
+  const handleMouseUp = useCallback(() => setIsDragging(false), []);
+  const handleTouchMove = useCallback(
+    (e) => {
+      if (e.touches.length) handleMove(e.touches[0].clientX);
+    },
+    [handleMove]
+  );
+
+  useEffect(() => {
+    if (!isDragging) return;
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseup", handleMouseUp);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, [isDragging, handleMouseMove, handleMouseUp]);
+
+  return (
+    <div className="space-y-2">
+      <p className="text-xs font-medium text-slate-300">
+        {originalLabel} ↔ {compressedLabel}
+      </p>
+      <div
+        ref={containerRef}
+        className="relative aspect-video w-full overflow-hidden rounded-xl bg-slate-900"
+        onTouchMove={handleTouchMove}
+        onTouchStart={(e) => e.touches.length === 1 && handleMove(e.touches[0].clientX)}
+      >
+        {/* Before: clipped to left side */}
+        <div
+          className="absolute inset-0 flex items-center justify-center bg-slate-950"
+          style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
+        >
+          <img
+            src={originalUrl}
+            alt={originalLabel}
+            className="max-h-full w-auto max-w-full object-contain"
+            draggable={false}
+          />
+        </div>
+        {/* After: clipped to right side */}
+        <div
+          className="absolute inset-0 flex items-center justify-center bg-slate-950"
+          style={{ clipPath: `inset(0 0 0 ${position}%)` }}
+        >
+          <img
+            src={compressedUrl}
+            alt={compressedLabel}
+            className="max-h-full w-auto max-w-full object-contain"
+            draggable={false}
+          />
+        </div>
+        {/* Divider */}
+        <div
+          className="absolute top-0 bottom-0 w-1 cursor-ew-resize select-none bg-sky-500 shadow-lg"
+          style={{ left: `${position}%`, transform: "translateX(-50%)" }}
+          onMouseDown={(e) => {
+            e.preventDefault();
+            setIsDragging(true);
+          }}
+          onTouchStart={(e) => {
+            if (e.touches.length === 1) handleMove(e.touches[0].clientX);
+          }}
+          role="slider"
+          aria-label={`${originalLabel} / ${compressedLabel}`}
+          aria-valuenow={Math.round(position)}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          tabIndex={0}
+          onKeyDown={(e) => {
+            const step = e.key === "ArrowLeft" ? -5 : e.key === "ArrowRight" ? 5 : 0;
+            if (step) {
+              e.preventDefault();
+              setPosition((p) => Math.max(0, Math.min(100, p + step)));
+            }
+          }}
+        />
+      </div>
+    </div>
+  );
 }
 
 export default function CompressImagePage() {
@@ -35,36 +208,41 @@ export default function CompressImagePage() {
   const [isDragOver, setIsDragOver] = useState(false);
   const fileInputRef = useRef(null);
 
-  const qualityLabel = useMemo(() => `${quality} / 100`, [quality]);
+  const step1Status = currentStep >= 2 ? "done" : currentStep === 1 ? "active" : "pending";
+  const step2Status = currentStep >= 3 ? "done" : currentStep === 2 ? "active" : "pending";
+  const step3Status = currentStep === 3 ? "active" : "pending";
 
   const ACCEPT_TYPES = ["image/jpeg", "image/png", "image/webp"];
 
-  const processFile = useCallback((file) => {
-    if (!file) {
-      setOriginalFile(null);
-      setOriginalUrl((u) => {
+  const processFile = useCallback(
+    (file) => {
+      if (!file) {
+        setOriginalFile(null);
+        setOriginalUrl((u) => {
+          if (u) URL.revokeObjectURL(u);
+          return "";
+        });
+        setCurrentStep(1);
+        return;
+      }
+      if (!ACCEPT_TYPES.includes(file.type)) {
+        setError(t("errorUnsupportedFormat"));
+        setOriginalFile(null);
+        setOriginalUrl("");
+        return;
+      }
+      setError("");
+      setCompressedFile(null);
+      setCompressedUrl((u) => {
         if (u) URL.revokeObjectURL(u);
         return "";
       });
-      setCurrentStep(1);
-      return;
-    }
-    if (!ACCEPT_TYPES.includes(file.type)) {
-      setError(t("errorUnsupportedFormat"));
-      setOriginalFile(null);
-      setOriginalUrl("");
-      return;
-    }
-    setError("");
-    setCompressedFile(null);
-    setCompressedUrl((u) => {
-      if (u) URL.revokeObjectURL(u);
-      return "";
-    });
-    setOriginalFile(file);
-    setOriginalUrl(URL.createObjectURL(file));
-    setCurrentStep(2);
-  }, [t]);
+      setOriginalFile(file);
+      setOriginalUrl(URL.createObjectURL(file));
+      setCurrentStep(2);
+    },
+    [t]
+  );
 
   const handleFileChange = useCallback(
     (event) => {
@@ -132,15 +310,7 @@ export default function CompressImagePage() {
     link.remove();
   }, [compressedFile, compressedUrl, originalFile]);
 
-  const reductionText = useMemo(() => {
-    if (!originalFile || !compressedFile) return "";
-    const diff = originalFile.size - compressedFile.size;
-    const ratio = (1 - compressedFile.size / originalFile.size) * 100;
-    if (diff <= 0) return t("reductionSimilar");
-    return t("reductionSaved", { bytes: formatBytes(diff), percent: ratio.toFixed(1) });
-  }, [compressedFile, originalFile, t]);
-
-  const successMessage = useMemo(() => {
+  const successSubline = useMemo(() => {
     if (!originalFile || !compressedFile) return null;
     const ratio = (1 - compressedFile.size / originalFile.size) * 100;
     const percent = ratio <= 0 ? 0 : Math.round(ratio);
@@ -151,29 +321,25 @@ export default function CompressImagePage() {
     });
   }, [originalFile, compressedFile, tCommon]);
 
-  const downloadSubline = useMemo(() => {
-    if (!originalFile || !compressedFile) return null;
-    const ratio = (1 - compressedFile.size / originalFile.size) * 100;
-    const percent = ratio <= 0 ? 0 : Math.round(ratio);
-    return tCommon("downloadSubline", {
-      percent,
-      result: formatBytes(compressedFile.size),
-    });
-  }, [originalFile, compressedFile, tCommon]);
-
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50">
       <header className="border-b border-white/10 bg-slate-950/80 backdrop-blur">
-        <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <Link href={`/${locale}/`} prefetch className="flex items-center gap-2">
-            <img src="/fileflip-logo.svg" alt={tCommon("siteName")} className="h-9 w-auto" width={140} height={36} />
+            <img
+              src="/fileflip-logo.svg"
+              alt={tCommon("siteName")}
+              className="h-9 w-auto"
+              width={140}
+              height={36}
+            />
             <span className="text-sm text-slate-400">{t("label")}</span>
           </Link>
           <LanguageSwitcher />
         </div>
       </header>
 
-      <main className="mx-auto flex max-w-4xl flex-1 flex-col gap-8 px-4 py-10 sm:px-6 lg:px-8">
+      <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
         <Breadcrumb
           locale={locale}
           homeLabel={tCommon("breadcrumbHome")}
@@ -181,36 +347,88 @@ export default function CompressImagePage() {
           toolLabel={t("label")}
           toolPath="compress-image"
         />
-        <section className="space-y-4">
-          <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-            {t("metaTitle")}
-          </h1>
-          <p className="max-w-xl text-sm text-slate-300">
-            {t("metaDescription")}
-          </p>
-        </section>
 
-        <section className="rounded-2xl border border-white/10 bg-slate-900/80 p-4 sm:p-6">
-          <ToolSteps currentStep={currentStep}>
-            <ToolSteps.Step title={t("step1Title")}>
-              <p className="text-xs text-slate-400">{t("step1Supported")}</p>
-              <label className="mt-2 inline-flex cursor-pointer items-center rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 shadow-sm hover:bg-sky-400">
-                {t("selectButton")}
-                <input
-                  type="file"
-                  accept="image/jpeg,image/png,image/webp"
-                  className="hidden"
-                  onChange={handleFileChange}
-                />
-              </label>
-            </ToolSteps.Step>
-            <ToolSteps.Step title={t("step2Title")}>
-              <div className="space-y-2">
-                <div className="flex items-center justify-between text-xs text-slate-300">
-                  <span className="font-medium">{t("qualityLabel")}</span>
-                  <span className="rounded-full bg-slate-800 px-2 py-0.5 text-[11px] text-slate-200">
-                    {qualityLabel}
+        <div className="mt-6 grid gap-10 lg:grid-cols-[1fr_340px]">
+          {/* Left column: tool */}
+          <section className="space-y-6">
+            <div>
+              <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">{t("metaTitle")}</h1>
+              <p className="mt-1 text-sm text-slate-300">{t("metaDescription")}</p>
+            </div>
+
+            {/* Step indicator */}
+            <StepIndicator step1={step1Status} step2={step2Status} step3={step3Status} t={t} />
+
+            {/* Upload zone: full width, 200px height, dashed blue, rounded */}
+            <div className="w-full">
+              {!originalFile ? (
+                <label
+                  role="button"
+                  tabIndex={0}
+                  onDragOver={handleDragOver}
+                  onDragLeave={handleDragLeave}
+                  onDrop={handleDrop}
+                  onClick={() => fileInputRef.current?.click()}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      fileInputRef.current?.click();
+                    }
+                  }}
+                  className={`flex h-[200px] w-full cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 px-4 transition-colors duration-200 ${
+                    isDragOver
+                      ? "border-sky-500 bg-sky-500/15"
+                      : "border-dashed border-sky-500/70 bg-slate-900/50"
+                  }`}
+                >
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp"
+                    className="hidden"
+                    onChange={handleFileChange}
+                  />
+                  <Upload
+                    size={40}
+                    strokeWidth={1.5}
+                    className={isDragOver ? "text-sky-400" : "text-sky-500/80"}
+                  />
+                  <p
+                    className={`text-center text-sm font-medium ${
+                      isDragOver ? "text-sky-200" : "text-slate-300"
+                    }`}
+                  >
+                    {isDragOver ? t("releaseToUpload") : t("dropzonePrompt")}
+                  </p>
+                </label>
+              ) : (
+                <div className="flex h-[200px] w-full items-center gap-4 rounded-xl border-2 border-dashed border-sky-500/50 bg-slate-900/60 p-4">
+                  <div className="flex h-full shrink-0 overflow-hidden rounded-lg bg-slate-800">
+                    <img
+                      src={originalUrl}
+                      alt=""
+                      className="h-full w-auto object-contain"
+                    />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-medium text-slate-100">{originalFile.name}</p>
+                    <p className="mt-1 text-xs text-slate-400">{formatBytes(originalFile.size)}</p>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {error && <p className="text-sm text-rose-400">{error}</p>}
+
+            {/* Controls: quality slider */}
+            {originalFile && (
+              <div className="space-y-3 rounded-xl border border-white/10 bg-slate-900/60 p-4">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-slate-400">{t("smallerFile")}</span>
+                  <span className="rounded-full bg-sky-500/20 px-3 py-1 text-sm font-semibold text-sky-300">
+                    {quality}
                   </span>
+                  <span className="text-slate-400">{t("higherQuality")}</span>
                 </div>
                 <input
                   type="range"
@@ -221,171 +439,74 @@ export default function CompressImagePage() {
                   onChange={(e) => setQuality(Number(e.target.value))}
                   className="w-full accent-sky-500"
                 />
-                <p className="text-[11px] text-slate-400">
-                  {t("qualityHint")}
-                </p>
-                <div className="mt-2 space-y-2">
-                  <button
-                    type="button"
-                    disabled={!originalFile || isCompressing}
-                    onClick={handleCompress}
-                    className="inline-flex items-center justify-center gap-2 rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 shadow-sm hover:bg-sky-400 disabled:cursor-not-allowed disabled:opacity-50"
-                  >
-                    {isCompressing ? (
-                      <>
-                        <Loader2 size={14} className="animate-spin" />
-                        {tCommon("processingLabel")}
-                      </>
-                    ) : (
-                      t("compressButton")
-                    )}
-                  </button>
-                  {isCompressing && (
-                    <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-700">
-                      <div className="h-full w-full animate-[progress-bar_1.2s_ease-in-out_infinite] rounded-full bg-sky-500" style={{ transformOrigin: "left" }} />
-                    </div>
-                  )}
-                  {successMessage && !isCompressing && (
-                    <p className="flex items-center gap-2 text-xs font-medium text-emerald-400">
-                      <Check size={14} className="shrink-0" />
-                      {successMessage}
-                    </p>
-                  )}
-                </div>
               </div>
-            </ToolSteps.Step>
-            <ToolSteps.Step title={t("step3Title")}>
-              <p className="text-xs text-slate-400">{t("step3Description")}</p>
-              {compressedFile ? (
-                <div className="mt-3 animate-download-enter">
-                  <button
-                    type="button"
-                    onClick={handleDownload}
-                    className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-emerald-500 px-6 py-3.5 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/25 transition hover:bg-emerald-400 hover:shadow-emerald-400/30"
-                  >
-                    <Download size={20} strokeWidth={2} />
-                    {t("downloadButton")}
-                  </button>
-                  {downloadSubline && (
-                    <p className="mt-1.5 text-[11px] text-emerald-200/90">{downloadSubline}</p>
-                  )}
-                </div>
-              ) : (
+            )}
+
+            {/* Primary action: Compress */}
+            {originalFile && !compressedFile && (
+              <button
+                type="button"
+                disabled={isCompressing}
+                onClick={handleCompress}
+                className="flex w-full items-center justify-center gap-3 rounded-xl bg-sky-500 py-4 text-base font-semibold text-slate-950 shadow-lg shadow-sky-500/25 transition hover:bg-sky-400 hover:shadow-sky-400/30 disabled:cursor-not-allowed disabled:opacity-70"
+              >
+                {isCompressing ? (
+                  <>
+                    <Loader2 size={22} className="animate-spin shrink-0" />
+                    <span>{t("compressingLabel")}</span>
+                  </>
+                ) : (
+                  <>
+                    <Zap size={22} strokeWidth={2} className="shrink-0" />
+                    <span>{t("compressButton")}</span>
+                  </>
+                )}
+              </button>
+            )}
+            {isCompressing && (
+              <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-700">
+                <div
+                  className="h-full w-full animate-[progress-bar_1.2s_ease-in-out_infinite] rounded-full bg-sky-500"
+                  style={{ transformOrigin: "left" }}
+                />
+              </div>
+            )}
+
+            {/* After compress: download button + subline */}
+            {compressedFile && (
+              <div className="space-y-2">
                 <button
                   type="button"
-                  disabled
-                  className="mt-2 inline-flex items-center justify-center rounded-full border border-slate-600 bg-slate-900 px-4 py-2 text-xs font-semibold text-slate-500 cursor-not-allowed"
+                  onClick={handleDownload}
+                  className="flex w-full items-center justify-center gap-3 rounded-xl bg-emerald-500 py-4 text-base font-semibold text-slate-950 shadow-lg shadow-emerald-500/25 transition hover:bg-emerald-400 hover:shadow-emerald-400/30"
                 >
+                  <Download size={22} strokeWidth={2} className="shrink-0" />
                   {t("downloadButton")}
                 </button>
-              )}
-            </ToolSteps.Step>
-          </ToolSteps>
-          {error && <p className="mt-4 text-xs text-rose-400">{error}</p>}
-        </section>
-
-        {!originalFile ? (
-          <section className="rounded-2xl border border-white/10 bg-slate-900/80 p-4 sm:p-6">
-            <label
-              role="button"
-              tabIndex={0}
-              onDragOver={handleDragOver}
-              onDragLeave={handleDragLeave}
-              onDrop={handleDrop}
-              onClick={() => fileInputRef.current?.click()}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  fileInputRef.current?.click();
-                }
-              }}
-              className={`flex min-h-[280px] cursor-pointer flex-col items-center justify-center gap-4 rounded-xl border-2 border-dashed px-6 py-12 transition-colors duration-200 ${
-                isDragOver
-                  ? "border-sky-400 bg-sky-500/10"
-                  : "border-slate-500 bg-slate-900/50 animate-dropzone-dash"
-              }`}
-            >
-              <input
-                ref={fileInputRef}
-                type="file"
-                accept="image/jpeg,image/png,image/webp"
-                className="hidden"
-                onChange={handleFileChange}
-              />
-              <div
-                className={`flex h-16 w-16 items-center justify-center rounded-full transition-colors ${
-                  isDragOver ? "bg-sky-500/20 text-sky-300" : "bg-slate-700/80 text-slate-400"
-                }`}
-              >
-                <ImageIcon size={32} strokeWidth={1.5} />
-              </div>
-              <p
-                className={`text-center text-sm font-medium transition-colors ${
-                  isDragOver ? "text-sky-200" : "text-slate-300"
-                }`}
-              >
-                {isDragOver ? t("dropzoneDrop") : t("dropzonePrompt")}
-              </p>
-            </label>
-          </section>
-        ) : (
-          <section className="space-y-3">
-            <h2 className="text-sm font-semibold text-slate-50">
-              {t("beforeAfterTitle")}
-            </h2>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-3">
-                <p className="text-xs font-medium text-slate-100">{t("originalLabel")}</p>
-                <p className="mt-1 text-[11px] text-slate-400">
-                  {originalFile.name} · {formatBytes(originalFile.size)}
-                </p>
-                <div className="mt-3 flex items-center justify-center rounded-xl border border-dashed border-slate-700 bg-slate-950/60 px-2 py-4">
-                  <img
-                    src={originalUrl}
-                    alt={t("originalLabel")}
-                    width={400}
-                    height={256}
-                    loading="lazy"
-                    className="max-h-64 w-auto rounded-md object-contain"
-                  />
-                </div>
-              </div>
-
-              <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-3">
-                <p className="text-xs font-medium text-slate-100">{t("compressedLabel")}</p>
-                <p className="mt-1 text-[11px] text-slate-400">
-                  {compressedFile
-                    ? `${compressedFile.name || originalFile?.name || "Image"} · ${formatBytes(compressedFile.size)}`
-                    : t("resultPlaceholder")}
-                </p>
-                <div className="mt-3 flex items-center justify-center rounded-xl border border-dashed border-slate-700 bg-slate-950/60 px-2 py-4">
-                  {compressedUrl ? (
-                    <img
-                      src={compressedUrl}
-                      alt={t("compressedLabel")}
-                      width={400}
-                      height={256}
-                      loading="lazy"
-                      className="max-h-64 w-auto rounded-md object-contain"
-                    />
-                  ) : (
-                    <span className="text-[11px] text-slate-500">
-                      {t("noResultYet")}
-                    </span>
-                  )}
-                </div>
-                {reductionText && (
-                  <p className="mt-2 text-[11px] text-emerald-300">
-                    {reductionText}
-                  </p>
+                {successSubline && (
+                  <p className="text-center text-sm text-emerald-300">{successSubline}</p>
                 )}
               </div>
-            </div>
+            )}
+
+            {/* Before/after reveal — only after compression */}
+            {compressedFile && originalUrl && compressedUrl && (
+              <BeforeAfterReveal
+                originalUrl={originalUrl}
+                compressedUrl={compressedUrl}
+                originalLabel={t("originalLabel")}
+                compressedLabel={t("compressedLabel")}
+              />
+            )}
           </section>
-        )}
-        <RelatedTools locale={locale} currentSlug="compress-image" />
-        <EditorialSection namespace="tools.compressImage" />
-        <FaqSection namespace="tools.compressImage" />
+
+          {/* Right column: info, FAQ, related */}
+          <aside className="space-y-8 lg:max-w-[340px]">
+            <EditorialSection namespace="tools.compressImage" />
+            <FaqSection namespace="tools.compressImage" />
+            <RelatedTools locale={locale} currentSlug="compress-image" />
+          </aside>
+        </div>
       </main>
     </div>
   );

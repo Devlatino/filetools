@@ -1,11 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
-import { Image, FileText, Smartphone, Star } from "lucide-react";
+import { usePathname, useRouter } from "@/i18n/navigation";
+import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { locales, localeNames } from "@/i18n.js";
 
 const TOOL_ICONS = {
   compressImage: Image,
@@ -18,19 +20,28 @@ const CATEGORIES = ["all", "images", "pdf"];
 const POPULAR_TOOL_IDS = ["compressImage", "heicToJpg", "mergePdf"];
 
 const TOOL_IDS = [
-  { id: "compressImage", href: "/tools/compress-image", iconBg: "bg-sky-500", category: "images" },
-  { id: "mergePdf", href: "/tools/merge-pdf", iconBg: "bg-rose-500", category: "pdf" },
-  { id: "heicToJpg", href: "/tools/heic-to-jpg", iconBg: "bg-amber-600", category: "images" },
+  { id: "compressImage", href: "/tools/compress-image", category: "images", active: true },
+  { id: "mergePdf", href: "/tools/merge-pdf", category: "pdf", active: true },
+  { id: "heicToJpg", href: "/tools/heic-to-jpg", category: "images", active: true },
 ];
+
+const CATEGORY_TAG_STYLES = {
+  images: "bg-emerald-500/20 text-emerald-300 border-emerald-400/30",
+  pdf: "bg-rose-500/20 text-rose-300 border-rose-400/30",
+  video: "bg-violet-500/20 text-violet-300 border-violet-400/30",
+};
 
 export default function Home() {
   const t = useTranslations("home");
   const tCommon = useTranslations("common");
   const tTools = useTranslations("tools");
   const locale = useLocale();
+  const pathname = usePathname();
+  const router = useRouter();
   const year = useMemo(() => new Date().getFullYear(), []);
 
   const [activeFilter, setActiveFilter] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
   const [filesProcessed, setFilesProcessed] = useState(1_240_000);
 
   useEffect(() => {
@@ -42,22 +53,74 @@ export default function Home() {
 
   const tools = useMemo(
     () =>
-      TOOL_IDS.map(({ id, href, iconBg, category }) => ({
+      TOOL_IDS.map(({ id, href, category, active }) => ({
         id,
         href,
         label: tTools(`${id}.label`),
         short: tTools(`${id}.short`),
-        iconBg,
         category,
+        active,
       })),
     [tTools]
   );
 
-  const filteredTools = useMemo(
-    () =>
-      activeFilter === "all" ? tools : tools.filter((tool) => tool.category === activeFilter),
-    [tools, activeFilter]
-  );
+  const [comingSoonTooltipId, setComingSoonTooltipId] = useState(null);
+  const howSectionRef = useRef(null);
+  const [howInView, setHowInView] = useState(false);
+  const toolsSectionRef = useRef(null);
+  const [toolsInView, setToolsInView] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+  const [showToolCardsSkeleton, setShowToolCardsSkeleton] = useState(true);
+
+  useEffect(() => {
+    const el = howSectionRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setHowInView(true);
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -50px 0px" }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const el = toolsSectionRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setToolsInView(true);
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -30px 0px" }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => setShowBackToTop(window.scrollY > 300);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const id = setTimeout(() => setShowToolCardsSkeleton(false), 400);
+    return () => clearTimeout(id);
+  }, []);
+
+  const filteredTools = useMemo(() => {
+    let list = activeFilter === "all" ? tools : tools.filter((tool) => tool.category === activeFilter);
+    const q = searchQuery.trim().toLowerCase();
+    if (q) {
+      list = list.filter(
+        (tool) =>
+          tool.label.toLowerCase().includes(q) || tool.short.toLowerCase().includes(q)
+      );
+    }
+    return list;
+  }, [tools, activeFilter, searchQuery]);
 
   const faqSchema = useMemo(
     () => ({
@@ -103,56 +166,129 @@ export default function Home() {
 
       <main id="top" className="flex-1">
         <section className="relative overflow-hidden border-b border-white/10">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.20),transparent_55%),radial-gradient(circle_at_bottom,_rgba(37,99,235,0.18),transparent_55%)]" />
-          <div className="pointer-events-none absolute -left-1/3 top-10 h-64 w-[140%] animate-wave rounded-[999px] bg-gradient-to-r from-sky-500/25 via-cyan-400/15 to-blue-500/25 blur-3xl" />
-          <div className="pointer-events-none absolute -right-1/3 bottom-0 h-80 w-[120%] animate-wave-slow rounded-[999px] bg-gradient-to-tr from-indigo-500/25 via-sky-500/10 to-cyan-400/25 blur-3xl" />
+          {/* Animated mesh gradient background — dark blue + electric blue */}
+          <div className="pointer-events-none absolute inset-0">
+            <div
+              className="absolute -left-1/4 top-0 h-[80%] w-[90%] rounded-full bg-gradient-to-br from-slate-900 via-blue-950/80 to-sky-950/70 opacity-90 blur-3xl animate-mesh-1"
+              aria-hidden
+            />
+            <div
+              className="absolute -right-1/4 bottom-0 h-[70%] w-[85%] rounded-full bg-gradient-to-tl from-blue-900/60 via-sky-600/30 to-cyan-800/50 blur-3xl animate-mesh-2"
+              aria-hidden
+            />
+            <div
+              className="absolute left-1/2 top-1/2 h-[60%] w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-r from-sky-800/40 via-blue-600/30 to-indigo-800/40 blur-3xl animate-mesh-3"
+              aria-hidden
+            />
+          </div>
 
-          <div className="relative mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-            <div className="space-y-8 text-center sm:text-left">
-              <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/25 bg-slate-950/80 px-3 py-1 text-[11px] font-medium text-sky-200 shadow-sm shadow-sky-500/20 backdrop-blur">
-                {t("badge")}
-              </div>
-
+          <div className="relative mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
+            <div className="space-y-8 text-center">
               <div className="space-y-4">
-                <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
-                  {t("title")}
-                  <span className="block bg-gradient-to-r from-sky-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent">
-                    {t("titleHighlight")}
+                <h1 className="text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl lg:text-5xl">
+                  {t("heroTitlePart1")}
+                  <span className="text-sky-400">
+                    {t("heroTitleHighlight")}
                   </span>
+                  {t("heroTitlePart2")}
                 </h1>
                 <p className="mx-auto max-w-xl text-sm text-slate-300 sm:text-base">
-                  {t("subtitle")}
+                  {t("heroSubtitle")}
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center justify-center gap-4 sm:justify-start">
-                <a
-                  href="#tools"
-                  className="inline-flex items-center justify-center rounded-full bg-sky-500 px-6 py-2.5 text-sm font-semibold text-slate-950 shadow-sm transition-transform transition-colors hover:-translate-y-0.5 hover:bg-sky-400"
-                >
-                  {t("cta")}
-                </a>
-                <a
-                  href="#come-funziona"
-                  className="inline-flex items-center justify-center rounded-full border border-slate-700 bg-slate-900 px-5 py-2 text-xs font-medium text-slate-200 hover:border-sky-400 hover:text-sky-300"
-                >
-                  {t("ctaSecondary")}
-                </a>
+              <div className="mx-auto max-w-xl">
+                <label htmlFor="hero-search" className="sr-only">
+                  {t("searchPlaceholder")}
+                </label>
+                <div className="relative">
+                  <Search
+                    className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+                    aria-hidden
+                  />
+                  <input
+                    id="hero-search"
+                    type="search"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder={t("searchPlaceholder")}
+                    className="w-full rounded-full border border-white/15 bg-slate-900/80 py-3.5 pl-11 pr-4 text-sm text-slate-50 placeholder:text-slate-500 focus:border-sky-500/50 focus:outline-none focus:ring-2 focus:ring-sky-500/20"
+                    autoComplete="off"
+                  />
+                </div>
               </div>
 
-              <div className="flex flex-wrap justify-center gap-4 text-xs text-slate-300 sm:justify-start">
-                <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                  {t("noWatermark")}
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                  {t("worksEverywhere")}
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                  {t("simpleInterface")}
-                </div>
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <a
+                  href="#tools"
+                  className="inline-flex items-center justify-center rounded-full bg-sky-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-sky-500/25 transition hover:bg-sky-400 hover:shadow-sky-400/30"
+                >
+                  {t("ctaStart")}
+                </a>
+                <a
+                  href="#tools"
+                  className="inline-flex items-center justify-center rounded-full border-2 border-slate-500 bg-transparent px-5 py-2.5 text-sm font-medium text-slate-200 hover:border-sky-400 hover:text-sky-300"
+                >
+                  {t("ctaSeeAllTools")}
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Social proof bar — marquee on mobile, fixed on desktop */}
+        <section
+          aria-label="Trust"
+          className="border-b border-white/10 bg-slate-900/90 py-4 sm:py-5"
+        >
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            {/* Desktop: fixed, centered */}
+            <div className="hidden items-center justify-center gap-10 text-sm text-slate-300 sm:flex sm:gap-12 lg:gap-16">
+              <div className="flex items-center gap-2.5">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-800 text-sky-400">
+                  <Lock size={18} strokeWidth={2} />
+                </span>
+                <span>{t("socialProof1")}</span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-800 text-amber-400">
+                  <Zap size={18} strokeWidth={2} />
+                </span>
+                <span>{t("socialProof2")}</span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-800 text-emerald-400">
+                  <Globe size={18} strokeWidth={2} />
+                </span>
+                <span>{t("socialProof3")}</span>
+              </div>
+            </div>
+
+            {/* Mobile: marquee */}
+            <div className="overflow-hidden sm:hidden" aria-hidden>
+              <div className="flex w-max animate-marquee gap-8 whitespace-nowrap py-1">
+                {[1, 2].map((copy) => (
+                  <div key={copy} className="flex items-center gap-4">
+                    <div className="flex items-center gap-2">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-sky-400">
+                        <Lock size={16} strokeWidth={2} />
+                      </span>
+                      <span className="text-sm text-slate-300">{t("socialProof1")}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-amber-400">
+                        <Zap size={16} strokeWidth={2} />
+                      </span>
+                      <span className="text-sm text-slate-300">{t("socialProof2")}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-emerald-400">
+                        <Globe size={16} strokeWidth={2} />
+                      </span>
+                      <span className="text-sm text-slate-300">{t("socialProof3")}</span>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -195,50 +331,97 @@ export default function Home() {
 
         <section
           id="come-funziona"
-          className="border-b border-white/10 bg-slate-950"
+          ref={howSectionRef}
+          className="border-b border-white/10 bg-slate-950 px-4 py-12 sm:px-6 lg:px-8"
         >
-          <div className="mx-auto flex max-w-5xl flex-col gap-6 px-4 py-10 sm:flex-row sm:px-6 lg:px-8">
-            <div className="sm:w-1/3">
-              <h2 className="text-base font-semibold text-slate-50">
-                {t("howTitle")}
-              </h2>
-              <p className="mt-2 text-xs text-slate-300">
-                {t("howSubtitle")}
-              </p>
+          <div className="mx-auto max-w-5xl">
+            <h2 className="text-center text-lg font-semibold text-slate-50 sm:text-xl">
+              {t("howTitle")}
+            </h2>
+            <p className="mt-2 text-center text-sm text-slate-400">
+              {t("howSubtitle")}
+            </p>
+
+            {/* Desktop: horizontal layout with connecting line */}
+            <div className="relative mt-10 hidden items-start sm:mt-12 lg:flex">
+              {/* Animated dashed line (horizontal) — runs between circle centers */}
+              <div className="absolute left-1/6 right-1/6 top-14 h-px" aria-hidden>
+                <svg className="h-full w-full" viewBox="0 0 100 1" preserveAspectRatio="none">
+                  <line
+                    x1="0"
+                    y1="0.5"
+                    x2="100"
+                    y2="0.5"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                    strokeDasharray="8 6"
+                    strokeDashoffset={howInView ? 0 : 100}
+                    className="text-sky-500/60 transition-[stroke-dashoffset] duration-1000 ease-out"
+                    style={{ strokeLinecap: "round" }}
+                  />
+                </svg>
+              </div>
+
+              {[
+                { num: 1, Icon: Search, titleKey: "step1Title", descKey: "step1Desc", noteKey: "step1Example" },
+                { num: 2, Icon: Upload, titleKey: "step2Title", descKey: "step2Desc", noteKey: "step2Note" },
+                { num: 3, Icon: Download, titleKey: "step3Title", descKey: "step3Desc", noteKey: "step3Note" },
+              ].map(({ num, Icon, titleKey, descKey, noteKey }) => (
+                <div key={num} className="flex flex-1 flex-col items-center">
+                  <div className="relative z-10 flex h-28 w-28 flex-shrink-0 flex-col items-center justify-center rounded-full bg-gradient-to-br from-sky-500 to-blue-600 text-slate-50 shadow-lg shadow-sky-500/25">
+                    <span className="text-2xl font-bold leading-none">{num}</span>
+                    <Icon className="mt-2 h-7 w-7 opacity-95" strokeWidth={1.8} />
+                  </div>
+                  <h3 className="mt-5 text-sm font-semibold uppercase tracking-wide text-slate-200">
+                    {t(titleKey)}
+                  </h3>
+                  <p className="mt-1.5 text-center text-sm text-slate-50">{t(descKey)}</p>
+                  <p className="mt-1 text-center text-xs text-slate-400">{t(noteKey)}</p>
+                </div>
+              ))}
             </div>
-            <div className="grid flex-1 gap-4 text-sm sm:grid-cols-3">
-              <div className="rounded-2xl border border-white/10 bg-slate-900 p-4">
-                <p className="text-xs font-semibold uppercase tracking-wide text-slate-300">
-                  {t("step1Title")}
-                </p>
-                <p className="mt-2 text-slate-50">{t("step1Desc")}</p>
-                <p className="mt-1 text-xs text-slate-300">
-                  {t("step1Example")}
-                </p>
+
+            {/* Mobile: vertical stack with vertical dashed line */}
+            <div className="relative mt-10 flex lg:hidden">
+              <div className="absolute left-8 top-0 bottom-0 w-px" aria-hidden>
+                <svg className="h-full w-full" viewBox="0 0 1 100" preserveAspectRatio="none">
+                  <line
+                    x1="0.5"
+                    y1="0"
+                    x2="0.5"
+                    y2="100"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                    strokeDasharray="6 8"
+                    strokeDashoffset={howInView ? 0 : 100}
+                    className="text-sky-500/60 transition-[stroke-dashoffset] duration-1000 ease-out"
+                  />
+                </svg>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-slate-900 p-4">
-                <p className="text-xs font-semibold uppercase tracking-wide text-slate-300">
-                  {t("step2Title")}
-                </p>
-                <p className="mt-2 text-slate-50">{t("step2Desc")}</p>
-                <p className="mt-1 text-xs text-slate-300">
-                  {t("step2Note")}
-                </p>
-              </div>
-              <div className="rounded-2xl border border-white/10 bg-slate-900 p-4">
-                <p className="text-xs font-semibold uppercase tracking-wide text-slate-300">
-                  {t("step3Title")}
-                </p>
-                <p className="mt-2 text-slate-50">{t("step3Desc")}</p>
-                <p className="mt-1 text-xs text-slate-300">
-                  {t("step3Note")}
-                </p>
+              <div className="flex flex-col gap-8 pl-16">
+                {[
+                  { num: 1, Icon: Search, titleKey: "step1Title", descKey: "step1Desc", noteKey: "step1Example" },
+                  { num: 2, Icon: Upload, titleKey: "step2Title", descKey: "step2Desc", noteKey: "step2Note" },
+                  { num: 3, Icon: Download, titleKey: "step3Title", descKey: "step3Desc", noteKey: "step3Note" },
+                ].map(({ num, Icon, titleKey, descKey, noteKey }) => (
+                  <div key={num} className="flex flex-col">
+                    <div className="flex h-16 w-16 flex-shrink-0 flex-col items-center justify-center rounded-full bg-gradient-to-br from-sky-500 to-blue-600 text-slate-50 shadow-lg shadow-sky-500/25">
+                      <span className="text-xl font-bold leading-none">{num}</span>
+                      <Icon className="mt-1.5 h-5 w-5 opacity-95" strokeWidth={1.8} />
+                    </div>
+                    <h3 className="mt-3 text-sm font-semibold uppercase tracking-wide text-slate-200">
+                      {t(titleKey)}
+                    </h3>
+                    <p className="mt-1 text-sm text-slate-50">{t(descKey)}</p>
+                    <p className="mt-0.5 text-xs text-slate-400">{t(noteKey)}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </section>
 
-        <section id="tools" className="bg-slate-950 py-14 sm:py-16">
+        <section id="tools" ref={toolsSectionRef} className="bg-slate-950 py-14 sm:py-16">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div className="space-y-2">
@@ -252,42 +435,6 @@ export default function Home() {
               <span className="inline-flex items-center rounded-full border border-sky-400/30 bg-sky-400/10 px-3 py-1 text-xs font-medium text-sky-100">
                 {t("toolsCount", { count: filteredTools.length })}
               </span>
-            </div>
-
-            <div className="mb-10">
-              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-slate-400">
-                {t("popularToolsTitle")}
-              </h3>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {tools
-                  .filter((tool) => POPULAR_TOOL_IDS.includes(tool.id))
-                  .sort((a, b) => POPULAR_TOOL_IDS.indexOf(a.id) - POPULAR_TOOL_IDS.indexOf(b.id))
-                  .map((tool) => (
-                    <Link
-                      key={tool.id}
-                      href={`/${locale}${tool.href}`}
-                      prefetch
-                      className="group relative flex flex-col rounded-2xl border border-sky-400/20 bg-slate-800/90 p-6 shadow-lg transition-all duration-300 ease-in-out hover:border-sky-400/50 hover:bg-slate-800 hover:shadow-sky-500/10"
-                    >
-                      <span className="absolute right-4 top-4 rounded-full bg-amber-500/20 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-amber-200">
-                        {t("popularBadge")}
-                      </span>
-                      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl shadow-inner transition-transform group-hover:scale-105">
-                        <div className={`flex h-full w-full items-center justify-center rounded-xl ${tool.iconBg} text-slate-950`}>
-                          {(() => {
-                            const IconComponent = TOOL_ICONS[tool.id];
-                            return IconComponent ? <IconComponent size={24} strokeWidth={2} /> : null;
-                          })()}
-                        </div>
-                      </div>
-                      <h4 className="text-base font-semibold text-slate-50">{tool.label}</h4>
-                      <p className="mt-2 line-clamp-2 text-sm text-slate-300">{tool.short}</p>
-                      <span className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-sky-500/20 px-4 py-2.5 text-sm font-semibold text-sky-100 transition-colors group-hover:bg-sky-500 group-hover:text-slate-950">
-                        {tCommon("goToTool")}
-                      </span>
-                    </Link>
-                  ))}
-              </div>
             </div>
 
             <div className="flex flex-wrap gap-2">
@@ -307,34 +454,90 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {filteredTools.map((tool) => (
-                <Link
-                  key={tool.href}
-                  href={`/${locale}${tool.href}`}
-                  prefetch
-                  className="group flex flex-col rounded-2xl border border-white/10 bg-slate-900/80 p-5 shadow-sm transition-all duration-300 ease-in-out hover:border-sky-400/70 hover:bg-slate-900"
-                >
-                  <div className="mb-3 flex items-center justify-between">
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {showToolCardsSkeleton
+                ? Array.from({ length: 4 }).map((_, i) => (
                     <div
-                      className={`flex h-9 w-9 items-center justify-center rounded-xl ${tool.iconBg} text-slate-950`}
+                      key={`skeleton-${i}`}
+                      className="relative flex flex-col rounded-2xl border border-white/10 bg-slate-900/80 p-5"
+                      aria-hidden
                     >
-                      {(() => {
-                        const IconComponent = TOOL_ICONS[tool.id];
-                        return IconComponent ? <IconComponent size={20} strokeWidth={2} /> : null;
-                      })()}
+                      <div className="absolute right-4 top-4 h-6 w-16 animate-pulse rounded-full bg-slate-700/80" />
+                      <div className="mb-4 h-14 w-14 animate-pulse rounded-2xl bg-slate-700/80" />
+                      <div className="h-5 w-3/4 animate-pulse rounded bg-slate-700/80" />
+                      <div className="mt-2 h-4 w-full animate-pulse rounded bg-slate-700/60" />
+                      <div className="mt-2 h-4 w-2/3 animate-pulse rounded bg-slate-700/60" />
+                      <div className="mt-4 h-6 w-20 animate-pulse rounded-full bg-slate-700/60" />
                     </div>
-                    <span className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-2 py-1 text-[10px] font-medium text-emerald-100">
-                      {tCommon("open")}
-                    </span>
-                  </div>
-                  <h3 className="text-sm font-semibold">{tool.label}</h3>
-                  <p className="mt-1.5 text-xs text-slate-300">{tool.short}</p>
-                  <span className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-slate-100/10 px-3 py-2 text-xs font-semibold text-slate-100 transition-colors group-hover:bg-sky-400 group-hover:text-slate-950">
-                    {tCommon("goToTool")}
-                  </span>
-                </Link>
-              ))}
+                  ))
+                : filteredTools.map((tool, index) => {
+                    const IconComponent = TOOL_ICONS[tool.id];
+                    const categoryStyle = CATEGORY_TAG_STYLES[tool.category] || CATEGORY_TAG_STYLES.images;
+                    const categoryLabel = t(`filter${tool.category === "images" ? "Images" : tool.category === "pdf" ? "Pdf" : "Video"}`);
+                    const showTooltip = comingSoonTooltipId === tool.id;
+
+                    const cardContent = (
+                      <>
+                        <span
+                          className={`absolute right-4 top-4 rounded-full border px-2.5 py-1 text-[10px] font-medium ${
+                            tool.active
+                              ? "border-emerald-400/30 bg-emerald-500/20 text-emerald-300"
+                              : "border-slate-500/50 bg-slate-500/20 text-slate-400"
+                          }`}
+                        >
+                          {tool.active ? t("badgeAvailable") : t("badgeComingSoon")}
+                        </span>
+                        <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-800/80 text-slate-200 transition-transform duration-300 group-hover:scale-105">
+                          {IconComponent ? <IconComponent size={32} strokeWidth={1.75} /> : null}
+                        </div>
+                        <h3 className="text-base font-semibold text-slate-50">{tool.label}</h3>
+                        <p className="mt-1.5 line-clamp-2 text-sm text-slate-400">{tool.short}</p>
+                        <span className={`mt-4 inline-flex w-fit rounded-full border px-3 py-1 text-[11px] font-medium ${categoryStyle}`}>
+                          {categoryLabel}
+                        </span>
+                        <span className="mt-5 flex items-center justify-end gap-1 text-sky-400 opacity-0 transition-all duration-300 group-hover:opacity-100">
+                          <ArrowRight size={18} strokeWidth={2} />
+                        </span>
+                        {showTooltip && !tool.active && (
+                          <div
+                            className="absolute inset-x-4 bottom-4 rounded-lg border border-sky-500/30 bg-slate-900 px-3 py-2 text-xs text-sky-200 shadow-lg"
+                            role="tooltip"
+                          >
+                            {t("tooltipComingSoon")}
+                          </div>
+                        )}
+                      </>
+                    );
+
+                    const cardBase = `group relative flex flex-col rounded-2xl border border-white/10 bg-slate-900/80 p-5 shadow-md transition-all duration-300 ease-out tool-card-enter ${toolsInView ? "tool-card-visible" : ""}`;
+                    const cardStyle = { transitionDelay: `${index * 50}ms` };
+
+                    if (tool.active) {
+                      return (
+                        <Link
+                          key={tool.id}
+                          href={`/${locale}${tool.href}`}
+                          prefetch
+                          className={`${cardBase} hover:-translate-y-1 hover:border-sky-400/30 hover:shadow-xl hover:shadow-sky-500/10`}
+                          style={cardStyle}
+                        >
+                          {cardContent}
+                        </Link>
+                      );
+                    }
+
+                    return (
+                      <button
+                        key={tool.id}
+                        type="button"
+                        onClick={() => setComingSoonTooltipId((prev) => (prev === tool.id ? null : tool.id))}
+                        className={`${cardBase} text-left opacity-75 hover:border-slate-500 hover:opacity-90 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-sky-500/30`}
+                        style={cardStyle}
+                      >
+                        {cardContent}
+                      </button>
+                    );
+                  })}
             </div>
           </div>
         </section>
@@ -365,90 +568,117 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="border-t border-white/10 bg-slate-950">
-        <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
+      {/* Back to top — fixed bottom-right, visible after 300px scroll */}
+      <button
+        type="button"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className={`fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-sky-500 text-slate-950 shadow-lg shadow-sky-500/30 transition-all duration-300 hover:bg-sky-400 hover:shadow-sky-400/40 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:ring-offset-slate-950 ${
+          showBackToTop ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-2 opacity-0"
+        }`}
+        aria-label={tCommon("footer.backToTop")}
+      >
+        <ChevronUp size={24} strokeWidth={2} />
+      </button>
+
+      <footer className="border-t border-white/10 text-white" style={{ backgroundColor: "#0f172a" }}>
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="space-y-3">
+            {/* Col 1: Logo + description + social */}
+            <div className="space-y-4">
               <Link href={`/${locale}/`} className="inline-block">
-                <img src="/fileflip-logo.svg" alt={tCommon("siteName")} className="h-8 w-auto" width={120} height={32} />
+                <img src="/fileflip-logo.svg" alt={tCommon("siteName")} className="h-8 w-auto brightness-0 invert" width={120} height={32} />
               </Link>
-              <p className="text-xs leading-relaxed text-slate-400">
+              <p className="text-sm leading-relaxed text-slate-200">
                 {tCommon("footer.description1")}
                 <br />
                 {tCommon("footer.description2")}
               </p>
+              <div className="flex gap-3">
+                <a href="#" aria-label="Twitter / X" className="text-slate-300 transition hover:text-white">
+                  <Twitter size={20} strokeWidth={1.5} />
+                </a>
+                <a href="#" aria-label="GitHub" className="text-slate-300 transition hover:text-white">
+                  <Github size={20} strokeWidth={1.5} />
+                </a>
+                <a href="#" aria-label="LinkedIn" className="text-slate-300 transition hover:text-white">
+                  <Linkedin size={20} strokeWidth={1.5} />
+                </a>
+              </div>
             </div>
+            {/* Col 2: Tools */}
             <div>
-              <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-300">
-                {tCommon("footer.toolsImages")}
+              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-white">
+                {tCommon("footer.toolsTitle")}
               </h3>
               <ul className="space-y-2">
-                {tools
-                  .filter((t) => t.category === "images")
-                  .map((tool) => (
-                    <li key={tool.id}>
-                      <Link
-                        href={`/${locale}${tool.href}`}
-                        className="text-xs text-slate-400 transition-colors hover:text-sky-400"
-                      >
-                        {tool.label}
-                      </Link>
-                    </li>
-                  ))}
+                {tools.map((tool) => (
+                  <li key={tool.id}>
+                    <Link
+                      href={`/${locale}${tool.href}`}
+                      className="text-sm text-slate-300 transition-colors hover:text-white"
+                    >
+                      {tool.label}
+                    </Link>
+                  </li>
+                ))}
+                <li className="text-sm text-slate-400">{tCommon("footer.moreComingSoon")}</li>
               </ul>
             </div>
+            {/* Col 3: Company */}
             <div>
-              <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-300">
-                {tCommon("footer.toolsPdfVideo")}
-              </h3>
-              <ul className="space-y-2">
-                {tools
-                  .filter((t) => t.category === "pdf" || t.category === "video")
-                  .map((tool) => (
-                    <li key={tool.id}>
-                      <Link
-                        href={`/${locale}${tool.href}`}
-                        className="text-xs text-slate-400 transition-colors hover:text-sky-400"
-                      >
-                        {tool.label}
-                      </Link>
-                    </li>
-                  ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-300">
-                {tCommon("footer.usefulLinks")}
+              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-white">
+                {tCommon("footer.companyTitle")}
               </h3>
               <ul className="space-y-2">
                 <li>
-                  <Link href={`/${locale}/#tools`} className="text-xs text-slate-400 transition-colors hover:text-sky-400">
-                    {tCommon("footer.allTools")}
-                  </Link>
-                </li>
-                <li>
-                  <Link href={`/${locale}/privacy`} className="text-xs text-slate-400 transition-colors hover:text-sky-400">
+                  <Link href={`/${locale}/privacy`} className="text-sm text-slate-300 transition-colors hover:text-white">
                     {tCommon("footer.privacy")}
                   </Link>
                 </li>
                 <li>
-                  <Link href={`/${locale}/terms`} className="text-xs text-slate-400 transition-colors hover:text-sky-400">
+                  <Link href={`/${locale}/terms`} className="text-sm text-slate-300 transition-colors hover:text-white">
                     {tCommon("footer.terms")}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/sitemap.xml" className="text-xs text-slate-400 transition-colors hover:text-sky-400">
+                  <Link href={`/${locale}/contact`} className="text-sm text-slate-300 transition-colors hover:text-white">
+                    {tCommon("footer.contact")}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/sitemap.xml" className="text-sm text-slate-300 transition-colors hover:text-white">
                     {tCommon("footer.sitemap")}
                   </Link>
                 </li>
               </ul>
             </div>
+            {/* Col 4: Languages */}
+            <div>
+              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-white">
+                {tCommon("footer.languagesTitle")}
+              </h3>
+              <ul className="space-y-2">
+                {locales.map((loc) => (
+                  <li key={loc}>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        try {
+                          localStorage.setItem("NEXT_LOCALE", loc);
+                        } catch (_) {}
+                        router.replace(pathname, { locale: loc });
+                      }}
+                      className={`text-left text-sm transition-colors hover:text-white ${locale === loc ? "font-medium text-white" : "text-slate-300"}`}
+                    >
+                      {localeNames[loc] ?? loc}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-          <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-slate-400 sm:flex-row">
-            <p>
-              © {year} {tCommon("siteName")} · {tCommon("footer.copyright")}
-            </p>
-            <LanguageSwitcher />
+          <div className="mt-10 border-t border-white/10 pt-6 text-center text-sm text-slate-300">
+            © {year} {tCommon("siteName")} · {tCommon("footer.madeWith")} · {tCommon("footer.processedLocally")}
           </div>
         </div>
       </footer>

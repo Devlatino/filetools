@@ -129,7 +129,7 @@ export default function HeicToJpgPage() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50">
       <header className="border-b border-white/10 bg-slate-950/80 backdrop-blur">
-        <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <Link href={`/${locale}/`} prefetch className="flex items-center gap-2">
             <img src="/fileflip-logo.svg" alt={tCommon("siteName")} className="h-9 w-auto" width={140} height={36} />
             <span className="text-sm text-slate-400">{t("label")}</span>
@@ -137,13 +137,15 @@ export default function HeicToJpgPage() {
           <LanguageSwitcher />
         </div>
       </header>
-      <main className="mx-auto flex max-w-4xl flex-1 flex-col gap-8 px-4 py-10 sm:px-6 lg:px-8">
+      <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
         <Breadcrumb locale={locale} homeLabel={tCommon("breadcrumbHome")} toolsLabel={tCommon("nav.tools")} toolLabel={t("label")} toolPath="heic-to-jpg" />
-        <section className="space-y-4">
-          <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">{t("metaTitle")}</h1>
-          <p className="max-w-xl text-sm text-slate-300">{t("metaDescription")}</p>
-        </section>
-        <section className="rounded-2xl border border-white/10 bg-slate-900/80 p-4 sm:p-6">
+        <div className="mt-6 grid gap-10 lg:grid-cols-[1fr_340px]">
+          <section className="space-y-6">
+            <div>
+              <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">{t("metaTitle")}</h1>
+              <p className="mt-1 text-sm text-slate-300">{t("metaDescription")}</p>
+            </div>
+            <section className="rounded-2xl border border-white/10 bg-slate-900/80 p-4 sm:p-6">
           <ToolSteps currentStep={currentStep}>
             <ToolSteps.Step title={t("step1")}>
               <label className="inline-flex cursor-pointer items-center rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400">
@@ -218,10 +220,14 @@ export default function HeicToJpgPage() {
             </ToolSteps.Step>
           </ToolSteps>
           {error && <p className="mt-4 text-xs text-red-400">{error}</p>}
-        </section>
-        <RelatedTools locale={locale} currentSlug="heic-to-jpg" />
-        <EditorialSection namespace="tools.heicToJpg" />
-        <FaqSection namespace="tools.heicToJpg" />
+            </section>
+          </section>
+          <aside className="space-y-8 lg:max-w-[340px]">
+            <EditorialSection namespace="tools.heicToJpg" />
+            <FaqSection namespace="tools.heicToJpg" />
+            <RelatedTools locale={locale} currentSlug="heic-to-jpg" />
+          </aside>
+        </div>
       </main>
     </div>
   );

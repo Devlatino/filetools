@@ -12,6 +12,10 @@
   --font-mono: var(--font-geist-mono);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -92,4 +96,83 @@ body {
 
 .animate-download-enter {
   animation: download-enter 0.35s ease-out forwards;
+}
+
+/* Hero mesh gradient — slow drift */
+@keyframes mesh-drift-1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.4;
+  }
+  33% {
+    transform: translate(8%, -5%) scale(1.08);
+    opacity: 0.5;
+  }
+  66% {
+    transform: translate(-5%, 6%) scale(0.95);
+    opacity: 0.35;
+  }
+}
+
+@keyframes mesh-drift-2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.35;
+  }
+  33% {
+    transform: translate(-10%, 4%) scale(1.1);
+    opacity: 0.45;
+  }
+  66% {
+    transform: translate(6%, -8%) scale(0.92);
+    opacity: 0.3;
+  }
+}
+
+@keyframes mesh-drift-3 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(5%, 10%) scale(1.05);
+    opacity: 0.4;
+  }
+}
+
+.animate-mesh-1 {
+  animation: mesh-drift-1 25s ease-in-out infinite;
+}
+
+.animate-mesh-2 {
+  animation: mesh-drift-2 28s ease-in-out infinite;
+}
+
+.animate-mesh-3 {
+  animation: mesh-drift-3 22s ease-in-out infinite;
+}
+
+/* Social proof marquee — horizontal scroll on mobile */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+/* Tool card staggered entrance */
+.tool-card-enter {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+.tool-card-enter.tool-card-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
