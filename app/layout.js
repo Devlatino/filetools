@@ -33,6 +33,9 @@ export const metadata = {
     icon: "/fileflip-icon.svg",
     apple: "/fileflip-icon.svg",
   },
+  verification: {
+    yandex: "f5df28b63112bd7a",
+  },
 };
 
 export default async function RootLayout({ children }) {

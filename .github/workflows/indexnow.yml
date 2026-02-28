@@ -1,21 +1,31 @@
-# After each push to main, wait for Vercel deploy then ping IndexNow with all site URLs.
-# Add INDEXNOW_SECRET in: Repository → Settings → Secrets and variables → Actions
 name: Ping IndexNow after deploy
+
 on:
   push:
     branches: [main]
+
 jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
       - name: Wait for Vercel deploy
-        run: sleep 60
+        run: sleep 120
+
       - name: Ping IndexNow
         run: |
-          res=$(curl -s -w "\n%{http_code}" -X GET \
+          RESPONSE=$(curl -s -o /tmp/response.txt -w "%{http_code}" \
+            -L \
+            -X GET \
             -H "x-indexnow-secret: ${{ secrets.INDEXNOW_SECRET }}" \
             https://fileflip.org/api/indexnow)
-          body=$(echo "$res" | head -n -1)
-          code=$(echo "$res" | tail -n 1)
-          echo "Response ($code): $body"
-          if [ "$code" != "200" ]; then exit 1; fi
+          
+          echo "HTTP Status: $RESPONSE"
+          echo "Response body:"
+          cat /tmp/response.txt
+          
+          if [ "$RESPONSE" -ne 200 ]; then
+            echo "❌ IndexNow ping failed with status $RESPONSE"
+            exit 1
+          else
+            echo "✅ IndexNow ping successful"
+          fi
