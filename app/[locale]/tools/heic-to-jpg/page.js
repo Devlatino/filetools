@@ -225,9 +225,15 @@ export default function HeicToJpgPage() {
           </section>
           <aside className="space-y-8 lg:max-w-[340px]">
             <EditorialSection namespace="tools.heicToJpg" />
-            <FaqSection namespace="tools.heicToJpg" />
-            <RelatedTools locale={locale} currentSlug="heic-to-jpg" />
           </aside>
+        </div>
+
+        <div className="mt-10">
+          <RelatedTools locale={locale} currentSlug="heic-to-jpg" />
+        </div>
+
+        <div className="mt-10">
+          <FaqSection namespace="tools.heicToJpg" />
         </div>
       </main>
     </div>

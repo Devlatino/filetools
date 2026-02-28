@@ -316,9 +316,15 @@ export default function MergePdfPage() {
 
           <aside className="space-y-8 lg:max-w-[340px]">
             <EditorialSection namespace="tools.mergePdf" />
-            <FaqSection namespace="tools.mergePdf" />
-            <RelatedTools locale={locale} currentSlug="merge-pdf" />
           </aside>
+        </div>
+
+        <div className="mt-10">
+          <RelatedTools locale={locale} currentSlug="merge-pdf" />
+        </div>
+
+        <div className="mt-10">
+          <FaqSection namespace="tools.mergePdf" />
         </div>
       </main>
     </div>

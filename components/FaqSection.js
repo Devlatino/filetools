@@ -38,32 +38,30 @@ export function FaqSection({ namespace, faqs: faqsProp }) {
   return (
     <section
       id="faq"
-      className="border-t border-white/10 bg-slate-950 py-10 sm:py-12"
+      className="rounded-2xl border border-white/10 bg-slate-900/40 py-8 sm:py-10"
       aria-labelledby="faq-heading"
     >
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <h2
-          id="faq-heading"
-          className="mb-6 text-lg font-semibold text-slate-50 sm:text-xl"
-        >
-          {heading}
-        </h2>
-        <dl className="space-y-5">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="rounded-xl border border-white/10 bg-slate-900/60 p-4"
-            >
-              <dt className="font-medium text-slate-50">
-                {faq.question}
-              </dt>
-              <dd className="mt-2 text-sm leading-relaxed text-slate-300">
-                {faq.answer}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </div>
+      <h2
+        id="faq-heading"
+        className="mb-6 px-1 text-lg font-semibold text-slate-50 sm:text-xl"
+      >
+        {heading}
+      </h2>
+      <dl className="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2">
+        {faqs.map((faq, index) => (
+          <div
+            key={index}
+            className="rounded-xl border border-white/10 bg-slate-900/60 p-4"
+          >
+            <dt className="font-medium text-slate-50">
+              {faq.question}
+            </dt>
+            <dd className="mt-2 text-sm leading-relaxed text-slate-300">
+              {faq.answer}
+            </dd>
+          </div>
+        ))}
+      </dl>
     </section>
   );
 }

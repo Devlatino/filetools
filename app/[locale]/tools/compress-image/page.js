@@ -501,12 +501,20 @@ export default function CompressImagePage() {
             )}
           </section>
 
-          {/* Right column: info, FAQ, related */}
+          {/* Right column: solo spiegazione funzionamento */}
           <aside className="space-y-8 lg:max-w-[340px]">
             <EditorialSection namespace="tools.compressImage" />
-            <FaqSection namespace="tools.compressImage" />
-            <RelatedTools locale={locale} currentSlug="compress-image" />
           </aside>
+        </div>
+
+        {/* Tools correlati: a capo, full width */}
+        <div className="mt-10">
+          <RelatedTools locale={locale} currentSlug="compress-image" />
+        </div>
+
+        {/* FAQ: a capo, griglia righe/colonne */}
+        <div className="mt-10">
+          <FaqSection namespace="tools.compressImage" />
         </div>
       </main>
     </div>
