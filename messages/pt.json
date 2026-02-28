@@ -1,4 +1,56 @@
 {
+  "nav": {
+    "home": "Início",
+    "tools": "Todas as ferramentas",
+    "about": "Sobre"
+  },
+  "hero": {
+    "title": "Ferramentas de ficheiros online grátis",
+    "subtitle": "Converte, comprime e transforma os teus ficheiros instantaneamente. Sem registo.",
+    "cta": "Explorar ferramentas"
+  },
+  "tool": {
+    "upload": "Clica para carregar ou arrasta aqui",
+    "download": "Descarregar",
+    "processing": "A processar...",
+    "done": "Concluído!",
+    "error": "Algo correu mal, tenta novamente",
+    "fileSize": "Tamanho do ficheiro",
+    "format": "Formato",
+    "quality": "Qualidade",
+    "copy": "Copiar",
+    "copied": "Copiado!",
+    "clear": "Limpar",
+    "reset": "Repor",
+    "preview": "Pré-visualizar",
+    "result": "Resultado",
+    "original": "Original",
+    "compressed": "Comprimido",
+    "selectFile": "Selecionar ficheiro",
+    "dropHere": "Larga o ficheiro aqui",
+    "maxSize": "Tamanho máximo",
+    "relatedTools": "Ferramentas relacionadas",
+    "faq": "Perguntas frequentes"
+  },
+  "freemium": {
+    "limitReached": "Limite diário atingido",
+    "upgradeMessage": "Usaste as 3 conversões gratuitas de hoje. Regista-te para acesso ilimitado.",
+    "signUp": "Registar gratuitamente",
+    "alreadyMember": "Já tens conta? Entrar"
+  },
+  "footer": {
+    "rights": "Todos os direitos reservados",
+    "privacy": "Política de privacidade",
+    "terms": "Termos de serviço",
+    "contact": "Contacto"
+  },
+  "categories": {
+    "images": "Imagens",
+    "pdf": "PDF",
+    "video": "Vídeo",
+    "text": "Texto e código",
+    "utility": "Utilidades"
+  },
   "common": {
     "siteName": "FileFlip",
     "tagline": "Converter e comprimir ficheiros",

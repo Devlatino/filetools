@@ -38,15 +38,23 @@ const TOOL_PATHS = [
 
 /**
  * Build alternates.languages for a path segment (e.g. "" for home or "/tools/compress-image").
- * Returns absolute URLs for all locales plus x-default (English).
+ * With localePrefix 'as-needed', default locale (en) has no URL prefix.
  */
 function buildAlternatesLanguages(pathSegment) {
   const languages = {};
   for (const loc of routing.locales) {
-    const path = pathSegment ? `/${loc}${pathSegment}` : `/${loc}`;
+    const path =
+      loc === routing.defaultLocale
+        ? pathSegment || ""
+        : pathSegment
+          ? `/${loc}${pathSegment}`
+          : `/${loc}`;
     languages[loc] = `${BASE_URL}${path}`;
   }
-  languages["x-default"] = pathSegment ? `${BASE_URL}/en${pathSegment}` : `${BASE_URL}/en`;
+  languages["x-default"] =
+    routing.defaultLocale === "en"
+      ? `${BASE_URL}${pathSegment || ""}`
+      : `${BASE_URL}/en${pathSegment || ""}`;
   return languages;
 }
 
@@ -61,8 +69,9 @@ export default function sitemap() {
 
   const homeLanguages = buildAlternatesLanguages("");
   for (const locale of routing.locales) {
+    const path = locale === routing.defaultLocale ? "" : `/${locale}`;
     entries.push({
-      url: `${BASE_URL}/${locale}`,
+      url: `${BASE_URL}${path}`,
       lastModified,
       changeFrequency: "weekly",
       priority: 1.0,
@@ -73,8 +82,10 @@ export default function sitemap() {
   for (const path of TOOL_PATHS) {
     const toolLanguages = buildAlternatesLanguages(path);
     for (const locale of routing.locales) {
+      const pathPrefix =
+        locale === routing.defaultLocale ? "" : `/${locale}`;
       entries.push({
-        url: `${BASE_URL}/${locale}${path}`,
+        url: `${BASE_URL}${pathPrefix}${path}`,
         lastModified,
         changeFrequency: "monthly",
         priority: 0.8,

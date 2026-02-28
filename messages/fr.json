@@ -1,4 +1,56 @@
 {
+  "nav": {
+    "home": "Accueil",
+    "tools": "Tous les outils",
+    "about": "À propos"
+  },
+  "hero": {
+    "title": "Outils pour fichiers en ligne gratuits",
+    "subtitle": "Convertissez, compressez et transformez vos fichiers instantanément. Sans inscription.",
+    "cta": "Découvrir les outils"
+  },
+  "tool": {
+    "upload": "Cliquez pour envoyer ou glissez-déposez",
+    "download": "Télécharger",
+    "processing": "Traitement...",
+    "done": "Terminé !",
+    "error": "Une erreur s'est produite, réessayez",
+    "fileSize": "Taille du fichier",
+    "format": "Format",
+    "quality": "Qualité",
+    "copy": "Copier",
+    "copied": "Copié !",
+    "clear": "Effacer",
+    "reset": "Réinitialiser",
+    "preview": "Aperçu",
+    "result": "Résultat",
+    "original": "Original",
+    "compressed": "Comprimé",
+    "selectFile": "Sélectionner un fichier",
+    "dropHere": "Déposez le fichier ici",
+    "maxSize": "Taille maximale",
+    "relatedTools": "Outils associés",
+    "faq": "Questions fréquentes"
+  },
+  "freemium": {
+    "limitReached": "Limite quotidienne atteinte",
+    "upgradeMessage": "Vous avez utilisé vos 3 conversions gratuites aujourd'hui. Inscrivez-vous pour un accès illimité.",
+    "signUp": "S'inscrire gratuitement",
+    "alreadyMember": "Déjà inscrit ? Connexion"
+  },
+  "footer": {
+    "rights": "Tous droits réservés",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "contact": "Contact"
+  },
+  "categories": {
+    "images": "Images",
+    "pdf": "PDF",
+    "video": "Vidéo",
+    "text": "Texte et code",
+    "utility": "Utilitaires"
+  },
   "common": {
     "siteName": "FileFlip",
     "tagline": "Convertir et compresser des fichiers",

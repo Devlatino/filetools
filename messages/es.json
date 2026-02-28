@@ -1,4 +1,56 @@
 {
+  "nav": {
+    "home": "Inicio",
+    "tools": "Todas las herramientas",
+    "about": "Acerca de"
+  },
+  "hero": {
+    "title": "Herramientas de archivos online gratis",
+    "subtitle": "Convierte, comprime y transforma tus archivos al instante. Sin registro.",
+    "cta": "Explorar herramientas"
+  },
+  "tool": {
+    "upload": "Haz clic para subir o arrastra aqui",
+    "download": "Descargar",
+    "processing": "Procesando...",
+    "done": "Listo!",
+    "error": "Algo ha fallado, intentalo de nuevo",
+    "fileSize": "Tamano",
+    "format": "Formato",
+    "quality": "Calidad",
+    "copy": "Copiar",
+    "copied": "Copiado!",
+    "clear": "Limpiar",
+    "reset": "Restablecer",
+    "preview": "Vista previa",
+    "result": "Resultado",
+    "original": "Original",
+    "compressed": "Comprimido",
+    "selectFile": "Seleccionar archivo",
+    "dropHere": "Suelta el archivo aqui",
+    "maxSize": "Tamano maximo",
+    "relatedTools": "Herramientas relacionadas",
+    "faq": "Preguntas frecuentes"
+  },
+  "freemium": {
+    "limitReached": "Limite diario alcanzado",
+    "upgradeMessage": "Has usado tus 3 conversiones gratuitas de hoy. Registrate para acceso ilimitado.",
+    "signUp": "Registrarse gratis",
+    "alreadyMember": "Ya tienes cuenta? Inicia sesion"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados",
+    "privacy": "Politica de privacidad",
+    "terms": "Terminos de servicio",
+    "contact": "Contacto"
+  },
+  "categories": {
+    "images": "Imagenes",
+    "pdf": "PDF",
+    "video": "Video",
+    "text": "Texto y codigo",
+    "utility": "Utilidades"
+  },
   "common": {
     "siteName": "FileFlip",
     "tagline": "Convierte y comprime archivos",

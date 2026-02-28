@@ -7,6 +7,7 @@ import { getToolFaq } from "@/lib/toolFaqs";
 import { FaqSection } from "@/components/FaqSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 export default function SvgToPngPage() {
   const locale = useLocale();
@@ -72,6 +73,7 @@ export default function SvgToPngPage() {
             <img src="/fileflip-logo.svg" alt={tCommon("siteName")} className="h-9 w-auto" width={140} height={36} />
             <span className="text-sm text-slate-400">{t("label")}</span>
           </Link>
+          <LanguageSwitcher />
         </div>
       </header>
 

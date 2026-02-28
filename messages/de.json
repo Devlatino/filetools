@@ -1,79 +1,79 @@
 {
   "nav": {
-    "home": "Home",
-    "tools": "All Tools",
-    "about": "About"
+    "home": "Startseite",
+    "tools": "Alle Tools",
+    "about": "Über uns"
   },
   "hero": {
-    "title": "Free Online File Tools",
-    "subtitle": "Convert, compress and transform your files instantly. No signup required.",
-    "cta": "Explore Tools"
+    "title": "Kostenlose Online-Datei-Tools",
+    "subtitle": "Konvertieren, komprimieren und transformieren Sie Ihre Dateien sofort. Keine Anmeldung nötig.",
+    "cta": "Tools entdecken"
   },
   "tool": {
-    "upload": "Click to upload or drag and drop",
-    "download": "Download",
-    "processing": "Processing...",
-    "done": "Done!",
-    "error": "Something went wrong, please try again",
-    "fileSize": "File size",
+    "upload": "Klicken zum Hochladen oder Datei hierher ziehen",
+    "download": "Herunterladen",
+    "processing": "Wird verarbeitet...",
+    "done": "Fertig!",
+    "error": "Etwas ist schiefgelaufen, bitte erneut versuchen",
+    "fileSize": "Dateigröße",
     "format": "Format",
-    "quality": "Quality",
-    "copy": "Copy",
-    "copied": "Copied!",
-    "clear": "Clear",
-    "reset": "Reset",
-    "preview": "Preview",
-    "result": "Result",
+    "quality": "Qualität",
+    "copy": "Kopieren",
+    "copied": "Kopiert!",
+    "clear": "Löschen",
+    "reset": "Zurücksetzen",
+    "preview": "Vorschau",
+    "result": "Ergebnis",
     "original": "Original",
-    "compressed": "Compressed",
-    "selectFile": "Select file",
-    "dropHere": "Drop file here",
-    "maxSize": "Maximum file size",
-    "relatedTools": "Related Tools",
-    "faq": "Frequently Asked Questions"
+    "compressed": "Komprimiert",
+    "selectFile": "Datei auswählen",
+    "dropHere": "Datei hier ablegen",
+    "maxSize": "Maximale Dateigröße",
+    "relatedTools": "Ähnliche Tools",
+    "faq": "Häufig gestellte Fragen"
   },
   "freemium": {
-    "limitReached": "Daily limit reached",
-    "upgradeMessage": "You've used your 3 free conversions today. Sign up for unlimited access.",
-    "signUp": "Sign Up Free",
-    "alreadyMember": "Already a member? Log in"
+    "limitReached": "Tageslimit erreicht",
+    "upgradeMessage": "Sie haben heute Ihre 3 kostenlosen Konvertierungen genutzt. Melden Sie sich für unbegrenzten Zugang an.",
+    "signUp": "Kostenlos registrieren",
+    "alreadyMember": "Bereits Mitglied? Anmelden"
   },
   "footer": {
-    "rights": "All rights reserved",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Service",
-    "contact": "Contact"
+    "rights": "Alle Rechte vorbehalten",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen",
+    "contact": "Kontakt"
   },
   "categories": {
-    "images": "Images",
+    "images": "Bilder",
     "pdf": "PDF",
     "video": "Video",
     "text": "Text & Code",
-    "utility": "Utility"
+    "utility": "Werkzeuge"
   },
   "common": {
     "siteName": "FileFlip",
-    "tagline": "Convert and compress files",
+    "tagline": "Dateien konvertieren und komprimieren",
     "nav": {
       "tools": "Tools",
-      "howItWorks": "How it works",
+      "howItWorks": "So funktioniert es",
       "faq": "FAQ"
     },
     "footer": {
-      "copyright": "A project to make files easier to manage.",
-      "privacy": "Privacy",
-      "terms": "Terms",
-      "backToTop": "Back to top"
+      "copyright": "Ein Projekt, um Dateien einfacher zu verwalten.",
+      "privacy": "Datenschutz",
+      "terms": "Nutzungsbedingungen",
+      "backToTop": "Nach oben"
     },
-    "open": "Open",
-    "goToTool": "Go to tool →",
-    "breadcrumbHome": "Home",
-    "relatedTools": "Related tools",
-    "faqSectionTitle": "Frequently asked questions",
-    "download": "Download",
-    "copy": "Copy",
-    "preview": "Preview",
-    "converting": "Converting…"
+    "open": "Öffnen",
+    "goToTool": "Zum Tool →",
+    "breadcrumbHome": "Startseite",
+    "relatedTools": "Ähnliche Tools",
+    "faqSectionTitle": "Häufig gestellte Fragen",
+    "download": "Herunterladen",
+    "copy": "Kopieren",
+    "preview": "Vorschau",
+    "converting": "Wird konvertiert…"
   },
   "home": {
     "badge": "100% free • No account • Everything in the browser",

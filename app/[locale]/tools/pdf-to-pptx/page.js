@@ -8,6 +8,7 @@ import { getToolFaq } from "@/lib/toolFaqs";
 import { FaqSection } from "@/components/FaqSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 let pdfjsLib = null;
 async function getPdfJs() {
@@ -109,6 +110,7 @@ export default function PdfToPptxPage() {
             <img src="/fileflip-logo.svg" alt={tCommon("siteName")} className="h-9 w-auto" width={140} height={36} />
             <span className="text-sm text-slate-400">{t("label")}</span>
           </Link>
+          <LanguageSwitcher />
         </div>
       </header>
       <main className="mx-auto flex max-w-4xl flex-1 flex-col gap-8 px-4 py-10 sm:px-6 lg:px-8">

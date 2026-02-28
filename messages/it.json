@@ -1,4 +1,56 @@
 {
+  "nav": {
+    "home": "Home",
+    "tools": "Tutti i tool",
+    "about": "Chi siamo"
+  },
+  "hero": {
+    "title": "Tool per file online gratuiti",
+    "subtitle": "Converti, comprimi e trasforma i tuoi file all'istante. Nessuna registrazione.",
+    "cta": "Scopri i tool"
+  },
+  "tool": {
+    "upload": "Clicca per caricare o trascina qui",
+    "download": "Scarica",
+    "processing": "Elaborazione...",
+    "done": "Fatto!",
+    "error": "Qualcosa è andato storto, riprova",
+    "fileSize": "Dimensione file",
+    "format": "Formato",
+    "quality": "Qualità",
+    "copy": "Copia",
+    "copied": "Copiato!",
+    "clear": "Svuota",
+    "reset": "Reimposta",
+    "preview": "Anteprima",
+    "result": "Risultato",
+    "original": "Originale",
+    "compressed": "Compresso",
+    "selectFile": "Seleziona file",
+    "dropHere": "Trascina il file qui",
+    "maxSize": "Dimensione massima",
+    "relatedTools": "Tool correlati",
+    "faq": "Domande frequenti"
+  },
+  "freemium": {
+    "limitReached": "Limite giornaliero raggiunto",
+    "upgradeMessage": "Hai usato le 3 conversioni gratuite di oggi. Registrati per accesso illimitato.",
+    "signUp": "Registrati gratis",
+    "alreadyMember": "Già iscritto? Accedi"
+  },
+  "footer": {
+    "rights": "Tutti i diritti riservati",
+    "privacy": "Privacy",
+    "terms": "Termini di servizio",
+    "contact": "Contatti"
+  },
+  "categories": {
+    "images": "Immagini",
+    "pdf": "PDF",
+    "video": "Video",
+    "text": "Testo e codice",
+    "utility": "Utility"
+  },
   "common": {
     "siteName": "FileFlip",
     "tagline": "Converti e comprimi file",

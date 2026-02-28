@@ -37,7 +37,7 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   const locale = await getLocale();
-  const dir = locale === "ar" ? "rtl" : "ltr";
+  const dir = "ltr";
   return (
     <html lang={locale} dir={dir}>
       <head>

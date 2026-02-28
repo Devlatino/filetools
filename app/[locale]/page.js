@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useMemo, useState, useRef, useCallback, useEffect } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 const TOOL_IDS = [
   { id: "compressImage", href: "/tools/compress-image", icon: "IMG", iconBg: "bg-sky-500" },
@@ -78,7 +79,7 @@ export default function Home() {
                 {tCommon("nav.faq")}
               </a>
             </div>
-            <LanguageSwitcher currentLocale={locale} />
+            <LanguageSwitcher />
           </nav>
         </div>
       </header>
@@ -282,68 +283,3 @@ export default function Home() {
   );
 }
 
-function LanguageSwitcher({ currentLocale }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const menuRef = useRef(null);
-
-  const locales = [
-    { code: "en", name: "English" },
-    { code: "it", name: "Italiano" },
-    { code: "es", name: "Español" },
-    { code: "zh", name: "中文" },
-    { code: "hi", name: "हिन्दी" },
-    { code: "ar", name: "العربية" },
-    { code: "pt", name: "Português" },
-    { code: "fr", name: "Français" },
-  ];
-
-  const toggle = useCallback(() => {
-    setIsOpen((prev) => !prev);
-  }, []);
-
-  useEffect(() => {
-    if (!isOpen) return;
-    const handleClickOutside = (e) => {
-      if (menuRef.current && !menuRef.current.contains(e.target)) {
-        setIsOpen(false);
-      }
-    };
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
-  }, [isOpen]);
-
-  return (
-    <div className={`relative ${isOpen ? "z-[60]" : ""}`} ref={menuRef}>
-      <button
-        type="button"
-        onClick={toggle}
-        className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-slate-900/80 px-2.5 py-1.5 text-xs font-medium text-slate-200 hover:border-sky-400/50 hover:text-sky-200"
-        aria-label="Select language"
-        aria-haspopup="true"
-        aria-expanded={isOpen}
-      >
-        <span className="max-w-[4rem] truncate sm:max-w-none">
-          {locales.find((l) => l.code === currentLocale)?.name ?? currentLocale}
-        </span>
-        <svg className="h-3.5 w-3.5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
-      </button>
-      {isOpen && (
-        <div className="absolute right-0 top-full z-[60] pt-1">
-          <div className="min-w-[10rem] rounded-xl border border-white/10 bg-slate-900 py-1 shadow-xl">
-            {locales.map((loc) => (
-              <Link
-                key={loc.code}
-                href={`/${loc.code}/`}
-                className="block px-3 py-2 text-xs text-slate-200 hover:bg-sky-500/20 hover:text-sky-100"
-              >
-                {loc.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
