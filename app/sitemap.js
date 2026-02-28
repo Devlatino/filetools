@@ -10,6 +10,9 @@ const TOOL_PATHS = [
   "/tools/resize-image",
   "/tools/jpg-to-png",
   "/tools/pdf-to-jpg",
+  "/tools/png-to-jpg",
+  "/tools/image-to-pdf",
+  "/tools/compress-pdf",
 ];
 
 /**

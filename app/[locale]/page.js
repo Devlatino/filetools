@@ -5,7 +5,7 @@ import { useMemo, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput } from "lucide-react";
+import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { locales, localeNames } from "@/i18n.js";
 
@@ -16,6 +16,9 @@ const TOOL_ICONS = {
   resizeImage: Maximize2,
   jpgToPng: FileImage,
   pdfToJpg: FileOutput,
+  pngToJpg: FileImage,
+  imageToPdf: FilePlus,
+  compressPdf: FileDown,
 };
 
 const CATEGORIES = ["all", "images", "pdf"];
@@ -29,6 +32,9 @@ const TOOL_IDS = [
   { id: "resizeImage", href: "/tools/resize-image", category: "images", active: true },
   { id: "jpgToPng", href: "/tools/jpg-to-png", category: "images", active: true },
   { id: "pdfToJpg", href: "/tools/pdf-to-jpg", category: "pdf", active: true },
+  { id: "pngToJpg", href: "/tools/png-to-jpg", category: "images", active: true },
+  { id: "imageToPdf", href: "/tools/image-to-pdf", category: "pdf", active: true },
+  { id: "compressPdf", href: "/tools/compress-pdf", category: "pdf", active: true },
 ];
 
 const CATEGORY_COLORS = {
