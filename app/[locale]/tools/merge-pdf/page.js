@@ -1,14 +1,16 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { PDFDocument } from "pdf-lib";
-import { getToolFaq } from "@/lib/toolFaqs";
 import { FaqSection } from "@/components/FaqSection";
+import { EditorialSection } from "@/components/EditorialSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { ToolSteps } from "@/components/ToolSteps";
+import { Loader2, Check, Download } from "lucide-react";
 
 function formatBytes(bytes) {
   if (!bytes) return "0 B";
@@ -26,6 +28,8 @@ export default function MergePdfPage() {
   const [draggingId, setDraggingId] = useState(null);
   const [isMerging, setIsMerging] = useState(false);
   const [error, setError] = useState("");
+  const [currentStep, setCurrentStep] = useState(1);
+  const [mergeSuccess, setMergeSuccess] = useState(null);
 
   const totalSize = useMemo(
     () => items.reduce((acc, item) => acc + (item.file?.size || 0), 0),
@@ -39,7 +43,7 @@ export default function MergePdfPage() {
 
     const pdfFiles = files.filter((f) => f.type === "application/pdf");
     if (!pdfFiles.length) {
-      setError("Upload PDF files only.");
+      setError(t("errorPdfOnly"));
       return;
     }
 
@@ -51,7 +55,11 @@ export default function MergePdfPage() {
     }));
 
     setItems((prev) => [...prev, ...mapped]);
-  }, []);
+  }, [t]);
+
+  useEffect(() => {
+    if (items.length >= 2 && currentStep === 1) setCurrentStep(2);
+  }, [items.length, currentStep]);
 
   const handleDragStart = useCallback((id) => {
     setDraggingId(id);
@@ -80,15 +88,17 @@ export default function MergePdfPage() {
   const handleClear = useCallback(() => {
     setItems([]);
     setError("");
+    setCurrentStep(1);
+    setMergeSuccess(null);
   }, []);
 
   const handleMerge = useCallback(async () => {
     if (!items.length) {
-      setError("Upload at least two PDFs to merge.");
+      setError(t("errorMinTwo"));
       return;
     }
     if (items.length < 2) {
-      setError("At least two PDFs are required to merge.");
+      setError(t("errorMinTwoAlt"));
       return;
     }
 
@@ -112,6 +122,8 @@ export default function MergePdfPage() {
       const blob = new Blob([pdfBytes], { type: "application/pdf" });
       const url = URL.createObjectURL(blob);
 
+      setMergeSuccess({ inputSize: totalSize, outputSize: pdfBytes.length });
+
       const a = document.createElement("a");
       a.href = url;
       a.download = `fileflip-merged-${items.length}-files.pdf`;
@@ -119,13 +131,37 @@ export default function MergePdfPage() {
       a.click();
       a.remove();
       URL.revokeObjectURL(url);
+      setCurrentStep(3);
     } catch (err) {
       console.error(err);
-      setError("Something went wrong. Please try again.");
+      setError(t("errorGeneric"));
     } finally {
       setIsMerging(false);
     }
-  }, [items]);
+  }, [items, totalSize, t]);
+
+  const mergeSuccessMessage = useMemo(() => {
+    if (!mergeSuccess) return null;
+    const { inputSize, outputSize } = mergeSuccess;
+    const ratio = inputSize > 0 ? (1 - outputSize / inputSize) * 100 : 0;
+    const percent = Math.round(Math.max(0, ratio));
+    return tCommon("successSaved", {
+      original: formatBytes(inputSize),
+      result: formatBytes(outputSize),
+      percent,
+    });
+  }, [mergeSuccess, tCommon]);
+
+  const mergeDownloadSubline = useMemo(() => {
+    if (!mergeSuccess) return null;
+    const { inputSize, outputSize } = mergeSuccess;
+    const ratio = inputSize > 0 ? (1 - outputSize / inputSize) * 100 : 0;
+    const percent = Math.round(Math.max(0, ratio));
+    return tCommon("downloadSubline", {
+      percent,
+      result: formatBytes(mergeSuccess.outputSize),
+    });
+  }, [mergeSuccess, tCommon]);
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50">
@@ -156,120 +192,126 @@ export default function MergePdfPage() {
           </p>
         </section>
 
-        <section className="rounded-2xl border border-white/10 bg-slate-900/80 p-4 sm:p-5">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <div className="space-y-1">
-              <p className="text-sm font-medium text-slate-50">
-                1. Upload your PDFs
+        <section className="rounded-2xl border border-white/10 bg-slate-900/80 p-4 sm:p-6">
+          <ToolSteps currentStep={currentStep}>
+            <ToolSteps.Step title={t("step1Title")}>
+              <p className="text-xs text-slate-400">{t("step1Hint")}</p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                <label className="inline-flex cursor-pointer items-center rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 shadow-sm hover:bg-sky-400">
+                  {t("addPdfsButton")}
+                  <input
+                    type="file"
+                    multiple
+                    accept="application/pdf"
+                    className="hidden"
+                    onChange={handleFilesChange}
+                  />
+                </label>
+                {items.length > 0 && (
+                  <button
+                    type="button"
+                    onClick={handleClear}
+                    className="inline-flex items-center justify-center rounded-full border border-slate-600 bg-slate-900 px-3 py-2 text-xs font-semibold text-slate-100 hover:border-rose-400 hover:text-rose-200"
+                  >
+                    {t("clearList")}
+                  </button>
+                )}
+              </div>
+              <p className="mt-2 text-[11px] text-slate-400">
+                {items.length > 0 ? t("pdfsCountTotal", { count: items.length, total: formatBytes(totalSize) }) : t("noPdfsAdded")}
               </p>
-              <p className="text-xs text-slate-400">
-                You can select multiple files or add them in batches.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              <label className="inline-flex cursor-pointer items-center rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 shadow-sm hover:bg-sky-400">
-                Add PDFs
-                <input
-                  type="file"
-                  multiple
-                  accept="application/pdf"
-                  className="hidden"
-                  onChange={handleFilesChange}
-                />
-              </label>
-              {items.length > 0 && (
+            </ToolSteps.Step>
+            <ToolSteps.Step title={t("step2Title")}>
+              <p className="text-xs text-slate-400">{t("step2Hint")}</p>
+              <div className="mt-2 rounded-xl border border-white/10 bg-slate-900/60">
+                {items.length === 0 ? (
+                  <div className="flex items-center justify-center px-4 py-10 text-xs text-slate-500">
+                    {t("pdfsPlaceholder")}
+                  </div>
+                ) : (
+                  <ul className="divide-y divide-slate-800">
+                    {items.map((item, index) => (
+                      <li
+                        key={item.id}
+                        draggable
+                        onDragStart={() => handleDragStart(item.id)}
+                        onDragOver={(e) => handleDragOver(e, item.id)}
+                        onDragEnd={handleDragEnd}
+                        className={`flex cursor-move items-center justify-between gap-3 px-4 py-3 text-xs transition-colors ${
+                          draggingId === item.id ? "bg-sky-500/10" : "hover:bg-slate-800/80"
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-slate-800 text-[11px] text-slate-200">
+                            {index + 1}
+                          </span>
+                          <div className="flex flex-col">
+                            <span className="max-w-xs truncate text-slate-100 sm:max-w-sm">{item.name}</span>
+                            <span className="text-[11px] text-slate-400">{formatBytes(item.size)}</span>
+                          </div>
+                        </div>
+                        <span className="hidden text-[10px] text-slate-500 sm:inline">{t("dragToMove")}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+              <div className="mt-3 space-y-2">
                 <button
                   type="button"
-                  onClick={handleClear}
-                  className="inline-flex items-center justify-center rounded-full border border-slate-600 bg-slate-900 px-3 py-2 text-xs font-semibold text-slate-100 hover:border-rose-400 hover:text-rose-200"
+                  disabled={items.length < 2 || isMerging}
+                  onClick={handleMerge}
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-sky-500 px-5 py-2 text-xs font-semibold text-slate-950 shadow-sm hover:bg-sky-400 disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  Clear list
+                  {isMerging ? (
+                    <>
+                      <Loader2 size={14} className="animate-spin" />
+                      {tCommon("processingLabel")}
+                    </>
+                  ) : (
+                    t("mergeButton")
+                  )}
                 </button>
-              )}
-            </div>
-          </div>
-
-          <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-[11px] text-slate-400">
-            <span>
-              {items.length > 0
-                ? `${items.length} PDF(s) · ${formatBytes(totalSize)} total`
-                : "No PDFs added."}
-            </span>
-            <span>Drag rows to reorder.</span>
-          </div>
-
-          {error && (
-            <p className="mt-3 text-xs text-rose-400">{error}</p>
-          )}
-        </section>
-
-        <section className="space-y-3">
-          <h2 className="text-sm font-semibold text-slate-50">
-            2. Reorder PDFs
-          </h2>
-          <div className="rounded-2xl border border-white/10 bg-slate-900/80">
-            {items.length === 0 ? (
-              <div className="flex items-center justify-center px-4 py-10 text-xs text-slate-500">
-                Your PDFs will appear here after upload.
+                {isMerging && (
+                  <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-700">
+                    <div className="h-full w-full animate-[progress-bar_1.2s_ease-in-out_infinite] rounded-full bg-sky-500" style={{ transformOrigin: "left" }} />
+                  </div>
+                )}
+                {mergeSuccessMessage && !isMerging && (
+                  <p className="flex items-center gap-2 text-xs font-medium text-emerald-400">
+                    <Check size={14} className="shrink-0" />
+                    {mergeSuccessMessage}
+                  </p>
+                )}
               </div>
-            ) : (
-              <ul className="divide-y divide-slate-800">
-                {items.map((item, index) => (
-                  <li
-                    key={item.id}
-                    draggable
-                    onDragStart={() => handleDragStart(item.id)}
-                    onDragOver={(e) => handleDragOver(e, item.id)}
-                    onDragEnd={handleDragEnd}
-                    className={`flex cursor-move items-center justify-between gap-3 px-4 py-3 text-xs transition-colors ${
-                      draggingId === item.id
-                        ? "bg-sky-500/10"
-                        : "hover:bg-slate-800/80"
-                    }`}
+            </ToolSteps.Step>
+            <ToolSteps.Step title={t("step3Title")}>
+              <p className="text-xs text-slate-400">
+                {t("step3Description")}
+              </p>
+              {mergeSuccess && (
+                <div className="mt-3 animate-download-enter">
+                  <button
+                    type="button"
+                    disabled={isMerging}
+                    onClick={handleMerge}
+                    className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-emerald-500 px-6 py-3.5 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/25 transition hover:bg-emerald-400 hover:shadow-emerald-400/30 disabled:cursor-not-allowed disabled:opacity-70"
                   >
-                    <div className="flex items-center gap-3">
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-slate-800 text-[11px] text-slate-200">
-                        {index + 1}
-                      </span>
-                      <div className="flex flex-col">
-                        <span className="max-w-xs truncate text-slate-100 sm:max-w-sm">
-                          {item.name}
-                        </span>
-                        <span className="text-[11px] text-slate-400">
-                          {formatBytes(item.size)}
-                        </span>
-                      </div>
-                    </div>
-                    <span className="hidden text-[10px] text-slate-500 sm:inline">
-                      Drag to move
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </section>
-
-        <section className="space-y-3">
-          <h2 className="text-sm font-semibold text-slate-50">
-            3. Merge and download
-          </h2>
-          <div className="flex flex-wrap items-center gap-3">
-            <button
-              type="button"
-              disabled={items.length < 2 || isMerging}
-              onClick={handleMerge}
-              className="inline-flex items-center justify-center rounded-full bg-sky-500 px-5 py-2 text-xs font-semibold text-slate-950 shadow-sm hover:bg-sky-400 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              {isMerging ? "Merging…" : "Merge PDF"}
-            </button>
-            <p className="text-[11px] text-slate-400">
-              The new PDF will contain all pages in the order set above.
-            </p>
-          </div>
+                    <Download size={20} strokeWidth={2} />
+                    {t("downloadMergedButton")}
+                  </button>
+                  {mergeDownloadSubline && (
+                    <p className="mt-1.5 text-[11px] text-emerald-200/90">{mergeDownloadSubline}</p>
+                  )}
+                </div>
+              )}
+            </ToolSteps.Step>
+          </ToolSteps>
+          {error && <p className="mt-4 text-xs text-rose-400">{error}</p>}
         </section>
         <RelatedTools locale={locale} currentSlug="merge-pdf" />
-        <FaqSection faqs={getToolFaq("merge-pdf")} />
+        <EditorialSection namespace="tools.mergePdf" />
+        <FaqSection namespace="tools.mergePdf" />
       </main>
     </div>
   );

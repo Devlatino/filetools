@@ -50,3 +50,46 @@ body {
 .animate-wave-slow {
   animation: wave-vertical 22s ease-in-out infinite;
 }
+
+@keyframes dropzone-dash {
+  0%,
+  100% {
+    border-color: rgb(100 116 139); /* slate-400 */
+    opacity: 1;
+  }
+  50% {
+    border-color: rgb(71 85 105); /* slate-600 */
+    opacity: 0.85;
+  }
+}
+
+.animate-dropzone-dash {
+  animation: dropzone-dash 2s ease-in-out infinite;
+}
+
+@keyframes progress-bar {
+  0% {
+    transform: scaleX(0);
+  }
+  50% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes download-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-download-enter {
+  animation: download-enter 0.35s ease-out forwards;
+}

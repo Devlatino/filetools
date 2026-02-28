@@ -1,42 +1,26 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
+import { Image, FileText, Smartphone, Star } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
+const TOOL_ICONS = {
+  compressImage: Image,
+  mergePdf: FileText,
+  heicToJpg: Smartphone,
+};
+
+const CATEGORIES = ["all", "images", "pdf"];
+
+const POPULAR_TOOL_IDS = ["compressImage", "heicToJpg", "mergePdf"];
+
 const TOOL_IDS = [
-  { id: "compressImage", href: "/tools/compress-image", icon: "IMG", iconBg: "bg-sky-500" },
-  { id: "mergePdf", href: "/tools/merge-pdf", icon: "PDF", iconBg: "bg-rose-500" },
-  { id: "compressPdf", href: "/tools/compress-pdf", icon: "PDF", iconBg: "bg-rose-400" },
-  { id: "jpgToPng", href: "/tools/jpg-to-png", icon: "JPG", iconBg: "bg-sky-400" },
-  { id: "pngToJpg", href: "/tools/png-to-jpg", icon: "PNG", iconBg: "bg-indigo-400" },
-  { id: "imageToWebp", href: "/tools/image-to-webp", icon: "WBP", iconBg: "bg-emerald-400" },
-  { id: "resizeImage", href: "/tools/resize-image", icon: "SIZE", iconBg: "bg-indigo-500" },
-  { id: "pdfToImages", href: "/tools/pdf-to-images", icon: "PDF", iconBg: "bg-amber-400" },
-  { id: "createZip", href: "/tools/create-zip", icon: "ZIP", iconBg: "bg-cyan-400" },
-  { id: "extractZip", href: "/tools/extract-zip", icon: "ZIP", iconBg: "bg-cyan-500" },
-  { id: "svgToPng", href: "/tools/svg-to-png", icon: "SVG", iconBg: "bg-violet-500" },
-  { id: "removeBackground", href: "/tools/remove-background", icon: "BG", iconBg: "bg-fuchsia-500" },
-  { id: "mergeImages", href: "/tools/merge-images", icon: "IMG", iconBg: "bg-teal-500" },
-  { id: "pdfToText", href: "/tools/pdf-to-text", icon: "TXT", iconBg: "bg-amber-500" },
-  { id: "addWatermark", href: "/tools/add-watermark", icon: "WM", iconBg: "bg-slate-500" },
-  { id: "colorConverter", href: "/tools/color-converter", icon: "COL", iconBg: "bg-pink-500" },
-  { id: "faviconGenerator", href: "/tools/favicon-generator", icon: "ICO", iconBg: "bg-orange-500" },
-  { id: "compressVideo", href: "/tools/compress-video", icon: "VID", iconBg: "bg-red-500" },
-  { id: "extractAudio", href: "/tools/extract-audio", icon: "AUD", iconBg: "bg-purple-500" },
-  { id: "wordCounter", href: "/tools/word-counter", icon: "WRD", iconBg: "bg-lime-500" },
-  { id: "heicToJpg", href: "/tools/heic-to-jpg", icon: "HEIC", iconBg: "bg-amber-600" },
-  { id: "removeMetadata", href: "/tools/remove-metadata", icon: "EXIF", iconBg: "bg-slate-600" },
-  { id: "pdfToPptx", href: "/tools/pdf-to-pptx", icon: "PPTX", iconBg: "bg-orange-600" },
-  { id: "colorPalette", href: "/tools/color-palette", icon: "PAL", iconBg: "bg-pink-600" },
-  { id: "textDiff", href: "/tools/text-diff", icon: "DIFF", iconBg: "bg-cyan-600" },
-  { id: "encryptText", href: "/tools/encrypt-text", icon: "KEY", iconBg: "bg-emerald-600" },
-  { id: "markdownToHtml", href: "/tools/markdown-to-html", icon: "MD", iconBg: "bg-blue-600" },
-  { id: "qrGenerator", href: "/tools/qr-generator", icon: "QR", iconBg: "bg-violet-600" },
-  { id: "extractFrames", href: "/tools/extract-frames", icon: "FRM", iconBg: "bg-rose-600" },
-  { id: "csvTools", href: "/tools/csv-tools", icon: "CSV", iconBg: "bg-teal-600" },
+  { id: "compressImage", href: "/tools/compress-image", iconBg: "bg-sky-500", category: "images" },
+  { id: "mergePdf", href: "/tools/merge-pdf", iconBg: "bg-rose-500", category: "pdf" },
+  { id: "heicToJpg", href: "/tools/heic-to-jpg", iconBg: "bg-amber-600", category: "images" },
 ];
 
 export default function Home() {
@@ -46,16 +30,49 @@ export default function Home() {
   const locale = useLocale();
   const year = useMemo(() => new Date().getFullYear(), []);
 
+  const [activeFilter, setActiveFilter] = useState("all");
+  const [filesProcessed, setFilesProcessed] = useState(1_240_000);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setFilesProcessed((n) => n + Math.floor(1 + Math.random() * 3));
+    }, 120);
+    return () => clearInterval(t);
+  }, []);
+
   const tools = useMemo(
     () =>
-      TOOL_IDS.map(({ id, href, icon, iconBg }) => ({
+      TOOL_IDS.map(({ id, href, iconBg, category }) => ({
+        id,
         href,
         label: tTools(`${id}.label`),
         short: tTools(`${id}.short`),
-        icon,
         iconBg,
+        category,
       })),
     [tTools]
+  );
+
+  const filteredTools = useMemo(
+    () =>
+      activeFilter === "all" ? tools : tools.filter((tool) => tool.category === activeFilter),
+    [tools, activeFilter]
+  );
+
+  const faqSchema = useMemo(
+    () => ({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [1, 2, 3, 4, 5, 6, 7, 8].map((i) => ({
+        "@type": "Question",
+        name: t(`faq${i}Q`),
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: t(`faq${i}A`),
+        },
+      })),
+    }),
+    [t]
   );
 
   return (
@@ -142,6 +159,41 @@ export default function Home() {
         </section>
 
         <section
+          aria-label={t("statsLabel")}
+          className="border-b border-white/10 bg-slate-900/40 py-6"
+        >
+          <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-8 px-4 sm:flex-nowrap sm:justify-between sm:gap-0 sm:px-6 lg:px-8">
+            <div className="flex flex-col items-center gap-0.5 sm:flex-row sm:items-baseline sm:gap-2">
+              <span className="text-2xl font-semibold tabular-nums text-slate-50">
+                {filesProcessed.toLocaleString(locale)}
+              </span>
+              <span className="text-xs text-slate-400">{t("statsFiles")}</span>
+            </div>
+            <div className="hidden h-4 w-px bg-slate-600 sm:block" aria-hidden />
+            <div className="flex flex-col items-center gap-0.5 sm:flex-row sm:items-baseline sm:gap-2">
+              <span className="text-2xl font-semibold tabular-nums text-slate-50">
+                {TOOL_IDS.length}
+              </span>
+              <span className="text-xs text-slate-400">{t("statsTools")}</span>
+            </div>
+            <div className="hidden h-4 w-px bg-slate-600 sm:block" aria-hidden />
+            <div className="flex flex-col items-center gap-0.5 sm:flex-row sm:items-baseline sm:gap-2">
+              <span className="flex items-center gap-1 text-2xl font-semibold text-slate-50">
+                <span className="tabular-nums">4.8</span>
+                <span className="flex text-amber-400" aria-hidden>
+                  <Star size={18} className="fill-amber-400" stroke="currentColor" />
+                  <Star size={18} className="fill-amber-400" stroke="currentColor" />
+                  <Star size={18} className="fill-amber-400" stroke="currentColor" />
+                  <Star size={18} className="fill-amber-400" stroke="currentColor" />
+                  <Star size={18} className="fill-amber-400/80 stroke-amber-400" />
+                </span>
+              </span>
+              <span className="text-xs text-slate-400">{t("statsRating")}</span>
+            </div>
+          </div>
+        </section>
+
+        <section
           id="come-funziona"
           className="border-b border-white/10 bg-slate-950"
         >
@@ -198,23 +250,79 @@ export default function Home() {
                 </p>
               </div>
               <span className="inline-flex items-center rounded-full border border-sky-400/30 bg-sky-400/10 px-3 py-1 text-xs font-medium text-sky-100">
-                {t("toolsCount", { count: tools.length })}
+                {t("toolsCount", { count: filteredTools.length })}
               </span>
             </div>
 
+            <div className="mb-10">
+              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-slate-400">
+                {t("popularToolsTitle")}
+              </h3>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {tools
+                  .filter((tool) => POPULAR_TOOL_IDS.includes(tool.id))
+                  .sort((a, b) => POPULAR_TOOL_IDS.indexOf(a.id) - POPULAR_TOOL_IDS.indexOf(b.id))
+                  .map((tool) => (
+                    <Link
+                      key={tool.id}
+                      href={`/${locale}${tool.href}`}
+                      prefetch
+                      className="group relative flex flex-col rounded-2xl border border-sky-400/20 bg-slate-800/90 p-6 shadow-lg transition-all duration-300 ease-in-out hover:border-sky-400/50 hover:bg-slate-800 hover:shadow-sky-500/10"
+                    >
+                      <span className="absolute right-4 top-4 rounded-full bg-amber-500/20 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-amber-200">
+                        {t("popularBadge")}
+                      </span>
+                      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl shadow-inner transition-transform group-hover:scale-105">
+                        <div className={`flex h-full w-full items-center justify-center rounded-xl ${tool.iconBg} text-slate-950`}>
+                          {(() => {
+                            const IconComponent = TOOL_ICONS[tool.id];
+                            return IconComponent ? <IconComponent size={24} strokeWidth={2} /> : null;
+                          })()}
+                        </div>
+                      </div>
+                      <h4 className="text-base font-semibold text-slate-50">{tool.label}</h4>
+                      <p className="mt-2 line-clamp-2 text-sm text-slate-300">{tool.short}</p>
+                      <span className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-sky-500/20 px-4 py-2.5 text-sm font-semibold text-sky-100 transition-colors group-hover:bg-sky-500 group-hover:text-slate-950">
+                        {tCommon("goToTool")}
+                      </span>
+                    </Link>
+                  ))}
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              {CATEGORIES.map((cat) => (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setActiveFilter(cat)}
+                  className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
+                    activeFilter === cat
+                      ? "bg-sky-500 text-slate-950"
+                      : "border border-slate-500/60 bg-transparent text-slate-300 hover:border-slate-400 hover:text-slate-100"
+                  }`}
+                >
+                  {t(`filter${cat === "all" ? "All" : cat === "textCode" ? "TextCode" : cat.charAt(0).toUpperCase() + cat.slice(1)}`)}
+                </button>
+              ))}
+            </div>
+
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {tools.map((tool) => (
+              {filteredTools.map((tool) => (
                 <Link
                   key={tool.href}
                   href={`/${locale}${tool.href}`}
                   prefetch
-                  className="group flex flex-col rounded-2xl border border-white/10 bg-slate-900/80 p-5 shadow-sm transition-colors hover:border-sky-400/70 hover:bg-slate-900"
+                  className="group flex flex-col rounded-2xl border border-white/10 bg-slate-900/80 p-5 shadow-sm transition-all duration-300 ease-in-out hover:border-sky-400/70 hover:bg-slate-900"
                 >
                   <div className="mb-3 flex items-center justify-between">
                     <div
-                      className={`flex h-9 w-9 items-center justify-center rounded-xl ${tool.iconBg} text-xs font-semibold text-slate-950`}
+                      className={`flex h-9 w-9 items-center justify-center rounded-xl ${tool.iconBg} text-slate-950`}
                     >
-                      {tool.icon}
+                      {(() => {
+                        const IconComponent = TOOL_ICONS[tool.id];
+                        return IconComponent ? <IconComponent size={20} strokeWidth={2} /> : null;
+                      })()}
                     </div>
                     <span className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-2 py-1 text-[10px] font-medium text-emerald-100">
                       {tCommon("open")}
@@ -235,47 +343,112 @@ export default function Home() {
           id="faq"
           className="border-t border-white/10 bg-slate-950 py-10 sm:py-12"
         >
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
+            }}
+          />
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
             <h2 className="mb-4 text-lg font-semibold text-slate-50 sm:text-xl">
               {t("faqTitle")}
             </h2>
-            <div className="space-y-4 text-sm text-slate-300">
-              <div>
-                <p className="font-medium text-slate-50">{t("faq1Q")}</p>
-                <p className="mt-1">{t("faq1A")}</p>
-              </div>
-              <div>
-                <p className="font-medium text-slate-50">{t("faq2Q")}</p>
-                <p className="mt-1">{t("faq2A")}</p>
-              </div>
-              <div>
-                <p className="font-medium text-slate-50">{t("faq3Q")}</p>
-                <p className="mt-1">{t("faq3A")}</p>
-              </div>
+            <div className="space-y-6 text-sm text-slate-300">
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+                <div key={i}>
+                  <p className="font-medium text-slate-50">{t(`faq${i}Q`)}</p>
+                  <p className="mt-1 leading-relaxed">{t(`faq${i}A`)}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
       </main>
 
       <footer className="border-t border-white/10 bg-slate-950">
-        <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 px-4 py-6 text-xs text-slate-400 sm:flex-row sm:px-6 lg:px-8">
-          <p>
-            © {year} {tCommon("siteName")} · {tCommon("footer.copyright")}
-          </p>
-          <div className="flex gap-4">
-            <button type="button" className="hover:text-sky-400">
-              {tCommon("footer.privacy")}
-            </button>
-            <button type="button" className="hover:text-sky-400">
-              {tCommon("footer.terms")}
-            </button>
-            <button
-              type="button"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="hover:text-sky-400"
-            >
-              {tCommon("footer.backToTop")}
-            </button>
+        <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="space-y-3">
+              <Link href={`/${locale}/`} className="inline-block">
+                <img src="/fileflip-logo.svg" alt={tCommon("siteName")} className="h-8 w-auto" width={120} height={32} />
+              </Link>
+              <p className="text-xs leading-relaxed text-slate-400">
+                {tCommon("footer.description1")}
+                <br />
+                {tCommon("footer.description2")}
+              </p>
+            </div>
+            <div>
+              <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-300">
+                {tCommon("footer.toolsImages")}
+              </h3>
+              <ul className="space-y-2">
+                {tools
+                  .filter((t) => t.category === "images")
+                  .map((tool) => (
+                    <li key={tool.id}>
+                      <Link
+                        href={`/${locale}${tool.href}`}
+                        className="text-xs text-slate-400 transition-colors hover:text-sky-400"
+                      >
+                        {tool.label}
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-300">
+                {tCommon("footer.toolsPdfVideo")}
+              </h3>
+              <ul className="space-y-2">
+                {tools
+                  .filter((t) => t.category === "pdf" || t.category === "video")
+                  .map((tool) => (
+                    <li key={tool.id}>
+                      <Link
+                        href={`/${locale}${tool.href}`}
+                        className="text-xs text-slate-400 transition-colors hover:text-sky-400"
+                      >
+                        {tool.label}
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-300">
+                {tCommon("footer.usefulLinks")}
+              </h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link href={`/${locale}/#tools`} className="text-xs text-slate-400 transition-colors hover:text-sky-400">
+                    {tCommon("footer.allTools")}
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`/${locale}/privacy`} className="text-xs text-slate-400 transition-colors hover:text-sky-400">
+                    {tCommon("footer.privacy")}
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`/${locale}/terms`} className="text-xs text-slate-400 transition-colors hover:text-sky-400">
+                    {tCommon("footer.terms")}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/sitemap.xml" className="text-xs text-slate-400 transition-colors hover:text-sky-400">
+                    {tCommon("footer.sitemap")}
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-slate-400 sm:flex-row">
+            <p>
+              © {year} {tCommon("siteName")} · {tCommon("footer.copyright")}
+            </p>
+            <LanguageSwitcher />
           </div>
         </div>
       </footer>

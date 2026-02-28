@@ -15,7 +15,7 @@ export function FaqSection({ namespace, faqs: faqsProp }) {
   const faqs = (() => {
     if (namespace) {
       const list = [];
-      for (let i = 1; i <= 5; i++) {
+      for (let i = 1; i <= 12; i++) {
         try {
           const q = t(`faq${i}Q`);
           const a = t(`faq${i}A`);

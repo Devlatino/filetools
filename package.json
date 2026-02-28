@@ -20,6 +20,7 @@
     "heic2any": "^0.0.4",
     "highlight.js": "^11.11.1",
     "jszip": "^3.10.1",
+    "lucide-react": "^0.575.0",
     "marked": "^17.0.3",
     "next": "16.1.6",
     "next-intl": "^4.8.3",

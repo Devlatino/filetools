@@ -1,15 +1,17 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import heic2any from "heic2any";
 import JSZip from "jszip";
-import { getToolFaq } from "@/lib/toolFaqs";
+import { Loader2, Check, Download } from "lucide-react";
 import { FaqSection } from "@/components/FaqSection";
+import { EditorialSection } from "@/components/EditorialSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { ToolSteps } from "@/components/ToolSteps";
 
 function formatBytes(bytes) {
   if (!bytes) return "0 B";
@@ -27,6 +29,7 @@ export default function HeicToJpgPage() {
   const [progress, setProgress] = useState(0);
   const [isConverting, setIsConverting] = useState(false);
   const [error, setError] = useState("");
+  const [currentStep, setCurrentStep] = useState(1);
 
   const handleFiles = useCallback((e) => {
     const list = Array.from(e.target.files || []);
@@ -39,7 +42,8 @@ export default function HeicToJpgPage() {
       return;
     }
     setFiles(heics.map((file) => ({ id: file.name + file.size, name: file.name, file })));
-  }, []);
+    setCurrentStep(2);
+  }, [t]);
 
   const handleConvert = useCallback(async () => {
     if (!files.length) return;
@@ -66,6 +70,7 @@ export default function HeicToJpgPage() {
         });
       }
       setResults(out);
+      setCurrentStep(3);
     } catch (err) {
       setError(t("errorConversionFailed"));
       console.error(err);
@@ -73,7 +78,7 @@ export default function HeicToJpgPage() {
       setIsConverting(false);
       setProgress(0);
     }
-  }, [files]);
+  }, [files, t]);
 
   const handleDownload = useCallback((r) => {
     const a = document.createElement("a");
@@ -81,6 +86,31 @@ export default function HeicToJpgPage() {
     a.download = (r.originalName.replace(/\.heic$/i, "") || "image") + ".jpg";
     a.click();
   }, []);
+
+  const convertSuccessMessage = useMemo(() => {
+    if (!results.length || !files.length) return null;
+    const inputSize = files.reduce((a, f) => a + f.file.size, 0);
+    const resultSize = results.reduce((a, r) => a + r.blob.size, 0);
+    const ratio = inputSize > 0 ? (1 - resultSize / inputSize) * 100 : 0;
+    const percent = Math.round(Math.max(0, ratio));
+    return tCommon("successSaved", {
+      original: formatBytes(inputSize),
+      result: formatBytes(resultSize),
+      percent,
+    });
+  }, [files, results, tCommon]);
+
+  const downloadZipSubline = useMemo(() => {
+    if (!results.length || !files.length) return null;
+    const inputSize = files.reduce((a, f) => a + f.file.size, 0);
+    const resultSize = results.reduce((a, r) => a + r.blob.size, 0);
+    const ratio = inputSize > 0 ? (1 - resultSize / inputSize) * 100 : 0;
+    const percent = Math.round(Math.max(0, ratio));
+    return tCommon("downloadSubline", {
+      percent,
+      result: formatBytes(resultSize),
+    });
+  }, [files, results, tCommon]);
 
   const handleDownloadZip = useCallback(async () => {
     if (!results.length) return;
@@ -113,48 +143,85 @@ export default function HeicToJpgPage() {
           <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">{t("metaTitle")}</h1>
           <p className="max-w-xl text-sm text-slate-300">{t("metaDescription")}</p>
         </section>
-        <section className="rounded-2xl border border-white/10 bg-slate-900/80 p-4 sm:p-5">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm font-medium text-slate-50">{t("step1")}</p>
-            <label className="inline-flex cursor-pointer items-center rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400">
-              {t("selectButton")}
-              <input type="file" multiple accept="image/heic,image/heif,.heic,.heif" className="hidden" onChange={handleFiles} />
-            </label>
-          </div>
-          {files.length > 0 && (
-            <>
-              <p className="mt-2 text-xs text-slate-400">{files.length} file(s) · {formatBytes(files.reduce((a, f) => a + f.file.size, 0))}</p>
-              <button type="button" disabled={isConverting} onClick={handleConvert} className="mt-3 rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400 disabled:opacity-50">
-                {isConverting ? tCommon("converting") : t("step2Convert")}
-              </button>
-              {isConverting && (
-                <div className="mt-2 w-full rounded-full bg-slate-700">
-                  <div className="h-2 rounded-full bg-sky-500 transition-all" style={{ width: `${progress}%` }} />
+        <section className="rounded-2xl border border-white/10 bg-slate-900/80 p-4 sm:p-6">
+          <ToolSteps currentStep={currentStep}>
+            <ToolSteps.Step title={t("step1")}>
+              <label className="inline-flex cursor-pointer items-center rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400">
+                {t("selectButton")}
+                <input type="file" multiple accept="image/heic,image/heif,.heic,.heif" className="hidden" onChange={handleFiles} />
+              </label>
+            </ToolSteps.Step>
+            <ToolSteps.Step title={t("step2Convert")}>
+              {files.length > 0 ? (
+                <div className="space-y-2">
+                  <p className="text-xs text-slate-400">{t("filesCount", { count: files.length, size: formatBytes(files.reduce((a, f) => a + f.file.size, 0)) })}</p>
+                  <button
+                    type="button"
+                    disabled={isConverting}
+                    onClick={handleConvert}
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400 disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    {isConverting ? (
+                      <>
+                        <Loader2 size={14} className="animate-spin" />
+                        {tCommon("processingLabel")}
+                      </>
+                    ) : (
+                      t("step2Convert")
+                    )}
+                  </button>
+                  {isConverting && (
+                    <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-700">
+                      <div className="h-full rounded-full bg-sky-500 transition-all duration-300" style={{ width: `${progress}%` }} />
+                    </div>
+                  )}
+                  {convertSuccessMessage && !isConverting && (
+                    <p className="flex items-center gap-2 text-xs font-medium text-emerald-400">
+                      <Check size={14} className="shrink-0" />
+                      {convertSuccessMessage}
+                    </p>
+                  )}
                 </div>
+              ) : (
+                <p className="text-xs text-slate-400">{t("step1")}</p>
               )}
-            </>
-          )}
-          {error && <p className="mt-2 text-xs text-red-400">{error}</p>}
-          {results.length > 0 && (
-            <div className="mt-4 space-y-2">
-              <p className="text-xs font-medium text-slate-100">{t("previewDownload")}</p>
-              <div className="flex flex-wrap gap-2">
-                {results.map((r) => (
-                  <div key={r.id} className="flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-950/60 p-2">
-                    <img src={r.url} alt="" className="h-12 w-12 rounded object-cover" />
-                    <span className="max-w-[120px] truncate text-xs text-slate-300">{(r.originalName.replace(/\.heic$/i, "") || "image") + ".jpg"}</span>
-                    <button type="button" onClick={() => handleDownload(r)} className="rounded-full bg-sky-500/20 px-2 py-1 text-xs text-sky-200 hover:bg-sky-500/30">{tCommon("download")}</button>
+            </ToolSteps.Step>
+            <ToolSteps.Step title={t("previewDownload")}>
+              {results.length > 0 ? (
+                <div className="space-y-3">
+                  <div className="flex flex-wrap gap-2">
+                    {results.map((r) => (
+                      <div key={r.id} className="flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-950/60 p-2">
+                        <img src={r.url} alt="" className="h-12 w-12 rounded object-cover" />
+                        <span className="max-w-[120px] truncate text-xs text-slate-300">{(r.originalName.replace(/\.heic$/i, "") || "image") + ".jpg"}</span>
+                        <button type="button" onClick={() => handleDownload(r)} className="rounded-full bg-sky-500/20 px-2 py-1 text-xs text-sky-200 hover:bg-sky-500/30">{tCommon("download")}</button>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-              <button type="button" onClick={handleDownloadZip} className="rounded-full border border-sky-400/50 bg-slate-800 px-4 py-2 text-xs font-semibold text-sky-200 hover:bg-slate-700">
-                {t("downloadAllZip")}
-              </button>
-            </div>
-          )}
+                  <div className="animate-download-enter">
+                    <button
+                      type="button"
+                      onClick={handleDownloadZip}
+                      className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-emerald-500 px-6 py-3.5 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/25 transition hover:bg-emerald-400 hover:shadow-emerald-400/30"
+                    >
+                      <Download size={20} strokeWidth={2} />
+                      {t("downloadAllZip")}
+                    </button>
+                    {downloadZipSubline && (
+                      <p className="mt-1.5 text-[11px] text-emerald-200/90">{downloadZipSubline}</p>
+                    )}
+                  </div>
+                </div>
+              ) : (
+                <p className="text-xs text-slate-400">{t("previewDownload")}</p>
+              )}
+            </ToolSteps.Step>
+          </ToolSteps>
+          {error && <p className="mt-4 text-xs text-red-400">{error}</p>}
         </section>
         <RelatedTools locale={locale} currentSlug="heic-to-jpg" />
-        <FaqSection namespace="tools.heicToJpg" faqs={getToolFaq("heic-to-jpg")} />
+        <EditorialSection namespace="tools.heicToJpg" />
+        <FaqSection namespace="tools.heicToJpg" />
       </main>
     </div>
   );
