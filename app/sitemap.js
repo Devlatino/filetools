@@ -19,6 +19,9 @@ const TOOL_PATHS = [
   "/tools/jpg-to-pdf",
   "/tools/svg-to-png",
   "/tools/rotate-pdf",
+  "/tools/image-to-webp",
+  "/tools/pdf-to-png",
+  "/tools/gif-to-mp4",
 ];
 
 /**
