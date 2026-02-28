@@ -3,7 +3,6 @@
 import { useCallback, useMemo, useState } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
-import heic2any from "heic2any";
 import JSZip from "jszip";
 import { Loader2, Check, Download } from "lucide-react";
 import { FaqSection } from "@/components/FaqSection";
@@ -47,12 +46,14 @@ export default function HeicToJpgPage() {
 
   const handleConvert = useCallback(async () => {
     if (!files.length) return;
+    if (typeof window === "undefined") return;
     setError("");
     setResults([]);
     setIsConverting(true);
     const out = [];
     const total = files.length;
     try {
+      const heic2any = (await import("heic2any")).default;
       for (let i = 0; i < files.length; i++) {
         setProgress(Math.round(((i + 1) / total) * 100));
         const blob = await heic2any({
