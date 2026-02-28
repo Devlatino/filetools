@@ -170,7 +170,7 @@ export default function HeicToJpgPage() {
                         {tCommon("processingLabel")}
                       </>
                     ) : (
-                      t("step2Convert")
+                      t("convertButton")
                     )}
                   </button>
                   {isConverting && (
@@ -186,7 +186,7 @@ export default function HeicToJpgPage() {
                   )}
                 </div>
               ) : (
-                <p className="text-xs text-slate-400">{t("step1")}</p>
+                <p className="text-xs text-slate-400">{t("step2Hint")}</p>
               )}
             </ToolSteps.Step>
             <ToolSteps.Step title={t("previewDownload")}>

@@ -21,7 +21,7 @@ const BG_BY_SLUG = {
 const DEFAULT_BG = "bg-slate-500";
 
 export function RelatedTools({ locale, currentSlug }) {
-  const tTools = useTranslations("tools");
+  const t = useTranslations();
   const tCommon = useTranslations("common");
   const slugs = RELATED_TOOLS[currentSlug];
   if (!slugs?.length) return null;
@@ -34,7 +34,7 @@ export function RelatedTools({ locale, currentSlug }) {
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {slugs.map((slug) => {
           const id = SLUG_TO_ID[slug];
-          const label = id ? tTools(`${id}.label`) : slug;
+          const label = id ? t(`tools.${id}.label`) : slug;
           const href = `/${locale}/tools/${slug}`;
           const IconComponent = ICON_BY_SLUG[slug] || DEFAULT_ICON;
           const iconBg = BG_BY_SLUG[slug] || DEFAULT_BG;

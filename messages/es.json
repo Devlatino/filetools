@@ -344,6 +344,8 @@
       "step1": "1. Sube HEIC (uno o más)",
       "selectButton": "Seleccionar HEIC",
       "step2Convert": "2. Convertir a JPG",
+      "step2Hint": "Selecciona archivos HEIC en el paso 1 arriba, luego pulsa Convertir.",
+      "convertButton": "Convertir",
       "previewDownload": "Vista previa y descarga",
       "downloadAllZip": "Descargar todo como ZIP",
       "errorHeicOnly": "Selecciona solo archivos HEIC.",
@@ -366,7 +368,13 @@
       "faq8Q": "¿Qué resolución tiene la salida?",
       "faq8A": "El JPG convertido mantiene las mismas dimensiones (ancho y alto en píxeles) que el HEIC original. Solo cambian el formato y la compresión; la resolución no se reduce. Obtienes un JPG estándar que puedes usar para imprimir o web al mismo tamaño que el origen.",
       "faq9Q": "¿Puedo convertir HEIC a PNG o WebP?",
-      "faq9A": "Esta herramienta solo convierte HEIC a JPG. JPG es el formato más compatible para compartir y suele bastar. Si necesitas PNG (p. ej. para transparencia) o WebP, tendrías que convertir primero HEIC a JPG y luego usar otra herramienta para pasar de JPG al formato deseado, o un convertidor que soporte HEIC a PNG/WebP directamente."
+      "faq9A": "Esta herramienta solo convierte HEIC a JPG. JPG es el formato más compatible para compartir y suele bastar. Si necesitas PNG (p. ej. para transparencia) o WebP, tendrías que convertir primero HEIC a JPG y luego usar otra herramienta para pasar de JPG al formato deseado, o un convertidor que soporte HEIC a PNG/WebP directamente.",
+      "faq10Q": "¿Cómo abro un archivo HEIC en Windows/PC?",
+      "faq10A": "Windows no abre archivos HEIC de forma nativa; puede aparecer un mensaje de que se necesita una aplicación. Convertir HEIC a JPG con esta herramienta lo soluciona: sube el HEIC aquí, descarga el JPG y ábrelo en cualquier aplicación de Windows. No hace falta software adicional en el PC.",
+      "faq11Q": "¿Cuál es la diferencia entre HEIC y JPG?",
+      "faq11A": "HEIC suele producir archivos más pequeños que JPG con calidad visual similar, por eso lo usa el iPhone. JPG tiene mucho más soporte: se abre en todas partes (Windows, webs, email, redes sociales), mientras que HEIC suele requerir conversión o aplicaciones concretas. JPG usa compresión con pérdida, así que pasar de HEIC a JPG puede reducir un poco la calidad, pero para la mayoría de usos el resultado es muy bueno. En resumen: HEIC = archivos más pequeños y mejor compatibilidad con Apple; JPG = compatibilidad universal y archivos algo más grandes.",
+      "faq12Q": "¿Puedo volver a convertir un JPG a HEIC?",
+      "faq12A": "Convertir un JPG de nuevo a HEIC es posible con algunas herramientas pero suele no tener sentido: JPG es con pérdida, así que estarías guardando datos ya comprimidos en HEIC sin recuperar la calidad o el tamaño original. Para usuarios de iPhone, lo mejor es conservar los HEIC originales en el dispositivo o en iCloud y convertir a JPG solo cuando quieras compartir o usar la foto en otro sitio. Esta herramienta es solo para HEIC → JPG; para seguir guardando fotos nuevas del iPhone en HEIC, deja el formato de cámara en HEIC en Ajustes."
     },
     "removeMetadata": {
       "label": "Quitar metadatos",
