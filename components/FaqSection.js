@@ -19,7 +19,9 @@ export function FaqSection({ namespace, faqs: faqsProp }) {
         try {
           const q = t(`faq${i}Q`);
           const a = t(`faq${i}A`);
-          if (q && a) list.push({ question: q, answer: a });
+          // Skip if translation is missing (next-intl may return the key path as string)
+          if (!q || !a || (typeof q === "string" && q.includes(".faq")) || (typeof a === "string" && a.includes(".faq"))) break;
+          list.push({ question: q, answer: a });
         } catch {
           break;
         }

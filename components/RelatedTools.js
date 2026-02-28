@@ -2,19 +2,23 @@
 
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { Image, FileText, Video, FileArchive, Type, ArrowRight } from "lucide-react";
 import { RELATED_TOOLS, SLUG_TO_ID } from "@/lib/relatedTools";
 
+/** Icon component by tool slug: image tools, PDF, video, archive, text. */
 const ICON_BY_SLUG = {
-  "compress-image": "IMG",
-  "merge-pdf": "PDF",
-  "heic-to-jpg": "HEIC",
+  "compress-image": Image,
+  "merge-pdf": FileText,
+  "heic-to-jpg": Image,
 };
+const DEFAULT_ICON = Type;
 
 const BG_BY_SLUG = {
   "compress-image": "bg-sky-500",
   "merge-pdf": "bg-rose-500",
   "heic-to-jpg": "bg-amber-600",
 };
+const DEFAULT_BG = "bg-slate-500";
 
 export function RelatedTools({ locale, currentSlug }) {
   const tTools = useTranslations("tools");
@@ -32,8 +36,8 @@ export function RelatedTools({ locale, currentSlug }) {
           const id = SLUG_TO_ID[slug];
           const label = id ? tTools(`${id}.label`) : slug;
           const href = `/${locale}/tools/${slug}`;
-          const icon = ICON_BY_SLUG[slug] || "•";
-          const iconBg = BG_BY_SLUG[slug] || "bg-slate-500";
+          const IconComponent = ICON_BY_SLUG[slug] || DEFAULT_ICON;
+          const iconBg = BG_BY_SLUG[slug] || DEFAULT_BG;
           return (
             <Link
               key={slug}
@@ -42,16 +46,14 @@ export function RelatedTools({ locale, currentSlug }) {
               className="group flex items-center gap-3 rounded-xl border border-white/10 bg-slate-950/60 p-3 transition-colors hover:border-sky-400/50 hover:bg-slate-900/80"
             >
               <div
-                className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-xs font-semibold text-slate-950 ${iconBg}`}
+                className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-slate-950 ${iconBg}`}
               >
-                {icon}
+                <IconComponent size={18} strokeWidth={2} />
               </div>
-              <span className="text-sm font-medium text-slate-100 group-hover:text-sky-200">
+              <span className="min-w-0 flex-1 text-sm font-medium text-slate-100 group-hover:text-sky-200 truncate">
                 {label}
               </span>
-              <span className="ml-auto text-slate-500 group-hover:text-sky-400">
-                →
-              </span>
+              <ArrowRight size={18} className="shrink-0 text-slate-500 group-hover:text-sky-400" strokeWidth={2} />
             </Link>
           );
         })}

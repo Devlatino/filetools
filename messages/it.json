@@ -220,7 +220,11 @@
       "faq9Q": "La compressione è reversibile?",
       "faq9A": "No. La compressione con perdita (JPG e WebP a qualità bassa) rimuove definitivamente parte dei dati; non puoi ripristinare l'originale esatto dal file compresso. Se potresti aver bisogno della qualità piena in seguito, tieni una copia dell'originale prima di comprimere. La compressione PNG è senza perdita, quindi l'immagine può essere decodificata identica, ma la riduzione di dimensione è minore. Questo strumento non memorizza i tuoi file, quindi conserva sempre gli originali sul dispositivo se vuoi tornare indietro.",
       "faq10Q": "Qual è il formato migliore per le foto sul web?",
-      "faq10A": "Per la maggior parte delle foto su siti e blog, il JPG resta la scelta migliore: offre file piccoli e buona qualità visiva al 75–85%. Il WebP spesso produce file ancora più piccoli a qualità simile ed è supportato da tutti i browser moderni; usalo quando vuoi caricamenti più veloci. Il PNG è meglio per immagini con trasparenza o grafiche nitide. Salva le foto come JPG o WebP per hero, gallerie e miniature; usa il PNG per loghi e grafiche con sfondo trasparente."
+      "faq10A": "Per la maggior parte delle foto su siti e blog, il JPG resta la scelta migliore: offre file piccoli e buona qualità visiva al 75–85%. Il WebP spesso produce file ancora più piccoli a qualità simile ed è supportato da tutti i browser moderni; usalo quando vuoi caricamenti più veloci. Il PNG è meglio per immagini con trasparenza o grafiche nitide. Salva le foto come JPG o WebP per hero, gallerie e miniature; usa il PNG per loghi e grafiche con sfondo trasparente.",
+      "faq11Q": "Perché il file è diventato più grande dopo la compressione?",
+      "faq11A": "Può succedere quando l'originale è già molto compresso o in un formato che non si riduce molto alla qualità scelta. Per esempio, un JPG già a bassa qualità risalvato al 90% può crescere perché stai chiedendo più qualità di quanta ne contenga il sorgente. Prova una qualità più bassa (es. 65–75) o usa un formato come WebP, che spesso dà file più piccoli a parità di qualità. Screenshot e grafiche semplici a volte possono aumentare di dimensione se salvati in JPG ad alta qualità.",
+      "faq12Q": "Comprimere un'immagine influisce sulla qualità di stampa?",
+      "faq12A": "Sì, può influire. La compressione con perdita (JPG, WebP) elimina dettagli che non si recuperano. Per l'uso su schermo il 75–85% va di solito bene, ma per stampe grandi o uso professionale potresti notare morbidezza o artefatti. Se ti serve l'immagine per la stampa, mantieni la qualità alta (85–95) o conserva un originale non compresso. Questo strumento è ideale per ridurre la dimensione per web, email o social; per la stampa è meglio poca compressione o formati senza perdita quando possibile."
     },
     "mergePdf": {
       "label": "Unisci PDF",
@@ -264,7 +268,13 @@
       "faq8Q": "Funziona su mobile?",
       "faq8A": "Sì. Lo strumento funziona nel browser del telefono (Safari su iPhone, Chrome o altri su Android). Puoi aggiungere PDF dal dispositivo o dal cloud, riordinarli e scaricare il file unito. Non serve installare app; il processamento avviene nel browser, quindi i limiti di dimensione dipendono dalla memoria del dispositivo.",
       "faq9Q": "Posso unire PDF protetti da password?",
-      "faq9A": "I PDF protetti da password (crittografati) devono essere prima sbloccati perché questo strumento possa leggerli. Apri il PDF con la password corretta in un'altra app, salvalo senza protezione e usa quella copia qui. Lo strumento di unione non chiede né gestisce password PDF."
+      "faq9A": "I PDF protetti da password (crittografati) devono essere prima sbloccati perché questo strumento possa leggerli. Apri il PDF con la password corretta in un'altra app, salvalo senza protezione e usa quella copia qui. Lo strumento di unione non chiede né gestisce password PDF.",
+      "faq10Q": "Posso unire PDF scansionati o basati su immagini?",
+      "faq10A": "Sì. I PDF scansionati (dove ogni pagina è un'immagine) si uniscono come quelli con testo. Lo strumento combina tutte le pagine in un unico PDF senza rielaborare le immagini. Il file risultante sarà più pesante se aggiungi molti documenti scansionati, perché i dati originali vengono mantenuti. Per molte scansioni, valuta di comprimere prima i PDF con un altro strumento se ti serve un risultato più leggero.",
+      "faq11Q": "Cosa succede se un PDF è danneggiato o non si carica?",
+      "faq11A": "Se uno dei PDF è danneggiato o in un formato non supportato, l'unione può fallire o lo strumento mostrare un errore. Rimuovi il file problematico dall'elenco e riprova con gli altri. Se il PDF si apre in un altro lettore ma non qui, potrebbe usare funzioni (es. crittografia o allegati particolari) che la libreria nel browser non supporta. Salvare una nuova copia da quel lettore come PDF standard spesso risolve il problema.",
+      "faq12Q": "Il PDF unito è ricercabile se gli originali lo erano?",
+      "faq12A": "Sì. Se unisci PDF che contengono testo selezionabile (PDF ricercabili), il file unito mantiene quel livello di testo. Puoi ancora cercare e copiare il testo nel risultato. Se unisci PDF che sono solo scansioni (solo immagini) senza livello di testo, il PDF unito non sarà ricercabile a meno di non usare separatamente l'OCR. Lo strumento non aggiunge né toglie testo; combina solo le pagine così come sono."
     },
     "compressPdf": {
       "label": "Comprimi PDF",

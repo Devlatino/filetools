@@ -220,7 +220,11 @@
       "faq9Q": "Is compression reversible?",
       "faq9A": "No. Lossy compression (as used for JPG and WebP at lower quality) permanently removes some image data; you cannot restore the exact original from the compressed file. If you might need the full quality later, keep a copy of the original before compressing. PNG compression is lossless, so the image can be decoded back to the same pixels, but the file size reduction is smaller. This tool does not store your files, so always keep your originals on your device if you want to revert.",
       "faq10Q": "What is the best format for photos on the web?",
-      "faq10A": "For most photos on websites and blogs, JPG is still the best choice: it gives small file sizes and good visual quality at 75–85% quality. WebP often produces even smaller files at similar quality and is supported by all modern browsers; use it when you want faster page loads. PNG is better for images with transparency or sharp graphics. Save photos as JPG or WebP for hero images, galleries, and thumbnails; use PNG for logos and graphics with transparent backgrounds."
+      "faq10A": "For most photos on websites and blogs, JPG is still the best choice: it gives small file sizes and good visual quality at 75–85% quality. WebP often produces even smaller files at similar quality and is supported by all modern browsers; use it when you want faster page loads. PNG is better for images with transparency or sharp graphics. Save photos as JPG or WebP for hero images, galleries, and thumbnails; use PNG for logos and graphics with transparent backgrounds.",
+      "faq11Q": "Why did my file get bigger after compressing?",
+      "faq11A": "That can happen when the original is already highly compressed or in a format that does not shrink much at the quality you chose. For example, a low-quality JPG re-saved at 90% may grow because you are asking for more quality than the source contains. Try a lower quality setting (e.g. 65–75) or use a format like WebP, which often gives smaller files at similar quality. Screenshots and simple graphics can also sometimes increase in size when saved as JPG at high quality.",
+      "faq12Q": "Does compressing an image affect print quality?",
+      "faq12A": "It can. Lossy compression (JPG, WebP) removes detail that cannot be recovered. For screen use, 75–85% quality is usually fine, but for large prints or professional use you may notice softness or artefacts. If you need the image for print, keep the quality high (85–95) or keep an uncompressed original. This tool is best for reducing file size for web, email, or social media; for print, prefer minimal compression or lossless formats when possible."
     },
     "mergePdf": {
       "label": "Merge PDF",
@@ -264,7 +268,13 @@
       "faq8Q": "Does it work on mobile?",
       "faq8A": "Yes. The tool runs in the mobile browser (Safari on iPhone, Chrome or others on Android). You can add PDFs from your device or cloud storage, reorder them, and download the merged file. No app install is required; processing happens in the browser so file size limits depend on your device's memory.",
       "faq9Q": "Can I merge password-protected PDFs?",
-      "faq9A": "Password-protected (encrypted) PDFs must be unlocked first before this tool can read them. Open the PDF with the correct password in another app, save it without password protection, then use that copy here. The merge tool itself does not ask for or handle PDF passwords."
+      "faq9A": "Password-protected (encrypted) PDFs must be unlocked first before this tool can read them. Open the PDF with the correct password in another app, save it without password protection, then use that copy here. The merge tool itself does not ask for or handle PDF passwords.",
+      "faq10Q": "Can I merge scanned PDFs or image-based PDFs?",
+      "faq10A": "Yes. Scanned PDFs (where each page is an image) merge the same way as text-based PDFs. The tool combines all pages into one PDF without re-processing the images. The merged file will be larger if you add many heavy scanned documents, because the original image data is kept. For very large sets of scans, consider compressing the PDFs first with a separate tool if you need a smaller final size.",
+      "faq11Q": "What happens if a PDF is corrupted or won't load?",
+      "faq11A": "If one of your PDFs is damaged or in an unsupported format, the merge may fail or the tool may show an error. Remove the problematic file from the list and try again with the rest. If the PDF opens in another reader but not here, it may use features (e.g. certain encryption or attachments) that the in-browser library does not support. Saving a fresh copy from that reader as a standard PDF often fixes the issue.",
+      "faq12Q": "Is the merged PDF searchable if the originals were searchable?",
+      "faq12A": "Yes. When you merge PDFs that contain selectable text (searchable PDFs), the merged file keeps that text layer. You can still search and copy text in the result. If you merge PDFs that are scan-only (image-based) with no text layer, the merged PDF will also have no searchable text unless you run OCR separately. The tool does not add or remove text; it only combines the pages as they are."
     },
     "compressPdf": {
       "label": "Compress PDF",
