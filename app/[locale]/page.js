@@ -5,7 +5,7 @@ import { useMemo, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors } from "lucide-react";
+import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { locales, localeNames } from "@/i18n.js";
 
@@ -22,6 +22,9 @@ const TOOL_ICONS = {
   webpToJpg: FileImage,
   splitPdf: Scissors,
   pngToPdf: FilePlus,
+  jpgToPdf: FileOutput,
+  svgToPng: FileImage,
+  rotatePdf: RotateCw,
 };
 
 const CATEGORIES = ["all", "images", "pdf"];
@@ -41,6 +44,9 @@ const TOOL_IDS = [
   { id: "webpToJpg", href: "/tools/webp-to-jpg", category: "images", active: true },
   { id: "splitPdf", href: "/tools/split-pdf", category: "pdf", active: true },
   { id: "pngToPdf", href: "/tools/png-to-pdf", category: "pdf", active: true },
+  { id: "jpgToPdf", href: "/tools/jpg-to-pdf", category: "pdf", active: true },
+  { id: "svgToPng", href: "/tools/svg-to-png", category: "images", active: true },
+  { id: "rotatePdf", href: "/tools/rotate-pdf", category: "pdf", active: true },
 ];
 
 const CATEGORY_COLORS = {
