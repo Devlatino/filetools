@@ -40,6 +40,9 @@
     "successSaved": "{original} → {result}，节省 {percent}%",
     "downloadSubline": "文件减少 {percent}% · {result}"
   },
+  "tool": {
+    "dropZone": "将图片拖到此处或点击选择"
+  },
   "home": {
     "badge": "100% 免费 • 无需注册 • 全部在浏览器中完成",
     "heroTitlePart1": "您的文件，",

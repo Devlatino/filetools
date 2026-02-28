@@ -11,6 +11,7 @@
   },
   "tool": {
     "upload": "Clicca per caricare o trascina qui",
+    "dropZone": "Trascina qui la tua immagine o clicca per selezionarla",
     "download": "Scarica",
     "processing": "Elaborazione...",
     "done": "Fatto!",

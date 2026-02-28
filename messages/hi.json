@@ -40,6 +40,9 @@
     "successSaved": "{original} → {result}, {percent}% बचाया",
     "downloadSubline": "फ़ाइल {percent}% कम · {result}"
   },
+  "tool": {
+    "dropZone": "छवि यहाँ खींचें या चुनने के लिए क्लिक करें"
+  },
   "home": {
     "badge": "100% मुफ्त • कोई अकाउंट नहीं • सब ब्राउज़र में",
     "heroTitlePart1": "आपकी फ़ाइलें, ",

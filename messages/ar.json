@@ -40,6 +40,9 @@
     "successSaved": "{original} → {result}، توفير {percent}%",
     "downloadSubline": "تم تقليل الملف بنسبة {percent}% · {result}"
   },
+  "tool": {
+    "dropZone": "اسحب صورتك هنا أو انقر للاختيار"
+  },
   "home": {
     "badge": "مجاني 100% • بدون حساب • كل شيء في المتصفح",
     "heroTitlePart1": "ملفاتك، ",
