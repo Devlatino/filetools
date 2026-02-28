@@ -22,6 +22,9 @@ const TOOL_PATHS = [
   "/tools/image-to-webp",
   "/tools/pdf-to-png",
   "/tools/gif-to-mp4",
+  "/tools/crop-image",
+  "/tools/bmp-to-jpg",
+  "/tools/extract-pdf-pages",
 ];
 
 /**
