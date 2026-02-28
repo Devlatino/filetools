@@ -43,16 +43,12 @@ export default function Home() {
 
   const [activeFilter, setActiveFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
-  const [totalCount, setTotalCount] = useState(10000);
-  const [todayCount, setTodayCount] = useState(1000);
-  const [displayTotal, setDisplayTotal] = useState(10000);
-  const [displayToday, setDisplayToday] = useState(1000);
-  const [flashTotal, setFlashTotal] = useState(false);
+  const [todayCount, setTodayCount] = useState(50000);
+  const [displayToday, setDisplayToday] = useState(50000);
   const [flashToday, setFlashToday] = useState(false);
-  const animFrameRef = useRef(null);
   const animTodayRef = useRef(null);
 
-  const COOKIE_DAYS = 365;
+  const COOKIE_DAYS = 1;
   const todayStr = useMemo(() => {
     const d = new Date();
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
@@ -80,43 +76,21 @@ export default function Home() {
         localStorage.setItem(key, String(value));
       } catch {}
     };
-    const persistTotal = (v) => {
-      setCookie("ff_total_count", v, COOKIE_DAYS);
-      setStorage("ff_total_count", v);
-    };
     const persistToday = (count, date) => {
       setCookie("ff_today_count", count, COOKIE_DAYS);
       setCookie("ff_today_date", date, COOKIE_DAYS);
       setStorage("ff_today_count", String(count));
       setStorage("ff_today_date", date);
     };
-    const persistLastVisit = () => {
-      const ts = String(Date.now());
-      setCookie("ff_last_visit", ts, COOKIE_DAYS);
-      setStorage("ff_last_visit", ts);
-    };
 
-    let total = 10000;
-    const totalFromCookie = getCookie("ff_total_count");
-    const totalFromLs = getStorage("ff_total_count");
-    if (totalFromCookie != null) {
-      const n = parseInt(totalFromCookie, 10);
-      if (!Number.isNaN(n) && n >= 10000) total = n;
-    } else if (totalFromLs != null) {
-      const n = parseInt(totalFromLs, 10);
-      if (!Number.isNaN(n) && n >= 10000) total = n;
-    }
-    setTotalCount(total);
-    setDisplayTotal(total);
-    persistTotal(total);
-    persistLastVisit();
+    const randomTodayStart = () => 10000 + Math.floor(Math.random() * (200000 - 10000 + 1));
 
-    let today = 1000;
+    let today = randomTodayStart();
     const todayDateFromCookie = getCookie("ff_today_date");
     const todayDateFromLs = getStorage("ff_today_date");
     const savedDate = todayDateFromCookie ?? todayDateFromLs;
     if (savedDate !== todayStr) {
-      today = 800 + Math.floor(Math.random() * (1400 - 800 + 1));
+      today = randomTodayStart();
       persistToday(today, todayStr);
     } else {
       const todayFromCookie = getCookie("ff_today_count");
@@ -131,64 +105,33 @@ export default function Home() {
     setTodayCount(today);
     setDisplayToday(today);
 
-    const scheduleTotal = () => {
-      const delay = 8000 + Math.floor(Math.random() * (15000 - 8000 + 1));
-      return setTimeout(() => {
-        const delta = 1 + Math.floor(Math.random() * 4);
-        setTotalCount((prev) => {
-          const next = prev + delta;
-          persistTotal(next);
-          return next;
-        });
-        setFlashTotal(true);
-        scheduleTotal();
-      }, delay);
-    };
     const scheduleToday = () => {
       const delay = 5000 + Math.floor(Math.random() * (10000 - 5000 + 1));
       return setTimeout(() => {
-        const delta = 1 + Math.floor(Math.random() * 3);
-        setTodayCount((prev) => {
-          const next = prev + delta;
-          persistToday(next, todayStr);
-          return next;
-        });
+        const d = new Date();
+        const dateStr = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+        const saved = getCookie("ff_today_date") ?? getStorage("ff_today_date");
+        if (saved !== dateStr) {
+          const fresh = randomTodayStart();
+          persistToday(fresh, dateStr);
+          setTodayCount(fresh);
+          setDisplayToday(fresh);
+        } else {
+          const delta = 1 + Math.floor(Math.random() * 3);
+          setTodayCount((prev) => {
+            const next = prev + delta;
+            persistToday(next, dateStr);
+            return next;
+          });
+        }
         setFlashToday(true);
         scheduleToday();
       }, delay);
     };
 
-    let tTotal = scheduleTotal();
-    let tToday = scheduleToday();
-    return () => {
-      clearTimeout(tTotal);
-      clearTimeout(tToday);
-    };
+    const tToday = scheduleToday();
+    return () => clearTimeout(tToday);
   }, [todayStr]);
-
-  useEffect(() => {
-    const DURATION = 500;
-    const startTotal = displayTotal;
-    const endTotal = totalCount;
-    if (startTotal === endTotal) return;
-    const startTime = performance.now();
-    const tick = (now) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(1, elapsed / DURATION);
-      const ease = progress < 0.5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-      setDisplayTotal(Math.round(startTotal + (endTotal - startTotal) * ease));
-      if (progress < 1) {
-        animFrameRef.current = requestAnimationFrame(tick);
-      } else {
-        setDisplayTotal(endTotal);
-        setFlashTotal(false);
-      }
-    };
-    animFrameRef.current = requestAnimationFrame(tick);
-    return () => {
-      if (animFrameRef.current != null) cancelAnimationFrame(animFrameRef.current);
-    };
-  }, [totalCount]);
 
   useEffect(() => {
     const DURATION = 500;
@@ -462,21 +405,15 @@ export default function Home() {
           className="border-b border-white/10 bg-slate-900/40 py-6"
         >
           <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-8 px-4 sm:flex-nowrap sm:justify-between sm:gap-0 sm:px-6 lg:px-8">
-            <div className="flex flex-col items-center gap-0.5 sm:items-start sm:gap-0">
-              <div className="flex flex-col items-center gap-0.5 sm:flex-row sm:items-baseline sm:gap-2">
-                <span
-                  className={`text-2xl font-semibold tabular-nums transition-colors duration-300 ${flashTotal ? "text-sky-400" : "text-slate-50"}`}
-                  aria-live="polite"
-                >
-                  {displayTotal.toLocaleString(locale)}
-                </span>
-                <span className="text-xs text-slate-400">{t("statsFiles")}</span>
-              </div>
+            <div className="flex flex-col items-center gap-0.5 sm:flex-row sm:items-baseline sm:gap-2">
               <span
-                className={`text-xs tabular-nums text-slate-400 transition-colors duration-300 sm:text-sm ${flashToday ? "text-sky-400" : ""}`}
+                className={`text-2xl font-semibold tabular-nums transition-colors duration-300 ${flashToday ? "text-sky-400" : "text-slate-50"}`}
                 aria-live="polite"
               >
-                {t("statsToday")}: {displayToday.toLocaleString(locale)}
+                {displayToday.toLocaleString(locale)}
+              </span>
+              <span className="text-xs text-slate-400">
+                {t("statsFiles")} {t("statsToday")}
               </span>
             </div>
             <div className="hidden h-4 w-px bg-slate-600 sm:block" aria-hidden />
