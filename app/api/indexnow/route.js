@@ -68,15 +68,11 @@ export async function POST(request) {
 }
 
 async function handleIndexNow(request) {
-  const secret = process.env.INDEXNOW_SECRET;
-  const key = process.env.INDEXNOW_KEY;
-
-  if (
-    !secret ||
-    request.headers.get("x-indexnow-secret") !== secret
-  ) {
-    return Response.json({ error: "Unauthorized" }, { status: 401 });
+  if (request.headers.get('x-indexnow-secret') !== process.env.INDEXNOW_SECRET) {
+    return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
+
+  const key = process.env.INDEXNOW_KEY;
 
   if (!key) {
     return Response.json(
