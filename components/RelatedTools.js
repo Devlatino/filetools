@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { Image, FileText, Video, FileArchive, Type, ArrowRight, Maximize2, FileImage, FileOutput, FilePlus, FileDown } from "lucide-react";
+import { Image, FileText, Video, FileArchive, Type, ArrowRight, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors } from "lucide-react";
 import { RELATED_TOOLS, SLUG_TO_ID } from "@/lib/relatedTools";
 
 /** Icon component by tool slug: image tools, PDF, video, archive, text. */
@@ -16,6 +16,9 @@ const ICON_BY_SLUG = {
   "png-to-jpg": FileImage,
   "image-to-pdf": FilePlus,
   "compress-pdf": FileDown,
+  "webp-to-jpg": FileImage,
+  "split-pdf": Scissors,
+  "png-to-pdf": FilePlus,
 };
 const DEFAULT_ICON = Type;
 
@@ -29,6 +32,9 @@ const BG_BY_SLUG = {
   "png-to-jpg": "bg-teal-500",
   "image-to-pdf": "bg-rose-500",
   "compress-pdf": "bg-rose-500",
+  "webp-to-jpg": "bg-teal-500",
+  "split-pdf": "bg-rose-500",
+  "png-to-pdf": "bg-rose-500",
 };
 const DEFAULT_BG = "bg-slate-500";
 

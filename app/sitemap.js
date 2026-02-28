@@ -13,6 +13,9 @@ const TOOL_PATHS = [
   "/tools/png-to-jpg",
   "/tools/image-to-pdf",
   "/tools/compress-pdf",
+  "/tools/webp-to-jpg",
+  "/tools/split-pdf",
+  "/tools/png-to-pdf",
 ];
 
 /**

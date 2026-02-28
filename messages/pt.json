@@ -461,6 +461,128 @@
       "metaTitle": "Imagem para WebP Online Grátis",
       "metaDescription": "Converte imagens para WebP online. Sem conta, no browser."
     },
+    "webpToJpg": {
+      "label": "WebP → JPG",
+      "short": "Convert WebP images to JPG.",
+      "metaTitle": "WebP to JPG Online Free",
+      "metaDescription": "Convert WebP to JPG online for free. No account, in the browser.",
+      "releaseToUpload": "Release to upload",
+      "stepIndicatorUpload": "Upload",
+      "stepIndicatorConvert": "Convert",
+      "stepIndicatorDownload": "Download",
+      "smallerFile": "Smaller file",
+      "higherQuality": "Higher quality",
+      "convertingLabel": "Converting...",
+      "convertButton": "Convert to JPG",
+      "downloadButton": "Download JPG",
+      "editorialTitle": "Why convert WebP to JPG",
+      "editorialBody": "WebP offers good compression and quality but is not supported everywhere. JPG is universally supported and expected by many apps, forms, and printers. Converting WebP to JPG makes your image compatible with any device or service that only accepts JPG.\n\nThis tool uses the browser canvas: it draws your WebP onto a white background (so transparency is replaced if present), then encodes the result as JPG. You can choose a quality level: lower values mean smaller files but more compression. Everything runs in your browser; your file never leaves your device.\n\nIf you need to keep transparency or the smallest file size, stay with WebP or use PNG. For maximum compatibility and sharing, JPG is the safe choice.",
+      "errorWebpOnly": "Please select a WebP file.",
+      "errorSelectFirst": "Select a WebP file first.",
+      "errorConversionFailed": "Conversion failed. Try another file.",
+      "faq1Q": "How do I convert WebP to JPG online?",
+      "faq1A": "Upload your WebP file, choose a quality level if shown, then click convert. The tool uses the browser canvas to decode the WebP and encode a JPG. Download the result. Everything runs in your browser; no data is sent to any server.",
+      "faq2Q": "Why convert WebP to JPG?",
+      "faq2A": "WebP is efficient but not all apps or websites support it. JPG is universally supported. Converting to JPG is useful for sharing, printing, or when the recipient or system expects JPG.",
+      "faq3Q": "Will the file size change?",
+      "faq3A": "Often JPG is larger than WebP at similar quality, but it depends on the image. You can choose a quality level: lower values mean smaller files but more compression.",
+      "faq4Q": "Are my images sent to a server?",
+      "faq4A": "No. Conversion runs entirely in your browser using the canvas API. Your file never leaves your device.",
+      "faq5Q": "What about transparency?",
+      "faq5A": "WebP can have transparency; JPG cannot. When you convert WebP to JPG, transparent areas are replaced with a solid background (usually white). If you need transparency, keep the WebP or use PNG.",
+      "faq6Q": "Does it work on mobile?",
+      "faq6A": "Yes. Open the tool in your mobile browser, upload a WebP, convert, and download the JPG. No app install required.",
+      "faq7Q": "Can I convert JPG to WebP?",
+      "faq7A": "This tool is for WebP to JPG only. Use the image to WebP or compress image tool for the reverse or other conversions.",
+      "faq8Q": "Is quality lost?",
+      "faq8A": "JPG uses lossy compression, so some detail can be lost. For most photos the result is very good. You can choose a quality level; higher quality means less loss but a larger file.",
+      "faq9Q": "What is the maximum image size?",
+      "faq9A": "Limits depend on your device and browser memory. Typical images (several MB) work without issues.",
+      "faq10Q": "Can I convert multiple WebP files?",
+      "faq10A": "This tool converts one file at a time. For batch conversion, use the tool repeatedly."
+    },
+    "splitPdf": {
+      "label": "Split PDF",
+      "short": "Split a PDF into one file per page, download as ZIP.",
+      "metaTitle": "Split PDF Online Free",
+      "metaDescription": "Split a PDF so each page becomes a separate PDF. Download all pages as a ZIP. No account, in the browser.",
+      "releaseToUpload": "Release to upload",
+      "stepIndicatorUpload": "Upload",
+      "stepIndicatorSplit": "Split",
+      "stepIndicatorDownload": "Download",
+      "pageCount": "{count} page(s)",
+      "pageFilename": "page-{number}.pdf",
+      "splittingLabel": "Splitting...",
+      "splitButton": "Split PDF",
+      "step3Description": "Your PDF has been split. Download the ZIP containing one PDF per page.",
+      "downloadButton": "Download ZIP",
+      "downloadFilename": "fileflip-split-pages.zip",
+      "errorPdfOnly": "Please select a PDF file.",
+      "errorSelectFirst": "Select a PDF file first.",
+      "errorSplitFailed": "Split failed. Try another PDF.",
+      "editorialTitle": "When and why to split a PDF",
+      "editorialBody": "Splitting a PDF turns each page into its own file. That is useful when you need to send only certain pages, reuse single pages in other documents, or when a system accepts only one-page PDFs. This tool splits in the browser: every page becomes a separate PDF, and all are packed into a single ZIP for download.\n\nThe tool uses pdf-lib to load your PDF and copy each page into a new document. No data is sent to any server; everything runs on your device. After splitting, you get a ZIP file containing page-1.pdf, page-2.pdf, and so on. You can extract the ZIP and use or send only the pages you need.\n\nFor the opposite operation—combining several PDFs into one—use the Merge PDF tool. Split and merge are complementary: split to get single pages, merge to put documents together.",
+      "faq1Q": "How do I split a PDF online?",
+      "faq1A": "Upload your PDF file. The tool loads it in your browser and splits it so each page becomes a separate PDF. Click the button to split, then download all pages as a single ZIP file. Everything runs in your browser; no data is sent to any server.",
+      "faq2Q": "Are my PDFs sent to a server?",
+      "faq2A": "No. Splitting is done in your browser using pdf-lib. Your PDF never leaves your device.",
+      "faq3Q": "Can I choose which pages to split?",
+      "faq3A": "This tool splits every page into its own PDF. You get one PDF per page, all bundled in a ZIP. If you need only certain pages, extract them from the ZIP after download.",
+      "faq4Q": "What are the output file names?",
+      "faq4A": "Each page is saved as a separate PDF in the ZIP, named by page number (e.g. page-1.pdf, page-2.pdf). You can rename them after extracting the ZIP.",
+      "faq5Q": "Does it work with password-protected PDFs?",
+      "faq5A": "Password-protected PDFs must be unlocked first. Open the PDF with the correct password in another app, save without password, then use that copy here.",
+      "faq6Q": "Does it work on mobile?",
+      "faq6A": "Yes. The tool runs in the mobile browser. Upload your PDF, split, and download the ZIP. No app install required.",
+      "faq7Q": "Is there a page limit?",
+      "faq7A": "There is no fixed limit. Very long PDFs may take longer and use more memory. For typical documents (e.g. under 100 pages), splitting works well.",
+      "faq8Q": "What is the difference between split and merge?",
+      "faq8A": "Split takes one PDF and creates separate PDFs (one per page), then packs them in a ZIP. Merge takes two or more PDFs and combines them into a single PDF. They are opposite operations.",
+      "faq9Q": "Can I split only a range of pages?",
+      "faq9A": "This tool splits all pages. Each page becomes one PDF in the ZIP. If you need only pages 3–5, download the ZIP and keep only those files after extracting.",
+      "faq10Q": "Is quality lost when splitting?",
+      "faq10A": "No. The tool copies each page as-is into a new PDF. Content and quality are preserved. No re-encoding or compression is applied."
+    },
+    "pngToPdf": {
+      "label": "PNG → PDF",
+      "short": "Convert a single PNG to a one-page PDF.",
+      "metaTitle": "PNG to PDF Online Free",
+      "metaDescription": "Convert one PNG image to a single-page PDF. No account, in the browser.",
+      "releaseToUpload": "Release to upload",
+      "stepIndicatorUpload": "Upload",
+      "stepIndicatorCreate": "Create PDF",
+      "stepIndicatorDownload": "Download",
+      "creatingLabel": "Creating PDF...",
+      "createPdfButton": "Create PDF",
+      "step3Description": "Your PDF has been created. You can create another with a different PNG.",
+      "downloadButton": "Download PDF",
+      "downloadFilename": "fileflip-png.pdf",
+      "errorPngOnly": "Please select a PNG file.",
+      "errorSelectFirst": "Select a PNG file first.",
+      "errorCreationFailed": "Failed to create PDF. Try another PNG.",
+      "editorialTitle": "Why convert a PNG to PDF",
+      "editorialBody": "Converting a single PNG to a one-page PDF is useful when a form, system, or recipient expects a PDF rather than an image. Many workflows accept only PDF. This tool embeds your PNG in a new PDF with one page, so you get a standard document that opens in any PDF reader.\n\nThe tool uses pdf-lib in your browser to create the PDF. Your PNG is embedded as-is; no re-encoding or resizing is done. Everything runs on your device; no data is sent to any server. The result is a one-page PDF whose dimensions match your image.\n\nFor multiple images in one PDF, use the Images to PDF tool instead. For a single image that must be submitted as PDF, this tool is the simplest option.",
+      "faq1Q": "How do I convert a PNG to PDF online?",
+      "faq1A": "Upload your PNG file. The tool embeds it in a single-page PDF in your browser using pdf-lib. Click the button to create the PDF, then download. Everything runs in your browser; no data is sent to any server.",
+      "faq2Q": "Are my images sent to a server?",
+      "faq2A": "No. The tool uses pdf-lib in your browser to build the PDF. Your PNG never leaves your device.",
+      "faq3Q": "Why convert PNG to PDF?",
+      "faq3A": "A single PDF is easier to share or submit than an image file in many cases. Many forms and systems accept only PDF. Converting one PNG to a one-page PDF is useful for documents, forms, or when the recipient expects PDF.",
+      "faq4Q": "What about transparency?",
+      "faq4A": "PNG can have transparency. When embedded in a PDF, transparent areas may appear as white or as defined in the PDF. The tool embeds the PNG as-is; complex transparency is preserved where the PDF format allows.",
+      "faq5Q": "Does it work on mobile?",
+      "faq5A": "Yes. The tool runs in the mobile browser. Upload your PNG, create the PDF, and download. No app install required.",
+      "faq6Q": "Can I add multiple PNGs to one PDF?",
+      "faq6A": "This tool creates a one-page PDF from one PNG. For multiple images in one PDF, use the Images to PDF tool instead.",
+      "faq7Q": "Is the PDF searchable?",
+      "faq7A": "No. The PDF contains your image as a single page. Text in the image is not selectable or searchable. For searchable PDFs you would need OCR or a tool that adds text layers.",
+      "faq8Q": "What size will the PDF be?",
+      "faq8A": "The PDF size depends on the PNG. The image is embedded in the PDF, so the file is typically similar in size to or slightly larger than the original PNG.",
+      "faq9Q": "Can I convert JPG to PDF?",
+      "faq9A": "This tool is for PNG to PDF only. For JPG or multiple images, use the Images to PDF tool.",
+      "faq10Q": "Is there a file size limit?",
+      "faq10A": "There is no fixed limit. Very large PNGs may take longer and use more memory. For typical images (e.g. under 20 MB), the tool works well."
+    },
     "resizeImage": {
       "label": "Redimensionar imagens",
       "short": "Adapta fotos a sites, CV e formulários.",
@@ -559,16 +681,66 @@
       "metaTitle": "Extrair ZIP Online Grátis",
       "metaDescription": "Extrai e descarrega ficheiros de ZIP. Sem conta, no browser."
     },
-    "svgToPng": { "label": "SVG para PNG", "short": "Converter SVG para PNG.", "metaTitle": "SVG para PNG online grátis", "metaDescription": "Converter SVG para PNG online. Pré-visualização e download no browser." },
-    "removeBackground": { "label": "Remover fundo", "short": "Remover o fundo de uma imagem.", "metaTitle": "Remover fundo de imagem online grátis", "metaDescription": "Remover fundo de imagens. PNG com transparência. No browser." },
-    "mergeImages": { "label": "Unir imagens", "short": "Combinar duas imagens.", "metaTitle": "Unir imagens online grátis", "metaDescription": "Unir duas imagens horizontal ou verticalmente. No browser." },
-    "pdfToText": { "label": "PDF para texto", "short": "Extrair texto de um PDF.", "metaTitle": "PDF para texto online grátis", "metaDescription": "Extrair texto de PDF. Copiar ou descarregar como TXT. No browser." },
-    "addWatermark": { "label": "Adicionar marca de água", "short": "Adicionar marca de água de texto.", "metaTitle": "Adicionar marca de água online grátis", "metaDescription": "Adicionar marca de água a imagens. Posição, opacidade, tamanho. No browser." },
-    "colorConverter": { "label": "Conversor de cores", "short": "Converter HEX, RGB e HSL.", "metaTitle": "Conversor HEX RGB HSL grátis", "metaDescription": "Converter cores entre HEX, RGB e HSL. Pré-visualização em tempo real." },
-    "faviconGenerator": { "label": "Gerador de favicon", "short": "Gerar favicons a partir de uma imagem.", "metaTitle": "Gerador de favicon online grátis", "metaDescription": "Gerar favicons (16x16, 32x32, etc.). Download ZIP. No browser." },
-    "compressVideo": { "label": "Comprimir vídeo", "short": "Comprimir MP4 no browser.", "metaTitle": "Comprimir vídeo online grátis", "metaDescription": "Comprimir vídeo MP4. Barra de progresso. WebAssembly no browser." },
-    "extractAudio": { "label": "Extrair áudio", "short": "Extrair MP3 de um vídeo.", "metaTitle": "Extrair áudio de vídeo online grátis", "metaDescription": "Extrair áudio de MP4 para MP3. Barra de progresso. No browser." },
-    "wordCounter": { "label": "Contador de palavras", "short": "Contar palavras, caracteres, tempo de leitura.", "metaTitle": "Contador de palavras e estatísticas grátis", "metaDescription": "Contar palavras, caracteres, frases. Tempo de leitura e palavras frequentes." },
+    "svgToPng": {
+      "label": "SVG para PNG",
+      "short": "Converter SVG para PNG.",
+      "metaTitle": "SVG para PNG online grátis",
+      "metaDescription": "Converter SVG para PNG online. Pré-visualização e download no browser."
+    },
+    "removeBackground": {
+      "label": "Remover fundo",
+      "short": "Remover o fundo de uma imagem.",
+      "metaTitle": "Remover fundo de imagem online grátis",
+      "metaDescription": "Remover fundo de imagens. PNG com transparência. No browser."
+    },
+    "mergeImages": {
+      "label": "Unir imagens",
+      "short": "Combinar duas imagens.",
+      "metaTitle": "Unir imagens online grátis",
+      "metaDescription": "Unir duas imagens horizontal ou verticalmente. No browser."
+    },
+    "pdfToText": {
+      "label": "PDF para texto",
+      "short": "Extrair texto de um PDF.",
+      "metaTitle": "PDF para texto online grátis",
+      "metaDescription": "Extrair texto de PDF. Copiar ou descarregar como TXT. No browser."
+    },
+    "addWatermark": {
+      "label": "Adicionar marca de água",
+      "short": "Adicionar marca de água de texto.",
+      "metaTitle": "Adicionar marca de água online grátis",
+      "metaDescription": "Adicionar marca de água a imagens. Posição, opacidade, tamanho. No browser."
+    },
+    "colorConverter": {
+      "label": "Conversor de cores",
+      "short": "Converter HEX, RGB e HSL.",
+      "metaTitle": "Conversor HEX RGB HSL grátis",
+      "metaDescription": "Converter cores entre HEX, RGB e HSL. Pré-visualização em tempo real."
+    },
+    "faviconGenerator": {
+      "label": "Gerador de favicon",
+      "short": "Gerar favicons a partir de uma imagem.",
+      "metaTitle": "Gerador de favicon online grátis",
+      "metaDescription": "Gerar favicons (16x16, 32x32, etc.). Download ZIP. No browser."
+    },
+    "compressVideo": {
+      "label": "Comprimir vídeo",
+      "short": "Comprimir MP4 no browser.",
+      "metaTitle": "Comprimir vídeo online grátis",
+      "metaDescription": "Comprimir vídeo MP4. Barra de progresso. WebAssembly no browser."
+    },
+    "extractAudio": {
+      "label": "Extrair áudio",
+      "short": "Extrair MP3 de um vídeo.",
+      "metaTitle": "Extrair áudio de vídeo online grátis",
+      "metaDescription": "Extrair áudio de MP4 para MP3. Barra de progresso. No browser."
+    },
+    "wordCounter": {
+      "label": "Contador de palavras",
+      "short": "Contar palavras, caracteres, tempo de leitura.",
+      "metaTitle": "Contador de palavras e estatísticas grátis",
+      "metaDescription": "Contar palavras, caracteres, frases. Tempo de leitura e palavras frequentes."
+    },
     "heicToJpg": {
       "label": "HEIC para JPG",
       "short": "Converte fotos HEIC para JPG.",
@@ -611,14 +783,59 @@
       "errorHeicOnly": "Selecione apenas ficheiros HEIC.",
       "errorConversionFailed": "Falha na conversão. Tente outros HEIC."
     },
-    "removeMetadata": { "label": "Remover metadados", "short": "Remove EXIF de JPG e PNG.", "metaTitle": "Remover metadados EXIF grátis", "metaDescription": "Remove EXIF. Download imagem limpa." },
-    "pdfToPptx": { "label": "PDF para PowerPoint", "short": "Converte PDF em slides.", "metaTitle": "PDF para PPTX grátis", "metaDescription": "Cada página vira slide. Download PPTX." },
-    "colorPalette": { "label": "Paleta de cores", "short": "Extrai cores dominantes.", "metaTitle": "Extrair paleta grátis", "metaDescription": "6 cores. HEX, RGB, HSL. Clicar para copiar." },
-    "textDiff": { "label": "Comparar textos", "short": "Compara dois textos.", "metaTitle": "Comparar textos grátis", "metaDescription": "Verde adições, vermelho remoções." },
-    "encryptText": { "label": "Cifrar texto", "short": "Cifrar e decifrar com senha.", "metaTitle": "Cifrar decifrar texto grátis", "metaDescription": "AES-256. Senha nunca enviada." },
-    "markdownToHtml": { "label": "Markdown para HTML", "short": "Converte Markdown em HTML.", "metaTitle": "Markdown para HTML grátis", "metaDescription": "Pré-visualização. Download HTML." },
-    "qrGenerator": { "label": "Gerador QR", "short": "Cria códigos QR.", "metaTitle": "Gerador QR code grátis", "metaDescription": "URL, email, WiFi. PNG ou SVG." },
-    "extractFrames": { "label": "Extrair frames", "short": "Extrai imagens de vídeo.", "metaTitle": "Extrair frames grátis", "metaDescription": "Frames em JPG. Download ou ZIP." },
-    "csvTools": { "label": "Ferramentas CSV", "short": "Unir ou dividir CSV.", "metaTitle": "Unir e dividir CSV grátis", "metaDescription": "Unir vários CSV ou dividir por linhas." }
+    "removeMetadata": {
+      "label": "Remover metadados",
+      "short": "Remove EXIF de JPG e PNG.",
+      "metaTitle": "Remover metadados EXIF grátis",
+      "metaDescription": "Remove EXIF. Download imagem limpa."
+    },
+    "pdfToPptx": {
+      "label": "PDF para PowerPoint",
+      "short": "Converte PDF em slides.",
+      "metaTitle": "PDF para PPTX grátis",
+      "metaDescription": "Cada página vira slide. Download PPTX."
+    },
+    "colorPalette": {
+      "label": "Paleta de cores",
+      "short": "Extrai cores dominantes.",
+      "metaTitle": "Extrair paleta grátis",
+      "metaDescription": "6 cores. HEX, RGB, HSL. Clicar para copiar."
+    },
+    "textDiff": {
+      "label": "Comparar textos",
+      "short": "Compara dois textos.",
+      "metaTitle": "Comparar textos grátis",
+      "metaDescription": "Verde adições, vermelho remoções."
+    },
+    "encryptText": {
+      "label": "Cifrar texto",
+      "short": "Cifrar e decifrar com senha.",
+      "metaTitle": "Cifrar decifrar texto grátis",
+      "metaDescription": "AES-256. Senha nunca enviada."
+    },
+    "markdownToHtml": {
+      "label": "Markdown para HTML",
+      "short": "Converte Markdown em HTML.",
+      "metaTitle": "Markdown para HTML grátis",
+      "metaDescription": "Pré-visualização. Download HTML."
+    },
+    "qrGenerator": {
+      "label": "Gerador QR",
+      "short": "Cria códigos QR.",
+      "metaTitle": "Gerador QR code grátis",
+      "metaDescription": "URL, email, WiFi. PNG ou SVG."
+    },
+    "extractFrames": {
+      "label": "Extrair frames",
+      "short": "Extrai imagens de vídeo.",
+      "metaTitle": "Extrair frames grátis",
+      "metaDescription": "Frames em JPG. Download ou ZIP."
+    },
+    "csvTools": {
+      "label": "Ferramentas CSV",
+      "short": "Unir ou dividir CSV.",
+      "metaTitle": "Unir e dividir CSV grátis",
+      "metaDescription": "Unir vários CSV ou dividir por linhas."
+    }
   }
 }

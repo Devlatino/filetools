@@ -411,6 +411,128 @@
       "metaTitle": "免费在线图片转 WebP",
       "metaDescription": "在线将图片转为 WebP。无需注册，在浏览器中完成。"
     },
+    "webpToJpg": {
+      "label": "WebP → JPG",
+      "short": "Convert WebP images to JPG.",
+      "metaTitle": "WebP to JPG Online Free",
+      "metaDescription": "Convert WebP to JPG online for free. No account, in the browser.",
+      "releaseToUpload": "Release to upload",
+      "stepIndicatorUpload": "Upload",
+      "stepIndicatorConvert": "Convert",
+      "stepIndicatorDownload": "Download",
+      "smallerFile": "Smaller file",
+      "higherQuality": "Higher quality",
+      "convertingLabel": "Converting...",
+      "convertButton": "Convert to JPG",
+      "downloadButton": "Download JPG",
+      "editorialTitle": "Why convert WebP to JPG",
+      "editorialBody": "WebP offers good compression and quality but is not supported everywhere. JPG is universally supported and expected by many apps, forms, and printers. Converting WebP to JPG makes your image compatible with any device or service that only accepts JPG.\n\nThis tool uses the browser canvas: it draws your WebP onto a white background (so transparency is replaced if present), then encodes the result as JPG. You can choose a quality level: lower values mean smaller files but more compression. Everything runs in your browser; your file never leaves your device.\n\nIf you need to keep transparency or the smallest file size, stay with WebP or use PNG. For maximum compatibility and sharing, JPG is the safe choice.",
+      "errorWebpOnly": "Please select a WebP file.",
+      "errorSelectFirst": "Select a WebP file first.",
+      "errorConversionFailed": "Conversion failed. Try another file.",
+      "faq1Q": "How do I convert WebP to JPG online?",
+      "faq1A": "Upload your WebP file, choose a quality level if shown, then click convert. The tool uses the browser canvas to decode the WebP and encode a JPG. Download the result. Everything runs in your browser; no data is sent to any server.",
+      "faq2Q": "Why convert WebP to JPG?",
+      "faq2A": "WebP is efficient but not all apps or websites support it. JPG is universally supported. Converting to JPG is useful for sharing, printing, or when the recipient or system expects JPG.",
+      "faq3Q": "Will the file size change?",
+      "faq3A": "Often JPG is larger than WebP at similar quality, but it depends on the image. You can choose a quality level: lower values mean smaller files but more compression.",
+      "faq4Q": "Are my images sent to a server?",
+      "faq4A": "No. Conversion runs entirely in your browser using the canvas API. Your file never leaves your device.",
+      "faq5Q": "What about transparency?",
+      "faq5A": "WebP can have transparency; JPG cannot. When you convert WebP to JPG, transparent areas are replaced with a solid background (usually white). If you need transparency, keep the WebP or use PNG.",
+      "faq6Q": "Does it work on mobile?",
+      "faq6A": "Yes. Open the tool in your mobile browser, upload a WebP, convert, and download the JPG. No app install required.",
+      "faq7Q": "Can I convert JPG to WebP?",
+      "faq7A": "This tool is for WebP to JPG only. Use the image to WebP or compress image tool for the reverse or other conversions.",
+      "faq8Q": "Is quality lost?",
+      "faq8A": "JPG uses lossy compression, so some detail can be lost. For most photos the result is very good. You can choose a quality level; higher quality means less loss but a larger file.",
+      "faq9Q": "What is the maximum image size?",
+      "faq9A": "Limits depend on your device and browser memory. Typical images (several MB) work without issues.",
+      "faq10Q": "Can I convert multiple WebP files?",
+      "faq10A": "This tool converts one file at a time. For batch conversion, use the tool repeatedly."
+    },
+    "splitPdf": {
+      "label": "Split PDF",
+      "short": "Split a PDF into one file per page, download as ZIP.",
+      "metaTitle": "Split PDF Online Free",
+      "metaDescription": "Split a PDF so each page becomes a separate PDF. Download all pages as a ZIP. No account, in the browser.",
+      "releaseToUpload": "Release to upload",
+      "stepIndicatorUpload": "Upload",
+      "stepIndicatorSplit": "Split",
+      "stepIndicatorDownload": "Download",
+      "pageCount": "{count} page(s)",
+      "pageFilename": "page-{number}.pdf",
+      "splittingLabel": "Splitting...",
+      "splitButton": "Split PDF",
+      "step3Description": "Your PDF has been split. Download the ZIP containing one PDF per page.",
+      "downloadButton": "Download ZIP",
+      "downloadFilename": "fileflip-split-pages.zip",
+      "errorPdfOnly": "Please select a PDF file.",
+      "errorSelectFirst": "Select a PDF file first.",
+      "errorSplitFailed": "Split failed. Try another PDF.",
+      "editorialTitle": "When and why to split a PDF",
+      "editorialBody": "Splitting a PDF turns each page into its own file. That is useful when you need to send only certain pages, reuse single pages in other documents, or when a system accepts only one-page PDFs. This tool splits in the browser: every page becomes a separate PDF, and all are packed into a single ZIP for download.\n\nThe tool uses pdf-lib to load your PDF and copy each page into a new document. No data is sent to any server; everything runs on your device. After splitting, you get a ZIP file containing page-1.pdf, page-2.pdf, and so on. You can extract the ZIP and use or send only the pages you need.\n\nFor the opposite operation—combining several PDFs into one—use the Merge PDF tool. Split and merge are complementary: split to get single pages, merge to put documents together.",
+      "faq1Q": "How do I split a PDF online?",
+      "faq1A": "Upload your PDF file. The tool loads it in your browser and splits it so each page becomes a separate PDF. Click the button to split, then download all pages as a single ZIP file. Everything runs in your browser; no data is sent to any server.",
+      "faq2Q": "Are my PDFs sent to a server?",
+      "faq2A": "No. Splitting is done in your browser using pdf-lib. Your PDF never leaves your device.",
+      "faq3Q": "Can I choose which pages to split?",
+      "faq3A": "This tool splits every page into its own PDF. You get one PDF per page, all bundled in a ZIP. If you need only certain pages, extract them from the ZIP after download.",
+      "faq4Q": "What are the output file names?",
+      "faq4A": "Each page is saved as a separate PDF in the ZIP, named by page number (e.g. page-1.pdf, page-2.pdf). You can rename them after extracting the ZIP.",
+      "faq5Q": "Does it work with password-protected PDFs?",
+      "faq5A": "Password-protected PDFs must be unlocked first. Open the PDF with the correct password in another app, save without password, then use that copy here.",
+      "faq6Q": "Does it work on mobile?",
+      "faq6A": "Yes. The tool runs in the mobile browser. Upload your PDF, split, and download the ZIP. No app install required.",
+      "faq7Q": "Is there a page limit?",
+      "faq7A": "There is no fixed limit. Very long PDFs may take longer and use more memory. For typical documents (e.g. under 100 pages), splitting works well.",
+      "faq8Q": "What is the difference between split and merge?",
+      "faq8A": "Split takes one PDF and creates separate PDFs (one per page), then packs them in a ZIP. Merge takes two or more PDFs and combines them into a single PDF. They are opposite operations.",
+      "faq9Q": "Can I split only a range of pages?",
+      "faq9A": "This tool splits all pages. Each page becomes one PDF in the ZIP. If you need only pages 3–5, download the ZIP and keep only those files after extracting.",
+      "faq10Q": "Is quality lost when splitting?",
+      "faq10A": "No. The tool copies each page as-is into a new PDF. Content and quality are preserved. No re-encoding or compression is applied."
+    },
+    "pngToPdf": {
+      "label": "PNG → PDF",
+      "short": "Convert a single PNG to a one-page PDF.",
+      "metaTitle": "PNG to PDF Online Free",
+      "metaDescription": "Convert one PNG image to a single-page PDF. No account, in the browser.",
+      "releaseToUpload": "Release to upload",
+      "stepIndicatorUpload": "Upload",
+      "stepIndicatorCreate": "Create PDF",
+      "stepIndicatorDownload": "Download",
+      "creatingLabel": "Creating PDF...",
+      "createPdfButton": "Create PDF",
+      "step3Description": "Your PDF has been created. You can create another with a different PNG.",
+      "downloadButton": "Download PDF",
+      "downloadFilename": "fileflip-png.pdf",
+      "errorPngOnly": "Please select a PNG file.",
+      "errorSelectFirst": "Select a PNG file first.",
+      "errorCreationFailed": "Failed to create PDF. Try another PNG.",
+      "editorialTitle": "Why convert a PNG to PDF",
+      "editorialBody": "Converting a single PNG to a one-page PDF is useful when a form, system, or recipient expects a PDF rather than an image. Many workflows accept only PDF. This tool embeds your PNG in a new PDF with one page, so you get a standard document that opens in any PDF reader.\n\nThe tool uses pdf-lib in your browser to create the PDF. Your PNG is embedded as-is; no re-encoding or resizing is done. Everything runs on your device; no data is sent to any server. The result is a one-page PDF whose dimensions match your image.\n\nFor multiple images in one PDF, use the Images to PDF tool instead. For a single image that must be submitted as PDF, this tool is the simplest option.",
+      "faq1Q": "How do I convert a PNG to PDF online?",
+      "faq1A": "Upload your PNG file. The tool embeds it in a single-page PDF in your browser using pdf-lib. Click the button to create the PDF, then download. Everything runs in your browser; no data is sent to any server.",
+      "faq2Q": "Are my images sent to a server?",
+      "faq2A": "No. The tool uses pdf-lib in your browser to build the PDF. Your PNG never leaves your device.",
+      "faq3Q": "Why convert PNG to PDF?",
+      "faq3A": "A single PDF is easier to share or submit than an image file in many cases. Many forms and systems accept only PDF. Converting one PNG to a one-page PDF is useful for documents, forms, or when the recipient expects PDF.",
+      "faq4Q": "What about transparency?",
+      "faq4A": "PNG can have transparency. When embedded in a PDF, transparent areas may appear as white or as defined in the PDF. The tool embeds the PNG as-is; complex transparency is preserved where the PDF format allows.",
+      "faq5Q": "Does it work on mobile?",
+      "faq5A": "Yes. The tool runs in the mobile browser. Upload your PNG, create the PDF, and download. No app install required.",
+      "faq6Q": "Can I add multiple PNGs to one PDF?",
+      "faq6A": "This tool creates a one-page PDF from one PNG. For multiple images in one PDF, use the Images to PDF tool instead.",
+      "faq7Q": "Is the PDF searchable?",
+      "faq7A": "No. The PDF contains your image as a single page. Text in the image is not selectable or searchable. For searchable PDFs you would need OCR or a tool that adds text layers.",
+      "faq8Q": "What size will the PDF be?",
+      "faq8A": "The PDF size depends on the PNG. The image is embedded in the PDF, so the file is typically similar in size to or slightly larger than the original PNG.",
+      "faq9Q": "Can I convert JPG to PDF?",
+      "faq9A": "This tool is for PNG to PDF only. For JPG or multiple images, use the Images to PDF tool.",
+      "faq10Q": "Is there a file size limit?",
+      "faq10A": "There is no fixed limit. Very large PNGs may take longer and use more memory. For typical images (e.g. under 20 MB), the tool works well."
+    },
     "resizeImage": {
       "label": "调整图片尺寸",
       "short": "适配网站、简历和表格。",
@@ -509,16 +631,66 @@
       "metaTitle": "免费在线解压 ZIP",
       "metaDescription": "解压并下载 ZIP 中的文件。无需注册，在浏览器中完成。"
     },
-    "svgToPng": { "label": "SVG 转 PNG", "short": "将 SVG 转换为 PNG。", "metaTitle": "免费在线 SVG 转 PNG", "metaDescription": "在线将 SVG 转为 PNG。预览和下载在浏览器中完成。" },
-    "removeBackground": { "label": "去除背景", "short": "去除图片背景。", "metaTitle": "免费在线去除图片背景", "metaDescription": "去除图片背景，获得透明 PNG。在浏览器中完成。" },
-    "mergeImages": { "label": "合并图片", "short": "将两张图片合并。", "metaTitle": "免费在线合并图片", "metaDescription": "横向或纵向合并两张图片。在浏览器中完成。" },
-    "pdfToText": { "label": "PDF 转文字", "short": "从 PDF 提取文字。", "metaTitle": "免费在线 PDF 转文字", "metaDescription": "从 PDF 提取文字。复制或下载为 TXT。在浏览器中完成。" },
-    "addWatermark": { "label": "添加水印", "short": "为图片添加文字水印。", "metaTitle": "免费在线添加图片水印", "metaDescription": "为图片添加文字水印。位置、透明度、大小。在浏览器中完成。" },
-    "colorConverter": { "label": "颜色转换器", "short": "转换 HEX、RGB 和 HSL。", "metaTitle": "免费 HEX RGB HSL 颜色转换", "metaDescription": "在 HEX、RGB 和 HSL 之间转换颜色。实时预览。" },
-    "faviconGenerator": { "label": "Favicon 生成器", "short": "从图片生成 favicon。", "metaTitle": "免费在线 Favicon 生成器", "metaDescription": "生成 favicon（16x16、32x32 等）。ZIP 下载。在浏览器中完成。" },
-    "compressVideo": { "label": "压缩视频", "short": "在浏览器中压缩 MP4。", "metaTitle": "免费在线压缩视频", "metaDescription": "压缩 MP4 视频。进度条。WebAssembly 在浏览器中运行。" },
-    "extractAudio": { "label": "提取音频", "short": "从视频提取 MP3。", "metaTitle": "免费在线从视频提取音频", "metaDescription": "从 MP4 提取音频为 MP3。进度条。在浏览器中完成。" },
-    "wordCounter": { "label": "字数统计", "short": "统计字数、字符、阅读时间。", "metaTitle": "免费字数统计与文本分析", "metaDescription": "统计字数、字符、句子。阅读时间和高频词。在浏览器中完成。" },
+    "svgToPng": {
+      "label": "SVG 转 PNG",
+      "short": "将 SVG 转换为 PNG。",
+      "metaTitle": "免费在线 SVG 转 PNG",
+      "metaDescription": "在线将 SVG 转为 PNG。预览和下载在浏览器中完成。"
+    },
+    "removeBackground": {
+      "label": "去除背景",
+      "short": "去除图片背景。",
+      "metaTitle": "免费在线去除图片背景",
+      "metaDescription": "去除图片背景，获得透明 PNG。在浏览器中完成。"
+    },
+    "mergeImages": {
+      "label": "合并图片",
+      "short": "将两张图片合并。",
+      "metaTitle": "免费在线合并图片",
+      "metaDescription": "横向或纵向合并两张图片。在浏览器中完成。"
+    },
+    "pdfToText": {
+      "label": "PDF 转文字",
+      "short": "从 PDF 提取文字。",
+      "metaTitle": "免费在线 PDF 转文字",
+      "metaDescription": "从 PDF 提取文字。复制或下载为 TXT。在浏览器中完成。"
+    },
+    "addWatermark": {
+      "label": "添加水印",
+      "short": "为图片添加文字水印。",
+      "metaTitle": "免费在线添加图片水印",
+      "metaDescription": "为图片添加文字水印。位置、透明度、大小。在浏览器中完成。"
+    },
+    "colorConverter": {
+      "label": "颜色转换器",
+      "short": "转换 HEX、RGB 和 HSL。",
+      "metaTitle": "免费 HEX RGB HSL 颜色转换",
+      "metaDescription": "在 HEX、RGB 和 HSL 之间转换颜色。实时预览。"
+    },
+    "faviconGenerator": {
+      "label": "Favicon 生成器",
+      "short": "从图片生成 favicon。",
+      "metaTitle": "免费在线 Favicon 生成器",
+      "metaDescription": "生成 favicon（16x16、32x32 等）。ZIP 下载。在浏览器中完成。"
+    },
+    "compressVideo": {
+      "label": "压缩视频",
+      "short": "在浏览器中压缩 MP4。",
+      "metaTitle": "免费在线压缩视频",
+      "metaDescription": "压缩 MP4 视频。进度条。WebAssembly 在浏览器中运行。"
+    },
+    "extractAudio": {
+      "label": "提取音频",
+      "short": "从视频提取 MP3。",
+      "metaTitle": "免费在线从视频提取音频",
+      "metaDescription": "从 MP4 提取音频为 MP3。进度条。在浏览器中完成。"
+    },
+    "wordCounter": {
+      "label": "字数统计",
+      "short": "统计字数、字符、阅读时间。",
+      "metaTitle": "免费字数统计与文本分析",
+      "metaDescription": "统计字数、字符、句子。阅读时间和高频词。在浏览器中完成。"
+    },
     "heicToJpg": {
       "label": "HEIC 转 JPG",
       "short": "将 iPhone HEIC 照片转为 JPG。",
@@ -561,14 +733,59 @@
       "errorHeicOnly": "请仅选择 HEIC 文件。",
       "errorConversionFailed": "转换失败，请尝试其他 HEIC 文件。"
     },
-    "removeMetadata": { "label": "移除元数据", "short": "清除 JPG、PNG 的 EXIF。", "metaTitle": "移除图片 EXIF 元数据免费", "metaDescription": "移除全部 EXIF。可查看后下载干净图片。" },
-    "pdfToPptx": { "label": "PDF 转 PPT", "short": "将 PDF 每页转为幻灯片。", "metaTitle": "PDF 转 PowerPoint 免费", "metaDescription": "每页 PDF 变为一页幻灯片。下载 PPTX。" },
-    "colorPalette": { "label": "取色板", "short": "从图片提取主色。", "metaTitle": "图片取色板免费", "metaDescription": "提取 6 个主色。HEX、RGB、HSL。点击复制。" },
-    "textDiff": { "label": "文本对比", "short": "对比两段文本差异。", "metaTitle": "文本对比 diff 免费", "metaDescription": "绿色为新增，红色为删除。统计信息。" },
-    "encryptText": { "label": "文本加密", "short": "用密码加密/解密文本。", "metaTitle": "文本加密解密免费", "metaDescription": "AES-256 加密。密码不上传服务器。" },
-    "markdownToHtml": { "label": "Markdown 转 HTML", "short": "将 Markdown 转为 HTML。", "metaTitle": "Markdown 转 HTML 免费", "metaDescription": "实时预览，代码高亮。下载 HTML。" },
-    "qrGenerator": { "label": "二维码生成", "short": "生成自定义二维码。", "metaTitle": "二维码生成器免费", "metaDescription": "URL、邮箱、WiFi。尺寸颜色 logo。PNG 或 SVG。" },
-    "extractFrames": { "label": "视频抽帧", "short": "从视频提取画面。", "metaTitle": "视频抽帧免费", "metaDescription": "提取帧为 JPG。单张或 ZIP 下载。" },
-    "csvTools": { "label": "CSV 工具", "short": "合并或拆分 CSV。", "metaTitle": "CSV 合并与拆分免费", "metaDescription": "合并多个 CSV 或按行拆分。预览。" }
+    "removeMetadata": {
+      "label": "移除元数据",
+      "short": "清除 JPG、PNG 的 EXIF。",
+      "metaTitle": "移除图片 EXIF 元数据免费",
+      "metaDescription": "移除全部 EXIF。可查看后下载干净图片。"
+    },
+    "pdfToPptx": {
+      "label": "PDF 转 PPT",
+      "short": "将 PDF 每页转为幻灯片。",
+      "metaTitle": "PDF 转 PowerPoint 免费",
+      "metaDescription": "每页 PDF 变为一页幻灯片。下载 PPTX。"
+    },
+    "colorPalette": {
+      "label": "取色板",
+      "short": "从图片提取主色。",
+      "metaTitle": "图片取色板免费",
+      "metaDescription": "提取 6 个主色。HEX、RGB、HSL。点击复制。"
+    },
+    "textDiff": {
+      "label": "文本对比",
+      "short": "对比两段文本差异。",
+      "metaTitle": "文本对比 diff 免费",
+      "metaDescription": "绿色为新增，红色为删除。统计信息。"
+    },
+    "encryptText": {
+      "label": "文本加密",
+      "short": "用密码加密/解密文本。",
+      "metaTitle": "文本加密解密免费",
+      "metaDescription": "AES-256 加密。密码不上传服务器。"
+    },
+    "markdownToHtml": {
+      "label": "Markdown 转 HTML",
+      "short": "将 Markdown 转为 HTML。",
+      "metaTitle": "Markdown 转 HTML 免费",
+      "metaDescription": "实时预览，代码高亮。下载 HTML。"
+    },
+    "qrGenerator": {
+      "label": "二维码生成",
+      "short": "生成自定义二维码。",
+      "metaTitle": "二维码生成器免费",
+      "metaDescription": "URL、邮箱、WiFi。尺寸颜色 logo。PNG 或 SVG。"
+    },
+    "extractFrames": {
+      "label": "视频抽帧",
+      "short": "从视频提取画面。",
+      "metaTitle": "视频抽帧免费",
+      "metaDescription": "提取帧为 JPG。单张或 ZIP 下载。"
+    },
+    "csvTools": {
+      "label": "CSV 工具",
+      "short": "合并或拆分 CSV。",
+      "metaTitle": "CSV 合并与拆分免费",
+      "metaDescription": "合并多个 CSV 或按行拆分。预览。"
+    }
   }
 }
