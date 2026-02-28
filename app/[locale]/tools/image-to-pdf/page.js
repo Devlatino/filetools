@@ -144,6 +144,7 @@ export default function ImageToPdfPage() {
   const handleDragLeave = useCallback((e) => {
     e.preventDefault();
     e.stopPropagation();
+    if (e.relatedTarget && e.currentTarget.contains(e.relatedTarget)) return;
     setIsDragOver(false);
   }, []);
 
@@ -279,7 +280,7 @@ export default function ImageToPdfPage() {
                     type="file"
                     accept="image/jpeg,image/png,.jpg,.jpeg,.png"
                     multiple
-                    className="hidden"
+                    className="sr-only"
                     onChange={handleFileChange}
                   />
                   <Upload
@@ -300,7 +301,7 @@ export default function ImageToPdfPage() {
                         type="file"
                         accept="image/jpeg,image/png,.jpg,.jpeg,.png"
                         multiple
-                        className="hidden"
+                        className="sr-only"
                         onChange={handleFileChange}
                       />
                     </label>

@@ -206,7 +206,7 @@ export default function MergePdfPage() {
                     type="file"
                     multiple
                     accept="application/pdf"
-                    className="hidden"
+                    className="sr-only"
                     onChange={handleFilesChange}
                   />
                 </label>

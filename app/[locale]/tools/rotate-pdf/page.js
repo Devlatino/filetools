@@ -146,6 +146,7 @@ export default function RotatePdfPage() {
   const handleDragLeave = useCallback((e) => {
     e.preventDefault();
     e.stopPropagation();
+    if (e.relatedTarget && e.currentTarget.contains(e.relatedTarget)) return;
     setIsDragOver(false);
   }, []);
 
@@ -254,7 +255,7 @@ export default function RotatePdfPage() {
                     ref={fileInputRef}
                     type="file"
                     accept="application/pdf,.pdf"
-                    className="hidden"
+                    className="sr-only"
                     onChange={handleFileChange}
                   />
                   <Upload

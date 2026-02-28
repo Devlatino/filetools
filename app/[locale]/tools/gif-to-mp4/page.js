@@ -178,6 +178,7 @@ export default function GifToMp4Page() {
   const handleDragLeave = useCallback((e) => {
     e.preventDefault();
     e.stopPropagation();
+    if (e.relatedTarget && e.currentTarget.contains(e.relatedTarget)) return;
     setIsDragOver(false);
   }, []);
 
@@ -318,7 +319,7 @@ export default function GifToMp4Page() {
                     ref={fileInputRef}
                     type="file"
                     accept="image/gif,.gif"
-                    className="hidden"
+                    className="sr-only"
                     onChange={handleFileChange}
                   />
                   <Upload

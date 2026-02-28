@@ -155,6 +155,7 @@ export default function SvgToPngPage() {
   const handleDragLeave = useCallback((e) => {
     e.preventDefault();
     e.stopPropagation();
+    if (e.relatedTarget && e.currentTarget.contains(e.relatedTarget)) return;
     setIsDragOver(false);
   }, []);
 
@@ -281,7 +282,7 @@ export default function SvgToPngPage() {
                     ref={fileInputRef}
                     type="file"
                     accept="image/svg+xml,.svg"
-                    className="hidden"
+                    className="sr-only"
                     onChange={handleFileChange}
                   />
                   <Upload

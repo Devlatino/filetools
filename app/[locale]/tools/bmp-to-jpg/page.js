@@ -157,6 +157,7 @@ export default function BmpToJpgPage() {
   const handleDragLeave = useCallback((e) => {
     e.preventDefault();
     e.stopPropagation();
+    if (e.relatedTarget && e.currentTarget.contains(e.relatedTarget)) return;
     setIsDragOver(false);
   }, []);
 
@@ -295,7 +296,7 @@ export default function BmpToJpgPage() {
                     ref={fileInputRef}
                     type="file"
                     accept="image/bmp,.bmp"
-                    className="hidden"
+                    className="sr-only"
                     onChange={handleFileChange}
                   />
                   <Upload

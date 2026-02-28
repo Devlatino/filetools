@@ -151,7 +151,7 @@ export default function HeicToJpgPage() {
             <ToolSteps.Step title={t("step1")}>
               <label className="inline-flex cursor-pointer items-center rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-sky-400">
                 {t("selectButton")}
-                <input type="file" multiple accept="image/heic,image/heif,.heic,.heif" className="hidden" onChange={handleFiles} />
+                <input type="file" multiple accept="image/heic,image/heif,.heic,.heif" className="sr-only" onChange={handleFiles} />
               </label>
             </ToolSteps.Step>
             <ToolSteps.Step title={t("step2Convert")}>

@@ -157,6 +157,7 @@ export default function JpgToPngPage() {
   const handleDragLeave = useCallback((e) => {
     e.preventDefault();
     e.stopPropagation();
+    if (e.relatedTarget && e.currentTarget.contains(e.relatedTarget)) return;
     setIsDragOver(false);
   }, []);
 
@@ -280,7 +281,7 @@ export default function JpgToPngPage() {
                     ref={fileInputRef}
                     type="file"
                     accept="image/jpeg,.jpg,.jpeg"
-                    className="hidden"
+                    className="sr-only"
                     onChange={handleFileChange}
                   />
                   <Upload

@@ -34,3 +34,11 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+### IndexNow (notify search engines after deploy)
+
+After each deploy, notify Bing, Yandex and other IndexNow-compatible engines by pinging the IndexNow API with all site URLs.
+
+- **Automatic (recommended):** Use the GitHub Action in `.github/workflows/indexnow.yml`: it runs after push to `main`, waits for Vercel deploy, then calls `GET https://fileflip.org/api/indexnow` with header `x-indexnow-secret`. Add `INDEXNOW_SECRET` in **Repository → Settings → Secrets and variables → Actions** (same value as in Vercel env).
+- **Vercel Deploy Hook:** In Vercel Dashboard → Settings → Git → Deploy Hooks, create a hook. After each deploy you can call your API (e.g. from a cron or the hook’s “Notify” URL) with `x-indexnow-secret` to trigger the same logic.
+- **Manual:** Run `npm run indexnow` (reads `INDEXNOW_SECRET` from `.env.local` and calls the production API).

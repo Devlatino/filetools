@@ -295,6 +295,7 @@ export default function CropImagePage() {
   const handleDragLeave = useCallback((e) => {
     e.preventDefault();
     e.stopPropagation();
+    if (e.relatedTarget && e.currentTarget.contains(e.relatedTarget)) return;
     setIsDragOver(false);
   }, []);
 
@@ -477,7 +478,7 @@ export default function CropImagePage() {
                     ref={fileInputRef}
                     type="file"
                     accept={ACCEPT}
-                    className="hidden"
+                    className="sr-only"
                     onChange={handleFileChange}
                   />
                   <Upload

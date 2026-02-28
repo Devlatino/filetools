@@ -153,6 +153,7 @@ export default function PngToPdfPage() {
   const handleDragLeave = useCallback((e) => {
     e.preventDefault();
     e.stopPropagation();
+    if (e.relatedTarget && e.currentTarget.contains(e.relatedTarget)) return;
     setIsDragOver(false);
   }, []);
 
@@ -259,7 +260,7 @@ export default function PngToPdfPage() {
                     ref={fileInputRef}
                     type="file"
                     accept="image/png,.png"
-                    className="hidden"
+                    className="sr-only"
                     onChange={handleFileChange}
                   />
                   <Upload

@@ -151,6 +151,7 @@ export default function CompressPdfPage() {
   const handleDragLeave = useCallback((e) => {
     e.preventDefault();
     e.stopPropagation();
+    if (e.relatedTarget && e.currentTarget.contains(e.relatedTarget)) return;
     setIsDragOver(false);
   }, []);
 
@@ -262,7 +263,7 @@ export default function CompressPdfPage() {
                     ref={fileInputRef}
                     type="file"
                     accept="application/pdf"
-                    className="hidden"
+                    className="sr-only"
                     onChange={handleFileChange}
                   />
                   <Upload
