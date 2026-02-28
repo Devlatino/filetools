@@ -4,6 +4,47 @@
     "fast": "معالجة في ثوانٍ",
     "languages": "9 لغات"
   },
+  "compare": {
+    "title": "FileFlip مقابل Smallpdf مقابل ILovePDF مقابل Squoosh",
+    "metaTitle": "FileFlip مقابل Smallpdf مقابل ILovePDF مقابل Squoosh — مقارنة أدوات PDF والصور",
+    "metaDescription": "قارن FileFlip مع Smallpdf وILovePDF وSquoosh. الخادم مقابل العميل والحسابات والحدود.",
+    "intro": "كل هذه الأدوات جيدة. إليك الفروقات.",
+    "filesOnServer": "الملفات تُعالج على الخادم",
+    "accountRequired": "حساب مطلوب",
+    "watermarksFree": "علامة مائية في المجاني",
+    "dailyLimits": "حدود يومية",
+    "pdfTools": "أدوات PDF",
+    "imageTools": "أدوات الصور",
+    "gifToMp4": "GIF إلى MP4",
+    "languages": "اللغات",
+    "price": "السعر",
+    "yes": "نعم",
+    "no": "لا",
+    "partial": "جزئي",
+    "freeForever": "مجاني للأبد",
+    "freemium": "Freemium",
+    "multiple": "متعدد",
+    "one": "1",
+    "nine": "9",
+    "smallpdfBlurb": "Smallpdf مجموعة معروفة لأدوات PDF والصور. الملفات تُعالج على خوادمهم.",
+    "ilovepdfBlurb": "ILovePDF يقدم عمليات PDF كثيرة وبعض أدوات الصور. المعالجة على الخادم.",
+    "squooshBlurb": "Squoosh محسّن صور مجاني ومفتوح المصدر من Google. يعمل كله في المتصفح. صور فقط.",
+    "fileflipBlurb": "FileFlip ينفذ كل التحويلات في متصفحك. بدون حساب أو رفع خادم، 9 لغات.",
+    "whenToUseFileFlip": "متى تستخدم FileFlip",
+    "whenToUseBody": "استخدم FileFlip عندما تهم الخصوصية أو لا تريد حساباً.",
+    "cta": "جرب FileFlip — بدون حساب",
+    "ctaButton": "جرب FileFlip"
+  },
+  "blog": {
+    "title": "المدونة",
+    "metaTitle": "المدونة — FileFlip",
+    "metaDescription": "إرشادات ونصائح حول PDF والصور وتحويل الملفات. أدوات مجانية، بدون حساب.",
+    "readMore": "اقرأ المزيد",
+    "minRead": "دقائق قراءة",
+    "relatedArticles": "مقالات ذات صلة",
+    "backToBlog": "← العودة للمدونة",
+    "tryTool": "جرب {tool} ←"
+  },
   "howTo": {
     "title": "كيفية استخدام FileFlip",
     "subtitle": "نفس الخطوات لكل أداة.",
@@ -20,7 +61,8 @@
     "nav": {
       "tools": "أدوات",
       "howItWorks": "كيف يعمل",
-      "faq": "الأسئلة الشائعة"
+      "faq": "الأسئلة الشائعة",
+      "blog": "المدونة"
     },
     "footer": {
       "description1": "أدوات مجانية لتحويل وضغط الملفات في المتصفح.",

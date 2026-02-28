@@ -57,6 +57,47 @@
     "fast": "Traitement en quelques secondes",
     "languages": "9 langues"
   },
+  "compare": {
+    "title": "FileFlip vs Smallpdf vs ILovePDF vs Squoosh",
+    "metaTitle": "FileFlip vs Smallpdf vs ILovePDF vs Squoosh — Comparatif d'outils PDF et images",
+    "metaDescription": "Comparez FileFlip à Smallpdf, ILovePDF et Squoosh. Serveur vs client, comptes, limites et quand utiliser chacun.",
+    "intro": "Tous ces outils sont bons. Voici leurs différences.",
+    "filesOnServer": "Fichiers traités sur serveur",
+    "accountRequired": "Compte requis",
+    "watermarksFree": "Filigrane en gratuit",
+    "dailyLimits": "Limites quotidiennes",
+    "pdfTools": "Outils PDF",
+    "imageTools": "Outils image",
+    "gifToMp4": "GIF en MP4",
+    "languages": "Langues",
+    "price": "Prix",
+    "yes": "Oui",
+    "no": "Non",
+    "partial": "Partiel",
+    "freeForever": "Gratuit pour toujours",
+    "freemium": "Freemium",
+    "multiple": "Plusieurs",
+    "one": "1",
+    "nine": "9",
+    "smallpdfBlurb": "Smallpdf est une suite connue d'outils PDF et images. Les fichiers sont traités sur leurs serveurs. La version gratuite a des limites quotidiennes.",
+    "ilovepdfBlurb": "ILovePDF propose de nombreuses opérations PDF et quelques outils image. Le traitement est côté serveur. L'usage gratuit est limité.",
+    "squooshBlurb": "Squoosh est un optimiseur d'images gratuit et open source par Google. Tout s'exécute dans le navigateur. Images uniquement, pas de PDF.",
+    "fileflipBlurb": "FileFlip exécute toutes les conversions dans votre navigateur. Pas de compte, pas d'upload serveur, pas de filigrane ni limites. Outils PDF et images, plus GIF en MP4, en 9 langues.",
+    "whenToUseFileFlip": "Quand utiliser FileFlip",
+    "whenToUseBody": "Utilisez FileFlip quand la confidentialité compte (les documents ne quittent pas votre appareil), vous ne voulez pas de compte, ou vous avez besoin de GIF en MP4 et d'outils PDF/image sans limites.",
+    "cta": "Essayez FileFlip — sans compte",
+    "ctaButton": "Essayez FileFlip"
+  },
+  "blog": {
+    "title": "Blog",
+    "metaTitle": "Blog — FileFlip",
+    "metaDescription": "Guides et conseils sur le PDF, les images et la conversion. Outils gratuits, sans compte.",
+    "readMore": "Lire la suite",
+    "minRead": "min de lecture",
+    "relatedArticles": "Articles connexes",
+    "backToBlog": "← Retour au Blog",
+    "tryTool": "Essayer {tool} →"
+  },
   "howTo": {
     "title": "Comment utiliser FileFlip",
     "subtitle": "La même procédure pour chaque outil.",
@@ -73,7 +114,8 @@
     "nav": {
       "tools": "Outils",
       "howItWorks": "Comment ça marche",
-      "faq": "FAQ"
+      "faq": "FAQ",
+      "blog": "Blog"
     },
     "footer": {
       "description1": "Outils gratuits pour convertir et compresser des fichiers dans le navigateur.",

@@ -4,6 +4,47 @@
     "fast": "秒级处理",
     "languages": "9种语言"
   },
+  "compare": {
+    "title": "FileFlip vs Smallpdf vs ILovePDF vs Squoosh",
+    "metaTitle": "FileFlip vs Smallpdf vs ILovePDF vs Squoosh — 免费 PDF 与图片工具对比",
+    "metaDescription": "对比 FileFlip、Smallpdf、ILovePDF 与 Squoosh。服务端与本地、账号、限制及适用场景。",
+    "intro": "这些工具都不错，差异如下。",
+    "filesOnServer": "文件在服务器处理",
+    "accountRequired": "需要账号",
+    "watermarksFree": "免费版有水印",
+    "dailyLimits": "每日限制",
+    "pdfTools": "PDF 工具",
+    "imageTools": "图片工具",
+    "gifToMp4": "GIF 转 MP4",
+    "languages": "语言",
+    "price": "价格",
+    "yes": "是",
+    "no": "否",
+    "partial": "部分",
+    "freeForever": "永久免费",
+    "freemium": "Freemium",
+    "multiple": "多种",
+    "one": "1",
+    "nine": "9",
+    "smallpdfBlurb": "Smallpdf 是知名的 PDF 与图片工具套件，文件在其服务器处理。免费版有每日限制。",
+    "ilovepdfBlurb": "ILovePDF 提供多种 PDF 操作及部分图片工具，处理在服务端。免费使用有限制。",
+    "squooshBlurb": "Squoosh 是 Google 的免费开源图片优化工具，完全在浏览器中运行，仅支持图片。",
+    "fileflipBlurb": "FileFlip 在浏览器中完成所有转换。无需账号、不上传服务器、无水印与每日限制，支持 9 种语言。",
+    "whenToUseFileFlip": "何时使用 FileFlip",
+    "whenToUseBody": "当您注重隐私（文件不离开设备）、不想注册账号或需要 GIF 转 MP4 及完整 PDF/图片工具时，可使用 FileFlip。",
+    "cta": "试试 FileFlip — 无需账号",
+    "ctaButton": "试试 FileFlip"
+  },
+  "blog": {
+    "title": "博客",
+    "metaTitle": "博客 — FileFlip",
+    "metaDescription": "PDF、图片与文件转换指南与技巧。免费工具，无需注册。",
+    "readMore": "阅读更多",
+    "minRead": "分钟阅读",
+    "relatedArticles": "相关文章",
+    "backToBlog": "← 返回博客",
+    "tryTool": "试试 {tool} →"
+  },
   "howTo": {
     "title": "如何使用 FileFlip",
     "subtitle": "每个工具的操作流程都一样。",
@@ -20,7 +61,8 @@
     "nav": {
       "tools": "工具",
       "howItWorks": "如何使用",
-      "faq": "常见问题"
+      "faq": "常见问题",
+      "blog": "博客"
     },
     "footer": {
       "description1": "在浏览器中免费转换和压缩文件的工具。",

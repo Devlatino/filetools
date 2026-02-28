@@ -1,0 +1,11 @@
+---
+title: "为什么应该把 GIF 转成 MP4（以及如何免费转换）"
+description: "同一段内容，GIF 可能 5MB，MP4 只要 500KB。了解为何转成 MP4 更省带宽、画质更好。"
+date: "2026-02-28"
+readTime: "4 min"
+tags: ["gif", "mp4", "视频", "网页性能", "ffmpeg"]
+relatedTool: "gif-to-mp4"
+relatedToolLabel: "免费 GIF 转 MP4"
+---
+
+一个 5MB 的 GIF 和一个 500KB 的 MP4 可以呈现同一段动画。**MP4（H.264）** 的压缩远优于 GIF，同一段内容转成 MP4 往往能 **缩小约 10 倍**。在 **Twitter**、**Discord**、**网页** 等支持视频的地方，优先用 MP4。在 HTML 里要实现像 GIF 一样的自动循环播放，可用 `<video autoplay loop muted playsinline>`。**FFmpeg.wasm** 是运行在浏览器里的 FFmpeg，无需上传到服务器、无需账号。FileFlip 的 [GIF 转 MP4](https://fileflip.org/zh/tools/gif-to-mp4) 工具即基于 FFmpeg.wasm，在浏览器内完成转换。

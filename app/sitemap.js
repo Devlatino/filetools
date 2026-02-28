@@ -25,7 +25,10 @@ const TOOL_PATHS = [
   "/tools/crop-image",
   "/tools/bmp-to-jpg",
   "/tools/extract-pdf-pages",
+  "/tools/compare",
 ];
+
+const BLOG_SLUGS = ["webp-vs-jpg", "how-to-compress-pdf", "gif-to-mp4-why"];
 
 /**
  * Build alternates.languages for a path segment (e.g. "" for home or "/tools/compress-image").
@@ -78,9 +81,35 @@ export default function sitemap() {
       entries.push({
         url: `${BASE_URL}${pathPrefix}${path}`,
         lastModified,
-        changeFrequency: "monthly",
-        priority: 0.8,
+        changeFrequency: path === "/tools/compare" ? "monthly" : "monthly",
+        priority: path === "/tools/compare" ? 0.8 : 0.8,
         alternates: { languages: toolLanguages },
+      });
+    }
+  }
+
+  const blogLanguages = buildAlternatesLanguages("/blog");
+  for (const locale of routing.locales) {
+    const pathPrefix = locale === routing.defaultLocale ? "" : `/${locale}`;
+    entries.push({
+      url: `${BASE_URL}${pathPrefix}/blog`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.7,
+      alternates: { languages: blogLanguages },
+    });
+  }
+
+  for (const slug of BLOG_SLUGS) {
+    const blogSlugLanguages = buildAlternatesLanguages(`/blog/${slug}`);
+    for (const locale of routing.locales) {
+      const pathPrefix = locale === routing.defaultLocale ? "" : `/${locale}`;
+      entries.push({
+        url: `${BASE_URL}${pathPrefix}/blog/${slug}`,
+        lastModified,
+        changeFrequency: "monthly",
+        priority: 0.6,
+        alternates: { languages: blogSlugLanguages },
       });
     }
   }

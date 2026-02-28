@@ -302,6 +302,9 @@ export default function Home() {
               <a href="#faq" className="hover:text-sky-400">
                 {tCommon("nav.faq")}
               </a>
+              <Link href={locale === "en" ? "/blog" : `/${locale}/blog`} className="hover:text-sky-400">
+                {tCommon("nav.blog")}
+              </Link>
             </div>
             <LanguageSwitcher />
           </nav>
@@ -809,6 +812,11 @@ export default function Home() {
                 <li>
                   <Link href={`/${locale}/contact`} className="text-sm text-slate-300 transition-colors hover:text-white">
                     {tCommon("footer.contact")}
+                  </Link>
+                </li>
+                <li>
+                  <Link href={locale === "en" ? "/blog" : `/${locale}/blog`} className="text-sm text-slate-300 transition-colors hover:text-white">
+                    {tCommon("nav.blog")}
                   </Link>
                 </li>
                 <li>

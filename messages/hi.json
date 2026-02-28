@@ -4,6 +4,47 @@
     "fast": "सेकंडों में प्रोसेस",
     "languages": "9 भाषाओं"
   },
+  "compare": {
+    "title": "FileFlip vs Smallpdf vs ILovePDF vs Squoosh",
+    "metaTitle": "FileFlip vs Smallpdf vs ILovePDF vs Squoosh — मुफ्त PDF और इमेज टूल तुलना",
+    "metaDescription": "FileFlip की Smallpdf, ILovePDF और Squoosh से तुलना। सर्वर बनाम क्लाइंट, अकाउंट, लिमिट।",
+    "intro": "ये सभी टूल अच्छे हैं। अंतर यहां।",
+    "filesOnServer": "सर्वर पर फाइलें प्रोसेस",
+    "accountRequired": "अकाउंट जरूरी",
+    "watermarksFree": "मुफ्त में वॉटरमार्क",
+    "dailyLimits": "रोज लिमिट",
+    "pdfTools": "PDF टूल",
+    "imageTools": "इमेज टूल",
+    "gifToMp4": "GIF से MP4",
+    "languages": "भाषाएं",
+    "price": "कीमत",
+    "yes": "हां",
+    "no": "नहीं",
+    "partial": "आंशिक",
+    "freeForever": "हमेशा मुफ्त",
+    "freemium": "Freemium",
+    "multiple": "कई",
+    "one": "1",
+    "nine": "9",
+    "smallpdfBlurb": "Smallpdf जाना-माना PDF और इमेज टूल सूट। फाइलें उनके सर्वर पर प्रोसेस।",
+    "ilovepdfBlurb": "ILovePDF कई PDF ऑपरेशन और कुछ इमेज टूल देता है। प्रोसेसिंग सर्वर पर।",
+    "squooshBlurb": "Squoosh Google का मुफ्त ओपन-सोर्स इमेज ऑप्टिमाइज़र। पूरा ब्राउज़र में। सिर्फ इमेज।",
+    "fileflipBlurb": "FileFlip सारे कन्वर्जन ब्राउज़र में चलाता है। बिना अकाउंट, सर्वर अपलोड नहीं, 9 भाषाएं।",
+    "whenToUseFileFlip": "FileFlip कब इस्तेमाल करें",
+    "whenToUseBody": "जब प्राइवेसी मायने रखे या अकाउंट न चाहिए तो FileFlip इस्तेमाल करें।",
+    "cta": "FileFlip आज़माएं — बिना अकाउंट",
+    "ctaButton": "FileFlip आज़माएं"
+  },
+  "blog": {
+    "title": "ब्लॉग",
+    "metaTitle": "ब्लॉग — FileFlip",
+    "metaDescription": "PDF, इमेज और फ़ाइल कन्वर्जन पर गाइड और टिप्स। मुफ्त टूल, बिना अकाउंट।",
+    "readMore": "और पढ़ें",
+    "minRead": "मिनट पढ़ने",
+    "relatedArticles": "संबंधित लेख",
+    "backToBlog": "← ब्लॉग पर वापस",
+    "tryTool": "{tool} आज़माएं →"
+  },
   "howTo": {
     "title": "FileFlip कैसे इस्तेमाल करें",
     "subtitle": "हर टूल के लिए एक जैसी प्रक्रिया।",
@@ -20,7 +61,8 @@
     "nav": {
       "tools": "टूल",
       "howItWorks": "कैसे काम करता है",
-      "faq": "FAQ"
+      "faq": "FAQ",
+      "blog": "ब्लॉग"
     },
     "footer": {
       "description1": "ब्राउज़र में फ़ाइलें कन्वर्ट और कंप्रेस करने के मुफ्त टूल।",
