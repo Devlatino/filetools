@@ -197,6 +197,7 @@ export default function CompressImagePage() {
   const locale = useLocale();
   const t = useTranslations("tools.compressImage");
   const tCommon = useTranslations("common");
+  const tTool = useTranslations("tool");
   const [originalFile, setOriginalFile] = useState(null);
   const [compressedFile, setCompressedFile] = useState(null);
   const [originalUrl, setOriginalUrl] = useState("");
@@ -398,7 +399,7 @@ export default function CompressImagePage() {
                       isDragOver ? "text-sky-200" : "text-slate-300"
                     }`}
                   >
-                    {isDragOver ? t("releaseToUpload") : t("dropzonePrompt")}
+                    {isDragOver ? t("releaseToUpload") : tTool("dropZone")}
                   </p>
                 </label>
               ) : (

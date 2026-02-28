@@ -25,10 +25,11 @@ const TOOL_IDS = [
   { id: "heicToJpg", href: "/tools/heic-to-jpg", category: "images", active: true },
 ];
 
-const CATEGORY_TAG_STYLES = {
-  images: "bg-emerald-500/20 text-emerald-300 border-emerald-400/30",
-  pdf: "bg-rose-500/20 text-rose-300 border-rose-400/30",
-  video: "bg-violet-500/20 text-violet-300 border-violet-400/30",
+const CATEGORY_COLORS = {
+  images: { hex: "#3b82f6", rgb: "59, 130, 246" },
+  pdf: { hex: "#ef4444", rgb: "239, 68, 68" },
+  video: { hex: "#8b5cf6", rgb: "139, 92, 246" },
+  utility: { hex: "#10b981", rgb: "16, 185, 129" },
 };
 
 export default function Home() {
@@ -421,18 +422,18 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="tools" ref={toolsSectionRef} className="bg-slate-950 py-14 sm:py-16">
+        <section id="tools" ref={toolsSectionRef} className="tools-section-bg py-14 sm:py-16">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div className="space-y-2">
-                <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
+                <h2 className="text-xl font-semibold tracking-tight text-slate-50 sm:text-2xl">
                   {t("toolsTitle")}
                 </h2>
-                <p className="mt-1 text-sm text-slate-300">
+                <p className="mt-1 text-sm text-slate-400">
                   {t("toolsSubtitle")}
                 </p>
               </div>
-              <span className="inline-flex items-center rounded-full border border-sky-400/30 bg-sky-400/10 px-3 py-1 text-xs font-medium text-sky-100">
+              <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">
                 {t("toolsCount", { count: filteredTools.length })}
               </span>
             </div>
@@ -446,7 +447,7 @@ export default function Home() {
                   className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
                     activeFilter === cat
                       ? "bg-sky-500 text-slate-950"
-                      : "border border-slate-500/60 bg-transparent text-slate-300 hover:border-slate-400 hover:text-slate-100"
+                      : "border border-white/10 bg-white/5 text-slate-400 hover:border-white/20 hover:text-slate-200"
                   }`}
                 >
                   {t(`filter${cat === "all" ? "All" : cat === "textCode" ? "TextCode" : cat.charAt(0).toUpperCase() + cat.slice(1)}`)}
@@ -459,48 +460,63 @@ export default function Home() {
                 ? Array.from({ length: 4 }).map((_, i) => (
                     <div
                       key={`skeleton-${i}`}
-                      className="relative flex flex-col rounded-2xl border border-white/10 bg-slate-900/80 p-5"
+                      className="relative flex flex-col rounded-2xl border border-white/[0.08] bg-[#0f172a] p-6"
                       aria-hidden
                     >
-                      <div className="absolute right-4 top-4 h-6 w-16 animate-pulse rounded-full bg-slate-700/80" />
-                      <div className="mb-4 h-14 w-14 animate-pulse rounded-2xl bg-slate-700/80" />
-                      <div className="h-5 w-3/4 animate-pulse rounded bg-slate-700/80" />
-                      <div className="mt-2 h-4 w-full animate-pulse rounded bg-slate-700/60" />
-                      <div className="mt-2 h-4 w-2/3 animate-pulse rounded bg-slate-700/60" />
-                      <div className="mt-4 h-6 w-20 animate-pulse rounded-full bg-slate-700/60" />
+                      <div className="absolute right-4 top-4 h-6 w-16 animate-pulse rounded-full bg-white/10" />
+                      <div className="mb-5 h-14 w-14 animate-pulse rounded-full bg-white/10" />
+                      <div className="h-5 w-3/4 animate-pulse rounded bg-white/10" />
+                      <div className="mt-2 h-4 w-full animate-pulse rounded bg-white/5" />
+                      <div className="mt-2 h-4 w-2/3 animate-pulse rounded bg-white/5" />
                     </div>
                   ))
                 : filteredTools.map((tool, index) => {
                     const IconComponent = TOOL_ICONS[tool.id];
-                    const categoryStyle = CATEGORY_TAG_STYLES[tool.category] || CATEGORY_TAG_STYLES.images;
+                    const colors = CATEGORY_COLORS[tool.category] || CATEGORY_COLORS.images;
                     const categoryLabel = t(`filter${tool.category === "images" ? "Images" : tool.category === "pdf" ? "Pdf" : "Video"}`);
                     const showTooltip = comingSoonTooltipId === tool.id;
 
                     const cardContent = (
                       <>
                         <span
+                          className="absolute left-4 top-4 rounded-full px-2.5 py-1 text-[11px] font-medium"
+                          style={{
+                            backgroundColor: `rgba(${colors.rgb}, 0.15)`,
+                            color: colors.hex,
+                          }}
+                        >
+                          {categoryLabel}
+                        </span>
+                        <span
                           className={`absolute right-4 top-4 rounded-full border px-2.5 py-1 text-[10px] font-medium ${
                             tool.active
-                              ? "border-emerald-400/30 bg-emerald-500/20 text-emerald-300"
-                              : "border-slate-500/50 bg-slate-500/20 text-slate-400"
+                              ? "border-white/10 bg-white/5 text-slate-400"
+                              : "border-white/10 bg-white/5 text-slate-500"
                           }`}
                         >
                           {tool.active ? t("badgeAvailable") : t("badgeComingSoon")}
                         </span>
-                        <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-800/80 text-slate-200 transition-transform duration-300 group-hover:scale-105">
+                        <div
+                          className="tool-card-icon-wrap mb-5 flex h-14 w-14 shrink-0 items-center justify-center rounded-full"
+                          style={{ color: colors.hex }}
+                        >
                           {IconComponent ? <IconComponent size={32} strokeWidth={1.75} /> : null}
                         </div>
-                        <h3 className="text-base font-semibold text-slate-50">{tool.label}</h3>
-                        <p className="mt-1.5 line-clamp-2 text-sm text-slate-400">{tool.short}</p>
-                        <span className={`mt-4 inline-flex w-fit rounded-full border px-3 py-1 text-[11px] font-medium ${categoryStyle}`}>
-                          {categoryLabel}
-                        </span>
-                        <span className="mt-5 flex items-center justify-end gap-1 text-sky-400 opacity-0 transition-all duration-300 group-hover:opacity-100">
+                        <h3 className="text-base font-semibold" style={{ color: "#f1f5f9" }}>
+                          {tool.label}
+                        </h3>
+                        <p className="mt-1.5 line-clamp-2 text-sm" style={{ color: "#94a3b8" }}>
+                          {tool.short}
+                        </p>
+                        <span
+                          className="mt-auto flex pt-5 items-center justify-end gap-1 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                          style={{ color: colors.hex }}
+                        >
                           <ArrowRight size={18} strokeWidth={2} />
                         </span>
                         {showTooltip && !tool.active && (
                           <div
-                            className="absolute inset-x-4 bottom-4 rounded-lg border border-sky-500/30 bg-slate-900 px-3 py-2 text-xs text-sky-200 shadow-lg"
+                            className="absolute inset-x-4 bottom-4 rounded-lg border border-white/10 bg-[#0f172a] px-3 py-2 text-xs text-slate-300 shadow-lg"
                             role="tooltip"
                           >
                             {t("tooltipComingSoon")}
@@ -509,8 +525,12 @@ export default function Home() {
                       </>
                     );
 
-                    const cardBase = `group relative flex flex-col rounded-2xl border border-white/10 bg-slate-900/80 p-5 shadow-md transition-all duration-300 ease-out tool-card-enter ${toolsInView ? "tool-card-visible" : ""}`;
-                    const cardStyle = { transitionDelay: `${index * 50}ms` };
+                    const cardBase = `group relative flex flex-col rounded-2xl p-6 min-h-[220px] tool-card-premium tool-card-enter ${toolsInView ? "tool-card-visible" : ""}`;
+                    const cardStyle = {
+                      transitionDelay: `${index * 50}ms`,
+                      ["--card-hex"]: colors.hex,
+                      ["--card-rgb"]: colors.rgb,
+                    };
 
                     if (tool.active) {
                       return (
@@ -518,7 +538,7 @@ export default function Home() {
                           key={tool.id}
                           href={`/${locale}${tool.href}`}
                           prefetch
-                          className={`${cardBase} hover:-translate-y-1 hover:border-sky-400/30 hover:shadow-xl hover:shadow-sky-500/10`}
+                          className={cardBase}
                           style={cardStyle}
                         >
                           {cardContent}
@@ -531,7 +551,7 @@ export default function Home() {
                         key={tool.id}
                         type="button"
                         onClick={() => setComingSoonTooltipId((prev) => (prev === tool.id ? null : tool.id))}
-                        className={`${cardBase} text-left opacity-75 hover:border-slate-500 hover:opacity-90 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-sky-500/30`}
+                        className={`${cardBase} text-left opacity-80 focus:outline-none focus:ring-2 focus:ring-white/20 focus:ring-offset-2 focus:ring-offset-[#020817]`}
                         style={cardStyle}
                       >
                         {cardContent}

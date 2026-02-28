@@ -166,11 +166,38 @@ body {
   animation: marquee 25s linear infinite;
 }
 
-/* Tool card staggered entrance */
+/* Tools section: dark premium background with subtle pattern */
+.tools-section-bg {
+  background-color: #020817;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Tool card: premium dark with category glow on hover */
+.tool-card-premium {
+  background-color: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+.tool-card-premium:hover {
+  border-color: var(--card-hex, #3b82f6);
+  box-shadow: 0 0 30px rgba(var(--card-rgb, 59, 130, 246), 0.4);
+  transform: translateY(-4px);
+}
+.tool-card-premium .tool-card-icon-wrap {
+  background-color: rgba(var(--card-rgb, 59, 130, 246), 0.15);
+  transition: background-color 0.3s ease;
+}
+.tool-card-premium:hover .tool-card-icon-wrap {
+  background-color: rgba(var(--card-rgb, 59, 130, 246), 0.3);
+}
+
+/* Tool card staggered entrance: fade + slide from bottom */
 .tool-card-enter {
   opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  transform: translateY(20px);
+  transition: opacity 0.45s ease-out, transform 0.45s ease-out;
 }
 .tool-card-enter.tool-card-visible {
   opacity: 1;

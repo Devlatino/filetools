@@ -11,6 +11,7 @@
   },
   "tool": {
     "upload": "Click to upload or drag and drop",
+    "dropZone": "Drag your image here or click to select",
     "download": "Download",
     "processing": "Processing...",
     "done": "Done!",
