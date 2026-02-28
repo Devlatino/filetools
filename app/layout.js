@@ -34,7 +34,7 @@ export const metadata = {
     apple: "/fileflip-icon.svg",
   },
   verification: {
-    yandex: "f5df28b63112bd7a",
+    yandex: "987f42d9f3b66eb0",
   },
 };
 
