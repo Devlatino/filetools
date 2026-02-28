@@ -1,7 +1,7 @@
 /**
  * Supported locales for the app. Used by routing and LanguageSwitcher.
  */
-export const locales = ["en", "it", "es", "fr", "de", "pt"];
+export const locales = ["en", "it", "es", "fr", "de", "pt", "zh", "hi", "ar"];
 
 export const defaultLocale = "en";
 
@@ -13,6 +13,9 @@ export const localeNames = {
   fr: "Français",
   de: "Deutsch",
   pt: "Português",
+  zh: "中文",
+  hi: "हिन्दी",
+  ar: "العربية",
 };
 
 /** Emoji flags for LanguageSwitcher (approximate where no single flag exists) */
@@ -23,4 +26,7 @@ export const localeFlags = {
   fr: "🇫🇷",
   de: "🇩🇪",
   pt: "🇵🇹",
+  zh: "🇨🇳",
+  hi: "🇮🇳",
+  ar: "🇸🇦",
 };

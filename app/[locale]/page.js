@@ -144,7 +144,7 @@ export default function Home() {
       <header className="relative z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <Link href={`/${locale}/`} prefetch className="flex items-center gap-2">
-            <img src="/fileflip-logo.svg" alt={tCommon("siteName")} className="h-9 w-auto" width={140} height={36} />
+            <img src="/fileflip-logo.svg" alt={tCommon("siteName")} className="h-11 w-auto" width={170} height={44} />
             <span className="hidden text-xs text-slate-300 sm:inline">{tCommon("tagline")}</span>
           </Link>
 
@@ -606,7 +606,7 @@ export default function Home() {
             {/* Col 1: Logo + description + social */}
             <div className="space-y-4">
               <Link href={`/${locale}/`} className="inline-block">
-                <img src="/fileflip-logo.svg" alt={tCommon("siteName")} className="h-8 w-auto brightness-0 invert" width={120} height={32} />
+                <img src="/fileflip-logo.svg" alt={tCommon("siteName")} className="h-10 w-auto brightness-0 invert" width={155} height={40} />
               </Link>
               <p className="text-sm leading-relaxed text-slate-200">
                 {tCommon("footer.description1")}

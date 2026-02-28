@@ -330,9 +330,9 @@ export default function CompressImagePage() {
             <img
               src="/fileflip-logo.svg"
               alt={tCommon("siteName")}
-              className="h-9 w-auto"
-              width={140}
-              height={36}
+              className="h-11 w-auto"
+              width={170}
+              height={44}
             />
             <span className="text-sm text-slate-400">{t("label")}</span>
           </Link>
