@@ -10,7 +10,60 @@ import { EditorialSection } from "@/components/EditorialSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
-import { parseSTL } from "@/lib/stlParser";
+function parseSTL(buffer) {
+  const geometry = new THREE.BufferGeometry();
+
+  const headerBytes = new Uint8Array(buffer, 0, 80);
+  const header = String.fromCharCode(...headerBytes);
+  const isASCII = header.includes("solid") && !isBinarySTL(buffer);
+
+  function isBinarySTL(buf) {
+    const numTriangles = new DataView(buf).getUint32(80, true);
+    const expectedSize = 84 + numTriangles * 50;
+    return buf.byteLength === expectedSize;
+  }
+
+  const positions = [];
+
+  if (isASCII) {
+    const text = new TextDecoder().decode(buffer);
+    const lines = text.split("\n");
+    for (const line of lines) {
+      const trimmed = line.trim();
+      if (trimmed.startsWith("vertex")) {
+        const parts = trimmed.split(/\s+/);
+        positions.push(
+          parseFloat(parts[1]),
+          parseFloat(parts[2]),
+          parseFloat(parts[3])
+        );
+      }
+    }
+  } else {
+    const view = new DataView(buffer);
+    const numTriangles = view.getUint32(80, true);
+    let offset = 84;
+    for (let i = 0; i < numTriangles; i++) {
+      offset += 12; // skip normal
+      for (let j = 0; j < 3; j++) {
+        positions.push(
+          view.getFloat32(offset, true),
+          view.getFloat32(offset + 4, true),
+          view.getFloat32(offset + 8, true)
+        );
+        offset += 12;
+      }
+      offset += 2; // attribute byte count
+    }
+  }
+
+  geometry.setAttribute(
+    "position",
+    new THREE.Float32BufferAttribute(positions, 3)
+  );
+  geometry.computeVertexNormals();
+  return geometry;
+}
 
 export default function StlViewerPage() {
   const locale = useLocale();
@@ -52,10 +105,7 @@ export default function StlViewerPage() {
       const buffer = e.target?.result;
       if (!buffer) return;
       try {
-        const data = parseSTL(buffer);
-        const geometry = new THREE.BufferGeometry();
-        geometry.setAttribute("position", new THREE.BufferAttribute(data.positions, 3));
-        geometry.setAttribute("normal", new THREE.BufferAttribute(data.normals, 3));
+        const geometry = parseSTL(buffer);
 
         geometry.computeBoundingBox();
         const box = geometry.boundingBox;
@@ -79,9 +129,9 @@ export default function StlViewerPage() {
         console.log("camera position:", camera.position);
         console.log("bounding box:", box);
 
-        const [[minX, minY, minZ], [maxX, maxY, maxZ]] = [data.bounds.min, data.bounds.max];
-        const dimStr = `${(maxX - minX).toFixed(1)} × ${(maxY - minY).toFixed(1)} × ${(maxZ - minZ).toFixed(1)}`;
-        setStats({ numTriangles: data.numTriangles, dimensions: dimStr });
+        const numTriangles = geometry.attributes.position.count / 3;
+        const dimStr = `${size.x.toFixed(1)} × ${size.y.toFixed(1)} × ${size.z.toFixed(1)}`;
+        setStats({ numTriangles, dimensions: dimStr });
 
         const animate = () => {
           animIdRef.current = requestAnimationFrame(animate);
