@@ -28,6 +28,9 @@ const TOOL_PATHS = [
   "/tools/tiff-to-jpg",
   "/tools/add-watermark-pdf",
   "/tools/mp4-to-gif",
+  "/tools/jpg-to-webp",
+  "/tools/pdf-to-text",
+  "/tools/create-zip",
   "/tools/compare",
 ];
 

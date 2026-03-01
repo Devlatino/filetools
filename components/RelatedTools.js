@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { Image, FileText, Video, FileArchive, Type, ArrowRight, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp } from "lucide-react";
+import { Image, FileText, Video, FileArchive, Type, ArrowRight, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive } from "lucide-react";
 import { RELATED_TOOLS, SLUG_TO_ID } from "@/lib/relatedTools";
 
 /** Icon component by tool slug: image tools, PDF, video, archive, text. */
@@ -31,6 +31,9 @@ const ICON_BY_SLUG = {
   "tiff-to-jpg": FileImage,
   "add-watermark-pdf": Stamp,
   "mp4-to-gif": Film,
+  "jpg-to-webp": FileImage,
+  "pdf-to-text": FileText,
+  "create-zip": Archive,
 };
 const DEFAULT_ICON = Type;
 
@@ -59,6 +62,9 @@ const BG_BY_SLUG = {
   "tiff-to-jpg": "bg-teal-500",
   "add-watermark-pdf": "bg-rose-500",
   "mp4-to-gif": "bg-violet-500",
+  "jpg-to-webp": "bg-teal-500",
+  "pdf-to-text": "bg-rose-500",
+  "create-zip": "bg-amber-500",
 };
 const DEFAULT_BG = "bg-slate-500";
 

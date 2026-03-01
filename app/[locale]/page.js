@@ -5,7 +5,7 @@ import { useMemo, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp } from "lucide-react";
+import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { locales, localeNames } from "@/i18n.js";
 
@@ -34,9 +34,12 @@ const TOOL_ICONS = {
   tiffToJpg: FileImage,
   addWatermarkPdf: Stamp,
   mp4ToGif: Film,
+  jpgToWebp: FileImage,
+  pdfToText: FileText,
+  createZip: Archive,
 };
 
-const CATEGORIES = ["all", "images", "pdf"];
+const CATEGORIES = ["all", "images", "pdf", "tools"];
 
 const POPULAR_TOOL_IDS = ["compressImage", "heicToJpg", "mergePdf"];
 
@@ -65,6 +68,9 @@ const TOOL_IDS = [
   { id: "tiffToJpg", href: "/tools/tiff-to-jpg", category: "images", active: true },
   { id: "addWatermarkPdf", href: "/tools/add-watermark-pdf", category: "pdf", active: true },
   { id: "mp4ToGif", href: "/tools/mp4-to-gif", category: "images", active: true },
+  { id: "jpgToWebp", href: "/tools/jpg-to-webp", category: "images", active: true },
+  { id: "pdfToText", href: "/tools/pdf-to-text", category: "pdf", active: true },
+  { id: "createZip", href: "/tools/create-zip", category: "tools", active: true },
 ];
 
 const CATEGORY_COLORS = {
@@ -72,6 +78,7 @@ const CATEGORY_COLORS = {
   pdf: { hex: "#ef4444", rgb: "239, 68, 68" },
   video: { hex: "#8b5cf6", rgb: "139, 92, 246" },
   utility: { hex: "#10b981", rgb: "16, 185, 129" },
+  tools: { hex: "#f59e0b", rgb: "245, 158, 11" },
 };
 
 export default function Home() {
@@ -628,7 +635,7 @@ export default function Home() {
                 : filteredTools.map((tool, index) => {
                     const IconComponent = TOOL_ICONS[tool.id];
                     const colors = CATEGORY_COLORS[tool.category] || CATEGORY_COLORS.images;
-                    const categoryLabel = t(`filter${tool.category === "images" ? "Images" : tool.category === "pdf" ? "Pdf" : "Video"}`);
+                    const categoryLabel = t(`filter${tool.category === "images" ? "Images" : tool.category === "pdf" ? "Pdf" : tool.category === "tools" ? "Tools" : "Video"}`);
                     const showTooltip = comingSoonTooltipId === tool.id;
 
                     const cardContent = (
