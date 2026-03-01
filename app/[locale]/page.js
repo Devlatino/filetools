@@ -5,7 +5,7 @@ import { useMemo, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines } from "lucide-react";
+import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { locales, localeNames } from "@/i18n.js";
 
@@ -43,6 +43,9 @@ const TOOL_ICONS = {
   muteVideo: VolumeX,
   videoSpeed: Gauge,
   addAudioToVideo: AudioLines,
+  resizeVideo: RectangleHorizontal,
+  mergeVideos: ListVideo,
+  loopVideo: Repeat,
 };
 
 const CATEGORIES = ["all", "images", "pdf", "tools", "video", "audio", "social"];
@@ -83,6 +86,9 @@ const TOOL_IDS = [
   { id: "muteVideo", href: "/tools/mute-video", category: ["video", "social"], active: true },
   { id: "videoSpeed", href: "/tools/video-speed", category: ["video", "social"], active: true },
   { id: "addAudioToVideo", href: "/tools/add-audio-to-video", category: ["video", "audio", "social"], active: true },
+  { id: "resizeVideo", href: "/tools/resize-video", category: ["video", "social"], active: true },
+  { id: "mergeVideos", href: "/tools/merge-videos", category: ["video", "social"], active: true },
+  { id: "loopVideo", href: "/tools/loop-video", category: ["video", "social"], active: true },
 ];
 
 const CATEGORY_COLORS = {

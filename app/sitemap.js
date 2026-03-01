@@ -37,6 +37,9 @@ const TOOL_PATHS = [
   "/tools/mute-video",
   "/tools/video-speed",
   "/tools/add-audio-to-video",
+  "/tools/resize-video",
+  "/tools/merge-videos",
+  "/tools/loop-video",
   "/tools/compare",
 ];
 

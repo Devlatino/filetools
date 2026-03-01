@@ -18,7 +18,8 @@ export async function GET(request) {
     'extract-pdf-pages', 'tiff-to-jpg', 'add-watermark-pdf', 'mp4-to-gif',
     'jpg-to-webp', 'pdf-to-text', 'create-zip',
     'trim-video', 'video-to-mp3', 'compress-video',
-    'mute-video', 'video-speed', 'add-audio-to-video'
+    'mute-video', 'video-speed', 'add-audio-to-video',
+    'resize-video', 'merge-videos', 'loop-video'
   ]
 
   const urls = [

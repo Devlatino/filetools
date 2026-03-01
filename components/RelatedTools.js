@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { Image, FileText, Video, FileArchive, Type, ArrowRight, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines } from "lucide-react";
+import { Image, FileText, Video, FileArchive, Type, ArrowRight, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat } from "lucide-react";
 import { RELATED_TOOLS, SLUG_TO_ID } from "@/lib/relatedTools";
 
 /** Icon component by tool slug: image tools, PDF, video, archive, text. */
@@ -40,6 +40,9 @@ const ICON_BY_SLUG = {
   "mute-video": VolumeX,
   "video-speed": Gauge,
   "add-audio-to-video": AudioLines,
+  "resize-video": RectangleHorizontal,
+  "merge-videos": ListVideo,
+  "loop-video": Repeat,
 };
 const DEFAULT_ICON = Type;
 
@@ -77,6 +80,9 @@ const BG_BY_SLUG = {
   "mute-video": "bg-violet-500",
   "video-speed": "bg-violet-500",
   "add-audio-to-video": "bg-pink-500",
+  "resize-video": "bg-violet-500",
+  "merge-videos": "bg-violet-500",
+  "loop-video": "bg-violet-500",
 };
 const DEFAULT_BG = "bg-slate-500";
 
