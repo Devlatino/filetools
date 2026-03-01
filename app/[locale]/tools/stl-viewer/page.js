@@ -1,8 +1,9 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
+import * as THREE from "three";
 import { Upload } from "lucide-react";
 import { FaqSection } from "@/components/FaqSection";
 import { EditorialSection } from "@/components/EditorialSection";
@@ -10,7 +11,6 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { parseSTL } from "@/lib/stlParser";
-import { useThreeViewer } from "@/lib/useThreeViewer";
 
 export default function StlViewerPage() {
   const locale = useLocale();
@@ -20,51 +20,116 @@ export default function StlViewerPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [stats, setStats] = useState({ numTriangles: 0, dimensions: null });
-  const [geometryVersion, setGeometryVersion] = useState(0);
-  const containerRef = useRef(null);
-  const geometryRef = useRef(null);
-  const boundsRef = useRef(null);
-  const fileInputRef = useRef(null);
   const [isDragOver, setIsDragOver] = useState(false);
+  const canvasRef = useRef(null);
+  const fileInputRef = useRef(null);
+  const animIdRef = useRef(null);
 
-  useThreeViewer(containerRef, geometryRef, boundsRef, geometryVersion);
+  useEffect(() => {
+    if (!file || !canvasRef.current) return;
+
+    const canvas = canvasRef.current;
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x1a1a2e);
+
+    const camera = new THREE.PerspectiveCamera(
+      45,
+      canvas.clientWidth / canvas.clientHeight,
+      0.01,
+      10000
+    );
+
+    scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    dirLight.position.set(1, 2, 3);
+    scene.add(dirLight);
+
+    let cancelled = false;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      if (cancelled) return;
+      const buffer = e.target?.result;
+      if (!buffer) return;
+      try {
+        const data = parseSTL(buffer);
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute("position", new THREE.BufferAttribute(data.positions, 3));
+        geometry.setAttribute("normal", new THREE.BufferAttribute(data.normals, 3));
+
+        geometry.computeBoundingBox();
+        const box = geometry.boundingBox;
+        const center = new THREE.Vector3();
+        box.getCenter(center);
+        geometry.translate(-center.x, -center.y, -center.z);
+
+        const size = new THREE.Vector3();
+        box.getSize(size);
+        const maxDim = Math.max(size.x, size.y, size.z);
+        camera.position.set(0, 0, maxDim * 2);
+        camera.near = maxDim * 0.001;
+        camera.far = maxDim * 100;
+        camera.updateProjectionMatrix();
+
+        const material = new THREE.MeshStandardMaterial({ color: 0xa0b4c8 });
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
+        const [[minX, minY, minZ], [maxX, maxY, maxZ]] = [data.bounds.min, data.bounds.max];
+        const dimStr = `${(maxX - minX).toFixed(1)} × ${(maxY - minY).toFixed(1)} × ${(maxZ - minZ).toFixed(1)}`;
+        setStats({ numTriangles: data.numTriangles, dimensions: dimStr });
+
+        const animate = () => {
+          animIdRef.current = requestAnimationFrame(animate);
+          renderer.render(scene, camera);
+        };
+        animate();
+      } catch (err) {
+        if (!cancelled) setError(t("error"));
+      }
+      if (!cancelled) setLoading(false);
+    };
+    reader.onerror = () => {
+      if (!cancelled) {
+        setError(t("error"));
+        setLoading(false);
+      }
+    };
+    reader.readAsArrayBuffer(file);
+
+    const onResize = () => {
+      if (!canvas.parentElement) return;
+      const w = canvas.clientWidth;
+      const h = canvas.clientHeight;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    };
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      cancelled = true;
+      window.removeEventListener("resize", onResize);
+      if (animIdRef.current) cancelAnimationFrame(animIdRef.current);
+      animIdRef.current = null;
+      renderer.dispose();
+    };
+  }, [file, t]);
 
   const loadFile = useCallback((fileItem) => {
     if (!fileItem || !fileItem.name.toLowerCase().endsWith(".stl")) {
       setError(t("error"));
       setFile(null);
-      geometryRef.current = null;
-      boundsRef.current = null;
       setStats({ numTriangles: 0, dimensions: null });
       return;
     }
     setError("");
     setLoading(true);
-    const reader = new FileReader();
-    reader.onload = () => {
-      try {
-        const data = parseSTL(reader.result);
-        geometryRef.current = { positions: data.positions, normals: data.normals };
-        boundsRef.current = data.bounds;
-        const [[minX, minY, minZ], [maxX, maxY, maxZ]] = [data.bounds.min, data.bounds.max];
-        const dimStr = `${(maxX - minX).toFixed(1)} × ${(maxY - minY).toFixed(1)} × ${(maxZ - minZ).toFixed(1)}`;
-        setStats({ numTriangles: data.numTriangles, dimensions: dimStr });
-        setFile(fileItem);
-        setGeometryVersion((v) => v + 1);
-      } catch (err) {
-        setError(t("error"));
-        setFile(null);
-        geometryRef.current = null;
-        boundsRef.current = null;
-        setStats({ numTriangles: 0, dimensions: null });
-      }
-      setLoading(false);
-    };
-    reader.onerror = () => {
-      setError(t("error"));
-      setLoading(false);
-    };
-    reader.readAsArrayBuffer(fileItem);
+    setStats({ numTriangles: 0, dimensions: null });
+    setFile(fileItem);
   }, [t]);
 
   const handleDrop = useCallback((e) => {
@@ -119,7 +184,13 @@ export default function StlViewerPage() {
                 <p className="text-center text-sm text-slate-300">{t("dropzone")}</p>
               </label>
             ) : (
-              <div ref={containerRef} className="aspect-video w-full overflow-hidden rounded-xl bg-[#1a1a2e]" style={{ minHeight: 320 }} />
+              <>
+                <canvas
+                  ref={canvasRef}
+                  style={{ width: "100%", height: "400px", display: "block" }}
+                  className="rounded-xl bg-[#1a1a2e]"
+                />
+              </>
             )}
             {loading && <p className="text-sm text-sky-400">{t("loading")}</p>}
             {error && <p className="text-sm text-rose-400">{error}</p>}
