@@ -5,7 +5,7 @@ import { useMemo, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat, Eraser, LayoutTemplate, Type, QrCode } from "lucide-react";
+import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat, Eraser, LayoutTemplate, Type, QrCode, Box, FileBox, ImagePlus } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { locales, localeNames } from "@/i18n.js";
 
@@ -52,9 +52,12 @@ const TOOL_ICONS = {
   trimAudio: Scissors,
   audioToMp3: Music,
   qrCodeGenerator: QrCode,
+  stlViewer: Box,
+  objToStl: FileBox,
+  lithophane: ImagePlus,
 };
 
-const CATEGORIES = ["all", "images", "pdf", "tools", "video", "audio", "social"];
+const CATEGORIES = ["all", "images", "pdf", "tools", "video", "audio", "social", "3d"];
 
 const POPULAR_TOOL_IDS = ["compressImage", "heicToJpg", "mergePdf"];
 
@@ -101,6 +104,9 @@ const TOOL_IDS = [
   { id: "trimAudio", href: "/tools/trim-audio", category: "audio", active: true },
   { id: "audioToMp3", href: "/tools/audio-to-mp3", category: "audio", active: true },
   { id: "qrCodeGenerator", href: "/tools/qr-code-generator", category: "tools", active: true },
+  { id: "stlViewer", href: "/tools/stl-viewer", category: "3d", active: true },
+  { id: "objToStl", href: "/tools/obj-to-stl", category: "3d", active: true },
+  { id: "lithophane", href: "/tools/image-to-lithophane", category: "3d", active: true },
 ];
 
 const CATEGORY_COLORS = {
@@ -111,6 +117,7 @@ const CATEGORY_COLORS = {
   tools: { hex: "#f59e0b", rgb: "245, 158, 11" },
   audio: { hex: "#ec4899", rgb: "236, 72, 153" },
   social: { hex: "#06b6d4", rgb: "6, 182, 212" },
+  "3d": { hex: "#14b8a6", rgb: "20, 184, 166" },
 };
 
 export default function Home() {
@@ -649,7 +656,7 @@ export default function Home() {
                       : "border border-white/10 bg-white/5 text-slate-400 hover:border-white/20 hover:text-slate-200"
                   }`}
                 >
-                  {t(`filter${cat === "all" ? "All" : cat === "textCode" ? "TextCode" : cat.charAt(0).toUpperCase() + cat.slice(1)}`)}
+                  {t(`filter${cat === "all" ? "All" : cat === "textCode" ? "TextCode" : cat === "3d" ? "3d" : cat.charAt(0).toUpperCase() + cat.slice(1)}`)}
                 </button>
               ))}
             </div>
@@ -674,7 +681,7 @@ export default function Home() {
                     const colors = CATEGORY_COLORS[tool.category] || CATEGORY_COLORS.images;
                     const categoryLabel = Array.isArray(tool.category)
                       ? tool.category.map((c) => t(`filter${c.charAt(0).toUpperCase() + c.slice(1)}`)).join(", ")
-                      : t(`filter${tool.category === "images" ? "Images" : tool.category === "pdf" ? "Pdf" : tool.category === "tools" ? "Tools" : tool.category === "video" ? "Video" : tool.category === "audio" ? "Audio" : "Social"}`);
+                      : t(`filter${tool.category === "images" ? "Images" : tool.category === "pdf" ? "Pdf" : tool.category === "tools" ? "Tools" : tool.category === "video" ? "Video" : tool.category === "audio" ? "Audio" : tool.category === "3d" ? "3d" : "Social"}`);
                     const showTooltip = comingSoonTooltipId === tool.id;
 
                     const cardContent = (

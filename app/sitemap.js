@@ -46,6 +46,9 @@ const TOOL_PATHS = [
   "/tools/trim-audio",
   "/tools/audio-to-mp3",
   "/tools/qr-code-generator",
+  "/tools/stl-viewer",
+  "/tools/obj-to-stl",
+  "/tools/image-to-lithophane",
   "/tools/compare",
 ];
 

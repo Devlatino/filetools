@@ -21,7 +21,8 @@ export async function GET(request) {
     'mute-video', 'video-speed', 'add-audio-to-video',
     'resize-video', 'merge-videos', 'loop-video',
     'remove-background', 'resize-image-social', 'add-text-to-image',
-    'trim-audio', 'audio-to-mp3', 'qr-code-generator'
+    'trim-audio', 'audio-to-mp3', 'qr-code-generator',
+    'stl-viewer', 'obj-to-stl', 'image-to-lithophane'
   ]
 
   const urls = [
