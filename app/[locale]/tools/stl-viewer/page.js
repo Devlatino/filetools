@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { Upload } from "lucide-react";
 import { FaqSection } from "@/components/FaqSection";
 import { EditorialSection } from "@/components/EditorialSection";
@@ -93,6 +94,13 @@ export default function StlViewerPage() {
 
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.01, 10000);
 
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.enableZoom = true;
+    controls.enablePan = true;
+    controls.autoRotate = false;
+
     scene.add(new THREE.AmbientLight(0xffffff, 0.6));
     const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
     dirLight.position.set(1, 2, 3);
@@ -135,6 +143,7 @@ export default function StlViewerPage() {
 
         const animate = () => {
           animIdRef.current = requestAnimationFrame(animate);
+          controls.update();
           renderer.render(scene, camera);
         };
         animate();
@@ -164,6 +173,7 @@ export default function StlViewerPage() {
       window.removeEventListener("resize", onResize);
       if (animIdRef.current) cancelAnimationFrame(animIdRef.current);
       animIdRef.current = null;
+      controls.dispose();
       renderer.dispose();
     };
   }, [file, t]);
