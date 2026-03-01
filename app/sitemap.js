@@ -25,6 +25,9 @@ const TOOL_PATHS = [
   "/tools/crop-image",
   "/tools/bmp-to-jpg",
   "/tools/extract-pdf-pages",
+  "/tools/tiff-to-jpg",
+  "/tools/add-watermark-pdf",
+  "/tools/mp4-to-gif",
   "/tools/compare",
 ];
 
