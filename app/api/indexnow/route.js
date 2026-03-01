@@ -16,7 +16,8 @@ export async function GET(request) {
     'jpg-to-pdf', 'svg-to-png', 'rotate-pdf', 'image-to-webp',
     'pdf-to-png', 'gif-to-mp4', 'crop-image', 'bmp-to-jpg',
     'extract-pdf-pages', 'tiff-to-jpg', 'add-watermark-pdf', 'mp4-to-gif',
-    'jpg-to-webp', 'pdf-to-text', 'create-zip'
+    'jpg-to-webp', 'pdf-to-text', 'create-zip',
+    'trim-video', 'video-to-mp3', 'compress-video'
   ]
 
   const urls = [

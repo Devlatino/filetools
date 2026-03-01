@@ -5,7 +5,7 @@ import { useMemo, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive } from "lucide-react";
+import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { locales, localeNames } from "@/i18n.js";
 
@@ -37,9 +37,12 @@ const TOOL_ICONS = {
   jpgToWebp: FileImage,
   pdfToText: FileText,
   createZip: Archive,
+  trimVideo: Scissors,
+  videoToMp3: Music,
+  compressVideo: FileVideo,
 };
 
-const CATEGORIES = ["all", "images", "pdf", "tools"];
+const CATEGORIES = ["all", "images", "pdf", "tools", "video", "audio"];
 
 const POPULAR_TOOL_IDS = ["compressImage", "heicToJpg", "mergePdf"];
 
@@ -71,6 +74,9 @@ const TOOL_IDS = [
   { id: "jpgToWebp", href: "/tools/jpg-to-webp", category: "images", active: true },
   { id: "pdfToText", href: "/tools/pdf-to-text", category: "pdf", active: true },
   { id: "createZip", href: "/tools/create-zip", category: "tools", active: true },
+  { id: "trimVideo", href: "/tools/trim-video", category: "video", active: true },
+  { id: "videoToMp3", href: "/tools/video-to-mp3", category: ["video", "audio"], active: true },
+  { id: "compressVideo", href: "/tools/compress-video", category: "video", active: true },
 ];
 
 const CATEGORY_COLORS = {
@@ -79,6 +85,7 @@ const CATEGORY_COLORS = {
   video: { hex: "#8b5cf6", rgb: "139, 92, 246" },
   utility: { hex: "#10b981", rgb: "16, 185, 129" },
   tools: { hex: "#f59e0b", rgb: "245, 158, 11" },
+  audio: { hex: "#ec4899", rgb: "236, 72, 153" },
 };
 
 export default function Home() {
@@ -268,7 +275,12 @@ export default function Home() {
   }, []);
 
   const filteredTools = useMemo(() => {
-    let list = activeFilter === "all" ? tools : tools.filter((tool) => tool.category === activeFilter);
+    let list =
+      activeFilter === "all"
+        ? tools
+        : tools.filter((tool) =>
+            Array.isArray(tool.category) ? tool.category.includes(activeFilter) : tool.category === activeFilter
+          );
     const q = searchQuery.trim().toLowerCase();
     if (q) {
       list = list.filter(
@@ -635,7 +647,9 @@ export default function Home() {
                 : filteredTools.map((tool, index) => {
                     const IconComponent = TOOL_ICONS[tool.id];
                     const colors = CATEGORY_COLORS[tool.category] || CATEGORY_COLORS.images;
-                    const categoryLabel = t(`filter${tool.category === "images" ? "Images" : tool.category === "pdf" ? "Pdf" : tool.category === "tools" ? "Tools" : "Video"}`);
+                    const categoryLabel = Array.isArray(tool.category)
+                      ? tool.category.map((c) => t(`filter${c.charAt(0).toUpperCase() + c.slice(1)}`)).join(", ")
+                      : t(`filter${tool.category === "images" ? "Images" : tool.category === "pdf" ? "Pdf" : tool.category === "tools" ? "Tools" : tool.category === "video" ? "Video" : "Audio"}`);
                     const showTooltip = comingSoonTooltipId === tool.id;
 
                     const cardContent = (

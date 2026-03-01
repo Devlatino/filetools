@@ -31,6 +31,9 @@ const TOOL_PATHS = [
   "/tools/jpg-to-webp",
   "/tools/pdf-to-text",
   "/tools/create-zip",
+  "/tools/trim-video",
+  "/tools/video-to-mp3",
+  "/tools/compress-video",
   "/tools/compare",
 ];
 
