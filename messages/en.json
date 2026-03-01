@@ -1499,12 +1499,6 @@
       "metaTitle": "Favicon Generator Online Free",
       "metaDescription": "Generate favicons (16x16, 32x32, 48x48, 180x180) from an image. Download single or ZIP. In the browser."
     },
-    "compressVideo": {
-      "label": "Compress video",
-      "short": "Compress MP4 in the browser.",
-      "metaTitle": "Compress Video Online Free",
-      "metaDescription": "Compress MP4 video online. Choose quality, see progress, download. Works in the browser with WebAssembly."
-    },
     "extractAudio": {
       "label": "Extract audio",
       "short": "Extract MP3 from video.",
