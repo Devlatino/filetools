@@ -29,19 +29,16 @@ export default function StlViewerPage() {
     if (!file || !canvasRef.current) return;
 
     const canvas = canvasRef.current;
+    const width = canvas.width;
+    const height = canvas.height;
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
-    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+    renderer.setSize(width, height);
     renderer.setPixelRatio(window.devicePixelRatio);
 
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x1a1a2e);
 
-    const camera = new THREE.PerspectiveCamera(
-      45,
-      canvas.clientWidth / canvas.clientHeight,
-      0.01,
-      10000
-    );
+    const camera = new THREE.PerspectiveCamera(45, width / height, 0.01, 10000);
 
     scene.add(new THREE.AmbientLight(0xffffff, 0.6));
     const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
@@ -78,6 +75,10 @@ export default function StlViewerPage() {
         const mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
 
+        console.log("mesh added, triangles:", geometry.attributes.position.count / 3);
+        console.log("camera position:", camera.position);
+        console.log("bounding box:", box);
+
         const [[minX, minY, minZ], [maxX, maxY, maxZ]] = [data.bounds.min, data.bounds.max];
         const dimStr = `${(maxX - minX).toFixed(1)} × ${(maxY - minY).toFixed(1)} × ${(maxZ - minZ).toFixed(1)}`;
         setStats({ numTriangles: data.numTriangles, dimensions: dimStr });
@@ -102,11 +103,9 @@ export default function StlViewerPage() {
 
     const onResize = () => {
       if (!canvas.parentElement) return;
-      const w = canvas.clientWidth;
-      const h = canvas.clientHeight;
-      camera.aspect = w / h;
+      camera.aspect = width / height;
       camera.updateProjectionMatrix();
-      renderer.setSize(w, h);
+      renderer.setSize(width, height);
     };
     window.addEventListener("resize", onResize);
 
@@ -187,7 +186,9 @@ export default function StlViewerPage() {
               <>
                 <canvas
                   ref={canvasRef}
-                  style={{ width: "100%", height: "400px", display: "block" }}
+                  width={800}
+                  height={500}
+                  style={{ width: "100%", height: "500px", display: "block" }}
                   className="rounded-xl bg-[#1a1a2e]"
                 />
               </>
