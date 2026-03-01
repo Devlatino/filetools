@@ -5,7 +5,7 @@ import { useMemo, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat, Eraser, LayoutTemplate, Type } from "lucide-react";
+import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat, Eraser, LayoutTemplate, Type, QrCode } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { locales, localeNames } from "@/i18n.js";
 
@@ -49,6 +49,9 @@ const TOOL_ICONS = {
   removeBackground: Eraser,
   resizeImageSocial: LayoutTemplate,
   addTextToImage: Type,
+  trimAudio: Scissors,
+  audioToMp3: Music,
+  qrCodeGenerator: QrCode,
 };
 
 const CATEGORIES = ["all", "images", "pdf", "tools", "video", "audio", "social"];
@@ -95,6 +98,9 @@ const TOOL_IDS = [
   { id: "removeBackground", href: "/tools/remove-background", category: ["images", "social"], active: true },
   { id: "resizeImageSocial", href: "/tools/resize-image-social", category: ["images", "social"], active: true },
   { id: "addTextToImage", href: "/tools/add-text-to-image", category: ["images", "social"], active: true },
+  { id: "trimAudio", href: "/tools/trim-audio", category: "audio", active: true },
+  { id: "audioToMp3", href: "/tools/audio-to-mp3", category: "audio", active: true },
+  { id: "qrCodeGenerator", href: "/tools/qr-code-generator", category: "tools", active: true },
 ];
 
 const CATEGORY_COLORS = {

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { Image, FileText, Video, FileArchive, Type, ArrowRight, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat, Eraser, LayoutTemplate } from "lucide-react";
+import { Image, FileText, Video, FileArchive, Type, ArrowRight, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat, Eraser, LayoutTemplate, QrCode } from "lucide-react";
 import { RELATED_TOOLS, SLUG_TO_ID } from "@/lib/relatedTools";
 
 /** Icon component by tool slug: image tools, PDF, video, archive, text. */
@@ -46,6 +46,9 @@ const ICON_BY_SLUG = {
   "remove-background": Eraser,
   "resize-image-social": LayoutTemplate,
   "add-text-to-image": Type,
+  "trim-audio": Scissors,
+  "audio-to-mp3": Music,
+  "qr-code-generator": QrCode,
 };
 const DEFAULT_ICON = Type;
 
@@ -89,6 +92,9 @@ const BG_BY_SLUG = {
   "remove-background": "bg-teal-500",
   "resize-image-social": "bg-violet-500",
   "add-text-to-image": "bg-sky-500",
+  "trim-audio": "bg-violet-500",
+  "audio-to-mp3": "bg-pink-500",
+  "qr-code-generator": "bg-amber-500",
 };
 const DEFAULT_BG = "bg-slate-500";
 

@@ -43,6 +43,9 @@ const TOOL_PATHS = [
   "/tools/remove-background",
   "/tools/resize-image-social",
   "/tools/add-text-to-image",
+  "/tools/trim-audio",
+  "/tools/audio-to-mp3",
+  "/tools/qr-code-generator",
   "/tools/compare",
 ];
 

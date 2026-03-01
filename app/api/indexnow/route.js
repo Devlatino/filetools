@@ -20,7 +20,8 @@ export async function GET(request) {
     'trim-video', 'video-to-mp3', 'compress-video',
     'mute-video', 'video-speed', 'add-audio-to-video',
     'resize-video', 'merge-videos', 'loop-video',
-    'remove-background', 'resize-image-social', 'add-text-to-image'
+    'remove-background', 'resize-image-social', 'add-text-to-image',
+    'trim-audio', 'audio-to-mp3', 'qr-code-generator'
   ]
 
   const urls = [
