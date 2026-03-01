@@ -1324,12 +1324,6 @@
       "faq10Q": "Il testo resta selezionabile nel PNG?",
       "faq10A": "No. L'output è un'immagine (PNG). Il testo non è selezionabile né ricercabile. Per testo modificabile usa uno strumento PDF-to-text."
     },
-    "createZip": {
-      "label": "Crea archivio ZIP",
-      "short": "Raggruppa più file in un ZIP.",
-      "metaTitle": "Crea ZIP Online Gratis",
-      "metaDescription": "Crea archivi ZIP online. Nessun account, nel browser."
-    },
     "extractZip": {
       "label": "Estrai ZIP",
       "short": "Apri e scarica file da un archivio.",

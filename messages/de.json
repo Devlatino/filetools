@@ -1327,12 +1327,6 @@
       "faq10Q": "Ist der Text im PNG noch auswählbar?",
       "faq10A": "Nein. Die Ausgabe ist ein Bild (PNG). Text ist nicht auswählbar oder durchsuchbar. Für bearbeitbaren Text nutze ein PDF-zu-Text-Tool."
     },
-    "createZip": {
-      "label": "Create ZIP archive",
-      "short": "Bundle multiple files into one ZIP.",
-      "metaTitle": "Create ZIP Online Free",
-      "metaDescription": "Create ZIP archives online. No account, in the browser."
-    },
     "extractZip": {
       "label": "Extract ZIP",
       "short": "Open and download files from an archive.",
