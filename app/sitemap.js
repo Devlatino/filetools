@@ -34,6 +34,9 @@ const TOOL_PATHS = [
   "/tools/trim-video",
   "/tools/video-to-mp3",
   "/tools/compress-video",
+  "/tools/mute-video",
+  "/tools/video-speed",
+  "/tools/add-audio-to-video",
   "/tools/compare",
 ];
 

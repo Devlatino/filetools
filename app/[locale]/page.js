@@ -5,7 +5,7 @@ import { useMemo, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo } from "lucide-react";
+import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { locales, localeNames } from "@/i18n.js";
 
@@ -40,9 +40,12 @@ const TOOL_ICONS = {
   trimVideo: Scissors,
   videoToMp3: Music,
   compressVideo: FileVideo,
+  muteVideo: VolumeX,
+  videoSpeed: Gauge,
+  addAudioToVideo: AudioLines,
 };
 
-const CATEGORIES = ["all", "images", "pdf", "tools", "video", "audio"];
+const CATEGORIES = ["all", "images", "pdf", "tools", "video", "audio", "social"];
 
 const POPULAR_TOOL_IDS = ["compressImage", "heicToJpg", "mergePdf"];
 
@@ -77,6 +80,9 @@ const TOOL_IDS = [
   { id: "trimVideo", href: "/tools/trim-video", category: "video", active: true },
   { id: "videoToMp3", href: "/tools/video-to-mp3", category: ["video", "audio"], active: true },
   { id: "compressVideo", href: "/tools/compress-video", category: "video", active: true },
+  { id: "muteVideo", href: "/tools/mute-video", category: ["video", "social"], active: true },
+  { id: "videoSpeed", href: "/tools/video-speed", category: ["video", "social"], active: true },
+  { id: "addAudioToVideo", href: "/tools/add-audio-to-video", category: ["video", "audio", "social"], active: true },
 ];
 
 const CATEGORY_COLORS = {
@@ -86,6 +92,7 @@ const CATEGORY_COLORS = {
   utility: { hex: "#10b981", rgb: "16, 185, 129" },
   tools: { hex: "#f59e0b", rgb: "245, 158, 11" },
   audio: { hex: "#ec4899", rgb: "236, 72, 153" },
+  social: { hex: "#06b6d4", rgb: "6, 182, 212" },
 };
 
 export default function Home() {
@@ -649,7 +656,7 @@ export default function Home() {
                     const colors = CATEGORY_COLORS[tool.category] || CATEGORY_COLORS.images;
                     const categoryLabel = Array.isArray(tool.category)
                       ? tool.category.map((c) => t(`filter${c.charAt(0).toUpperCase() + c.slice(1)}`)).join(", ")
-                      : t(`filter${tool.category === "images" ? "Images" : tool.category === "pdf" ? "Pdf" : tool.category === "tools" ? "Tools" : tool.category === "video" ? "Video" : "Audio"}`);
+                      : t(`filter${tool.category === "images" ? "Images" : tool.category === "pdf" ? "Pdf" : tool.category === "tools" ? "Tools" : tool.category === "video" ? "Video" : tool.category === "audio" ? "Audio" : "Social"}`);
                     const showTooltip = comingSoonTooltipId === tool.id;
 
                     const cardContent = (
