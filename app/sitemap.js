@@ -40,6 +40,9 @@ const TOOL_PATHS = [
   "/tools/resize-video",
   "/tools/merge-videos",
   "/tools/loop-video",
+  "/tools/remove-background",
+  "/tools/resize-image-social",
+  "/tools/add-text-to-image",
   "/tools/compare",
 ];
 

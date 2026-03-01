@@ -5,7 +5,7 @@ import { useMemo, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat } from "lucide-react";
+import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat, Eraser, LayoutTemplate, Type } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { locales, localeNames } from "@/i18n.js";
 
@@ -46,6 +46,9 @@ const TOOL_ICONS = {
   resizeVideo: RectangleHorizontal,
   mergeVideos: ListVideo,
   loopVideo: Repeat,
+  removeBackground: Eraser,
+  resizeImageSocial: LayoutTemplate,
+  addTextToImage: Type,
 };
 
 const CATEGORIES = ["all", "images", "pdf", "tools", "video", "audio", "social"];
@@ -89,6 +92,9 @@ const TOOL_IDS = [
   { id: "resizeVideo", href: "/tools/resize-video", category: ["video", "social"], active: true },
   { id: "mergeVideos", href: "/tools/merge-videos", category: ["video", "social"], active: true },
   { id: "loopVideo", href: "/tools/loop-video", category: ["video", "social"], active: true },
+  { id: "removeBackground", href: "/tools/remove-background", category: ["images", "social"], active: true },
+  { id: "resizeImageSocial", href: "/tools/resize-image-social", category: ["images", "social"], active: true },
+  { id: "addTextToImage", href: "/tools/add-text-to-image", category: ["images", "social"], active: true },
 ];
 
 const CATEGORY_COLORS = {

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { Image, FileText, Video, FileArchive, Type, ArrowRight, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat } from "lucide-react";
+import { Image, FileText, Video, FileArchive, Type, ArrowRight, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat, Eraser, LayoutTemplate } from "lucide-react";
 import { RELATED_TOOLS, SLUG_TO_ID } from "@/lib/relatedTools";
 
 /** Icon component by tool slug: image tools, PDF, video, archive, text. */
@@ -43,6 +43,9 @@ const ICON_BY_SLUG = {
   "resize-video": RectangleHorizontal,
   "merge-videos": ListVideo,
   "loop-video": Repeat,
+  "remove-background": Eraser,
+  "resize-image-social": LayoutTemplate,
+  "add-text-to-image": Type,
 };
 const DEFAULT_ICON = Type;
 
@@ -83,6 +86,9 @@ const BG_BY_SLUG = {
   "resize-video": "bg-violet-500",
   "merge-videos": "bg-violet-500",
   "loop-video": "bg-violet-500",
+  "remove-background": "bg-teal-500",
+  "resize-image-social": "bg-violet-500",
+  "add-text-to-image": "bg-sky-500",
 };
 const DEFAULT_BG = "bg-slate-500";
 

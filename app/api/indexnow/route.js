@@ -19,7 +19,8 @@ export async function GET(request) {
     'jpg-to-webp', 'pdf-to-text', 'create-zip',
     'trim-video', 'video-to-mp3', 'compress-video',
     'mute-video', 'video-speed', 'add-audio-to-video',
-    'resize-video', 'merge-videos', 'loop-video'
+    'resize-video', 'merge-videos', 'loop-video',
+    'remove-background', 'resize-image-social', 'add-text-to-image'
   ]
 
   const urls = [
