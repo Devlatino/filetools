@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# background-removal model assets (~40MB, copied at build time)
+public/background-removal/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

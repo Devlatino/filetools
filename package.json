@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "postinstall": "mkdir -p public && cp -r node_modules/@imgly/background-removal/dist public/background-removal",
     "dev": "next dev",
-    "build": "next build",
+    "build": "mkdir -p public && cp -r node_modules/@imgly/background-removal/dist public/background-removal && next build",
     "start": "next start",
     "lint": "eslint",
     "indexnow": "node scripts/ping-indexnow.js"
