@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
-import { PDFDocument } from "pdf-lib";
+import { PDFDocument, degrees } from "pdf-lib";
 import { Upload, Loader2, Check, FilePlus } from "lucide-react";
 import { FaqSection } from "@/components/FaqSection";
 import { EditorialSection } from "@/components/EditorialSection";
@@ -11,10 +11,11 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
-const convertImagesToPdf = async (files) => {
+const convertImagesToPdf = async (pages) => {
   const pdfDoc = await PDFDocument.create();
 
-  for (const file of files) {
+  for (const pageItem of pages) {
+    const { file, rotation } = pageItem;
     const { width, height, dataUrl } = await new Promise((resolve, reject) => {
       const img = new Image();
       const objectUrl = URL.createObjectURL(file);
@@ -38,13 +39,44 @@ const convertImagesToPdf = async (files) => {
       embeddedImage = await pdfDoc.embedJpg(arrayBuffer);
     }
 
-    const page = pdfDoc.addPage([width, height]);
-    page.drawImage(embeddedImage, {
-      x: 0,
-      y: 0,
-      width,
-      height,
-    });
+    const isRotated90or270 = rotation === 90 || rotation === 270;
+    const pageWidth = isRotated90or270 ? height : width;
+    const pageHeight = isRotated90or270 ? width : height;
+
+    const pdfPage = pdfDoc.addPage([pageWidth, pageHeight]);
+
+    if (rotation === 90) {
+      pdfPage.drawImage(embeddedImage, {
+        x: pageWidth,
+        y: 0,
+        width: pageHeight,
+        height: pageWidth,
+        rotate: degrees(90),
+      });
+    } else if (rotation === 180) {
+      pdfPage.drawImage(embeddedImage, {
+        x: pageWidth,
+        y: pageHeight,
+        width: pageWidth,
+        height: pageHeight,
+        rotate: degrees(180),
+      });
+    } else if (rotation === 270) {
+      pdfPage.drawImage(embeddedImage, {
+        x: 0,
+        y: pageWidth,
+        width: pageHeight,
+        height: pageWidth,
+        rotate: degrees(270),
+      });
+    } else {
+      pdfPage.drawImage(embeddedImage, {
+        x: 0,
+        y: 0,
+        width: pageWidth,
+        height: pageHeight,
+      });
+    }
   }
 
   const pdfBytes = await pdfDoc.save();
@@ -133,17 +165,23 @@ export default function ImageToPdfPage() {
   const t = useTranslations("tools.imageToPdf");
   const tCommon = useTranslations("common");
   const tTool = useTranslations("tool");
-  const [items, setItems] = useState([]);
-  const [draggingId, setDraggingId] = useState(null);
+  const [pages, setPages] = useState([]);
   const [isCreating, setIsCreating] = useState(false);
   const [error, setError] = useState("");
   const [currentStep, setCurrentStep] = useState(1);
   const [isDragOver, setIsDragOver] = useState(false);
   const fileInputRef = useRef(null);
+  const dragIndex = useRef(null);
+  const pagesRef = useRef(pages);
+  pagesRef.current = pages;
 
   useEffect(() => {
-    if (items.length > 0 && currentStep === 1) setCurrentStep(2);
-  }, [items.length, currentStep]);
+    if (pages.length > 0 && currentStep === 1) setCurrentStep(2);
+  }, [pages.length, currentStep]);
+
+  useEffect(() => {
+    return () => pagesRef.current.forEach((p) => URL.revokeObjectURL(p.previewUrl));
+  }, []);
 
   const processFiles = useCallback(
     (files) => {
@@ -156,13 +194,13 @@ export default function ImageToPdfPage() {
         return;
       }
       setError("");
-      const mapped = imageFiles.map((file, index) => ({
-        id: `${file.name}-${file.size}-${Date.now()}-${index}`,
-        name: file.name,
-        size: file.size,
+      const newPages = imageFiles.map((file) => ({
+        id: crypto.randomUUID(),
         file,
+        previewUrl: URL.createObjectURL(file),
+        rotation: 0,
       }));
-      setItems((prev) => [...prev, ...mapped]);
+      setPages((prev) => [...prev, ...newPages]);
     },
     [t]
   );
@@ -188,7 +226,52 @@ export default function ImageToPdfPage() {
     setIsDragOver(false);
   }, []);
 
-  const handleDrop = useCallback(
+  const handleDragStart = useCallback((index) => {
+    dragIndex.current = index;
+  }, []);
+
+  const handlePreviewDragOver = useCallback((e) => {
+    e.preventDefault();
+  }, []);
+
+  const handleDrop = useCallback((e, index) => {
+    e.preventDefault();
+    if (dragIndex.current === null || dragIndex.current === index) return;
+    setPages((prev) => {
+      const updated = [...prev];
+      const [moved] = updated.splice(dragIndex.current, 1);
+      updated.splice(index, 0, moved);
+      dragIndex.current = null;
+      return updated;
+    });
+  }, []);
+
+  const rotatePage = useCallback((id, deg) => {
+    setPages((prev) =>
+      prev.map((p) =>
+        p.id === id ? { ...p, rotation: (p.rotation + deg + 360) % 360 } : p
+      )
+    );
+  }, []);
+
+  const removePage = useCallback((id) => {
+    setPages((prev) => {
+      const page = prev.find((p) => p.id === id);
+      if (page) URL.revokeObjectURL(page.previewUrl);
+      return prev.filter((p) => p.id !== id);
+    });
+  }, []);
+
+  const handleClear = useCallback(() => {
+    setPages((prev) => {
+      prev.forEach((p) => URL.revokeObjectURL(p.previewUrl));
+      return [];
+    });
+    setError("");
+    setCurrentStep(1);
+  }, []);
+
+  const handleDropZoneDrop = useCallback(
     (e) => {
       e.preventDefault();
       e.stopPropagation();
@@ -198,42 +281,15 @@ export default function ImageToPdfPage() {
     [processFiles]
   );
 
-  const handleReorderDragStart = useCallback((id) => setDraggingId(id), []);
-  const handleReorderDragOver = useCallback((e, overId) => {
-    e.preventDefault();
-    if (!draggingId || draggingId === overId) return;
-    setItems((prev) => {
-      const i = prev.findIndex((x) => x.id === draggingId);
-      const j = prev.findIndex((x) => x.id === overId);
-      if (i === -1 || j === -1) return prev;
-      const next = [...prev];
-      const [removed] = next.splice(i, 1);
-      next.splice(j, 0, removed);
-      return next;
-    });
-  }, [draggingId]);
-  const handleReorderDragEnd = useCallback(() => setDraggingId(null), []);
-
-  const handleClear = useCallback(() => {
-    setItems([]);
-    setError("");
-    setCurrentStep(1);
-  }, []);
-
-  const handleRemove = useCallback((id) => {
-    setItems((prev) => prev.filter((x) => x.id !== id));
-  }, []);
-
   const handleCreatePdf = useCallback(async () => {
-    if (!items.length) {
+    if (!pages.length) {
       setError(t("errorSelectFirst"));
       return;
     }
     setError("");
     setIsCreating(true);
     try {
-      const files = items.map((i) => i.file);
-      const pdfBytes = await convertImagesToPdf(files);
+      const pdfBytes = await convertImagesToPdf(pages);
       const blob = new Blob([pdfBytes], { type: "application/pdf" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -250,7 +306,7 @@ export default function ImageToPdfPage() {
     } finally {
       setIsCreating(false);
     }
-  }, [items, t]);
+  }, [pages, t]);
 
   const step1Status = currentStep >= 2 ? "done" : currentStep === 1 ? "active" : "pending";
   const step2Status = currentStep >= 3 ? "done" : currentStep === 2 ? "active" : "pending";
@@ -287,13 +343,13 @@ export default function ImageToPdfPage() {
             <StepIndicator step1={step1Status} step2={step2Status} step3={step3Status} t={t} />
 
             <div className="w-full">
-              {items.length === 0 ? (
+              {pages.length === 0 ? (
                 <label
                   role="button"
                   tabIndex={0}
                   onDragOver={handleDragOver}
                   onDragLeave={handleDragLeave}
-                  onDrop={handleDrop}
+                  onDrop={handleDropZoneDrop}
                   className={`flex h-[200px] w-full cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 px-4 transition-colors duration-200 ${
                     isDragOver
                       ? "border-sky-500 bg-sky-500/15"
@@ -321,7 +377,7 @@ export default function ImageToPdfPage() {
                 <div className="space-y-3">
                   <div className="flex flex-wrap items-center gap-2">
                     <label className="inline-flex cursor-pointer items-center rounded-full bg-sky-500 px-4 py-2 text-xs font-semibold text-slate-950 shadow-sm hover:bg-sky-400">
-                      {t("addImagesButton")}
+                      {t("addMore")}
                       <input
                         type="file"
                         accept="image/jpeg,image/png,.jpg,.jpeg,.png"
@@ -339,43 +395,74 @@ export default function ImageToPdfPage() {
                     </button>
                   </div>
                   <p className="text-xs text-slate-400">
-                    {t("imagesCount", { count: items.length, total: formatBytes(items.reduce((a, i) => a + i.file.size, 0)) })}
+                    {t("pageCount", { count: pages.length })}
+                    {pages.length > 0 && ` · ${formatBytes(pages.reduce((a, p) => a + p.file.size, 0))}`}
                   </p>
-                  <ul className="max-h-[280px] space-y-2 overflow-y-auto rounded-xl border border-white/10 bg-slate-900/60 p-2">
-                    {items.map((item, index) => (
-                      <li
-                        key={item.id}
+                  <p className="text-xs text-slate-500">{t("reorderHint")}</p>
+                  <div
+                    className="grid gap-3 py-2"
+                    style={{
+                      gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))",
+                    }}
+                  >
+                    {pages.map((page, index) => (
+                      <div
+                        key={page.id}
                         draggable
-                        onDragStart={() => handleReorderDragStart(item.id)}
-                        onDragOver={(e) => handleReorderDragOver(e, item.id)}
-                        onDragEnd={handleReorderDragEnd}
-                        className={`flex items-center justify-between gap-3 rounded-lg px-3 py-2 text-xs ${
-                          draggingId === item.id ? "bg-sky-500/10" : "bg-slate-800/80"
-                        }`}
+                        onDragStart={() => handleDragStart(index)}
+                        onDragOver={handlePreviewDragOver}
+                        onDrop={(e) => handleDrop(e, index)}
+                        className="relative cursor-grab overflow-hidden rounded-lg border-2 border-slate-700 bg-[#1a1a2e] transition-colors hover:border-slate-600"
                       >
-                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-slate-700 text-slate-200">
+                        <div className="absolute left-1.5 top-1 rounded bg-black/60 px-1.5 py-0.5 text-[11px] font-medium text-white">
                           {index + 1}
-                        </span>
-                        <span className="min-w-0 truncate text-slate-100">{item.name}</span>
-                        <span className="shrink-0 text-slate-400">{formatBytes(item.file.size)}</span>
+                        </div>
                         <button
                           type="button"
-                          onClick={() => handleRemove(item.id)}
-                          className="shrink-0 text-slate-400 hover:text-rose-400"
-                          aria-label={t("removeImage")}
+                          onClick={() => removePage(page.id)}
+                          className="absolute right-1.5 top-1 flex h-5 w-5 cursor-pointer items-center justify-center rounded-full bg-rose-500/80 text-xs leading-none text-white hover:bg-rose-500"
+                          aria-label={t("removePage")}
                         >
                           ×
                         </button>
-                      </li>
+                        <img
+                          src={page.previewUrl}
+                          alt={page.file.name}
+                          className="block w-full bg-[#111] object-contain transition-transform duration-200"
+                          style={{
+                            aspectRatio: "3/4",
+                            transform: `rotate(${page.rotation}deg)`,
+                          }}
+                          draggable={false}
+                        />
+                        <div className="flex justify-center gap-2 bg-[#111] p-1.5">
+                          <button
+                            type="button"
+                            onClick={() => rotatePage(page.id, -90)}
+                            title={t("rotateLeft")}
+                            className="rounded border-none bg-slate-700 px-2 py-1 text-sm text-white transition hover:bg-slate-600"
+                          >
+                            ↺
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => rotatePage(page.id, 90)}
+                            title={t("rotateRight")}
+                            className="rounded border-none bg-slate-700 px-2 py-1 text-sm text-white transition hover:bg-slate-600"
+                          >
+                            ↻
+                          </button>
+                        </div>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               )}
             </div>
 
             {error && <p className="text-sm text-rose-400">{error}</p>}
 
-            {items.length > 0 && (
+            {pages.length > 0 && (
               <div className="space-y-2">
                 <button
                   type="button"

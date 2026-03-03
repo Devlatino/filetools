@@ -50,6 +50,9 @@ const TOOL_PATHS = [
   "/tools/obj-to-stl",
   "/tools/image-to-lithophane",
   "/tools/compare",
+  "/tools/pdf-unlock",
+  "/tools/protect-pdf",
+  "/tools/pdf-add-page-numbers",
 ];
 
 const BLOG_SLUGS = ["webp-vs-jpg", "how-to-compress-pdf", "gif-to-mp4-why"];
