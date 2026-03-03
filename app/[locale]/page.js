@@ -98,7 +98,7 @@ const TOOL_IDS = [
   { id: "resizeVideo", href: "/tools/resize-video", category: ["video", "social"], active: true },
   { id: "mergeVideos", href: "/tools/merge-videos", category: ["video", "social"], active: true },
   { id: "loopVideo", href: "/tools/loop-video", category: ["video", "social"], active: true },
-  { id: "removeBackground", href: "/tools/remove-background", category: ["images", "social"], active: true },
+  { id: "removeBackground", href: "/tools/remove-background", category: ["images", "social"], active: false },
   { id: "resizeImageSocial", href: "/tools/resize-image-social", category: ["images", "social"], active: true },
   { id: "addTextToImage", href: "/tools/add-text-to-image", category: ["images", "social"], active: true },
   { id: "trimAudio", href: "/tools/trim-audio", category: "audio", active: true },
@@ -313,6 +313,7 @@ export default function Home() {
         : tools.filter((tool) =>
             Array.isArray(tool.category) ? tool.category.includes(activeFilter) : tool.category === activeFilter
           );
+    list = list.filter((tool) => tool.active);
     const q = searchQuery.trim().toLowerCase();
     if (q) {
       list = list.filter(
