@@ -191,7 +191,7 @@ export default function RemoveBackgroundPage() {
 
       const { removeBackground } = await import("@imgly/background-removal");
       const blob = await removeBackground(compressedFile, {
-        publicPath: "/background-removal/",
+        publicPath: `${window.location.origin}/background-removal/`,
         progress: (key, current, total) => {
           if (total > 0) setProgress(Math.round((current / total) * 100));
         },
