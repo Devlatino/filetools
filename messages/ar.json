@@ -1119,7 +1119,8 @@
       "errorMismatch": "كلمتا المرور غير متطابقتين.",
       "errorGeneric": "فشل حماية PDF. حاول مرة أخرى.",
       "errorPdfOnly": "يرجى اختيار ملف PDF.",
-      "errorSelectFirst": "اختر PDF أولاً."
+      "errorSelectFirst": "اختر PDF أولاً.",
+      "wasmInitializing": "جاري التهيئة..."
     },
     "pdfPageNumbers": {
       "label": "إضافة أرقام الصفحات إلى PDF",

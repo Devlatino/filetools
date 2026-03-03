@@ -1174,7 +1174,8 @@
       "errorMismatch": "Passwords do not match.",
       "errorGeneric": "Failed to protect PDF. Please try again.",
       "errorPdfOnly": "Please select a PDF file.",
-      "errorSelectFirst": "Select a PDF file first."
+      "errorSelectFirst": "Select a PDF file first.",
+      "wasmInitializing": "Initializing..."
     },
     "pdfPageNumbers": {
       "label": "Add Page Numbers to PDF",

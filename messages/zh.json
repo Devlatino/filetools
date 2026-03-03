@@ -1119,7 +1119,8 @@
       "errorMismatch": "两次密码不一致。",
       "errorGeneric": "无法保护PDF，请重试。",
       "errorPdfOnly": "请选择PDF文件。",
-      "errorSelectFirst": "请先选择PDF文件。"
+      "errorSelectFirst": "请先选择PDF文件。",
+      "wasmInitializing": "正在初始化..."
     },
     "pdfPageNumbers": {
       "label": "为PDF添加页码",

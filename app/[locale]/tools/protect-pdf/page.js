@@ -3,13 +3,53 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
-import { PDFDocument } from "@cantoo/pdf-lib";
 import { Upload, Loader2, Check, Download, Lock } from "lucide-react";
 import { FaqSection } from "@/components/FaqSection";
 import { EditorialSection } from "@/components/EditorialSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+
+// Carica qpdf WASM (@neslinesli93/qpdf-wasm: @qpdf/qpdf-wasm non è su npm)
+const loadQpdf = async () => {
+  const createModule = (await import("@neslinesli93/qpdf-wasm")).default;
+  const wasmUrl =
+    typeof window !== "undefined"
+      ? `${window.location.origin}/qpdf-wasm/qpdf.wasm`
+      : "";
+  return await createModule({ locateFile: () => wasmUrl });
+};
+
+const protectPdf = async (file, password, allowPrint) => {
+  const arrayBuffer = await file.arrayBuffer();
+  const pdfBytes = new Uint8Array(arrayBuffer);
+
+  const qpdf = await loadQpdf();
+
+  qpdf.FS.writeFile("/input.pdf", pdfBytes);
+
+  const args = [
+    "--encrypt",
+    password,
+    password,
+    "256",
+    allowPrint ? "--print=full" : "--print=none",
+    "--modify=none",
+    "--extract=n",
+    "--",
+    "/input.pdf",
+    "/output.pdf",
+  ];
+
+  qpdf.callMain(args);
+
+  const result = qpdf.FS.readFile("/output.pdf");
+
+  qpdf.FS.unlink("/input.pdf");
+  qpdf.FS.unlink("/output.pdf");
+
+  return result;
+};
 
 function StepIndicator({ step1, step2, step3, t }) {
   return (
@@ -69,23 +109,16 @@ export default function ProtectPdfPage() {
   const [error, setError] = useState("");
   const [currentStep, setCurrentStep] = useState(1);
   const [isDragOver, setIsDragOver] = useState(false);
+  const [wasmReady, setWasmReady] = useState(false);
   const fileInputRef = useRef(null);
 
   useEffect(() => {
-    const test = async () => {
-      const { PDFDocument } = await import("@cantoo/pdf-lib");
-      const doc = await PDFDocument.create();
-      doc.addPage();
-      const bytes = await doc.save({
-        userPassword: "test123",
-        ownerPassword: "test123_owner",
+    loadQpdf()
+      .then(() => setWasmReady(true))
+      .catch((err) => {
+        console.error("qpdf WASM load failed:", err);
+        setError("Failed to load PDF engine.");
       });
-      console.log("PDF size:", bytes.length);
-      console.log("PDF header:", new TextDecoder().decode(bytes.slice(0, 20)));
-      // Se funziona dovresti vedere "%PDF-" nell'header
-      // e il file risultante dovrebbe chiedere password
-    };
-    test();
   }, []);
 
   const step1Status = currentStep >= 2 ? "done" : currentStep === 1 ? "active" : "pending";
@@ -152,27 +185,8 @@ export default function ProtectPdfPage() {
     setError("");
     setIsProtecting(true);
     try {
-      const arrayBuffer = await pdfFile.arrayBuffer();
-      const pdfDoc = await PDFDocument.load(arrayBuffer, {
-        workerSrc: `${typeof window !== "undefined" ? window.location.origin : ""}/cantoo-worker/pdf.worker.js`,
-      });
-      const saveOptions = {
-        userPassword: password,
-        ownerPassword: password + "_owner",
-        permissions: {
-          printing: allowPrint ? "highResolution" : "notAllowed",
-          modifying: false,
-          copying: false,
-          annotating: false,
-          fillingForms: true,
-          contentAccessibility: true,
-          documentAssembly: false,
-        },
-      };
-      console.log("PDFDocument from:", PDFDocument.toString().slice(0, 100));
-      console.log("save options:", { userPassword: password });
-      const pdfBytes = await pdfDoc.save(saveOptions);
-      const blob = new Blob([pdfBytes], { type: "application/pdf" });
+      const result = await protectPdf(pdfFile, password, allowPrint);
+      const blob = new Blob([result], { type: "application/pdf" });
       setResultBlob(blob);
       setCurrentStep(3);
     } catch (err) {
@@ -223,6 +237,13 @@ export default function ProtectPdfPage() {
               <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">{t("metaTitle")}</h1>
               <p className="mt-1 text-sm text-slate-300">{t("metaDescription")}</p>
             </div>
+
+            {!wasmReady && (
+              <p className="flex items-center gap-2 text-sm text-slate-400">
+                <Loader2 size={18} className="animate-spin shrink-0" />
+                {t("wasmInitializing")}
+              </p>
+            )}
 
             <StepIndicator step1={step1Status} step2={step2Status} step3={step3Status} t={t} />
 
@@ -294,7 +315,7 @@ export default function ProtectPdfPage() {
             {pdfFile && !resultBlob && (
               <button
                 type="button"
-                disabled={isProtecting}
+                disabled={isProtecting || !wasmReady}
                 onClick={handleProtect}
                 className="flex w-full items-center justify-center gap-3 rounded-xl bg-sky-500 py-4 text-base font-semibold text-slate-950 shadow-lg shadow-sky-500/25 transition hover:bg-sky-400 hover:shadow-sky-400/30 disabled:cursor-not-allowed disabled:opacity-70"
               >

@@ -1138,7 +1138,8 @@
       "errorMismatch": "Les mots de passe ne correspondent pas.",
       "errorGeneric": "Impossible de protéger le PDF. Veuillez réessayer.",
       "errorPdfOnly": "Veuillez sélectionner un fichier PDF.",
-      "errorSelectFirst": "Sélectionnez d'abord un PDF."
+      "errorSelectFirst": "Sélectionnez d'abord un PDF.",
+      "wasmInitializing": "Initialisation en cours..."
     },
     "pdfPageNumbers": {
       "label": "Ajouter des Numéros de Page au PDF",

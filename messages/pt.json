@@ -1170,7 +1170,8 @@
       "errorMismatch": "As senhas não coincidem.",
       "errorGeneric": "Falha ao proteger o PDF. Tente novamente.",
       "errorPdfOnly": "Selecione um ficheiro PDF.",
-      "errorSelectFirst": "Selecione primeiro um PDF."
+      "errorSelectFirst": "Selecione primeiro um PDF.",
+      "wasmInitializing": "A inicializar..."
     },
     "pdfPageNumbers": {
       "label": "Adicionar Números de Página ao PDF",

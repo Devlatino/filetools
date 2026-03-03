@@ -1119,7 +1119,8 @@
       "errorMismatch": "पासवर्ड मेल नहीं खाते।",
       "errorGeneric": "PDF सुरक्षित करने में विफल। पुनः प्रयास करें।",
       "errorPdfOnly": "कृपया PDF फ़ाइल चुनें।",
-      "errorSelectFirst": "पहले PDF चुनें।"
+      "errorSelectFirst": "पहले PDF चुनें।",
+      "wasmInitializing": "आरंभ हो रहा है..."
     },
     "pdfPageNumbers": {
       "label": "PDF में पेज नंबर जोड़ें",

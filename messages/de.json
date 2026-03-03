@@ -1173,7 +1173,8 @@
       "errorMismatch": "Passwörter stimmen nicht überein.",
       "errorGeneric": "PDF konnte nicht geschützt werden. Bitte erneut versuchen.",
       "errorPdfOnly": "Bitte wählen Sie eine PDF-Datei.",
-      "errorSelectFirst": "Wählen Sie zuerst eine PDF-Datei."
+      "errorSelectFirst": "Wählen Sie zuerst eine PDF-Datei.",
+      "wasmInitializing": "Wird initialisiert..."
     },
     "pdfPageNumbers": {
       "label": "Seitenzahlen zum PDF hinzufügen",
