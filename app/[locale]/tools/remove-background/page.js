@@ -96,6 +96,7 @@ export default function RemoveBackgroundPage() {
   const [resultBlob, setResultBlob] = useState(null);
   const [resultUrl, setResultUrl] = useState("");
   const [status, setStatus] = useState("idle");
+  const [progress, setProgress] = useState(null);
   const [error, setError] = useState("");
   const [currentStep, setCurrentStep] = useState(1);
   const [isDragOver, setIsDragOver] = useState(false);
@@ -177,6 +178,7 @@ export default function RemoveBackgroundPage() {
       return;
     }
     setError("");
+    setProgress(null);
     setStatus("loading");
     try {
       setStatus("processing");
@@ -187,16 +189,23 @@ export default function RemoveBackgroundPage() {
         fileType: originalFile.type,
       });
 
-      const { default: imglyRemoveBackground } = await import("@imgly/background-removal");
+      const imageBlob =
+        compressedFile instanceof Blob ? compressedFile : await (await fetch(URL.createObjectURL(compressedFile))).blob();
+
+      const { default: removeBackground } = await import("@imgly/background-removal");
       const config = {
         publicPath: "https://staticimgly.com/@imgly/background-removal-data/1.7.0/dist/",
         model: "isnet_quint8",
         output: { format: "image/png" },
+        progress: (key, current, total) => {
+          setProgress(total ? Math.round((current / total) * 100) : 0);
+        },
       };
-      const blob = await imglyRemoveBackground(compressedFile, config);
+      const blob = await removeBackground(imageBlob, config);
       if (!blob) {
         setError(t("errorRemoveFailed"));
         setStatus("idle");
+        setProgress(null);
         return;
       }
       setResultBlob(blob);
@@ -206,10 +215,11 @@ export default function RemoveBackgroundPage() {
       });
       setCurrentStep(3);
     } catch (err) {
-      console.error("[remove-background]", err);
+      console.error("Tool error:", err);
       setError(t("errorRemoveFailed"));
     } finally {
       setStatus("idle");
+      setProgress(null);
     }
   }, [originalFile, originalUrl, t]);
 
@@ -321,11 +331,13 @@ export default function RemoveBackgroundPage() {
                   <>
                     <Loader2 size={22} className="animate-spin shrink-0" />
                     <span>{t("loadingModel")}</span>
+                    {progress != null && <span className="opacity-90"> ({progress}%)</span>}
                   </>
                 ) : status === "processing" ? (
                   <>
                     <Loader2 size={22} className="animate-spin shrink-0" />
                     <span>{t("processingLabel")}</span>
+                    {progress != null && <span className="opacity-90"> ({progress}%)</span>}
                   </>
                 ) : (
                   <>

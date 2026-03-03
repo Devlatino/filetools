@@ -197,9 +197,9 @@ export default function ResizeImagePage() {
       setError(t("errorSelectFirst"));
       return;
     }
-    const w = parseInt(width, 10);
-    const h = parseInt(height, 10);
-    if (!w || w < 1 || !h || h < 1) {
+    const targetW = parseInt(width, 10);
+    const targetH = parseInt(height, 10);
+    if (!targetW || targetW < 1 || !targetH || targetH < 1) {
       setError(t("errorInvalidDimensions"));
       return;
     }
@@ -209,19 +209,26 @@ export default function ResizeImagePage() {
       const img = new Image();
       img.crossOrigin = "anonymous";
       await new Promise((resolve, reject) => {
-        img.onload = resolve;
-        img.onerror = reject;
+        img.onload = () => resolve();
+        img.onerror = (e) => reject(e);
         img.src = originalUrl;
       });
       const canvas = document.createElement("canvas");
-      canvas.width = w;
-      canvas.height = h;
+      canvas.width = targetW;
+      canvas.height = targetH;
       const ctx = canvas.getContext("2d");
-      ctx.drawImage(img, 0, 0, w, h);
-      const mime = originalFile.type || "image/png";
+      if (!ctx) {
+        console.error("Tool error: getContext('2d') returned null");
+        setError(t("errorResizeFailed"));
+        return;
+      }
+      ctx.drawImage(img, 0, 0, targetW, targetH);
+      const mimeType =
+        originalFile.type === "image/png" ? "image/png" : originalFile.type === "image/webp" ? "image/webp" : "image/jpeg";
       canvas.toBlob(
         (blob) => {
           if (!blob) {
+            console.error("Tool error: toBlob returned null");
             setError(t("errorResizeFailed"));
             return;
           }
@@ -232,12 +239,12 @@ export default function ResizeImagePage() {
           });
           setCurrentStep(3);
         },
-        mime,
+        mimeType,
         0.92
       );
     } catch (err) {
+      console.error("Tool error:", err);
       setError(t("errorResizeFailed"));
-      console.error(err);
     } finally {
       setIsResizing(false);
     }
