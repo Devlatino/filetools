@@ -203,3 +203,10 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+/* Mobile: always show cards (IntersectionObserver can miss when section is very tall) */
+@media (max-width: 639px) {
+  .tool-card-enter {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

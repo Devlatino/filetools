@@ -4,6 +4,7 @@ import { useCallback, useRef, useState } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { Upload, Loader2, Check, Download, Eraser } from "lucide-react";
+import imageCompression from "browser-image-compression";
 import { FaqSection } from "@/components/FaqSection";
 import { EditorialSection } from "@/components/EditorialSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
@@ -11,6 +12,10 @@ import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 const ACCEPT = "image/jpeg,image/png,image/webp";
+
+/** Max dimension for background removal (avoids OOM and timeouts) */
+const REMOVE_BG_MAX_DIM = 1024;
+const REMOVE_BG_MAX_SIZE_MB = 2;
 
 function StepIndicator({ step1, step2, step3, t }) {
   return (
@@ -174,9 +179,21 @@ export default function RemoveBackgroundPage() {
     setError("");
     setStatus("loading");
     try {
-      const imglyRemoveBackground = (await import("@imgly/background-removal")).default;
       setStatus("processing");
-      const blob = await imglyRemoveBackground(originalFile);
+      const compressedFile = await imageCompression(originalFile, {
+        maxSizeMB: REMOVE_BG_MAX_SIZE_MB,
+        maxWidthOrHeight: REMOVE_BG_MAX_DIM,
+        useWebWorker: true,
+        fileType: originalFile.type,
+      });
+
+      const { default: imglyRemoveBackground } = await import("@imgly/background-removal");
+      const config = {
+        publicPath: "https://staticimgly.com/@imgly/background-removal-data/1.7.0/dist/",
+        model: "isnet_quint8",
+        output: { format: "image/png" },
+      };
+      const blob = await imglyRemoveBackground(compressedFile, config);
       if (!blob) {
         setError(t("errorRemoveFailed"));
         setStatus("idle");
@@ -189,7 +206,7 @@ export default function RemoveBackgroundPage() {
       });
       setCurrentStep(3);
     } catch (err) {
-      console.error(err);
+      console.error("[remove-background]", err);
       setError(t("errorRemoveFailed"));
     } finally {
       setStatus("idle");
