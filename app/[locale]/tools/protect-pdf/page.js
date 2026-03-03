@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { Upload, Loader2, Check, Download, Lock } from "lucide-react";
@@ -9,47 +9,6 @@ import { EditorialSection } from "@/components/EditorialSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
-
-// Carica qpdf WASM (@neslinesli93/qpdf-wasm: @qpdf/qpdf-wasm non è su npm)
-const loadQpdf = async () => {
-  const createModule = (await import("@neslinesli93/qpdf-wasm")).default;
-  const wasmUrl =
-    typeof window !== "undefined"
-      ? `${window.location.origin}/qpdf-wasm/qpdf.wasm`
-      : "";
-  return await createModule({ locateFile: () => wasmUrl });
-};
-
-const protectPdf = async (file, password, allowPrint) => {
-  const arrayBuffer = await file.arrayBuffer();
-  const pdfBytes = new Uint8Array(arrayBuffer);
-
-  const qpdf = await loadQpdf();
-
-  qpdf.FS.writeFile("/input.pdf", pdfBytes);
-
-  const args = [
-    "--encrypt",
-    password,
-    password,
-    "256",
-    allowPrint ? "--print=full" : "--print=none",
-    "--modify=none",
-    "--extract=n",
-    "--",
-    "/input.pdf",
-    "/output.pdf",
-  ];
-
-  qpdf.callMain(args);
-
-  const result = qpdf.FS.readFile("/output.pdf");
-
-  qpdf.FS.unlink("/input.pdf");
-  qpdf.FS.unlink("/output.pdf");
-
-  return result;
-};
 
 function StepIndicator({ step1, step2, step3, t }) {
   return (
@@ -109,17 +68,7 @@ export default function ProtectPdfPage() {
   const [error, setError] = useState("");
   const [currentStep, setCurrentStep] = useState(1);
   const [isDragOver, setIsDragOver] = useState(false);
-  const [wasmReady, setWasmReady] = useState(false);
   const fileInputRef = useRef(null);
-
-  useEffect(() => {
-    loadQpdf()
-      .then(() => setWasmReady(true))
-      .catch((err) => {
-        console.error("qpdf WASM load failed:", err);
-        setError("Failed to load PDF engine.");
-      });
-  }, []);
 
   const step1Status = currentStep >= 2 ? "done" : currentStep === 1 ? "active" : "pending";
   const step2Status = currentStep >= 3 ? "done" : currentStep === 2 ? "active" : "pending";
@@ -185,8 +134,22 @@ export default function ProtectPdfPage() {
     setError("");
     setIsProtecting(true);
     try {
-      const result = await protectPdf(pdfFile, password, allowPrint);
-      const blob = new Blob([result], { type: "application/pdf" });
+      const formData = new FormData();
+      formData.append("file", pdfFile);
+      formData.append("password", password);
+      formData.append("allowPrint", allowPrint.toString());
+
+      const response = await fetch("/api/protect-pdf", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data.error || "Failed to protect PDF");
+      }
+
+      const blob = await response.blob();
       setResultBlob(blob);
       setCurrentStep(3);
     } catch (err) {
@@ -237,13 +200,6 @@ export default function ProtectPdfPage() {
               <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">{t("metaTitle")}</h1>
               <p className="mt-1 text-sm text-slate-300">{t("metaDescription")}</p>
             </div>
-
-            {!wasmReady && (
-              <p className="flex items-center gap-2 text-sm text-slate-400">
-                <Loader2 size={18} className="animate-spin shrink-0" />
-                {t("wasmInitializing")}
-              </p>
-            )}
 
             <StepIndicator step1={step1Status} step2={step2Status} step3={step3Status} t={t} />
 
@@ -315,7 +271,7 @@ export default function ProtectPdfPage() {
             {pdfFile && !resultBlob && (
               <button
                 type="button"
-                disabled={isProtecting || !wasmReady}
+                disabled={isProtecting}
                 onClick={handleProtect}
                 className="flex w-full items-center justify-center gap-3 rounded-xl bg-sky-500 py-4 text-base font-semibold text-slate-950 shadow-lg shadow-sky-500/25 transition hover:bg-sky-400 hover:shadow-sky-400/30 disabled:cursor-not-allowed disabled:opacity-70"
               >
