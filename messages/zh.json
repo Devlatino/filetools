@@ -1170,7 +1170,7 @@
       "metaTitle": "Word转PDF – 在线免费DOCX转PDF",
       "metaDescription": "在线免费将Word文档转换为PDF。无需上传。",
       "dropzone": "将DOCX文件拖放到此处或点击上传",
-      "printNotice": "浏览器打印对话框将打开。选择"另存为PDF"作为目标。",
+      "printNotice": "浏览器打印对话框将打开。选择「另存为PDF」作为目标。",
       "convert": "转换为PDF",
       "converting": "转换中...",
       "errorGeneric": "转换失败，请确保文件是有效的DOCX格式。"
