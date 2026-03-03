@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { PDFDocument } from "@cantoo/pdf-lib";
@@ -71,6 +71,23 @@ export default function ProtectPdfPage() {
   const [isDragOver, setIsDragOver] = useState(false);
   const fileInputRef = useRef(null);
 
+  useEffect(() => {
+    const test = async () => {
+      const { PDFDocument } = await import("@cantoo/pdf-lib");
+      const doc = await PDFDocument.create();
+      doc.addPage();
+      const bytes = await doc.save({
+        userPassword: "test123",
+        ownerPassword: "test123_owner",
+      });
+      console.log("PDF size:", bytes.length);
+      console.log("PDF header:", new TextDecoder().decode(bytes.slice(0, 20)));
+      // Se funziona dovresti vedere "%PDF-" nell'header
+      // e il file risultante dovrebbe chiedere password
+    };
+    test();
+  }, []);
+
   const step1Status = currentStep >= 2 ? "done" : currentStep === 1 ? "active" : "pending";
   const step2Status = currentStep >= 3 ? "done" : currentStep === 2 ? "active" : "pending";
   const step3Status = currentStep === 3 ? "active" : "pending";
@@ -136,21 +153,25 @@ export default function ProtectPdfPage() {
     setIsProtecting(true);
     try {
       const arrayBuffer = await pdfFile.arrayBuffer();
-      const pdfDoc = await PDFDocument.load(arrayBuffer);
-      const pdfBytes = await pdfDoc.save({
+      const pdfDoc = await PDFDocument.load(arrayBuffer, {
+        workerSrc: `${typeof window !== "undefined" ? window.location.origin : ""}/cantoo-worker/pdf.worker.js`,
+      });
+      const saveOptions = {
         userPassword: password,
-        ownerPassword: password + "_owner_" + Date.now(),
+        ownerPassword: password + "_owner",
         permissions: {
           printing: allowPrint ? "highResolution" : "notAllowed",
           modifying: false,
           copying: false,
           annotating: false,
-          fillingForms: false,
-          contentAccessibility: false,
+          fillingForms: true,
+          contentAccessibility: true,
           documentAssembly: false,
         },
-        encryptionAlgorithm: "AES256",
-      });
+      };
+      console.log("PDFDocument from:", PDFDocument.toString().slice(0, 100));
+      console.log("save options:", { userPassword: password });
+      const pdfBytes = await pdfDoc.save(saveOptions);
       const blob = new Blob([pdfBytes], { type: "application/pdf" });
       setResultBlob(blob);
       setCurrentStep(3);

@@ -141,6 +141,14 @@
       "madeWith": "Made with ♥",
       "processedLocally": "Alle Dateien werden lokal im Browser verarbeitet"
     },
+    "pages": {
+      "privacy": {
+        "body": "Diese Seite beschreibt, wie wir mit Ihren Daten umgehen. Die gesamte Dateiverarbeitung erfolgt in Ihrem Browser; wir laden Ihre Dateien nicht auf unsere Server hoch und speichern sie nicht."
+      },
+      "contact": {
+        "body": "Bei Fragen oder Anmerkungen nutzen Sie bitte die auf der Website angegebenen Kontaktmöglichkeiten."
+      }
+    },
     "open": "Öffnen",
     "goToTool": "Zum Tool →",
     "breadcrumbHome": "Startseite",
@@ -1196,6 +1204,42 @@
       "errorGeneric": "PDF konnte nicht verarbeitet werden. Bitte erneut versuchen.",
       "errorPdfOnly": "Bitte wählen Sie eine PDF-Datei.",
       "errorSelectFirst": "Wählen Sie zuerst eine PDF-Datei."
+    },
+    "reorderPdf": {
+      "label": "PDF-Seiten neu anordnen",
+      "short": "Per Drag & Drop PDF-Seiten neu anordnen. Seiten visuell umsortieren und entfernen.",
+      "metaTitle": "PDF-Seiten neu anordnen – Kostenlos Online",
+      "metaDescription": "PDF-Seiten online kostenlos neu anordnen. Per Drag & Drop sortieren und sofort herunterladen.",
+      "dropzone": "PDF-Datei hier ablegen oder klicken",
+      "loading": "Seiten werden geladen...",
+      "dragHint": "Seiten zum Umsortieren ziehen",
+      "removePage": "Seite entfernen",
+      "apply": "Neu angeordnete PDF herunterladen",
+      "applying": "Verarbeitung...",
+      "errorGeneric": "PDF konnte nicht verarbeitet werden. Bitte erneut versuchen."
+    },
+    "wordToPdf": {
+      "label": "Word zu PDF",
+      "short": "Word DOCX-Dateien online in PDF konvertieren. Kostenlos und im Browser.",
+      "metaTitle": "Word zu PDF konvertieren – DOCX zu PDF kostenlos online",
+      "metaDescription": "Word-Dokumente online kostenlos in PDF konvertieren. Kein Upload nötig.",
+      "dropzone": "DOCX-Datei hier ablegen oder klicken",
+      "printNotice": "Der Druckdialog öffnet sich. Wähle 'Als PDF speichern' als Ziel.",
+      "convert": "In PDF konvertieren",
+      "converting": "Konvertierung läuft...",
+      "errorGeneric": "Konvertierung fehlgeschlagen. Bitte prüfe, ob die Datei ein gültiges DOCX ist."
+    },
+    "faviconGenerator": {
+      "label": "Favicon-Generator",
+      "short": "Alle Favicon-Größen aus einem Bild erstellen. Komplettes Favicon-Paket herunterladen.",
+      "metaTitle": "Favicon-Generator – Favicon aus Bild erstellen kostenlos",
+      "metaDescription": "Favicons in allen Größen aus einem Bild generieren. ICO, PNG und Webmanifest herunterladen.",
+      "dropzone": "Bild hier ablegen oder klicken",
+      "generating": "Favicons werden erstellt...",
+      "download": "Favicon-Paket herunterladen (.zip)",
+      "preview": "Vorschau",
+      "filesIncluded": "Im Paket enthaltene Dateien",
+      "errorGeneric": "Favicon-Erstellung fehlgeschlagen. Bitte PNG oder JPG verwenden."
     },
     "pdfToText": {
       "label": "PDF in Text",

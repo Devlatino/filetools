@@ -5,7 +5,7 @@ import { useMemo, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Unlock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat, Eraser, LayoutTemplate, Type, QrCode, Box, FileBox, ImagePlus, Hash } from "lucide-react";
+import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Unlock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat, Eraser, LayoutTemplate, Type, QrCode, Box, FileBox, ImagePlus, Hash, GripVertical } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { locales, localeNames } from "@/i18n.js";
 
@@ -58,6 +58,9 @@ const TOOL_ICONS = {
   pdfUnlock: Unlock,
   protectPdf: Lock,
   pdfPageNumbers: Hash,
+  reorderPdf: GripVertical,
+  wordToPdf: FileText,
+  faviconGenerator: Image,
 };
 
 const CATEGORIES = ["all", "images", "pdf", "tools", "video", "audio", "social", "3d"];
@@ -94,6 +97,9 @@ const TOOL_IDS = [
   { id: "pdfUnlock", href: "/tools/pdf-unlock", category: "pdf", active: true },
   { id: "protectPdf", href: "/tools/protect-pdf", category: "pdf", active: true },
   { id: "pdfPageNumbers", href: "/tools/pdf-add-page-numbers", category: "pdf", active: true },
+  { id: "reorderPdf", href: "/tools/reorder-pdf-pages", category: "pdf", active: true },
+  { id: "wordToPdf", href: "/tools/word-to-pdf", category: "pdf", active: true },
+  { id: "faviconGenerator", href: "/tools/favicon-generator", category: "tools", active: true },
   { id: "createZip", href: "/tools/create-zip", category: "tools", active: true },
   { id: "trimVideo", href: "/tools/trim-video", category: "video", active: true },
   { id: "videoToMp3", href: "/tools/video-to-mp3", category: ["video", "audio"], active: true },

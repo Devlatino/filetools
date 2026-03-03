@@ -138,6 +138,14 @@
       "madeWith": "Fatto con ♥",
       "processedLocally": "Tutti i file elaborati in locale nel browser"
     },
+    "pages": {
+      "privacy": {
+        "body": "Questa pagina descrive come trattiamo i tuoi dati. L'elaborazione dei file avviene nel browser; non cariciamo né conserviamo i file sui nostri server."
+      },
+      "contact": {
+        "body": "Per domande o feedback, utilizza le opzioni di contatto disponibili sul sito."
+      }
+    },
     "open": "Apri",
     "goToTool": "Vai al tool →",
     "breadcrumbHome": "Home",
@@ -1128,6 +1136,8 @@
       "short": "Rimuovi la protezione con password dai file PDF online. Gratis, veloce e nel browser.",
       "metaTitle": "Sblocca PDF Online – Rimuovi Password PDF Gratis",
       "metaDescription": "Rimuovi la password da un PDF online gratuitamente. Nessun upload, tutto nel browser.",
+      "editorialTitle": "Come sbloccare un PDF online",
+      "editorialBody": "Carica il PDF protetto da password, inserisci la password e scarica la versione sbloccata. Tutto avviene nel browser, nessun file viene caricato su server esterni.",
       "dropzone": "Trascina qui il PDF protetto o clicca per caricarlo",
       "password": "Password PDF",
       "passwordPlaceholder": "Inserisci la password del PDF",
@@ -1193,6 +1203,42 @@
       "errorGeneric": "Impossibile elaborare il PDF. Riprova.",
       "errorPdfOnly": "Seleziona un file PDF.",
       "errorSelectFirst": "Seleziona prima un PDF."
+    },
+    "reorderPdf": {
+      "label": "Riordina Pagine PDF",
+      "short": "Trascina e rilascia per riordinare le pagine del tuo PDF. Riorganizza e rimuovi pagine visivamente.",
+      "metaTitle": "Riordina Pagine PDF Online – Gratuito",
+      "metaDescription": "Riordina le pagine di un PDF online gratuitamente. Trascina per riorganizzare e scarica subito.",
+      "dropzone": "Trascina qui il tuo PDF o clicca per caricarlo",
+      "loading": "Caricamento pagine...",
+      "dragHint": "Trascina le pagine per riordinarle",
+      "removePage": "Rimuovi pagina",
+      "apply": "Scarica PDF Riordinato",
+      "applying": "Elaborazione...",
+      "errorGeneric": "Impossibile elaborare il PDF. Riprova."
+    },
+    "wordToPdf": {
+      "label": "Word in PDF",
+      "short": "Converti file Word DOCX in PDF online. Gratis e nel browser.",
+      "metaTitle": "Converti Word in PDF – DOCX in PDF Online Gratis",
+      "metaDescription": "Converti documenti Word in PDF online gratuitamente. Nessun upload, tutto nel browser.",
+      "dropzone": "Trascina qui il tuo file DOCX o clicca per caricarlo",
+      "printNotice": "Si aprirà la finestra di stampa. Seleziona 'Salva come PDF' come destinazione.",
+      "convert": "Converti in PDF",
+      "converting": "Conversione in corso...",
+      "errorGeneric": "Conversione fallita. Verifica che il file sia un DOCX valido."
+    },
+    "faviconGenerator": {
+      "label": "Generatore Favicon",
+      "short": "Genera tutte le dimensioni favicon da qualsiasi immagine. Scarica il pacchetto completo per il tuo sito.",
+      "metaTitle": "Generatore Favicon – Crea Favicon da Immagine Gratis",
+      "metaDescription": "Genera favicon in tutte le dimensioni da qualsiasi immagine. Scarica ICO, PNG e webmanifest.",
+      "dropzone": "Trascina qui la tua immagine o clicca per caricarla",
+      "generating": "Generazione favicon in corso...",
+      "download": "Scarica Pacchetto Favicon (.zip)",
+      "preview": "Anteprima",
+      "filesIncluded": "File inclusi nel pacchetto",
+      "errorGeneric": "Generazione favicon fallita. Usa un'immagine PNG o JPG."
     },
     "pdfToText": {
       "label": "PDF in testo",

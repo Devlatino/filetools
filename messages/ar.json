@@ -84,6 +84,14 @@
       "madeWith": "صُنع بـ ♥",
       "processedLocally": "جميع الملفات تُعالج محلياً في المتصفح"
     },
+    "pages": {
+      "privacy": {
+        "body": "تصف هذه الصفحة كيفية تعاملنا مع بياناتك. تتم جميع معالجة الملفات في متصفحك؛ نحن لا نرفع أو نخزن ملفاتك على خوادمنا."
+      },
+      "contact": {
+        "body": "للأسئلة أو الملاحظات، يرجى استخدام خيارات الاتصال المتاحة على الموقع."
+      }
+    },
     "open": "فتح",
     "goToTool": "انتقل إلى الأداة ←",
     "breadcrumbHome": "الرئيسية",
@@ -1142,6 +1150,42 @@
       "errorGeneric": "فشل معالجة PDF. حاول مرة أخرى.",
       "errorPdfOnly": "يرجى اختيار ملف PDF.",
       "errorSelectFirst": "اختر PDF أولاً."
+    },
+    "reorderPdf": {
+      "label": "إعادة ترتيب صفحات PDF",
+      "short": "اسحب وأفلت لإعادة ترتيب صفحات PDF. إعادة تنظيم وحذف الصفحات بصرياً.",
+      "metaTitle": "إعادة ترتيب صفحات PDF أونلاين – مجاناً",
+      "metaDescription": "أعد ترتيب صفحات PDF أونلاين مجاناً. اسحب لإعادة الترتيب وحمّل فوراً.",
+      "dropzone": "اسحب PDF هنا أو انقر للرفع",
+      "loading": "جار تحميل الصفحات...",
+      "dragHint": "اسحب الصفحات لإعادة ترتيبها",
+      "removePage": "إزالة الصفحة",
+      "apply": "تنزيل PDF المعاد ترتيبه",
+      "applying": "جار المعالجة...",
+      "errorGeneric": "فشل معالجة PDF. حاول مرة أخرى."
+    },
+    "wordToPdf": {
+      "label": "Word إلى PDF",
+      "short": "تحويل ملفات Word DOCX إلى PDF أونلاين. مجاناً وفي المتصفح.",
+      "metaTitle": "تحويل Word إلى PDF – DOCX إلى PDF أونلاين مجاناً",
+      "metaDescription": "تحويل مستندات Word إلى PDF أونلاين مجاناً. بدون رفع ملفات.",
+      "dropzone": "اسحب ملف DOCX هنا أو انقر للرفع",
+      "printNotice": "سيفتح مربع حوار الطباعة. اختر 'حفظ بصيغة PDF' كوجهة.",
+      "convert": "تحويل إلى PDF",
+      "converting": "جار التحويل...",
+      "errorGeneric": "فشل التحويل. تأكد من أن الملف DOCX صالح."
+    },
+    "faviconGenerator": {
+      "label": "مولّد Favicon",
+      "short": "أنشئ جميع أحجام favicon من أي صورة. نزّل الحزمة الكاملة لموقعك.",
+      "metaTitle": "مولّد Favicon – إنشاء Favicon من صورة مجاناً",
+      "metaDescription": "أنشئ favicons بجميع الأحجام من أي صورة. نزّل ICO وPNG وwebmanifest.",
+      "dropzone": "اسحب صورتك هنا أو انقر للرفع",
+      "generating": "جار إنشاء الـ favicons...",
+      "download": "تنزيل حزمة Favicon (.zip)",
+      "preview": "معاينة",
+      "filesIncluded": "الملفات المضمنة في الحزمة",
+      "errorGeneric": "فشل إنشاء الـ favicons. استخدم صورة PNG أو JPG."
     },
     "pdfToText": {
       "label": "PDF إلى نص",

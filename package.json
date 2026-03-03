@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "postinstall": "mkdir -p public && cp -r node_modules/@imgly/background-removal/dist public/background-removal",
+    "postinstall": "mkdir -p public && cp -r node_modules/@imgly/background-removal/dist public/background-removal && cp -r node_modules/@cantoo/pdf-lib/dist public/cantoo-worker",
     "dev": "next dev",
-    "build": "mkdir -p public && cp -r node_modules/@imgly/background-removal/dist public/background-removal && next build",
+    "build": "mkdir -p public && cp -r node_modules/@imgly/background-removal/dist public/background-removal && cp -r node_modules/@cantoo/pdf-lib/dist public/cantoo-worker && next build",
     "start": "next start",
     "lint": "eslint",
     "indexnow": "node scripts/ping-indexnow.js"
@@ -26,6 +26,7 @@
     "highlight.js": "^11.11.1",
     "jszip": "^3.10.1",
     "lucide-react": "^0.575.0",
+    "mammoth": "^1.11.0",
     "marked": "^17.0.3",
     "next": "16.1.6",
     "next-intl": "^4.8.3",

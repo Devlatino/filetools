@@ -53,6 +53,9 @@ const TOOL_PATHS = [
   "/tools/pdf-unlock",
   "/tools/protect-pdf",
   "/tools/pdf-add-page-numbers",
+  "/tools/reorder-pdf-pages",
+  "/tools/word-to-pdf",
+  "/tools/favicon-generator",
 ];
 
 const BLOG_SLUGS = ["webp-vs-jpg", "how-to-compress-pdf", "gif-to-mp4-why"];

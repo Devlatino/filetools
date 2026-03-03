@@ -138,6 +138,14 @@
       "madeWith": "Made with ♥",
       "processedLocally": "All files processed locally in your browser"
     },
+    "pages": {
+      "privacy": {
+        "body": "This page describes how we handle your data. All file processing runs in your browser; we do not upload or store your files on our servers."
+      },
+      "contact": {
+        "body": "For questions or feedback, please use the contact options available on the site."
+      }
+    },
     "open": "Open",
     "goToTool": "Go to tool →",
     "breadcrumbHome": "Home",
@@ -1128,6 +1136,8 @@
       "short": "Remove password protection from PDF files online. Free, fast and browser-based.",
       "metaTitle": "Unlock PDF Online – Remove PDF Password Free",
       "metaDescription": "Remove password from PDF files online for free. No upload needed, everything happens in your browser.",
+      "editorialTitle": "How to unlock a PDF online",
+      "editorialBody": "Upload your password-protected PDF, enter the password and download the unlocked version instantly. Everything happens in your browser — no files are uploaded to any server.",
       "dropzone": "Drop your protected PDF here or click to upload",
       "password": "PDF Password",
       "passwordPlaceholder": "Enter the PDF password",
@@ -1148,6 +1158,8 @@
       "short": "Add password protection to your PDF files. Secure your documents in seconds.",
       "metaTitle": "Protect PDF with Password – Free Online Tool",
       "metaDescription": "Add a password to your PDF file online for free. Protect your documents instantly in your browser.",
+      "editorialTitle": "How to protect a PDF with a password",
+      "editorialBody": "Upload your PDF, set a password and download the protected file. The encryption happens entirely in your browser, so your document never leaves your device.",
       "dropzone": "Drop your PDF here or click to upload",
       "password": "New Password",
       "confirmPassword": "Confirm Password",
@@ -1193,6 +1205,42 @@
       "errorGeneric": "Failed to process PDF. Please try again.",
       "errorPdfOnly": "Please select a PDF file.",
       "errorSelectFirst": "Select a PDF file first."
+    },
+    "reorderPdf": {
+      "label": "Reorder PDF Pages",
+      "short": "Drag and drop to reorder pages in your PDF. Rearrange, remove and reorganize pages visually.",
+      "metaTitle": "Reorder PDF Pages Online – Free PDF Page Organizer",
+      "metaDescription": "Reorder PDF pages online for free. Drag and drop to rearrange pages, remove unwanted ones and download instantly.",
+      "dropzone": "Drop your PDF here or click to upload",
+      "loading": "Loading pages...",
+      "dragHint": "Drag pages to reorder",
+      "removePage": "Remove page",
+      "apply": "Download Reordered PDF",
+      "applying": "Processing...",
+      "errorGeneric": "Failed to process PDF. Please try again."
+    },
+    "wordToPdf": {
+      "label": "Word to PDF",
+      "short": "Convert Word DOCX files to PDF online. Free and browser-based.",
+      "metaTitle": "Word to PDF Converter – Free Online DOCX to PDF",
+      "metaDescription": "Convert Word documents to PDF online for free. No upload needed, conversion happens in your browser.",
+      "dropzone": "Drop your DOCX file here or click to upload",
+      "printNotice": "The browser print dialog will open. Select 'Save as PDF' as the destination.",
+      "convert": "Convert to PDF",
+      "converting": "Converting...",
+      "errorGeneric": "Failed to convert file. Make sure it is a valid DOCX file."
+    },
+    "faviconGenerator": {
+      "label": "Favicon Generator",
+      "short": "Generate all favicon sizes from any image. Download a complete favicon package for your website.",
+      "metaTitle": "Favicon Generator – Create Favicon from Image Free",
+      "metaDescription": "Generate favicons in all sizes from any image. Download ICO, PNG and webmanifest files instantly.",
+      "dropzone": "Drop your image here or click to upload",
+      "generating": "Generating favicons...",
+      "download": "Download Favicon Package (.zip)",
+      "preview": "Preview",
+      "filesIncluded": "Files included in the package",
+      "errorGeneric": "Failed to generate favicons. Please use a PNG or JPG image."
     },
     "pdfToText": {
       "label": "PDF to text",

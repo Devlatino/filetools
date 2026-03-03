@@ -138,6 +138,14 @@
       "madeWith": "Fait avec ♥",
       "processedLocally": "Tous les fichiers sont traités localement dans le navigateur"
     },
+    "pages": {
+      "privacy": {
+        "body": "Cette page décrit comment nous traitons vos données. Tout traitement des fichiers s'effectue dans votre navigateur ; nous ne téléversons ni ne stockons vos fichiers sur nos serveurs."
+      },
+      "contact": {
+        "body": "Pour toute question ou remarque, utilisez les options de contact disponibles sur le site."
+      }
+    },
     "open": "Ouvrir",
     "goToTool": "Aller à l'outil →",
     "breadcrumbHome": "Accueil",
@@ -1161,6 +1169,42 @@
       "errorGeneric": "Impossible de traiter le PDF. Veuillez réessayer.",
       "errorPdfOnly": "Veuillez sélectionner un fichier PDF.",
       "errorSelectFirst": "Sélectionnez d'abord un PDF."
+    },
+    "reorderPdf": {
+      "label": "Réorganiser les pages PDF",
+      "short": "Glissez-déposez pour réorganiser les pages de votre PDF. Réarrangez et supprimez des pages visuellement.",
+      "metaTitle": "Réorganiser les pages PDF en ligne – Gratuit",
+      "metaDescription": "Réorganisez les pages d'un PDF en ligne gratuitement. Glissez pour réarranger et téléchargez instantanément.",
+      "dropzone": "Déposez votre PDF ici ou cliquez pour télécharger",
+      "loading": "Chargement des pages...",
+      "dragHint": "Glissez les pages pour les réorganiser",
+      "removePage": "Supprimer la page",
+      "apply": "Télécharger le PDF réorganisé",
+      "applying": "Traitement en cours...",
+      "errorGeneric": "Impossible de traiter le PDF. Veuillez réessayer."
+    },
+    "wordToPdf": {
+      "label": "Word en PDF",
+      "short": "Convertissez des fichiers Word DOCX en PDF en ligne. Gratuit et dans le navigateur.",
+      "metaTitle": "Convertir Word en PDF – DOCX en PDF en ligne gratuit",
+      "metaDescription": "Convertissez des documents Word en PDF en ligne gratuitement. Sans téléversement.",
+      "dropzone": "Déposez votre fichier DOCX ici ou cliquez pour télécharger",
+      "printNotice": "La boîte de dialogue d'impression s'ouvrira. Sélectionnez 'Enregistrer en PDF' comme destination.",
+      "convert": "Convertir en PDF",
+      "converting": "Conversion en cours...",
+      "errorGeneric": "Échec de la conversion. Vérifiez que le fichier est un DOCX valide."
+    },
+    "faviconGenerator": {
+      "label": "Générateur de Favicon",
+      "short": "Générez toutes les tailles de favicon depuis n'importe quelle image. Téléchargez le package complet.",
+      "metaTitle": "Générateur de Favicon – Créer Favicon depuis Image Gratuit",
+      "metaDescription": "Générez des favicons dans toutes les tailles depuis n'importe quelle image.",
+      "dropzone": "Déposez votre image ici ou cliquez pour télécharger",
+      "generating": "Génération des favicons...",
+      "download": "Télécharger le package Favicon (.zip)",
+      "preview": "Aperçu",
+      "filesIncluded": "Fichiers inclus dans le package",
+      "errorGeneric": "Échec de la génération. Utilisez une image PNG ou JPG."
     },
     "pdfToText": {
       "label": "PDF en texte",

@@ -169,6 +169,14 @@
       "madeWith": "Hecho con ♥",
       "processedLocally": "Todos los archivos se procesan localmente en el navegador"
     },
+    "pages": {
+      "privacy": {
+        "body": "Esta página describe cómo tratamos tus datos. Todo el procesamiento de archivos se realiza en tu navegador; no subimos ni almacenamos tus archivos en nuestros servidores."
+      },
+      "contact": {
+        "body": "Para preguntas o comentarios, utiliza las opciones de contacto disponibles en el sitio."
+      }
+    },
     "open": "Abrir",
     "goToTool": "Ir a la herramienta →",
     "breadcrumbHome": "Inicio",
@@ -1224,6 +1232,42 @@
       "errorGeneric": "No se pudo procesar el PDF. Inténtalo de nuevo.",
       "errorPdfOnly": "Selecciona un archivo PDF.",
       "errorSelectFirst": "Selecciona primero un PDF."
+    },
+    "reorderPdf": {
+      "label": "Reordenar Páginas PDF",
+      "short": "Arrastra y suelta para reordenar páginas en tu PDF. Reorganiza y elimina páginas visualmente.",
+      "metaTitle": "Reordenar Páginas PDF Online – Gratis",
+      "metaDescription": "Reordena páginas de un PDF online gratis. Arrastra para reorganizar y descarga al instante.",
+      "dropzone": "Arrastra tu PDF aquí o haz clic para subir",
+      "loading": "Cargando páginas...",
+      "dragHint": "Arrastra las páginas para reordenarlas",
+      "removePage": "Quitar página",
+      "apply": "Descargar PDF Reordenado",
+      "applying": "Procesando...",
+      "errorGeneric": "No se pudo procesar el PDF. Inténtalo de nuevo."
+    },
+    "wordToPdf": {
+      "label": "Word a PDF",
+      "short": "Convierte archivos Word DOCX a PDF online. Gratis y en el navegador.",
+      "metaTitle": "Convertir Word a PDF – DOCX a PDF Online Gratis",
+      "metaDescription": "Convierte documentos Word a PDF online gratis. Sin subida de archivos.",
+      "dropzone": "Arrastra tu archivo DOCX aquí o haz clic para subir",
+      "printNotice": "Se abrirá el diálogo de impresión. Selecciona 'Guardar como PDF' como destino.",
+      "convert": "Convertir a PDF",
+      "converting": "Convirtiendo...",
+      "errorGeneric": "Error en la conversión. Asegúrate de que el archivo sea un DOCX válido."
+    },
+    "faviconGenerator": {
+      "label": "Generador de Favicon",
+      "short": "Genera todos los tamaños de favicon desde cualquier imagen. Descarga el paquete completo.",
+      "metaTitle": "Generador de Favicon – Crear Favicon desde Imagen Gratis",
+      "metaDescription": "Genera favicons en todos los tamaños desde cualquier imagen. Descarga ICO, PNG y webmanifest.",
+      "dropzone": "Arrastra tu imagen aquí o haz clic para subir",
+      "generating": "Generando favicons...",
+      "download": "Descargar Paquete Favicon (.zip)",
+      "preview": "Vista previa",
+      "filesIncluded": "Archivos incluidos en el paquete",
+      "errorGeneric": "Error al generar favicons. Usa una imagen PNG o JPG."
     },
     "pdfToText": {
       "label": "PDF a texto",
