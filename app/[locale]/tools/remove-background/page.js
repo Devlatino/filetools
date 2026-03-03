@@ -189,19 +189,13 @@ export default function RemoveBackgroundPage() {
         fileType: originalFile.type,
       });
 
-      const imageBlob =
-        compressedFile instanceof Blob ? compressedFile : await (await fetch(URL.createObjectURL(compressedFile))).blob();
-
-      const { default: removeBackground } = await import("@imgly/background-removal");
-      const config = {
-        publicPath: "https://staticimgly.com/@imgly/background-removal-data/1.7.0/dist/",
-        model: "isnet_quint8",
-        output: { format: "image/png" },
+      const { removeBackground } = await import("@imgly/background-removal");
+      const blob = await removeBackground(compressedFile, {
+        publicPath: "https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.7.0/dist/",
         progress: (key, current, total) => {
-          setProgress(total ? Math.round((current / total) * 100) : 0);
+          if (total > 0) setProgress(Math.round((current / total) * 100));
         },
-      };
-      const blob = await removeBackground(imageBlob, config);
+      });
       if (!blob) {
         setError(t("errorRemoveFailed"));
         setStatus("idle");

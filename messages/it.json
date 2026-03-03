@@ -1661,7 +1661,9 @@
       "faq9Q": "Posso ridimensionare più immagini?",
       "faq9A": "Questo strumento elabora un'immagine alla volta. Per più immagini usalo più volte o combinalo con altri strumenti.",
       "faq10Q": "Qual è la dimensione massima in uscita?",
-      "faq10A": "I limiti dipendono da dispositivo e browser. Il canvas ha limiti (spesso 16384px per lato). Per uso tipico (es. sotto 4000px) non ci sono problemi."
+      "faq10A": "I limiti dipendono da dispositivo e browser. Il canvas ha limiti (spesso 16384px per lato). Per uso tipico (es. sotto 4000px) non ci sono problemi.",
+      "faq11Q": "",
+      "faq11A": ""
     },
     "pdfToImages": {
       "label": "PDF → Immagini",

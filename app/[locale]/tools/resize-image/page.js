@@ -18,6 +18,49 @@ function formatBytes(bytes) {
   return `${parseFloat((bytes / Math.pow(k, i)).toFixed(2))} ${sizes[i]}`;
 }
 
+function resizeImage(file, targetWidth, targetHeight) {
+  return new Promise((resolve, reject) => {
+    const objectUrl = URL.createObjectURL(file);
+    const img = new Image();
+
+    img.onerror = () => {
+      URL.revokeObjectURL(objectUrl);
+      reject(new Error("Failed to load image"));
+    };
+
+    img.onload = () => {
+      try {
+        const canvas = document.createElement("canvas");
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        URL.revokeObjectURL(objectUrl);
+
+        const mimeType =
+          file.type === "image/png" ? "image/png" : file.type === "image/webp" ? "image/webp" : "image/jpeg";
+        canvas.toBlob(
+          (blob) => {
+            if (!blob) {
+              reject(new Error("toBlob failed"));
+              return;
+            }
+            resolve(blob);
+          },
+          mimeType,
+          0.92
+        );
+      } catch (err) {
+        URL.revokeObjectURL(objectUrl);
+        reject(err);
+      }
+    };
+
+    img.src = objectUrl;
+  });
+}
+
 function StepIndicator({ step1, step2, step3, t }) {
   return (
     <div className="flex items-center justify-center gap-2 sm:gap-4">
@@ -206,42 +249,13 @@ export default function ResizeImagePage() {
     setError("");
     setIsResizing(true);
     try {
-      const img = new Image();
-      img.crossOrigin = "anonymous";
-      await new Promise((resolve, reject) => {
-        img.onload = () => resolve();
-        img.onerror = (e) => reject(e);
-        img.src = originalUrl;
+      const blob = await resizeImage(originalFile, targetW, targetH);
+      setResultBlob(blob);
+      setResultUrl((prev) => {
+        if (prev) URL.revokeObjectURL(prev);
+        return URL.createObjectURL(blob);
       });
-      const canvas = document.createElement("canvas");
-      canvas.width = targetW;
-      canvas.height = targetH;
-      const ctx = canvas.getContext("2d");
-      if (!ctx) {
-        console.error("Tool error: getContext('2d') returned null");
-        setError(t("errorResizeFailed"));
-        return;
-      }
-      ctx.drawImage(img, 0, 0, targetW, targetH);
-      const mimeType =
-        originalFile.type === "image/png" ? "image/png" : originalFile.type === "image/webp" ? "image/webp" : "image/jpeg";
-      canvas.toBlob(
-        (blob) => {
-          if (!blob) {
-            console.error("Tool error: toBlob returned null");
-            setError(t("errorResizeFailed"));
-            return;
-          }
-          setResultBlob(blob);
-          setResultUrl((prev) => {
-            if (prev) URL.revokeObjectURL(prev);
-            return URL.createObjectURL(blob);
-          });
-          setCurrentStep(3);
-        },
-        mimeType,
-        0.92
-      );
+      setCurrentStep(3);
     } catch (err) {
       console.error("Tool error:", err);
       setError(t("errorResizeFailed"));
