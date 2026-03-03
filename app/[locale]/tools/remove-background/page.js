@@ -13,6 +13,9 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 const ACCEPT = "image/jpeg,image/png,image/webp";
 
+/** Must match @imgly/background-removal version in package.json (for CDN fallback) */
+const BACKGROUND_REMOVAL_VERSION = "1.7.0";
+
 /** Max dimension for background removal (avoids OOM and timeouts) */
 const REMOVE_BG_MAX_DIM = 1024;
 const REMOVE_BG_MAX_SIZE_MB = 2;
@@ -190,8 +193,13 @@ export default function RemoveBackgroundPage() {
       });
 
       const { removeBackground } = await import("@imgly/background-removal");
+      // If node_modules path 404s (Next.js doesn't serve it by default), use CDN:
+      // publicPath: `https://cdn.jsdelivr.net/npm/@imgly/background-removal@${BACKGROUND_REMOVAL_VERSION}/dist/`
       const blob = await removeBackground(compressedFile, {
-        publicPath: "https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.7.0/dist/",
+        publicPath: new URL(
+          "/node_modules/@imgly/background-removal/dist/",
+          window.location.origin
+        ).toString(),
         progress: (key, current, total) => {
           if (total > 0) setProgress(Math.round((current / total) * 100));
         },
