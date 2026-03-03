@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
-import { PDFDocument, degrees } from "pdf-lib";
+import { PDFDocument, degrees } from "@cantoo/pdf-lib";
 import { Upload, Loader2, Check, FilePlus } from "lucide-react";
 import { FaqSection } from "@/components/FaqSection";
 import { EditorialSection } from "@/components/EditorialSection";
@@ -11,72 +11,50 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
+function loadImageDimensions(file) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      resolve({ naturalWidth: img.naturalWidth, naturalHeight: img.naturalHeight });
+    };
+    img.onerror = () => reject(new Error("Failed to load image"));
+    img.src = url;
+  });
+}
+
 const convertImagesToPdf = async (pages) => {
   const pdfDoc = await PDFDocument.create();
 
-  for (const pageItem of pages) {
-    const { file, rotation } = pageItem;
-    const { width, height, dataUrl } = await new Promise((resolve, reject) => {
-      const img = new Image();
-      const objectUrl = URL.createObjectURL(file);
-      img.onload = () => {
-        resolve({
-          width: img.naturalWidth,
-          height: img.naturalHeight,
-          dataUrl: objectUrl,
-        });
-      };
-      img.onerror = () => reject(new Error("Failed to load image"));
-      img.src = objectUrl;
-    });
-    URL.revokeObjectURL(dataUrl);
+  for (const pageData of pages) {
+    const arrayBuffer = await pageData.file.arrayBuffer();
 
-    const arrayBuffer = await file.arrayBuffer();
+    const { naturalWidth: imgW, naturalHeight: imgH } = await loadImageDimensions(pageData.file);
+
+    const rot = pageData.rotation;
+    const isLandscape = rot === 90 || rot === 270;
+
+    const pageW = isLandscape ? imgH : imgW;
+    const pageH = isLandscape ? imgW : imgH;
+
+    const pdfPage = pdfDoc.addPage([pageW, pageH]);
+
     let embeddedImage;
-    if (file.type === "image/png") {
+    if (pageData.file.type === "image/png") {
       embeddedImage = await pdfDoc.embedPng(arrayBuffer);
     } else {
       embeddedImage = await pdfDoc.embedJpg(arrayBuffer);
     }
 
-    const isRotated90or270 = rotation === 90 || rotation === 270;
-    const pageWidth = isRotated90or270 ? height : width;
-    const pageHeight = isRotated90or270 ? width : height;
+    const drawParams = {
+      0: { x: 0, y: 0, width: pageW, height: pageH, rotate: degrees(0) },
+      90: { x: pageW, y: 0, width: pageH, height: pageW, rotate: degrees(90) },
+      180: { x: pageW, y: pageH, width: pageW, height: pageH, rotate: degrees(180) },
+      270: { x: 0, y: pageH, width: pageH, height: pageW, rotate: degrees(270) },
+    };
 
-    const pdfPage = pdfDoc.addPage([pageWidth, pageHeight]);
-
-    if (rotation === 90) {
-      pdfPage.drawImage(embeddedImage, {
-        x: pageWidth,
-        y: 0,
-        width: pageHeight,
-        height: pageWidth,
-        rotate: degrees(90),
-      });
-    } else if (rotation === 180) {
-      pdfPage.drawImage(embeddedImage, {
-        x: pageWidth,
-        y: pageHeight,
-        width: pageWidth,
-        height: pageHeight,
-        rotate: degrees(180),
-      });
-    } else if (rotation === 270) {
-      pdfPage.drawImage(embeddedImage, {
-        x: 0,
-        y: pageWidth,
-        width: pageHeight,
-        height: pageWidth,
-        rotate: degrees(270),
-      });
-    } else {
-      pdfPage.drawImage(embeddedImage, {
-        x: 0,
-        y: 0,
-        width: pageWidth,
-        height: pageHeight,
-      });
-    }
+    pdfPage.drawImage(embeddedImage, drawParams[rot]);
   }
 
   const pdfBytes = await pdfDoc.save();

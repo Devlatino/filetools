@@ -11,6 +11,7 @@
     "indexnow": "node scripts/ping-indexnow.js"
   },
   "dependencies": {
+    "@cantoo/pdf-lib": "^2.6.1",
     "@ffmpeg/ffmpeg": "^0.12.15",
     "@ffmpeg/util": "^0.12.2",
     "@imgly/background-removal": "^1.7.0",
@@ -30,7 +31,6 @@
     "next-intl": "^4.8.3",
     "next-mdx-remote": "^6.0.0",
     "papaparse": "^5.5.3",
-    "pdf-lib": "^1.17.1",
     "pdfjs-dist": "^4.10.38",
     "pptxgenjs": "^4.0.1",
     "qrcode": "^1.5.4",

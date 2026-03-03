@@ -3,7 +3,7 @@
 import { useCallback, useRef, useState } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
-import { PDFDocument } from "pdf-lib";
+import { PDFDocument } from "@cantoo/pdf-lib";
 import { Upload, Loader2, Check, Download, Lock } from "lucide-react";
 import { FaqSection } from "@/components/FaqSection";
 import { EditorialSection } from "@/components/EditorialSection";
@@ -137,18 +137,20 @@ export default function ProtectPdfPage() {
     try {
       const arrayBuffer = await pdfFile.arrayBuffer();
       const pdfDoc = await PDFDocument.load(arrayBuffer);
-      if (typeof pdfDoc.setProtection === "function") {
-        pdfDoc.setProtection({
-          userPassword: password,
-          ownerPassword: password + "_owner",
-          permissions: {
-            printing: allowPrint ? "highResolution" : "notAllowed",
-            modifying: false,
-            copying: false,
-          },
-        });
-      }
-      const pdfBytes = await pdfDoc.save();
+      const pdfBytes = await pdfDoc.save({
+        userPassword: password,
+        ownerPassword: password + "_owner_" + Date.now(),
+        permissions: {
+          printing: allowPrint ? "highResolution" : "notAllowed",
+          modifying: false,
+          copying: false,
+          annotating: false,
+          fillingForms: false,
+          contentAccessibility: false,
+          documentAssembly: false,
+        },
+        encryptionAlgorithm: "AES256",
+      });
       const blob = new Blob([pdfBytes], { type: "application/pdf" });
       setResultBlob(blob);
       setCurrentStep(3);

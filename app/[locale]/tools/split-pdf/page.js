@@ -3,7 +3,7 @@
 import { useCallback, useRef, useState } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
-import { PDFDocument } from "pdf-lib";
+import { PDFDocument } from "@cantoo/pdf-lib";
 import JSZip from "jszip";
 import { Upload, Loader2, Check, Download, Scissors } from "lucide-react";
 import { FaqSection } from "@/components/FaqSection";
