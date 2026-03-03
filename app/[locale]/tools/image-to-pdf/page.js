@@ -4,12 +4,52 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { PDFDocument } from "pdf-lib";
-import { Upload, Loader2, Check, Download, FilePlus } from "lucide-react";
+import { Upload, Loader2, Check, FilePlus } from "lucide-react";
 import { FaqSection } from "@/components/FaqSection";
 import { EditorialSection } from "@/components/EditorialSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+
+const convertImagesToPdf = async (files) => {
+  const pdfDoc = await PDFDocument.create();
+
+  for (const file of files) {
+    const { width, height, dataUrl } = await new Promise((resolve, reject) => {
+      const img = new Image();
+      const objectUrl = URL.createObjectURL(file);
+      img.onload = () => {
+        resolve({
+          width: img.naturalWidth,
+          height: img.naturalHeight,
+          dataUrl: objectUrl,
+        });
+      };
+      img.onerror = () => reject(new Error("Failed to load image"));
+      img.src = objectUrl;
+    });
+    URL.revokeObjectURL(dataUrl);
+
+    const arrayBuffer = await file.arrayBuffer();
+    let embeddedImage;
+    if (file.type === "image/png") {
+      embeddedImage = await pdfDoc.embedPng(arrayBuffer);
+    } else {
+      embeddedImage = await pdfDoc.embedJpg(arrayBuffer);
+    }
+
+    const page = pdfDoc.addPage([width, height]);
+    page.drawImage(embeddedImage, {
+      x: 0,
+      y: 0,
+      width,
+      height,
+    });
+  }
+
+  const pdfBytes = await pdfDoc.save();
+  return pdfBytes;
+};
 
 function formatBytes(bytes) {
   if (!bytes) return "0 B";
@@ -192,16 +232,8 @@ export default function ImageToPdfPage() {
     setError("");
     setIsCreating(true);
     try {
-      const pdfDoc = await PDFDocument.create();
-      for (const item of items) {
-        const bytes = await item.file.arrayBuffer();
-        const uint8 = new Uint8Array(bytes);
-        const isPng = item.file.type === "image/png";
-        const image = isPng ? await pdfDoc.embedPng(uint8) : await pdfDoc.embedJpg(uint8);
-        const page = pdfDoc.addPage({ width: image.width, height: image.height });
-        page.drawImage(image, { x: 0, y: 0, width: image.width, height: image.height });
-      }
-      const pdfBytes = await pdfDoc.save();
+      const files = items.map((i) => i.file);
+      const pdfBytes = await convertImagesToPdf(files);
       const blob = new Blob([pdfBytes], { type: "application/pdf" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
