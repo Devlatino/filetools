@@ -1105,6 +1105,8 @@
       "short": "为您的PDF文件添加密码保护。几秒钟内保护您的文档。",
       "metaTitle": "PDF加密保护 – 免费在线工具",
       "metaDescription": "在线免费为PDF添加密码。在浏览器中直接保护您的文档。",
+      "editorialTitle": "如何为PDF添加密码保护",
+      "editorialBody": "上传PDF，设置密码，下载受保护的文件。加密在服务器上完成，文件处理后立即删除。",
       "dropzone": "将PDF拖放到此处或点击上传",
       "password": "新密码",
       "confirmPassword": "确认密码",
