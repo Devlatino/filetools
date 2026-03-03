@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { getLocale } from "next-intl/server";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -57,6 +58,7 @@ export default async function RootLayout({ children }) {
           crossOrigin="anonymous"
         />
         {children}
+        <Analytics />
       </body>
     </html>
   );
