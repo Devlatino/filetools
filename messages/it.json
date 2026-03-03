@@ -1173,7 +1173,15 @@
       "errorGeneric": "Impossibile proteggere il PDF. Riprova.",
       "errorPdfOnly": "Seleziona un file PDF.",
       "errorSelectFirst": "Seleziona prima un PDF.",
-      "wasmInitializing": "Inizializzazione in corso..."
+      "wasmInitializing": "Inizializzazione in corso...",
+      "faq1Q": "Il mio PDF è al sicuro?",
+      "faq1A": "Sì. La cifratura avviene sul server e il file viene eliminato immediatamente dopo l'elaborazione.",
+      "faq2Q": "Quale cifratura viene usata?",
+      "faq2A": "AES-256, lo standard più sicuro per i documenti PDF.",
+      "faq3Q": "Posso aprire il PDF protetto su qualsiasi dispositivo?",
+      "faq3A": "Sì, qualsiasi lettore PDF supporta i PDF con password.",
+      "faq4Q": "Posso rimuovere la password in seguito?",
+      "faq4A": "Sì, usa il tool Sblocca PDF con la stessa password."
     },
     "pdfPageNumbers": {
       "label": "Aggiungi Numeri di Pagina al PDF",

@@ -1,9 +1,6 @@
 import { NextResponse } from "next/server";
-import { encrypt } from "node-qpdf2";
-import { writeFile, readFile, unlink } from "fs/promises";
-import { tmpdir } from "os";
 import { join } from "path";
-import crypto from "crypto";
+import { pathToFileURL } from "url";
 
 export async function POST(request) {
   const formData = await request.formData();
@@ -18,31 +15,39 @@ export async function POST(request) {
     return NextResponse.json({ error: "Missing password" }, { status: 400 });
   }
 
-  const id = crypto.randomUUID();
-  const inputPath = join(tmpdir(), `${id}_input.pdf`);
-  const outputPath = join(tmpdir(), `${id}_output.pdf`);
-
   try {
     const bytes = await file.arrayBuffer();
-    await writeFile(inputPath, Buffer.from(bytes));
+    const inputBytes = new Uint8Array(bytes);
 
-    await encrypt({
-      input: inputPath,
-      output: outputPath,
-      keyLength: 256,
-      password: {
-        user: password,
-        owner: password + "_owner",
-      },
-      restrictions: {
-        print: allowPrint ? "full" : "none",
-        modify: "none",
-        extract: "n",
-        annotate: "n",
-      },
+    // Import qpdf WASM solo server-side nell'API route (createModule è l'export del pacchetto)
+    const createModule = (await import("@neslinesli93/qpdf-wasm")).default;
+    const wasmPath = join(process.cwd(), "node_modules/@neslinesli93/qpdf-wasm/dist/qpdf.wasm");
+    const qpdf = await createModule({
+      locateFile: () => pathToFileURL(wasmPath).href,
     });
 
-    const result = await readFile(outputPath);
+    // Scrivi input nel filesystem virtuale WASM
+    qpdf.FS.writeFile("/input.pdf", inputBytes);
+
+    // Esegui cifratura
+    qpdf.callMain([
+      "--encrypt",
+      password,
+      password + "_owner",
+      "256",
+      allowPrint ? "--print=full" : "--print=none",
+      "--modify=none",
+      "--extract=n",
+      "--",
+      "/input.pdf",
+      "/output.pdf",
+    ]);
+
+    const result = qpdf.FS.readFile("/output.pdf");
+
+    // Cleanup virtual FS
+    qpdf.FS.unlink("/input.pdf");
+    qpdf.FS.unlink("/output.pdf");
 
     return new NextResponse(result, {
       headers: {
@@ -53,8 +58,5 @@ export async function POST(request) {
   } catch (err) {
     console.error("protect-pdf error:", err);
     return NextResponse.json({ error: err.message || "Failed to protect PDF" }, { status: 500 });
-  } finally {
-    await unlink(inputPath).catch(() => {});
-    await unlink(outputPath).catch(() => {});
   }
 }

@@ -1175,7 +1175,15 @@
       "errorGeneric": "Failed to protect PDF. Please try again.",
       "errorPdfOnly": "Please select a PDF file.",
       "errorSelectFirst": "Select a PDF file first.",
-      "wasmInitializing": "Initializing..."
+      "wasmInitializing": "Initializing...",
+      "faq1Q": "Is my PDF safe?",
+      "faq1A": "Yes. Encryption runs on the server and the file is deleted immediately after processing.",
+      "faq2Q": "What encryption is used?",
+      "faq2A": "AES-256, the strongest standard for PDF documents.",
+      "faq3Q": "Can I open the protected PDF on any device?",
+      "faq3A": "Yes, any PDF reader supports password-protected PDFs.",
+      "faq4Q": "Can I remove the password later?",
+      "faq4A": "Yes, use the Unlock PDF tool with the same password."
     },
     "pdfPageNumbers": {
       "label": "Add Page Numbers to PDF",
