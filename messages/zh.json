@@ -1222,6 +1222,7 @@
       "loading": "正在加载图纸...",
       "renderNote": "针对标准2D图纸优化",
       "download": "下载DXF",
+      "newFile": "新文件",
       "errorGeneric": "无法打开DXF文件，请确保文件有效。"
     },
     "pdfToText": {

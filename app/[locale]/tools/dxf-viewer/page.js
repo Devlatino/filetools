@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { Upload, Loader2, Download } from "lucide-react";
@@ -26,22 +26,231 @@ export default function DxfViewerPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [isDragOver, setIsDragOver] = useState(false);
+  const [fileInfo, setFileInfo] = useState(null);
   const containerRef = useRef(null);
-  const viewerRef = useRef(null);
+  const rendererRef = useRef(null);
   const fileInputRef = useRef(null);
 
-  const processFile = useCallback(
-    async (f) => {
-      if (!f) {
-        setFile(null);
-        setError(null);
-        if (viewerRef.current && containerRef.current) {
+  const renderDxf = useCallback(
+    async (dxfFile) => {
+      setLoading(true);
+      setError(null);
+
+      try {
+        const text = await dxfFile.text();
+
+        const DxfParser = (await import("dxf-parser")).default;
+        const THREE = await import("three");
+
+        const parser = new DxfParser();
+        const dxf = parser.parseSync(text);
+
+        if (!dxf || !dxf.entities) {
+          throw new Error("Invalid DXF file");
+        }
+
+        if (!containerRef.current) {
+          setLoading(false);
+          return;
+        }
+
+        if (rendererRef.current) {
+          rendererRef.current.dispose();
+          rendererRef.current = null;
+        }
+        containerRef.current.innerHTML = "";
+
+        const width = containerRef.current.clientWidth || 800;
+        const height = 500;
+
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x1a1a2e);
+
+        const camera = new THREE.OrthographicCamera(
+          -width / 2,
+          width / 2,
+          height / 2,
+          -height / 2,
+          0.1,
+          10000
+        );
+        camera.position.z = 1000;
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(width, height);
+        containerRef.current.appendChild(renderer.domElement);
+        rendererRef.current = renderer;
+
+        const dxfColors = [
+          0xffffff, 0xff0000, 0xffff00, 0x00ff00, 0x00ffff, 0x0000ff, 0xff00ff, 0xffffff, 0x808080, 0xc0c0c0,
+        ];
+
+        const getColor = (entity) => {
+          if (entity.color !== undefined) {
+            return dxfColors[entity.color % dxfColors.length] ?? 0x00bfff;
+          }
+          return 0x00bfff;
+        };
+
+        const entities = dxf.entities || [];
+        const allPoints = [];
+
+        entities.forEach((entity) => {
+          const color = getColor(entity);
+          const material = new THREE.LineBasicMaterial({ color });
+
           try {
-            if (viewerRef.current.renderer?.domElement?.parentNode) {
-              viewerRef.current.renderer.domElement.parentNode.removeChild(viewerRef.current.renderer.domElement);
+            if (entity.type === "LINE") {
+              const verts = entity.vertices || [];
+              if (verts.length >= 2) {
+                const points = [
+                  new THREE.Vector3(verts[0].x, verts[0].y, 0),
+                  new THREE.Vector3(verts[1].x, verts[1].y, 0),
+                ];
+                allPoints.push(...points);
+                const geo = new THREE.BufferGeometry().setFromPoints(points);
+                scene.add(new THREE.Line(geo, material));
+              }
+            } else if (entity.type === "LWPOLYLINE" || entity.type === "POLYLINE") {
+              const vertices = entity.vertices || [];
+              if (vertices.length > 1) {
+                const points = vertices.map((v) => {
+                  const p = new THREE.Vector3(v.x, v.y, 0);
+                  allPoints.push(p);
+                  return p;
+                });
+                if (entity.shape) points.push(points[0]);
+                const geo = new THREE.BufferGeometry().setFromPoints(points);
+                scene.add(new THREE.Line(geo, material));
+              }
+            } else if (entity.type === "CIRCLE") {
+              const segments = 64;
+              const points = [];
+              for (let i = 0; i <= segments; i++) {
+                const angle = (i / segments) * Math.PI * 2;
+                const p = new THREE.Vector3(
+                  entity.center.x + Math.cos(angle) * entity.radius,
+                  entity.center.y + Math.sin(angle) * entity.radius,
+                  0
+                );
+                points.push(p);
+                allPoints.push(p);
+              }
+              const geo = new THREE.BufferGeometry().setFromPoints(points);
+              scene.add(new THREE.Line(geo, material));
+            } else if (entity.type === "ARC") {
+              const segments = 64;
+              const startAngle = entity.startAngle != null ? entity.startAngle : 0;
+              const endAngle = entity.endAngle != null ? entity.endAngle : Math.PI * 2;
+              let angle = startAngle;
+              const points = [];
+              const step = (endAngle - startAngle) / segments;
+              for (let i = 0; i <= segments; i++) {
+                const p = new THREE.Vector3(
+                  entity.center.x + Math.cos(angle) * entity.radius,
+                  entity.center.y + Math.sin(angle) * entity.radius,
+                  0
+                );
+                points.push(p);
+                allPoints.push(p);
+                angle += step;
+              }
+              const geo = new THREE.BufferGeometry().setFromPoints(points);
+              scene.add(new THREE.Line(geo, material));
+            } else if (entity.type === "SPLINE") {
+              const ctrlPoints = entity.controlPoints || [];
+              if (ctrlPoints.length > 1) {
+                const curve = new THREE.CatmullRomCurve3(
+                  ctrlPoints.map((p) => new THREE.Vector3(p.x, p.y, 0))
+                );
+                const points = curve.getPoints(50);
+                allPoints.push(...points);
+                const geo = new THREE.BufferGeometry().setFromPoints(points);
+                scene.add(new THREE.Line(geo, material));
+              }
             }
           } catch (_) {}
-          viewerRef.current = null;
+        });
+
+        if (allPoints.length > 0) {
+          const box = new THREE.Box3();
+          allPoints.forEach((p) => box.expandByPoint(p));
+          const center = new THREE.Vector3();
+          box.getCenter(center);
+          const size = new THREE.Vector3();
+          box.getSize(size);
+          const maxDim = Math.max(size.x, size.y) || 1;
+          const scale = (Math.min(width, height) / maxDim) * 0.85;
+          camera.position.set(center.x, center.y, 1000);
+          camera.zoom = scale;
+          camera.updateProjectionMatrix();
+        }
+
+        const canvas = renderer.domElement;
+
+        const onWheel = (e) => {
+          e.preventDefault();
+          camera.zoom *= e.deltaY > 0 ? 0.9 : 1.1;
+          camera.updateProjectionMatrix();
+          renderer.render(scene, camera);
+        };
+
+        let isPanning = false;
+        let startPan = { x: 0, y: 0 };
+
+        const onMouseDown = (e) => {
+          isPanning = true;
+          startPan = { x: e.clientX, y: e.clientY };
+        };
+
+        const onMouseMove = (e) => {
+          if (!isPanning) return;
+          const dx = (e.clientX - startPan.x) / camera.zoom;
+          const dy = (e.clientY - startPan.y) / camera.zoom;
+          camera.position.x -= dx;
+          camera.position.y += dy;
+          startPan = { x: e.clientX, y: e.clientY };
+          renderer.render(scene, camera);
+        };
+
+        const onMouseUp = () => {
+          isPanning = false;
+        };
+
+        canvas.addEventListener("wheel", onWheel, { passive: false });
+        canvas.addEventListener("mousedown", onMouseDown);
+        canvas.addEventListener("mousemove", onMouseMove);
+        canvas.addEventListener("mouseup", onMouseUp);
+        canvas.addEventListener("mouseleave", onMouseUp);
+
+        renderer.render(scene, camera);
+
+        setFileInfo({
+          name: dxfFile.name,
+          size: dxfFile.size,
+          entities: entities.length,
+        });
+      } catch (err) {
+        console.error("DXF render error:", err);
+        setError(t("errorGeneric"));
+      } finally {
+        setLoading(false);
+      }
+    },
+    [t]
+  );
+
+  const processFile = useCallback(
+    (f) => {
+      if (!f) {
+        setFile(null);
+        setFileInfo(null);
+        setError(null);
+        if (rendererRef.current && containerRef.current) {
+          try {
+            rendererRef.current.dispose();
+          } catch (_) {}
+          rendererRef.current = null;
           containerRef.current.innerHTML = "";
         }
         return;
@@ -52,45 +261,10 @@ export default function DxfViewerPage() {
         setFile(null);
         return;
       }
-      setError(null);
-      setLoading(true);
       setFile(f);
-      try {
-        const text = await f.text();
-        const DxfParser = (await import("dxf-parser")).default;
-        const { Viewer } = await import("three-dxf");
-
-        const parser = new DxfParser();
-        const dxf = parser.parseSync(text);
-
-        if (!dxf || !dxf.entities?.length) {
-          setError(t("errorGeneric"));
-          setLoading(false);
-          return;
-        }
-
-        if (!containerRef.current) {
-          setLoading(false);
-          return;
-        }
-
-        containerRef.current.innerHTML = "";
-        const width = containerRef.current.clientWidth || 800;
-        const height = 500;
-
-        const viewer = new Viewer(dxf, containerRef.current, width, height);
-        if (viewer.renderer) {
-          viewer.renderer.setClearColor(0x1a1a2e, 1);
-        }
-        viewerRef.current = viewer;
-      } catch (err) {
-        console.error("dxf-viewer error:", err);
-        setError(t("errorGeneric"));
-      } finally {
-        setLoading(false);
-      }
+      renderDxf(f);
     },
-    [t]
+    [t, renderDxf]
   );
 
   const handleFileChange = useCallback((e) => processFile(e.target.files?.[0] ?? null), [processFile]);
@@ -124,6 +298,17 @@ export default function DxfViewerPage() {
     a.click();
     URL.revokeObjectURL(url);
   }, [file]);
+
+  useEffect(() => {
+    return () => {
+      if (rendererRef.current) {
+        try {
+          rendererRef.current.dispose();
+        } catch (_) {}
+        rendererRef.current = null;
+      }
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50">
@@ -187,11 +372,18 @@ export default function DxfViewerPage() {
                 <div
                   ref={containerRef}
                   className="w-full overflow-hidden rounded-xl bg-[#1a1a2e]"
-                  style={{ height: 500, display: loading ? "none" : "block" }}
+                  style={{ minHeight: 500, height: 500, display: loading ? "none" : "block" }}
                 />
-                <p className="text-xs text-slate-400">
-                  {file.name} · {formatBytes(file.size)}
-                </p>
+                {fileInfo && (
+                  <p className="text-xs text-slate-400">
+                    {fileInfo.name} · {formatBytes(fileInfo.size)} · {fileInfo.entities} entities
+                  </p>
+                )}
+                {!fileInfo && !loading && (
+                  <p className="text-xs text-slate-400">
+                    {file.name} · {formatBytes(file.size)}
+                  </p>
+                )}
                 <p className="text-xs text-slate-500">{t("renderNote")}</p>
                 <div className="flex flex-wrap gap-3">
                   <button
@@ -212,6 +404,13 @@ export default function DxfViewerPage() {
                       onChange={handleFileChange}
                     />
                   </label>
+                  <button
+                    type="button"
+                    onClick={() => processFile(null)}
+                    className="inline-flex items-center gap-2 rounded-xl border border-slate-600 bg-slate-800 px-4 py-2.5 text-sm font-medium text-slate-200 transition hover:border-rose-500 hover:text-rose-200"
+                  >
+                    {t("newFile")}
+                  </button>
                 </div>
               </>
             )}

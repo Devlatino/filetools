@@ -1274,6 +1274,7 @@
       "loading": "Zeichnung wird geladen...",
       "renderNote": "Optimiert für Standard-2D-Zeichnungen",
       "download": "DXF herunterladen",
+      "newFile": "Neue Datei",
       "errorGeneric": "DXF-Datei konnte nicht geöffnet werden. Bitte prüfe, ob sie gültig ist."
     },
     "pdfToText": {

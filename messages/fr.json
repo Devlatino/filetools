@@ -1239,6 +1239,7 @@
       "loading": "Chargement du dessin...",
       "renderNote": "Optimisé pour les dessins 2D standard",
       "download": "Télécharger DXF",
+      "newFile": "Nouveau fichier",
       "errorGeneric": "Impossible d'ouvrir le fichier DXF. Assurez-vous qu'il est valide."
     },
     "pdfToText": {

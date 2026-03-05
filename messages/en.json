@@ -1283,6 +1283,7 @@
       "loading": "Loading drawing...",
       "renderNote": "Optimized for standard 2D drawings",
       "download": "Download DXF",
+      "newFile": "New file",
       "errorGeneric": "Failed to load DXF file. Make sure it is a valid DXF."
     },
     "pdfToText": {
