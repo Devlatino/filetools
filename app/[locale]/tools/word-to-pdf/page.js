@@ -3,43 +3,182 @@
 import { useCallback, useRef, useState } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
-import mammoth from "mammoth";
-import { Upload, Loader2, FileText } from "lucide-react";
+import { Upload, Loader2 } from "lucide-react";
 import { FaqSection } from "@/components/FaqSection";
 import { EditorialSection } from "@/components/EditorialSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { SchemaMarkup } from "@/components/SchemaMarkup";
 
 export default function WordToPdfPage() {
   const locale = useLocale();
   const t = useTranslations("tools.wordToPdf");
   const tCommon = useTranslations("common");
-  const [docxFile, setDocxFile] = useState(null);
-  const [isConverting, setIsConverting] = useState(false);
-  const [error, setError] = useState("");
+  const [file, setFile] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [progress, setProgress] = useState("");
+  const [error, setError] = useState(null);
   const [isDragOver, setIsDragOver] = useState(false);
   const fileInputRef = useRef(null);
 
+  const handleConvert = useCallback(
+    async (docxFile) => {
+      setLoading(true);
+      setError(null);
+      let container = null;
+
+      try {
+        setProgress(t("converting"));
+
+        const { renderAsync } = await import("docx-preview");
+        const { default: html2canvas } = await import("html2canvas");
+        const { jsPDF } = await import("jspdf");
+
+        const arrayBuffer = await docxFile.arrayBuffer();
+
+        container = document.createElement("div");
+        container.style.cssText = `
+          position: fixed;
+          top: -99999px;
+          left: -99999px;
+          width: 794px;
+          background: white;
+          font-family: serif;
+          z-index: -1;
+        `;
+        document.body.appendChild(container);
+
+        await renderAsync(arrayBuffer, container, null, {
+          className: "docx-preview",
+          inWrapper: true,
+          ignoreWidth: false,
+          ignoreHeight: false,
+          ignoreFonts: false,
+          breakPages: true,
+          ignoreLastRenderedPageBreak: true,
+          experimental: false,
+          trimXmlDeclaration: true,
+          useBase64URL: true,
+          useMathMLPolyfill: false,
+          renderHeaders: true,
+          renderFooters: true,
+          renderFootnotes: true,
+          renderEndnotes: true,
+          debug: false,
+        });
+
+        setProgress("Capturing pages...");
+
+        const pages = container.querySelectorAll(".docx-wrapper section");
+
+        if (!pages || pages.length === 0) {
+          const canvas = await html2canvas(container, {
+            scale: 2,
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: "#ffffff",
+            logging: false,
+            width: 794,
+          });
+
+          const imgData = canvas.toDataURL("image/jpeg", 0.95);
+          const pdf = new jsPDF({
+            orientation: "portrait",
+            unit: "mm",
+            format: "a4",
+          });
+
+          const pdfW = pdf.internal.pageSize.getWidth();
+          const pdfH = pdf.internal.pageSize.getHeight();
+          const ratio = canvas.height / canvas.width;
+          const imgH = pdfW * ratio;
+
+          if (imgH <= pdfH) {
+            pdf.addImage(imgData, "JPEG", 0, 0, pdfW, imgH);
+          } else {
+            let position = 0;
+            while (position < imgH) {
+              pdf.addImage(imgData, "JPEG", 0, -position, pdfW, imgH);
+              position += pdfH;
+              if (position < imgH) pdf.addPage();
+            }
+          }
+
+          pdf.save(docxFile.name.replace(/\.docx?$/i, ".pdf"));
+          return;
+        }
+
+        const pdf = new jsPDF({
+          orientation: "portrait",
+          unit: "mm",
+          format: "a4",
+        });
+
+        const pdfW = pdf.internal.pageSize.getWidth();
+        const pdfH = pdf.internal.pageSize.getHeight();
+
+        for (let i = 0; i < pages.length; i++) {
+          setProgress(`Converting page ${i + 1} of ${pages.length}...`);
+
+          const page = pages[i];
+
+          const canvas = await html2canvas(page, {
+            scale: 2,
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: "#ffffff",
+            logging: false,
+            width: page.scrollWidth,
+            height: page.scrollHeight,
+          });
+
+          const imgData = canvas.toDataURL("image/jpeg", 0.92);
+          const canvasRatio = canvas.height / canvas.width;
+          const imgW = pdfW;
+          let imgH = pdfW * canvasRatio;
+          const yOffset = imgH < pdfH ? (pdfH - imgH) / 2 : 0;
+
+          if (i > 0) pdf.addPage();
+          pdf.addImage(imgData, "JPEG", 0, yOffset, imgW, imgH);
+        }
+
+        setProgress("Saving PDF...");
+        pdf.save(docxFile.name.replace(/\.docx?$/i, ".pdf"));
+      } catch (err) {
+        console.error("word-to-pdf error:", err);
+        setError(t("errorGeneric"));
+      } finally {
+        if (container && container.parentNode) {
+          document.body.removeChild(container);
+        }
+        setLoading(false);
+        setProgress("");
+      }
+    },
+    [t]
+  );
+
   const processFile = useCallback(
-    (file) => {
-      if (!file) {
-        setDocxFile(null);
-        setError("");
+    (f) => {
+      if (!f) {
+        setFile(null);
+        setError(null);
         return;
       }
       const isDocx =
-        file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
-        file.name.toLowerCase().endsWith(".docx");
+        f.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+        /\.docx?$/i.test(f.name);
       if (!isDocx) {
         setError(t("errorGeneric"));
-        setDocxFile(null);
+        setFile(null);
         return;
       }
-      setError("");
-      setDocxFile(file);
+      setError(null);
+      setFile(f);
+      handleConvert(f);
     },
-    [t]
+    [t, handleConvert]
   );
 
   const handleFileChange = useCallback((e) => processFile(e.target.files?.[0] ?? null), [processFile]);
@@ -64,55 +203,19 @@ export default function WordToPdfPage() {
     [processFile]
   );
 
-  const handleConvert = useCallback(async () => {
-    if (!docxFile) {
-      setError(t("errorGeneric"));
-      return;
-    }
-    setError("");
-    setIsConverting(true);
-    try {
-      const arrayBuffer = await docxFile.arrayBuffer();
-      const result = await mammoth.convertToHtml({ arrayBuffer });
-      const html = result.value;
-
-      const printFrame = document.createElement("iframe");
-      printFrame.style.cssText = "position:fixed;top:-9999px;left:-9999px;width:210mm;height:297mm";
-      document.body.appendChild(printFrame);
-
-      printFrame.contentDocument.write(`
-        <!DOCTYPE html>
-        <html>
-        <head>
-          <style>
-            @page { size: A4; margin: 20mm; }
-            body { font-family: Arial, sans-serif; font-size: 12pt;
-                   line-height: 1.5; color: #000; }
-            h1 { font-size: 18pt; } h2 { font-size: 16pt; }
-            h3 { font-size: 14pt; }
-            table { border-collapse: collapse; width: 100%; }
-            td, th { border: 1px solid #ccc; padding: 4px 8px; }
-            img { max-width: 100%; }
-          </style>
-        </head>
-        <body>${html}</body>
-        </html>
-      `);
-      printFrame.contentDocument.close();
-
-      printFrame.contentWindow.focus();
-      printFrame.contentWindow.print();
-      document.body.removeChild(printFrame);
-    } catch (err) {
-      console.error(err);
-      setError(t("errorGeneric"));
-    } finally {
-      setIsConverting(false);
-    }
-  }, [docxFile, t]);
+  const handleNewFile = useCallback(() => {
+    setFile(null);
+    setError(null);
+  }, []);
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50">
+      <SchemaMarkup
+        title={t("metaTitle")}
+        description={t("metaDescription")}
+        slug="word-to-pdf"
+        locale={locale}
+      />
       <header className="border-b border-white/10 bg-slate-950/80 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <Link href={`/${locale}/`} prefetch className="flex items-center gap-2">
@@ -139,7 +242,7 @@ export default function WordToPdfPage() {
               <p className="mt-1 text-sm text-slate-300">{t("metaDescription")}</p>
             </div>
 
-            {!docxFile ? (
+            {!loading && (
               <label
                 role="button"
                 tabIndex={0}
@@ -153,48 +256,42 @@ export default function WordToPdfPage() {
                 <input
                   ref={fileInputRef}
                   type="file"
-                  accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                  accept=".docx,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                   className="sr-only"
                   onChange={handleFileChange}
                 />
                 <Upload size={40} strokeWidth={1.5} className={isDragOver ? "text-sky-400" : "text-sky-500/80"} />
-                <p className={`text-center text-sm font-medium ${isDragOver ? "text-sky-200" : "text-slate-300"}`}>{t("dropzone")}</p>
+                <p className={`text-center text-sm font-medium ${isDragOver ? "text-sky-200" : "text-slate-300"}`}>
+                  {t("dropzone")}
+                </p>
               </label>
-            ) : (
-              <div className="flex h-[120px] w-full items-center gap-4 rounded-xl border-2 border-dashed border-sky-500/50 bg-slate-900/60 p-4">
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-medium text-slate-100">{docxFile.name}</p>
-                </div>
+            )}
+
+            {loading && (
+              <div className="flex flex-col items-center justify-center rounded-xl border border-sky-500/30 bg-slate-900/50 py-12">
+                <Loader2 size={40} className="animate-spin text-sky-400" />
+                <p className="mt-4 font-medium text-slate-200">{progress || t("converting")}</p>
+                <p className="mt-2 text-sm text-slate-400">{t("convertingNote")}</p>
               </div>
             )}
 
-            {docxFile && (
-              <>
-                <p className="rounded-lg border border-amber-500/40 bg-amber-500/10 px-4 py-3 text-sm text-amber-200">
-                  {t("printNotice")}
-                </p>
-                <button
-                  type="button"
-                  disabled={isConverting}
-                  onClick={handleConvert}
-                  className="flex w-full items-center justify-center gap-3 rounded-xl bg-sky-500 py-4 text-base font-semibold text-slate-950 shadow-lg shadow-sky-500/25 transition hover:bg-sky-400 disabled:cursor-not-allowed disabled:opacity-70"
-                >
-                  {isConverting ? (
-                    <>
-                      <Loader2 size={22} className="animate-spin shrink-0" />
-                      <span>{t("converting")}</span>
-                    </>
-                  ) : (
-                    <>
-                      <FileText size={22} strokeWidth={2} className="shrink-0" />
-                      <span>{t("convert")}</span>
-                    </>
-                  )}
-                </button>
-              </>
+            {error && (
+              <div className="rounded-xl border border-rose-500/40 bg-rose-500/10 px-4 py-3 text-sm text-rose-200">
+                {error}
+              </div>
             )}
 
-            {error && <p className="text-sm text-rose-400">{error}</p>}
+            {!loading && file && !error && (
+              <div className="flex justify-center">
+                <button
+                  type="button"
+                  onClick={handleNewFile}
+                  className="rounded-xl border border-slate-600 bg-slate-800 px-6 py-2.5 text-sm font-medium text-slate-200 transition hover:border-sky-500 hover:text-sky-200"
+                >
+                  {t("convertAnother")}
+                </button>
+              </div>
+            )}
           </section>
 
           <aside className="space-y-8 lg:max-w-[340px]">

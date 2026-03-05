@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
+import Script from "next/script";
 import { useMemo, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
@@ -367,6 +368,38 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50">
+      <Script
+        id="schema-organization"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "FileFlip",
+            url: "https://fileflip.org",
+            description:
+              "Free online file conversion tools. Convert PDF, images, video and audio files directly in your browser. No upload, no registration, 9 languages.",
+            potentialAction: {
+              "@type": "SearchAction",
+              target: {
+                "@type": "EntryPoint",
+                urlTemplate: "https://fileflip.org/tools/{search_term_string}",
+              },
+              "query-input": "required name=search_term_string",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "FileFlip",
+              url: "https://fileflip.org",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://fileflip.org/fileflip-logo.svg",
+              },
+            },
+          }),
+        }}
+      />
       <header className="relative z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <Link href={`/${locale}/`} prefetch className="flex items-center gap-2">

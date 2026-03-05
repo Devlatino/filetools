@@ -210,3 +210,8 @@ body {
     transform: translateY(0);
   }
 }
+
+/* docx-preview: evita che gli stili globali interferiscano con il layout FileFlip */
+.docx-wrapper {
+  all: revert;
+}

@@ -64,7 +64,14 @@ const TOOL_PATHS = [
   "/tools/csv-to-pdf",
 ];
 
-const BLOG_SLUGS = ["webp-vs-jpg", "how-to-compress-pdf", "gif-to-mp4-why"];
+const BLOG_SLUGS = [
+  "webp-vs-jpg",
+  "how-to-compress-pdf",
+  "gif-to-mp4-why",
+  "best-free-pdf-converter-online",
+  "how-to-convert-excel-to-pdf",
+  "what-is-pdfa-and-when-do-you-need-it",
+];
 
 /**
  * Build alternates.languages for a path segment (e.g. "" for home or "/tools/compress-image").

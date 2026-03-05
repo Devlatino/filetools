@@ -6,9 +6,11 @@ import { useTranslations, useLocale } from "next-intl";
 import { PDFDocument, PDFName, PDFString, PDFDict, PDFRawStream, PDFArray } from "@cantoo/pdf-lib";
 import { Upload, Loader2, FileText, Check } from "lucide-react";
 import { FaqSection } from "@/components/FaqSection";
+import { EditorialSection } from "@/components/EditorialSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { SchemaMarkup } from "@/components/SchemaMarkup";
 
 const VERAPDF_URL = "https://demo.verapdf.org";
 
@@ -154,6 +156,12 @@ export default function PdfToPdfaPage() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50">
+      <SchemaMarkup
+        title={t("metaTitle")}
+        description={t("metaDescription")}
+        slug="pdf-to-pdfa"
+        locale={locale}
+      />
       <header className="border-b border-white/10 bg-slate-950/80 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <Link href={`/${locale}/`} prefetch className="flex items-center gap-2">
@@ -271,10 +279,17 @@ export default function PdfToPdfaPage() {
               </div>
             )}
           </section>
-          <aside className="space-y-6">
-            <FaqSection namespace="tools.pdfToPdfa" />
-            <RelatedTools locale={locale} currentSlug="pdf-to-pdfa" />
+          <aside className="space-y-8 lg:max-w-[340px]">
+            <EditorialSection namespace="tools.pdfToPdfa" />
           </aside>
+        </div>
+
+        <div className="mt-10">
+          <RelatedTools locale={locale} currentSlug="pdf-to-pdfa" />
+        </div>
+
+        <div className="mt-10">
+          <FaqSection namespace="tools.pdfToPdfa" />
         </div>
       </main>
     </div>

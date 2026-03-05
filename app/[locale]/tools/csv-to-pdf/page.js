@@ -6,9 +6,11 @@ import { useTranslations, useLocale } from "next-intl";
 import Papa from "papaparse";
 import { Upload, Loader2, FileSpreadsheet } from "lucide-react";
 import { FaqSection } from "@/components/FaqSection";
+import { EditorialSection } from "@/components/EditorialSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { SchemaMarkup } from "@/components/SchemaMarkup";
 
 const SEPARATORS = { comma: ",", semicolon: ";", tab: "\t" };
 
@@ -175,6 +177,12 @@ export default function CsvToPdfPage() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50">
+      <SchemaMarkup
+        title={t("metaTitle")}
+        description={t("metaDescription")}
+        slug="csv-to-pdf"
+        locale={locale}
+      />
       <header className="border-b border-white/10 bg-slate-950/80 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <Link href={`/${locale}/`} prefetch className="flex items-center gap-2">
@@ -313,10 +321,17 @@ export default function CsvToPdfPage() {
               </div>
             )}
           </section>
-          <aside className="space-y-6">
-            <FaqSection namespace="tools.csvToPdf" />
-            <RelatedTools locale={locale} currentSlug="csv-to-pdf" />
+          <aside className="space-y-8 lg:max-w-[340px]">
+            <EditorialSection namespace="tools.csvToPdf" />
           </aside>
+        </div>
+
+        <div className="mt-10">
+          <RelatedTools locale={locale} currentSlug="csv-to-pdf" />
+        </div>
+
+        <div className="mt-10">
+          <FaqSection namespace="tools.csvToPdf" />
         </div>
       </main>
     </div>

@@ -61,15 +61,33 @@ export default async function BlogPostPage({ params }) {
     ? `/tools/${frontmatter.relatedTool}`
     : null;
 
+  const blogPath =
+    locale === routing.defaultLocale ? `/blog/${slug}` : `/${locale}/blog/${slug}`;
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: frontmatter.title,
     description: frontmatter.description,
     datePublished: frontmatter.date,
-    author: { "@type": "Organization", name: "FileFlip Team" },
-    publisher: { "@type": "Organization", name: "FileFlip" },
-    url: `${BASE_URL}${locale === routing.defaultLocale ? "" : `/${locale}`}/blog/${slug}`,
+    dateModified: frontmatter.dateModified || frontmatter.date,
+    author: {
+      "@type": "Organization",
+      name: "FileFlip",
+      url: "https://fileflip.org",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "FileFlip",
+      url: "https://fileflip.org",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://fileflip.org/fileflip-logo.svg",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${BASE_URL}${blogPath}`,
+    },
   };
   const breadcrumbSchema = {
     "@context": "https://schema.org",

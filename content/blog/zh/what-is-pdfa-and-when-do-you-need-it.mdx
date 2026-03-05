@@ -1,0 +1,81 @@
+---
+title: "什么是 PDF/A？什么时候需要？完整指南"
+description: "PDF/A 是 ISO 19005 规定的 PDF 长期归档标准。了解什么是 PDF/A、何时必须使用以及如何免费在线将 PDF 转为 PDF/A。"
+date: "2026-03-06"
+dateModified: "2026-03-06"
+readTime: "6 min"
+tags: ["pdfa", "归档", "iso", "法律", "pdf"]
+relatedTool: "pdf-to-pdfa"
+relatedToolLabel: "免费转为 PDF/A"
+---
+
+PDF/A 是 ISO 19005 规定的 PDF 文档长期归档标准。向行政机关提交、法律文书以及任何需要在几十年内保持可读、不可篡改的文档，通常都要求使用 PDF/A。
+
+## PDF/A 与普通 PDF — 主要区别
+
+| 特性 | 普通 PDF | PDF/A |
+|------|----------|-------|
+| 字体嵌入 | 可选 | 必须 |
+| 加密 | 允许 | 不允许 |
+| JavaScript | 允许 | 不允许 |
+| 外部引用 | 允许 | 不允许 |
+| 色彩配置 | 可选 | 必须 |
+| XMP 元数据 | 可选 | 必须 |
+| 长期可读性 | 不保证 | 保证 |
+
+## 什么时候必须用 PDF/A？
+
+- **行政机关** — 向政府、不动产登记、档案馆、建设许可等提交
+- **法律文书** — 法院提交（本国及欧盟）
+- ** certified email (PEC)** — 正式电子信函的附件
+- **建设许可与申报** — 建筑工程技术文档
+- **病历** — 患者文档的长期保存
+- **银行与保险** — 合同归档
+
+## PDF/A 版本说明
+
+- **PDF/A-1b** — 基本视觉符合（最常用，普遍接受）
+- **PDF/A-1a** — 完整符合，含标签结构
+- **PDF/A-2b** — 基于 PDF 1.7，支持透明与 JPEG 2000
+- **PDF/A-3b** — 允许嵌入任意文件类型作为附件
+
+大多数情况下 **PDF/A-1b** 即可。
+
+## 如何免费将 PDF 转为 PDF/A
+
+1. 在 FileFlip 打开 [PDF 转 PDF/A](/zh/tools/pdf-to-pdfa)
+2. 上传你的 PDF 文件
+3. 点击「转换为 PDF/A」
+4. 下载 PDF/A 文件
+
+工具会添加所需 XMP 元数据、OutputIntent sRGB 并移除 JavaScript。文件不会离开你的浏览器。
+
+## 如何验证 PDF/A 文件
+
+使用 [veraPDF](https://demo.verapdf.org) — 由欧盟委员会支持开发的免费开源验证器。上传转换后的文件并查看验证报告。
+
+## 常见问题
+
+**PDF/A 用来做什么？**
+PDF/A 用于需要长期保存、在多年后仍可读且具有法律效力的文档归档，与未来软件版本无关。
+
+**在意大利/欧洲 PDF/A 是强制要求吗？**
+是的。电子政务相关法规要求向行政机关正式提交时使用 PDF/A。
+
+**PDF/A-1b 和 PDF/A-2b 有什么区别？**
+PDF/A-1b 基于 PDF 1.4，接受度最广。PDF/A-2b 基于 PDF 1.7，支持透明层和 JPEG 2000 压缩。
+
+**扫描版 PDF 能转成 PDF/A 吗？**
+可以，只要 PDF 未加密。纯图像扫描 PDF 可以转为 PDF/A — 即使没有可搜索文字，视觉上仍符合要求。
+
+**PDF/A 和 PDF/X 一样吗？**
+不一样。PDF/X 是印刷生产标准，PDF/A 是归档标准，用途不同。
+
+**怎么知道我的 PDF 是否已是 PDF/A？**
+用 Adobe Acrobat 打开或在 veraPDF 中验证。FileFlip 也会在文档元数据中加入 PDF/A 标识，PDF 阅读器可以识别。
+
+[免费转为 PDF/A →](/zh/tools/pdf-to-pdfa)
+
+## 相关文章
+- [2026年最佳免费在线PDF转换器](/zh/blog/best-free-pdf-converter-online)
+- [如何无损压缩 PDF](/zh/blog/how-to-compress-pdf)

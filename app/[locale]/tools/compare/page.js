@@ -1,6 +1,7 @@
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 import { BlogShell } from "@/components/BlogShell";
+import { SchemaMarkup } from "@/components/SchemaMarkup";
 import { routing } from "@/i18n/routing";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://fileflip.org";
@@ -73,6 +74,12 @@ export default async function ComparePage({ params }) {
 
   return (
     <BlogShell locale={locale}>
+      <SchemaMarkup
+        title={t("metaTitle")}
+        description={t("metaDescription")}
+        slug="compare"
+        locale={locale}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
