@@ -59,16 +59,40 @@ export async function POST(request) {
 
     const completedJob = await cloudConvert.jobs.wait(job.id);
 
-    const exportTask = completedJob.tasks.find(
-      (t) => t.name === "export-file" && t.status === "finished"
+    console.log("Job status:", completedJob.status);
+    console.log(
+      "Tasks:",
+      JSON.stringify(
+        completedJob.tasks.map((t) => ({
+          name: t.name,
+          status: t.status,
+          result: t.result,
+        })),
+        null,
+        2
+      )
     );
 
-    if (!exportTask?.result?.files?.[0]?.url) {
-      throw new Error("Conversion failed: no output file");
+    const exportTask = completedJob.tasks.find(
+      (t) => t.operation === "export/url" && t.status === "finished"
+    );
+
+    const fallbackTask = completedJob.tasks.find(
+      (t) => t.status === "finished" && t.result?.files?.length > 0
+    );
+
+    const finalTask = exportTask || fallbackTask;
+
+    if (!finalTask?.result?.files?.[0]?.url) {
+      const failedTask = completedJob.tasks.find((t) => t.status === "error");
+      console.error("Failed task:", JSON.stringify(failedTask, null, 2));
+      throw new Error(
+        `Conversion failed: no output file. Job status: ${completedJob.status}`
+      );
     }
 
-    const outputUrl = exportTask.result.files[0].url;
-    const outputFilename = exportTask.result.files[0].filename || "output.pdf";
+    const outputUrl = finalTask.result.files[0].url;
+    const outputFilename = finalTask.result.files[0].filename || "output.pdf";
 
     const pdfResponse = await fetch(outputUrl);
     const pdfBuffer = await pdfResponse.arrayBuffer();
