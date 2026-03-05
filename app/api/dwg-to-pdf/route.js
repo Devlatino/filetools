@@ -46,11 +46,6 @@ export async function POST(request) {
           input: "upload-file",
           input_format: "dwg",
           output_format: "pdf",
-          engine: "autocad",
-          pages: "all",
-          page_size: "a4",
-          orientation: "auto",
-          fit: "fit",
         },
         "export-file": {
           operation: "export/url",
