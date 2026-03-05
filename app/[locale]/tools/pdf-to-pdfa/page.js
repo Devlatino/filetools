@@ -21,10 +21,30 @@ import { SchemaMarkup } from "@/components/SchemaMarkup";
 
 const VERAPDF_URL = "https://demo.verapdf.org";
 
-/** XMP packet for PDF/A-1b: pdfaid part=1, conformance=B. Padded to 4096 bytes. */
-function buildXmpPacket(isoDate) {
+/** Optional: paste base64 from `base64 -i sRGB_IEC61966-2-1_black_scaled.icc` to embed ICC without fetch */
+const ICC_SRGB_BASE64 = "";
+
+function escapeXml(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
+/** XMP packet for PDF/A-1b: pdfaid part=1, conformance=B. Synced with Info dict. Padded to 4096 bytes. */
+function buildXmpPacket(opts) {
+  const {
+    isoCreation,
+    isoMod,
+    creatorTool,
+    producer,
+    titleXml = "",
+    creatorXml = "",
+  } = opts;
   const xmpContent = `<?xpacket begin="\uFEFF" id="W5M0MpCehiHzreSzNTczkc9d"?>
-<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6">
+<x:xmpmeta xmlns:x="adobe:ns:meta/">
   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
     <rdf:Description rdf:about=""
         xmlns:pdfaid="http://www.aiim.org/pdfa/ns/id/">
@@ -32,18 +52,21 @@ function buildXmpPacket(isoDate) {
       <pdfaid:conformance>B</pdfaid:conformance>
     </rdf:Description>
     <rdf:Description rdf:about=""
-        xmlns:dc="http://purl.org/dc/elements/1.1/">
-      <dc:format>application/pdf</dc:format>
-    </rdf:Description>
-    <rdf:Description rdf:about=""
         xmlns:xmp="http://ns.adobe.com/xap/1.0/">
-      <xmp:CreateDate>${isoDate}</xmp:CreateDate>
-      <xmp:ModifyDate>${isoDate}</xmp:ModifyDate>
-      <xmp:CreatorTool>FileFlip PDF/A Converter</xmp:CreatorTool>
+      <xmp:CreateDate>${isoCreation}</xmp:CreateDate>
+      <xmp:ModifyDate>${isoMod}</xmp:ModifyDate>
+      <xmp:MetadataDate>${isoMod}</xmp:MetadataDate>
+      <xmp:CreatorTool>${escapeXml(creatorTool)}</xmp:CreatorTool>
     </rdf:Description>
     <rdf:Description rdf:about=""
         xmlns:pdf="http://ns.adobe.com/pdf/1.3/">
-      <pdf:Producer>FileFlip</pdf:Producer>
+      <pdf:Producer>${escapeXml(producer)}</pdf:Producer>
+    </rdf:Description>
+    <rdf:Description rdf:about=""
+        xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <dc:format>application/pdf</dc:format>
+      ${titleXml}
+      ${creatorXml}
     </rdf:Description>
   </rdf:RDF>
 </x:xmpmeta>`;
@@ -59,19 +82,64 @@ function buildXmpPacket(isoDate) {
   return new TextEncoder().encode(xmpFull);
 }
 
+async function getIccBytes() {
+  if (ICC_SRGB_BASE64) {
+    return Uint8Array.from(atob(ICC_SRGB_BASE64), (c) => c.charCodeAt(0));
+  }
+  try {
+    const res = await fetch("https://www.color.org/srgb/sRGB_v4_ICC_preference.icc", {
+      mode: "cors",
+      cache: "default",
+    });
+    if (!res.ok) throw new Error("Fetch failed");
+    const buf = await res.arrayBuffer();
+    return new Uint8Array(buf);
+  } catch {
+    return null;
+  }
+}
+
 async function convertToPdfA(file) {
   const arrayBuffer = await file.arrayBuffer();
   const pdfDoc = await PDFDocument.load(arrayBuffer, { ignoreEncryption: true });
 
-  const now = new Date();
-  const isoDate = now.toISOString();
   const context = pdfDoc.context;
 
-  // FIX 1: PDF/A-1b requires PDF 1.4 — force header version
+  // FIX 1 — Sync Info dictionary with XMP (must be identical)
+  const existingTitle = pdfDoc.getTitle() || "";
+  const existingAuthor = pdfDoc.getAuthor() || "";
+  const existingCreator = pdfDoc.getCreator() || "";
+  const existingCreationDate = pdfDoc.getCreationDate();
+  const creationDate = existingCreationDate || new Date();
+  const modDate = new Date();
+  const isoCreation = creationDate.toISOString();
+  const isoMod = modDate.toISOString();
+  const creatorTool = existingCreator || "FileFlip PDF/A Converter";
+  const producer = "FileFlip PDF/A Converter";
+
+  pdfDoc.setProducer(producer);
+  pdfDoc.setCreator(creatorTool);
+  pdfDoc.setModificationDate(modDate);
+  if (existingTitle) pdfDoc.setTitle(existingTitle);
+  if (existingAuthor) pdfDoc.setAuthor(existingAuthor);
+
   context.header = PDFHeader.forVersion(1, 4);
 
-  // FIX 2: XMP metadata stream as bytes (Uint8Array), not string — Type/Metadata, Subtype/XML, Length
-  const xmpBytes = buildXmpPacket(isoDate);
+  const titleXml = existingTitle
+    ? `<dc:title><rdf:Alt><rdf:li xml:lang="x-default">${escapeXml(existingTitle)}</rdf:li></rdf:Alt></dc:title>`
+    : "";
+  const creatorXml = existingAuthor
+    ? `<dc:creator><rdf:Seq><rdf:li>${escapeXml(existingAuthor)}</rdf:li></rdf:Seq></dc:creator>`
+    : "";
+
+  const xmpBytes = buildXmpPacket({
+    isoCreation,
+    isoMod,
+    creatorTool,
+    producer,
+    titleXml,
+    creatorXml,
+  });
   const metadataStream = context.stream(xmpBytes, {
     Type: "Metadata",
     Subtype: "XML",
@@ -80,22 +148,28 @@ async function convertToPdfA(file) {
   const metadataRef = context.register(metadataStream);
   pdfDoc.catalog.set(PDFName.of("Metadata"), metadataRef);
 
-  // OutputIntent for PDF/A-1b (sRGB) — no embedded ICC to keep bundle small; validators may still pass
+  // FIX 2 — OutputIntent with real sRGB ICC profile (DestOutputProfile)
+  const iccBytes = await getIccBytes();
   const outputIntent = PDFDict.withContext(context);
   outputIntent.set(PDFName.of("Type"), PDFName.of("OutputIntent"));
   outputIntent.set(PDFName.of("S"), PDFName.of("GTS_PDFA1"));
   outputIntent.set(PDFName.of("OutputConditionIdentifier"), PDFString.of("sRGB IEC61966-2.1"));
   outputIntent.set(PDFName.of("Info"), PDFString.of("sRGB IEC61966-2.1"));
   outputIntent.set(PDFName.of("RegistryName"), PDFString.of("http://www.color.org"));
+  if (iccBytes && iccBytes.length > 0) {
+    const iccStream = context.stream(iccBytes, {
+      N: 3,
+      Alternate: PDFName.of("DeviceRGB"),
+      Length: iccBytes.length,
+    });
+    const iccRef = context.register(iccStream);
+    outputIntent.set(PDFName.of("DestOutputProfile"), iccRef);
+  }
   const outputIntentRef = context.register(outputIntent);
   const outputIntentsArray = new PDFArray(context);
   outputIntentsArray.push(outputIntentRef);
   const outputIntentsRef = context.register(outputIntentsArray);
   pdfDoc.catalog.set(PDFName.of("OutputIntents"), outputIntentsRef);
-
-  pdfDoc.setProducer("FileFlip PDF/A Converter");
-  pdfDoc.setCreator("FileFlip");
-  pdfDoc.setModificationDate(now);
 
   pdfDoc.catalog.delete(PDFName.of("JavaScript"));
   pdfDoc.catalog.delete(PDFName.of("JS"));
@@ -291,6 +365,14 @@ export default function PdfToPdfaPage() {
                       <li className="flex items-center gap-2">
                         <Check className="h-4 w-4 text-emerald-500 shrink-0" />
                         {t("check4")}
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Check className="h-4 w-4 text-emerald-500 shrink-0" />
+                        {t("check5")}
+                      </li>
+                      <li className="flex items-start gap-2 text-amber-200/90">
+                        <span className="mt-0.5 shrink-0 text-amber-400" aria-hidden>⚠</span>
+                        <span>{t("checkWarning")}</span>
                       </li>
                     </ul>
                     <p className="text-xs text-slate-400 pt-2 border-t border-white/10">
