@@ -247,7 +247,7 @@ export default function PdfToPdfaPage() {
     async (targetFile) => {
       setProgress(t("loadingDocument"));
       const pdfjsLib = await import("pdfjs-dist");
-      pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
+      pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
       const { jsPDF } = await import("jspdf");
       const arrayBuffer = await targetFile.arrayBuffer();
 
