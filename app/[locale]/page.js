@@ -61,9 +61,12 @@ const TOOL_ICONS = {
   reorderPdf: GripVertical,
   wordToPdf: FileText,
   faviconGenerator: Image,
+  dwgToPdf: FileDown,
+  dxfToPdf: FileDown,
+  dxfViewer: Box,
 };
 
-const CATEGORIES = ["all", "images", "pdf", "tools", "video", "audio", "social", "3d"];
+const CATEGORIES = ["all", "images", "pdf", "tools", "cad", "video", "audio", "social", "3d"];
 
 const POPULAR_TOOL_IDS = ["compressImage", "heicToJpg", "mergePdf"];
 
@@ -100,6 +103,9 @@ const TOOL_IDS = [
   { id: "reorderPdf", href: "/tools/reorder-pdf-pages", category: "pdf", active: true },
   { id: "wordToPdf", href: "/tools/word-to-pdf", category: "pdf", active: true },
   { id: "faviconGenerator", href: "/tools/favicon-generator", category: "tools", active: true },
+  { id: "dwgToPdf", href: "/tools/dwg-to-pdf", category: "cad", active: true },
+  { id: "dxfToPdf", href: "/tools/dxf-to-pdf", category: "cad", active: true },
+  { id: "dxfViewer", href: "/tools/dxf-viewer", category: "cad", active: true },
   { id: "createZip", href: "/tools/create-zip", category: "tools", active: true },
   { id: "trimVideo", href: "/tools/trim-video", category: "video", active: true },
   { id: "videoToMp3", href: "/tools/video-to-mp3", category: ["video", "audio"], active: true },
@@ -127,6 +133,7 @@ const CATEGORY_COLORS = {
   video: { hex: "#8b5cf6", rgb: "139, 92, 246" },
   utility: { hex: "#10b981", rgb: "16, 185, 129" },
   tools: { hex: "#f59e0b", rgb: "245, 158, 11" },
+  cad: { hex: "#6366f1", rgb: "99, 102, 241" },
   audio: { hex: "#ec4899", rgb: "236, 72, 153" },
   social: { hex: "#06b6d4", rgb: "6, 182, 212" },
   "3d": { hex: "#14b8a6", rgb: "20, 184, 166" },
@@ -694,7 +701,7 @@ export default function Home() {
                     const colors = CATEGORY_COLORS[tool.category] || CATEGORY_COLORS.images;
                     const categoryLabel = Array.isArray(tool.category)
                       ? tool.category.map((c) => t(`filter${c.charAt(0).toUpperCase() + c.slice(1)}`)).join(", ")
-                      : t(`filter${tool.category === "images" ? "Images" : tool.category === "pdf" ? "Pdf" : tool.category === "tools" ? "Tools" : tool.category === "video" ? "Video" : tool.category === "audio" ? "Audio" : tool.category === "3d" ? "3d" : "Social"}`);
+                      : t(`filter${tool.category === "images" ? "Images" : tool.category === "pdf" ? "Pdf" : tool.category === "tools" ? "Tools" : tool.category === "cad" ? "Cad" : tool.category === "video" ? "Video" : tool.category === "audio" ? "Audio" : tool.category === "3d" ? "3d" : "Social"}`);
                     const showTooltip = comingSoonTooltipId === tool.id;
 
                     const cardContent = (

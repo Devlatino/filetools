@@ -159,6 +159,7 @@
     "filterTextCode": "टेक्स्ट और कोड",
     "filterUtility": "उपयोगिता",
     "filterTools": "टूल",
+    "filterCad": "CAD",
     "filterVideo": "वीडियो",
     "filterAudio": "ऑडियो",
     "filterSocial": "सोशल",
@@ -1189,6 +1190,39 @@
       "preview": "पूर्वावलोकन",
       "filesIncluded": "पैकेज में शामिल फ़ाइलें",
       "errorGeneric": "Favicon बनाने में विफल। PNG या JPG इमेज उपयोग करें।"
+    },
+    "dwgToPdf": {
+      "label": "DWG से PDF",
+      "short": "AutoCAD DWG फ़ाइलें ऑनलाइन PDF में बदलें। मुफ़्त और तेज़।",
+      "metaTitle": "DWG से PDF कनवर्टर – AutoCAD ऑनलाइन मुफ़्त PDF में",
+      "metaDescription": "DWG फ़ाइलें ऑनलाइन मुफ़्त PDF में बदलें।",
+      "dropzone": "DWG फ़ाइल यहाँ खींचें या अपलोड करें",
+      "convert": "PDF में बदलें",
+      "converting": "बदला जा रहा है... कुछ सेकंड लग सकते हैं",
+      "errorGeneric": "रूपांतरण विफल। सुनिश्चित करें कि फ़ाइल एक वैध DWG है।",
+      "errorSize": "फ़ाइल बहुत बड़ी। अधिकतम आकार 50MB।"
+    },
+    "dxfToPdf": {
+      "label": "DXF से PDF",
+      "short": "DXF CAD फ़ाइलें ऑनलाइन PDF में बदलें। मुफ़्त और तेज़।",
+      "metaTitle": "DXF से PDF कनवर्टर – CAD ऑनलाइन मुफ़्त PDF में",
+      "metaDescription": "DXF फ़ाइलें ऑनलाइन मुफ़्त PDF में बदलें।",
+      "dropzone": "DXF फ़ाइल यहाँ खींचें या अपलोड करें",
+      "convert": "PDF में बदलें",
+      "converting": "बदला जा रहा है... कुछ सेकंड लग सकते हैं",
+      "errorGeneric": "रूपांतरण विफल। सुनिश्चित करें कि फ़ाइल एक वैध DXF है।",
+      "errorSize": "फ़ाइल बहुत बड़ी। अधिकतम आकार 50MB।"
+    },
+    "dxfViewer": {
+      "label": "DXF व्यूअर",
+      "short": "DXF CAD फ़ाइलें ऑनलाइन देखें। ब्राउज़र में AutoCAD ड्रॉइंग खोलें।",
+      "metaTitle": "ऑनलाइन DXF व्यूअर – CAD फ़ाइलें मुफ़्त देखें",
+      "metaDescription": "DXF फ़ाइलें ऑनलाइन मुफ़्त खोलें और देखें।",
+      "dropzone": "DXF फ़ाइल यहाँ खींचें या खोलें",
+      "loading": "ड्रॉइंग लोड हो रही है...",
+      "renderNote": "मानक 2D ड्रॉइंग के लिए अनुकूलित",
+      "download": "DXF डाउनलोड करें",
+      "errorGeneric": "DXF फ़ाइल नहीं खुली। सुनिश्चित करें कि यह वैध है।"
     },
     "pdfToText": {
       "label": "PDF से टेक्स्ट",

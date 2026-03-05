@@ -56,6 +56,9 @@ const TOOL_PATHS = [
   "/tools/reorder-pdf-pages",
   "/tools/word-to-pdf",
   "/tools/favicon-generator",
+  "/tools/dwg-to-pdf",
+  "/tools/dxf-to-pdf",
+  "/tools/dxf-viewer",
 ];
 
 const BLOG_SLUGS = ["webp-vs-jpg", "how-to-compress-pdf", "gif-to-mp4-why"];

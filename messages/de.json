@@ -213,6 +213,7 @@
     "filterTextCode": "Text & Code",
     "filterUtility": "Dienstprogramme",
     "filterTools": "Werkzeuge",
+    "filterCad": "CAD",
     "filterVideo": "Video",
     "filterAudio": "Audio",
     "filterSocial": "Social",
@@ -1241,6 +1242,39 @@
       "preview": "Vorschau",
       "filesIncluded": "Im Paket enthaltene Dateien",
       "errorGeneric": "Favicon-Erstellung fehlgeschlagen. Bitte PNG oder JPG verwenden."
+    },
+    "dwgToPdf": {
+      "label": "DWG zu PDF",
+      "short": "AutoCAD DWG-Dateien online in PDF konvertieren. Kostenlos und schnell.",
+      "metaTitle": "DWG zu PDF Konverter – AutoCAD zu PDF online kostenlos",
+      "metaDescription": "DWG-Dateien online kostenlos in PDF konvertieren. AutoCAD-Zeichnung hochladen und PDF herunterladen.",
+      "dropzone": "DWG-Datei hier ablegen oder klicken",
+      "convert": "In PDF konvertieren",
+      "converting": "Konvertierung läuft... kann einige Sekunden dauern",
+      "errorGeneric": "Konvertierung fehlgeschlagen. Bitte prüfe, ob die Datei ein gültiges DWG ist.",
+      "errorSize": "Datei zu groß. Maximale Größe 50 MB."
+    },
+    "dxfToPdf": {
+      "label": "DXF zu PDF",
+      "short": "CAD DXF-Dateien online in PDF konvertieren. Kostenlos und schnell.",
+      "metaTitle": "DXF zu PDF Konverter – CAD zu PDF online kostenlos",
+      "metaDescription": "DXF-Dateien online kostenlos in PDF konvertieren.",
+      "dropzone": "DXF-Datei hier ablegen oder klicken",
+      "convert": "In PDF konvertieren",
+      "converting": "Konvertierung läuft... kann einige Sekunden dauern",
+      "errorGeneric": "Konvertierung fehlgeschlagen. Bitte prüfe, ob die Datei ein gültiges DXF ist.",
+      "errorSize": "Datei zu groß. Maximale Größe 50 MB."
+    },
+    "dxfViewer": {
+      "label": "DXF-Viewer",
+      "short": "DXF CAD-Dateien online anzeigen. AutoCAD-Zeichnungen im Browser öffnen.",
+      "metaTitle": "DXF-Viewer Online – CAD-Dateien kostenlos anzeigen",
+      "metaDescription": "DXF-Dateien online kostenlos öffnen und anzeigen. Keine Software-Installation erforderlich.",
+      "dropzone": "DXF-Datei hier ablegen oder klicken",
+      "loading": "Zeichnung wird geladen...",
+      "renderNote": "Optimiert für Standard-2D-Zeichnungen",
+      "download": "DXF herunterladen",
+      "errorGeneric": "DXF-Datei konnte nicht geöffnet werden. Bitte prüfe, ob sie gültig ist."
     },
     "pdfToText": {
       "label": "PDF in Text",

@@ -159,6 +159,7 @@
     "filterTextCode": "نص ورمز",
     "filterUtility": "أدوات مساعدة",
     "filterTools": "أدوات",
+    "filterCad": "CAD",
     "filterVideo": "فيديو",
     "filterAudio": "صوت",
     "filterSocial": "سوشيال",
@@ -1189,6 +1190,39 @@
       "preview": "معاينة",
       "filesIncluded": "الملفات المضمنة في الحزمة",
       "errorGeneric": "فشل إنشاء الـ favicons. استخدم صورة PNG أو JPG."
+    },
+    "dwgToPdf": {
+      "label": "DWG إلى PDF",
+      "short": "تحويل ملفات DWG من AutoCAD إلى PDF أونلاين. مجاناً وبسرعة.",
+      "metaTitle": "محوّل DWG إلى PDF – AutoCAD إلى PDF أونلاين مجاناً",
+      "metaDescription": "تحويل ملفات DWG إلى PDF أونلاين مجاناً.",
+      "dropzone": "اسحب ملف DWG هنا أو انقر للرفع",
+      "convert": "تحويل إلى PDF",
+      "converting": "جار التحويل... قد يستغرق بضع ثوانٍ",
+      "errorGeneric": "فشل التحويل. تأكد من أن الملف DWG صالح.",
+      "errorSize": "الملف كبير جداً. الحجم الأقصى 50 ميجابايت."
+    },
+    "dxfToPdf": {
+      "label": "DXF إلى PDF",
+      "short": "تحويل ملفات DXF CAD إلى PDF أونلاين. مجاناً وبسرعة.",
+      "metaTitle": "محوّل DXF إلى PDF – CAD إلى PDF أونلاين مجاناً",
+      "metaDescription": "تحويل ملفات DXF إلى PDF أونلاين مجاناً.",
+      "dropzone": "اسحب ملف DXF هنا أو انقر للرفع",
+      "convert": "تحويل إلى PDF",
+      "converting": "جار التحويل... قد يستغرق بضع ثوانٍ",
+      "errorGeneric": "فشل التحويل. تأكد من أن الملف DXF صالح.",
+      "errorSize": "الملف كبير جداً. الحجم الأقصى 50 ميجابايت."
+    },
+    "dxfViewer": {
+      "label": "عارض DXF",
+      "short": "عرض ملفات DXF CAD أونلاين. فتح رسومات AutoCAD في المتصفح.",
+      "metaTitle": "عارض DXF أونلاين – عرض ملفات CAD مجاناً",
+      "metaDescription": "فتح وعرض ملفات DXF أونلاين مجاناً. لا حاجة لتثبيت برامج.",
+      "dropzone": "اسحب ملف DXF هنا أو انقر للفتح",
+      "loading": "جار تحميل الرسم...",
+      "renderNote": "محسّن للرسومات ثنائية الأبعاد القياسية",
+      "download": "تنزيل DXF",
+      "errorGeneric": "تعذّر فتح ملف DXF. تأكد من أنه صالح."
     },
     "pdfToText": {
       "label": "PDF إلى نص",

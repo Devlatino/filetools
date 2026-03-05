@@ -159,6 +159,7 @@
     "filterTextCode": "文本与代码",
     "filterUtility": "实用工具",
     "filterTools": "工具",
+    "filterCad": "CAD",
     "filterVideo": "视频",
     "filterAudio": "音频",
     "filterSocial": "社交",
@@ -1189,6 +1190,39 @@
       "preview": "预览",
       "filesIncluded": "包含的文件",
       "errorGeneric": "生成favicon失败，请使用PNG或JPG图片。"
+    },
+    "dwgToPdf": {
+      "label": "DWG转PDF",
+      "short": "在线将AutoCAD DWG文件转换为PDF。免费快速，无需安装软件。",
+      "metaTitle": "DWG转PDF转换器 – AutoCAD在线免费转PDF",
+      "metaDescription": "在线免费将DWG文件转换为PDF。上传AutoCAD图纸，立即下载PDF。",
+      "dropzone": "将DWG文件拖放到此处或点击上传",
+      "convert": "转换为PDF",
+      "converting": "转换中...可能需要几秒钟",
+      "errorGeneric": "转换失败，请确保文件是有效的DWG格式。",
+      "errorSize": "文件过大，最大50MB。"
+    },
+    "dxfToPdf": {
+      "label": "DXF转PDF",
+      "short": "在线将DXF CAD文件转换为PDF。免费快速，无需软件。",
+      "metaTitle": "DXF转PDF转换器 – CAD在线免费转PDF",
+      "metaDescription": "在线免费将DXF文件转换为PDF。",
+      "dropzone": "将DXF文件拖放到此处或点击上传",
+      "convert": "转换为PDF",
+      "converting": "转换中...可能需要几秒钟",
+      "errorGeneric": "转换失败，请确保文件是有效的DXF格式。",
+      "errorSize": "文件过大，最大50MB。"
+    },
+    "dxfViewer": {
+      "label": "DXF查看器",
+      "short": "在线查看DXF CAD文件。在浏览器中打开AutoCAD图纸。",
+      "metaTitle": "在线DXF查看器 – 免费查看CAD文件",
+      "metaDescription": "在线免费打开和查看DXF文件。无需安装软件。",
+      "dropzone": "将DXF文件拖放到此处或点击打开",
+      "loading": "正在加载图纸...",
+      "renderNote": "针对标准2D图纸优化",
+      "download": "下载DXF",
+      "errorGeneric": "无法打开DXF文件，请确保文件有效。"
     },
     "pdfToText": {
       "label": "PDF 转文字",

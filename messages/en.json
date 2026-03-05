@@ -210,6 +210,7 @@
     "filterTextCode": "Text & Code",
     "filterUtility": "Utilities",
     "filterTools": "Tools",
+    "filterCad": "CAD",
     "filterVideo": "Video",
     "filterAudio": "Audio",
     "filterSocial": "Social",
@@ -1250,6 +1251,39 @@
       "preview": "Preview",
       "filesIncluded": "Files included in the package",
       "errorGeneric": "Failed to generate favicons. Please use a PNG or JPG image."
+    },
+    "dwgToPdf": {
+      "label": "DWG to PDF",
+      "short": "Convert AutoCAD DWG files to PDF online. Free and fast, no software installation needed.",
+      "metaTitle": "DWG to PDF Converter – Free Online AutoCAD to PDF",
+      "metaDescription": "Convert DWG files to PDF online for free. Upload your AutoCAD drawing and download the PDF instantly.",
+      "dropzone": "Drop your DWG file here or click to upload",
+      "convert": "Convert to PDF",
+      "converting": "Converting... this may take a few seconds",
+      "errorGeneric": "Conversion failed. Make sure the file is a valid DWG file.",
+      "errorSize": "File too large. Maximum size is 50MB."
+    },
+    "dxfToPdf": {
+      "label": "DXF to PDF",
+      "short": "Convert DXF CAD files to PDF online. Free and fast, no software needed.",
+      "metaTitle": "DXF to PDF Converter – Free Online CAD to PDF",
+      "metaDescription": "Convert DXF files to PDF online for free. Upload your CAD drawing and download the PDF instantly.",
+      "dropzone": "Drop your DXF file here or click to upload",
+      "convert": "Convert to PDF",
+      "converting": "Converting... this may take a few seconds",
+      "errorGeneric": "Conversion failed. Make sure the file is a valid DXF file.",
+      "errorSize": "File too large. Maximum size is 50MB."
+    },
+    "dxfViewer": {
+      "label": "DXF Viewer",
+      "short": "View DXF CAD files online. Open and inspect AutoCAD drawings in your browser for free.",
+      "metaTitle": "DXF Viewer Online – View CAD Files Free",
+      "metaDescription": "Open and view DXF files online for free. No software installation needed. Works in any browser.",
+      "dropzone": "Drop your DXF file here or click to open",
+      "loading": "Loading drawing...",
+      "renderNote": "Optimized for standard 2D drawings",
+      "download": "Download DXF",
+      "errorGeneric": "Failed to load DXF file. Make sure it is a valid DXF."
     },
     "pdfToText": {
       "label": "PDF to text",

@@ -1,0 +1,94 @@
+import { NextResponse } from "next/server";
+import CloudConvert from "cloudconvert";
+import { Readable } from "stream";
+
+export const maxDuration = 60;
+
+const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
+
+export async function POST(request) {
+  const formData = await request.formData();
+  const file = formData.get("file");
+
+  if (!file || typeof file === "string") {
+    return NextResponse.json({ error: "No file provided" }, { status: 400 });
+  }
+
+  try {
+    const arrayBuffer = await file.arrayBuffer();
+    if (arrayBuffer.byteLength > MAX_FILE_SIZE) {
+      return NextResponse.json(
+        { error: "File too large. Maximum size is 50MB." },
+        { status: 400 }
+      );
+    }
+
+    const buffer = Buffer.from(arrayBuffer);
+    const stream = Readable.from(buffer);
+
+    const apiKey = process.env.CLOUDCONVERT_API_KEY;
+    if (!apiKey) {
+      return NextResponse.json(
+        { error: "Server configuration error" },
+        { status: 500 }
+      );
+    }
+
+    const cloudConvert = new CloudConvert(apiKey);
+
+    const job = await cloudConvert.jobs.create({
+      tasks: {
+        "upload-file": {
+          operation: "import/upload",
+        },
+        "convert-file": {
+          operation: "convert",
+          input: "upload-file",
+          input_format: "dxf",
+          output_format: "pdf",
+          engine: "graphicsmagick",
+          pages: "all",
+          page_size: "a4",
+          orientation: "auto",
+          fit: "fit",
+        },
+        "export-file": {
+          operation: "export/url",
+          input: "convert-file",
+        },
+      },
+    });
+
+    const uploadTask = job.tasks.find((t) => t.name === "upload-file");
+    await cloudConvert.tasks.upload(uploadTask, stream, file.name, buffer.length);
+
+    const completedJob = await cloudConvert.jobs.wait(job.id);
+
+    const exportTask = completedJob.tasks.find(
+      (t) => t.name === "export-file" && t.status === "finished"
+    );
+
+    if (!exportTask?.result?.files?.[0]?.url) {
+      throw new Error("Conversion failed: no output file");
+    }
+
+    const outputUrl = exportTask.result.files[0].url;
+    const outputFilename = exportTask.result.files[0].filename || "output.pdf";
+
+    const pdfResponse = await fetch(outputUrl);
+    const pdfBuffer = await pdfResponse.arrayBuffer();
+
+    return new NextResponse(pdfBuffer, {
+      headers: {
+        "Content-Type": "application/pdf",
+        "Content-Disposition": `attachment; filename="${outputFilename}"`,
+      },
+    });
+  } catch (err) {
+    console.error("dxf-to-pdf error:", err);
+    return NextResponse.json(
+      { error: err.message || "Conversion failed" },
+      { status: 500 }
+    );
+  }
+}

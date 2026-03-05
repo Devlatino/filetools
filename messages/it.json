@@ -210,6 +210,7 @@
     "filterTextCode": "Testo e Codice",
     "filterUtility": "Utilità",
     "filterTools": "Strumenti",
+    "filterCad": "CAD",
     "filterVideo": "Video",
     "filterAudio": "Audio",
     "filterSocial": "Social",
@@ -1250,6 +1251,39 @@
       "preview": "Anteprima",
       "filesIncluded": "File inclusi nel pacchetto",
       "errorGeneric": "Generazione favicon fallita. Usa un'immagine PNG o JPG."
+    },
+    "dwgToPdf": {
+      "label": "DWG in PDF",
+      "short": "Converti file DWG AutoCAD in PDF online. Gratis e veloce, senza installare software.",
+      "metaTitle": "Convertitore DWG in PDF – AutoCAD in PDF Online Gratis",
+      "metaDescription": "Converti file DWG in PDF online gratuitamente. Carica il disegno AutoCAD e scarica il PDF.",
+      "dropzone": "Trascina qui il file DWG o clicca per caricarlo",
+      "convert": "Converti in PDF",
+      "converting": "Conversione in corso... potrebbe richiedere qualche secondo",
+      "errorGeneric": "Conversione fallita. Verifica che il file sia un DWG valido.",
+      "errorSize": "File troppo grande. Dimensione massima 50MB."
+    },
+    "dxfToPdf": {
+      "label": "DXF in PDF",
+      "short": "Converti file DXF CAD in PDF online. Gratis e veloce, senza software.",
+      "metaTitle": "Convertitore DXF in PDF – CAD in PDF Online Gratis",
+      "metaDescription": "Converti file DXF in PDF online gratuitamente. Carica il disegno CAD e scarica il PDF.",
+      "dropzone": "Trascina qui il file DXF o clicca per caricarlo",
+      "convert": "Converti in PDF",
+      "converting": "Conversione in corso... potrebbe richiedere qualche secondo",
+      "errorGeneric": "Conversione fallita. Verifica che il file sia un DXF valido.",
+      "errorSize": "File troppo grande. Dimensione massima 50MB."
+    },
+    "dxfViewer": {
+      "label": "Visualizzatore DXF",
+      "short": "Visualizza file DXF CAD online. Apri e ispeziona disegni AutoCAD nel browser.",
+      "metaTitle": "Visualizzatore DXF Online – Apri File CAD Gratis",
+      "metaDescription": "Apri e visualizza file DXF online gratuitamente. Nessun software da installare.",
+      "dropzone": "Trascina qui il file DXF o clicca per aprirlo",
+      "loading": "Caricamento disegno...",
+      "renderNote": "Ottimizzato per disegni 2D standard",
+      "download": "Scarica DXF",
+      "errorGeneric": "Impossibile aprire il file DXF. Verifica che sia un DXF valido."
     },
     "pdfToText": {
       "label": "PDF in testo",

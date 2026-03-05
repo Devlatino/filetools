@@ -210,6 +210,7 @@
     "filterTextCode": "Texto e código",
     "filterUtility": "Utilitários",
     "filterTools": "Ferramentas",
+    "filterCad": "CAD",
     "filterVideo": "Video",
     "filterAudio": "Audio",
     "filterSocial": "Social",
@@ -1238,6 +1239,39 @@
       "preview": "Visualização",
       "filesIncluded": "Arquivos incluídos no pacote",
       "errorGeneric": "Falha ao gerar favicons. Use uma imagem PNG ou JPG."
+    },
+    "dwgToPdf": {
+      "label": "DWG para PDF",
+      "short": "Converta arquivos DWG do AutoCAD para PDF online. Grátis e rápido.",
+      "metaTitle": "Conversor DWG para PDF – AutoCAD para PDF Online Grátis",
+      "metaDescription": "Converta arquivos DWG para PDF online gratuitamente.",
+      "dropzone": "Arraste seu arquivo DWG aqui ou clique para carregar",
+      "convert": "Converter para PDF",
+      "converting": "Convertendo... pode levar alguns segundos",
+      "errorGeneric": "Falha na conversão. Verifique se o arquivo é um DWG válido.",
+      "errorSize": "Arquivo muito grande. Tamanho máximo 50 MB."
+    },
+    "dxfToPdf": {
+      "label": "DXF para PDF",
+      "short": "Converta arquivos DXF CAD para PDF online. Grátis e rápido.",
+      "metaTitle": "Conversor DXF para PDF – CAD para PDF Online Grátis",
+      "metaDescription": "Converta arquivos DXF para PDF online gratuitamente.",
+      "dropzone": "Arraste seu arquivo DXF aqui ou clique para carregar",
+      "convert": "Converter para PDF",
+      "converting": "Convertendo... pode levar alguns segundos",
+      "errorGeneric": "Falha na conversão. Verifique se o arquivo é um DXF válido.",
+      "errorSize": "Arquivo muito grande. Tamanho máximo 50 MB."
+    },
+    "dxfViewer": {
+      "label": "Visualizador DXF",
+      "short": "Visualize arquivos DXF CAD online. Abra desenhos AutoCAD no navegador.",
+      "metaTitle": "Visualizador DXF Online – Ver Arquivos CAD Grátis",
+      "metaDescription": "Abra e visualize arquivos DXF online gratuitamente.",
+      "dropzone": "Arraste seu arquivo DXF aqui ou clique para abrir",
+      "loading": "Carregando desenho...",
+      "renderNote": "Otimizado para desenhos 2D padrão",
+      "download": "Baixar DXF",
+      "errorGeneric": "Falha ao abrir o arquivo DXF. Verifique se é válido."
     },
     "pdfToText": {
       "label": "PDF para texto",
