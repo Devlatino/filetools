@@ -59,6 +59,9 @@ const TOOL_PATHS = [
   "/tools/dwg-to-pdf",
   "/tools/dxf-to-pdf",
   "/tools/dxf-viewer",
+  "/tools/excel-to-pdf",
+  "/tools/pdf-to-pdfa",
+  "/tools/csv-to-pdf",
 ];
 
 const BLOG_SLUGS = ["webp-vs-jpg", "how-to-compress-pdf", "gif-to-mp4-why"];

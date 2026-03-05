@@ -20,7 +20,8 @@ function formatBytes(bytes) {
 
 export default function DxfViewerPage() {
   const locale = useLocale();
-  const t = useTranslations("tools.dxfViewer");
+  const t = useTranslations("tools");
+  const tDxf = (key) => t(`dxfViewer.${key}`);
   const tCommon = useTranslations("common");
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -232,7 +233,7 @@ export default function DxfViewerPage() {
         });
       } catch (err) {
         console.error("DXF render error:", err);
-        setError(t("errorGeneric"));
+        setError(tDxf("errorGeneric"));
       } finally {
         setLoading(false);
       }
@@ -257,7 +258,7 @@ export default function DxfViewerPage() {
       }
       const isDxf = f.name.toLowerCase().endsWith(".dxf");
       if (!isDxf) {
-        setError(t("errorGeneric"));
+        setError(tDxf("errorGeneric"));
         setFile(null);
         return;
       }
@@ -316,7 +317,7 @@ export default function DxfViewerPage() {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <Link href={`/${locale}/`} prefetch className="flex items-center gap-2">
             <img src="/fileflip-logo.svg" alt={tCommon("siteName")} className="h-11 w-auto" width={170} height={44} />
-            <span className="text-sm text-slate-400">{t("label")}</span>
+            <span className="text-sm text-slate-400">{tDxf("label")}</span>
           </Link>
           <LanguageSwitcher />
         </div>
@@ -327,15 +328,15 @@ export default function DxfViewerPage() {
           locale={locale}
           homeLabel={tCommon("breadcrumbHome")}
           toolsLabel={tCommon("nav.tools")}
-          toolLabel={t("label")}
+          toolLabel={tDxf("label")}
           toolPath="dxf-viewer"
         />
 
         <div className="mt-6 grid gap-10 lg:grid-cols-[1fr_340px]">
           <section className="space-y-6">
             <div>
-              <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">{t("metaTitle")}</h1>
-              <p className="mt-1 text-sm text-slate-300">{t("metaDescription")}</p>
+              <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">{tDxf("metaTitle")}</h1>
+              <p className="mt-1 text-sm text-slate-300">{tDxf("metaDescription")}</p>
             </div>
 
             {!file ? (
@@ -357,7 +358,7 @@ export default function DxfViewerPage() {
                   onChange={handleFileChange}
                 />
                 <Upload size={40} strokeWidth={1.5} className={isDragOver ? "text-sky-400" : "text-sky-500/80"} />
-                <p className={`text-center text-sm font-medium ${isDragOver ? "text-sky-200" : "text-slate-300"}`}>{t("dropzone")}</p>
+                <p className={`text-center text-sm font-medium ${isDragOver ? "text-sky-200" : "text-slate-300"}`}>{tDxf("dropzone")}</p>
               </label>
             ) : (
               <>
@@ -365,7 +366,7 @@ export default function DxfViewerPage() {
                   <div className="flex h-[500px] w-full items-center justify-center rounded-xl bg-[#1a1a2e]">
                     <div className="flex flex-col items-center gap-3">
                       <Loader2 size={40} className="animate-spin text-sky-400" />
-                      <p className="text-sm text-slate-300">{t("loading")}</p>
+                      <p className="text-sm text-slate-300">{tDxf("loading")}</p>
                     </div>
                   </div>
                 )}
@@ -384,7 +385,7 @@ export default function DxfViewerPage() {
                     {file.name} · {formatBytes(file.size)}
                   </p>
                 )}
-                <p className="text-xs text-slate-500">{t("renderNote")}</p>
+                <p className="text-xs text-slate-500">{tDxf("renderNote")}</p>
                 <div className="flex flex-wrap gap-3">
                   <button
                     type="button"
@@ -392,11 +393,11 @@ export default function DxfViewerPage() {
                     className="inline-flex items-center gap-2 rounded-xl bg-sky-500 px-4 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-sky-400"
                   >
                     <Download size={18} strokeWidth={2} />
-                    {t("download")}
+                    {tDxf("download")}
                   </button>
                   <label className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-600 bg-slate-800 px-4 py-2.5 text-sm font-medium text-slate-200 transition hover:border-slate-500">
                     <Upload size={18} strokeWidth={2} />
-                    {t("dropzone")}
+                    {tDxf("dropzone")}
                     <input
                       type="file"
                       accept=".dxf,application/dxf,image/vnd.dxf"
@@ -409,7 +410,7 @@ export default function DxfViewerPage() {
                     onClick={() => processFile(null)}
                     className="inline-flex items-center gap-2 rounded-xl border border-slate-600 bg-slate-800 px-4 py-2.5 text-sm font-medium text-slate-200 transition hover:border-rose-500 hover:text-rose-200"
                   >
-                    {t("newFile")}
+                    {tDxf("newFile")}
                   </button>
                 </div>
               </>

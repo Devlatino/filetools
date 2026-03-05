@@ -52,6 +52,9 @@ const ICON_BY_SLUG = {
   "stl-viewer": Box,
   "obj-to-stl": FileBox,
   "image-to-lithophane": ImagePlus,
+  "excel-to-pdf": FileText,
+  "pdf-to-pdfa": FileText,
+  "csv-to-pdf": FileText,
 };
 const DEFAULT_ICON = Type;
 
@@ -101,6 +104,9 @@ const BG_BY_SLUG = {
   "stl-viewer": "bg-teal-500",
   "obj-to-stl": "bg-teal-500",
   "image-to-lithophane": "bg-teal-500",
+  "excel-to-pdf": "bg-emerald-600",
+  "pdf-to-pdfa": "bg-rose-500",
+  "csv-to-pdf": "bg-emerald-600",
 };
 const DEFAULT_BG = "bg-slate-500";
 

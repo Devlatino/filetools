@@ -5,15 +5,15 @@ import { buildToolMetadata } from "@/lib/toolMetadata";
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations({ locale, namespace: "tools" });
-  const title = t("dxfViewer.metaTitle");
-  const description = t("dxfViewer.metaDescription");
+  const t = await getTranslations({ locale, namespace: "tools.pdfToPdfa" });
+  const title = t("metaTitle");
+  const description = t("metaDescription");
   return buildToolMetadata({
     locale,
-    toolPath: "dxf-viewer",
+    toolPath: "pdf-to-pdfa",
     title,
     description,
-    keywords: "dxf viewer, view dxf, cad viewer, free, browser",
+    keywords: "pdf to pdfa, pdfa converter, iso 19005, archiving",
   });
 }
 

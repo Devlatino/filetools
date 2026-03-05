@@ -64,6 +64,9 @@ const TOOL_ICONS = {
   dwgToPdf: FileDown,
   dxfToPdf: FileDown,
   dxfViewer: Box,
+  excelToPdf: FileText,
+  pdfToPdfa: FileText,
+  csvToPdf: FileText,
 };
 
 const CATEGORIES = ["all", "images", "pdf", "tools", "cad", "video", "audio", "social", "3d"];
@@ -106,6 +109,9 @@ const TOOL_IDS = [
   { id: "dwgToPdf", href: "/tools/dwg-to-pdf", category: "cad", active: false },
   { id: "dxfToPdf", href: "/tools/dxf-to-pdf", category: "cad", active: false },
   { id: "dxfViewer", href: "/tools/dxf-viewer", category: "cad", active: true },
+  { id: "excelToPdf", href: "/tools/excel-to-pdf", category: "pdf", active: true },
+  { id: "pdfToPdfa", href: "/tools/pdf-to-pdfa", category: "pdf", active: true },
+  { id: "csvToPdf", href: "/tools/csv-to-pdf", category: "pdf", active: true },
   { id: "createZip", href: "/tools/create-zip", category: "tools", active: true },
   { id: "trimVideo", href: "/tools/trim-video", category: "video", active: true },
   { id: "videoToMp3", href: "/tools/video-to-mp3", category: ["video", "audio"], active: true },
