@@ -192,9 +192,12 @@ export default function PdfToPdfaPage() {
   const t = useTranslations("tools.pdfToPdfa");
   const tCommon = useTranslations("common");
   const [file, setFile] = useState(null);
+  const [mode, setMode] = useState("standard");
   const [isConverting, setIsConverting] = useState(false);
+  const [progress, setProgress] = useState("");
   const [error, setError] = useState("");
   const [converted, setConverted] = useState(false);
+  const [checklist, setChecklist] = useState(null);
   const [isDragOver, setIsDragOver] = useState(false);
   const fileInputRef = useRef(null);
 
@@ -240,6 +243,160 @@ export default function PdfToPdfaPage() {
     [processFile]
   );
 
+  const convertFlatten = useCallback(
+    async (targetFile) => {
+      setProgress(t("loadingDocument"));
+      const pdfjsLib = await import("pdfjs-dist");
+      pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
+      const { jsPDF } = await import("jspdf");
+      const arrayBuffer = await targetFile.arrayBuffer();
+
+      const loadingTask = pdfjsLib.getDocument({
+        data: arrayBuffer,
+        cMapUrl: `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/cmaps/`,
+        cMapPacked: true,
+      });
+      const pdfDocument = await loadingTask.promise;
+      const numPages = pdfDocument.numPages;
+
+      const doc = new jsPDF({
+        orientation: "portrait",
+        unit: "pt",
+        format: "a4",
+        compress: true,
+      });
+      const SCALE = 2.0;
+
+      for (let pageNum = 1; pageNum <= numPages; pageNum++) {
+        setProgress(t("renderingPage", { current: pageNum, total: numPages }));
+        const page = await pdfDocument.getPage(pageNum);
+        const viewport = page.getViewport({ scale: SCALE });
+        const canvas = document.createElement("canvas");
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        await page
+          .render({
+            canvasContext: ctx,
+            viewport,
+            background: "white",
+            renderInteractiveForms: false,
+            annotationMode: 0,
+          })
+          .promise;
+        const imgData = canvas.toDataURL("image/jpeg", 0.92);
+        const origViewport = page.getViewport({ scale: 1.0 });
+        const pdfW = origViewport.width;
+        const pdfH = origViewport.height;
+        if (pageNum === 1) {
+          doc.internal.pageSize.width = pdfW;
+          doc.internal.pageSize.height = pdfH;
+          doc.addImage(imgData, "JPEG", 0, 0, pdfW, pdfH);
+        } else {
+          doc.addPage([pdfW, pdfH]);
+          doc.addImage(imgData, "JPEG", 0, 0, pdfW, pdfH);
+        }
+        canvas.width = 0;
+        canvas.height = 0;
+      }
+
+      setProgress(t("converting"));
+      const jsPdfBytes = doc.output("arraybuffer");
+      const pdfDoc = await PDFDocument.load(jsPdfBytes);
+      const context = pdfDoc.context;
+      context.header = PDFHeader.forVersion(1, 4);
+
+      const modDate = new Date();
+      const isoMod = modDate.toISOString().replace(/\.\d{3}Z$/, "Z");
+      const isoCreation = isoMod;
+      const xmpContent = `<?xpacket begin="\uFEFF" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta xmlns:x="adobe:ns:meta/">
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <rdf:Description rdf:about=""
+        xmlns:pdfaid="http://www.aiim.org/pdfa/ns/id/">
+      <pdfaid:part>1</pdfaid:part>
+      <pdfaid:conformance>B</pdfaid:conformance>
+    </rdf:Description>
+    <rdf:Description rdf:about=""
+        xmlns:xmp="http://ns.adobe.com/xap/1.0/">
+      <xmp:CreateDate>${isoCreation}</xmp:CreateDate>
+      <xmp:ModifyDate>${isoMod}</xmp:ModifyDate>
+      <xmp:MetadataDate>${isoMod}</xmp:MetadataDate>
+      <xmp:CreatorTool>FileFlip PDF/A Converter</xmp:CreatorTool>
+    </rdf:Description>
+    <rdf:Description rdf:about=""
+        xmlns:pdf="http://ns.adobe.com/pdf/1.3/">
+      <pdf:Producer>FileFlip PDF/A Converter</pdf:Producer>
+    </rdf:Description>
+    <rdf:Description rdf:about=""
+        xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <dc:format>application/pdf</dc:format>
+    </rdf:Description>
+  </rdf:RDF>
+</x:xmpmeta>
+<?xpacket end="w"?>`;
+      const encoder = new TextEncoder();
+      const xmpBytes = encoder.encode(xmpContent);
+      const metadataStream = context.stream(xmpBytes, {
+        Type: "Metadata",
+        Subtype: "XML",
+        Length: xmpBytes.length,
+      });
+      const metadataRef = context.register(metadataStream);
+      pdfDoc.catalog.set(PDFName.of("Metadata"), metadataRef);
+
+      const iccBytes = await getIccBytes();
+      const outputIntent = PDFDict.withContext(context);
+      outputIntent.set(PDFName.of("Type"), PDFName.of("OutputIntent"));
+      outputIntent.set(PDFName.of("S"), PDFName.of("GTS_PDFA1"));
+      outputIntent.set(PDFName.of("OutputConditionIdentifier"), PDFString.of("sRGB IEC61966-2.1"));
+      outputIntent.set(PDFName.of("Info"), PDFString.of("sRGB IEC61966-2.1"));
+      outputIntent.set(PDFName.of("RegistryName"), PDFString.of("http://www.color.org"));
+      if (iccBytes && iccBytes.length > 0) {
+        const iccStream = context.stream(iccBytes, {
+          N: 3,
+          Alternate: PDFName.of("DeviceRGB"),
+          Length: iccBytes.length,
+        });
+        const iccRef = context.register(iccStream);
+        outputIntent.set(PDFName.of("DestOutputProfile"), iccRef);
+      }
+      const outputIntentRef = context.register(outputIntent);
+      const outputIntentsArray = new PDFArray(context);
+      outputIntentsArray.push(outputIntentRef);
+      pdfDoc.catalog.set(PDFName.of("OutputIntents"), context.register(outputIntentsArray));
+
+      pdfDoc.setProducer("FileFlip PDF/A Converter");
+      pdfDoc.setCreator("FileFlip PDF/A Converter");
+      pdfDoc.setModificationDate(modDate);
+      pdfDoc.setCreationDate(modDate);
+      pdfDoc.catalog.delete(PDFName.of("JavaScript"));
+      pdfDoc.catalog.delete(PDFName.of("JS"));
+      pdfDoc.catalog.delete(PDFName.of("AA"));
+      pdfDoc.catalog.delete(PDFName.of("OpenAction"));
+
+      const pdfBytes = await pdfDoc.save();
+      const blob = new Blob([pdfBytes], { type: "application/pdf" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = targetFile.name.replace(/\.pdf$/i, "_pdfa.pdf");
+      a.click();
+      URL.revokeObjectURL(url);
+      setChecklist({
+        xmp: true,
+        icc: true,
+        javascript: true,
+        identifier: true,
+        datesSynced: true,
+        flattened: true,
+      });
+    },
+    [t]
+  );
+
   const onConvert = useCallback(async () => {
     if (!file) {
       setError(t("errorGeneric"));
@@ -248,16 +405,30 @@ export default function PdfToPdfaPage() {
     setError("");
     setIsConverting(true);
     setConverted(false);
+    setChecklist(null);
+    setProgress("");
     try {
-      await convertToPdfA(file);
+      if (mode === "flatten") {
+        await convertFlatten(file);
+      } else {
+        await convertToPdfA(file);
+        setChecklist({
+          xmp: true,
+          icc: true,
+          javascript: true,
+          identifier: true,
+          datesSynced: true,
+        });
+      }
       setConverted(true);
     } catch (err) {
       console.error(err);
       setError(t("errorGeneric"));
     } finally {
       setIsConverting(false);
+      setProgress("");
     }
-  }, [file, t]);
+  }, [file, mode, convertFlatten, t]);
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50">
@@ -291,6 +462,41 @@ export default function PdfToPdfaPage() {
             <div>
               <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">{t("metaTitle")}</h1>
               <p className="mt-1 text-sm text-slate-300">{t("description")}</p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3 mb-6">
+              <button
+                type="button"
+                onClick={() => {
+                  setMode("standard");
+                  setConverted(false);
+                  setChecklist(null);
+                }}
+                className={`p-4 rounded-xl border-2 text-left transition-all ${
+                  mode === "standard"
+                    ? "border-sky-500 bg-sky-500/15"
+                    : "border-white/10 hover:border-white/20"
+                }`}
+              >
+                <div className="font-semibold text-sm mb-1 text-slate-100">{t("modeStandardTitle")}</div>
+                <div className="text-xs text-slate-400">{t("modeStandardDesc")}</div>
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setMode("flatten");
+                  setConverted(false);
+                  setChecklist(null);
+                }}
+                className={`p-4 rounded-xl border-2 text-left transition-all ${
+                  mode === "flatten"
+                    ? "border-sky-500 bg-sky-500/15"
+                    : "border-white/10 hover:border-white/20"
+                }`}
+              >
+                <div className="font-semibold text-sm mb-1 text-slate-100">{t("modeFlattenTitle")}</div>
+                <div className="text-xs text-slate-400">{t("modeFlattenDesc")}</div>
+              </button>
             </div>
 
             {!file ? (
@@ -340,14 +546,14 @@ export default function PdfToPdfaPage() {
                   {isConverting ? (
                     <>
                       <Loader2 className="h-5 w-5 animate-spin" />
-                      {t("converting")}
+                      {progress || t("converting")}
                     </>
                   ) : (
                     t("convert")
                   )}
                 </button>
 
-                {converted && (
+                {converted && mode === "standard" && checklist && (
                   <div className="rounded-xl border border-white/10 bg-slate-900/50 p-4 space-y-3">
                     <h3 className="font-semibold text-slate-100">{t("checklistTitle")}</h3>
                     <ul className="space-y-2 text-sm text-slate-300">
@@ -377,7 +583,38 @@ export default function PdfToPdfaPage() {
                       </li>
                     </ul>
                     <p className="text-xs text-slate-400 pt-2 border-t border-white/10">
-                      {t("disclaimer")}{" "}
+                      ⚠️ {t("disclaimerStandard")}
+                    </p>
+                  </div>
+                )}
+
+                {converted && mode === "flatten" && checklist && (
+                  <div className="rounded-xl border border-white/10 bg-slate-900/50 p-4 space-y-3">
+                    <h3 className="font-semibold text-slate-100">{t("checklistTitle")}</h3>
+                    <ul className="space-y-2 text-sm text-slate-300">
+                      <li className="flex items-center gap-2">
+                        <Check className="h-4 w-4 text-emerald-500 shrink-0" />
+                        {t("check1")}
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Check className="h-4 w-4 text-emerald-500 shrink-0" />
+                        {t("check2")}
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Check className="h-4 w-4 text-emerald-500 shrink-0" />
+                        {t("check3")}
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Check className="h-4 w-4 text-emerald-500 shrink-0" />
+                        {t("check4")}
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Check className="h-4 w-4 text-emerald-500 shrink-0" />
+                        {t("checkFlattened")}
+                      </li>
+                    </ul>
+                    <p className="text-xs text-slate-400 pt-2 border-t border-white/10">
+                      ⚠️ {t("disclaimerFlatten")}{" "}
                       <a
                         href={VERAPDF_URL}
                         target="_blank"
