@@ -112,8 +112,9 @@ async function convertToPdfA(file) {
   const existingCreationDate = pdfDoc.getCreationDate();
   const creationDate = existingCreationDate || new Date();
   const modDate = new Date();
-  const isoCreation = creationDate.toISOString();
-  const isoMod = modDate.toISOString();
+  // ISO 8601 without milliseconds — veraPDF 6.7.3 test 8: ModDate and xmp:ModifyDate must match
+  const isoCreation = creationDate.toISOString().replace(/\.\d{3}Z$/, "Z");
+  const isoMod = modDate.toISOString().replace(/\.\d{3}Z$/, "Z");
   const creatorTool = existingCreator || "FileFlip PDF/A Converter";
   const producer = "FileFlip PDF/A Converter";
 
