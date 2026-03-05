@@ -1319,6 +1319,7 @@
       "disclaimerFlatten": "Text is not selectable in the output. For ISO-certified validation verify with",
       "renderingPage": "Rendering page {current} of {total}...",
       "loadingDocument": "Loading document...",
+      "convertAnother": "Convert another file",
       "errorGeneric": "Conversion failed. Make sure the file is a valid PDF.",
       "editorialTitle": "What is PDF/A and when do you need it",
       "editorialBody": "PDF/A is the ISO 19005 standard for long-term archiving of electronic documents. It is required for submissions to public administrations, building permits, legal filings, and any document that must remain readable and unaltered for decades. Unlike regular PDF, PDF/A embeds all fonts, color profiles, and metadata needed for self-contained preservation — no external dependencies allowed.",

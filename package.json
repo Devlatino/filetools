@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "postinstall": "mkdir -p public && cp -r node_modules/@imgly/background-removal/dist public/background-removal && cp -r node_modules/@cantoo/pdf-lib/dist public/cantoo-worker && cp node_modules/pdfjs-dist/build/pdf.worker.min.mjs public/pdf.worker.min.mjs && (test -f public/srgb.icc || curl -sS -o public/srgb.icc 'https://www.color.org/srgb/sRGB_IEC61966-2-1_black_scaled.icc')",
+    "postinstall": "mkdir -p public && cp -r node_modules/@imgly/background-removal/dist public/background-removal && cp -r node_modules/@cantoo/pdf-lib/dist public/cantoo-worker && cp node_modules/pdfjs-dist/build/pdf.worker.min.mjs public/pdf.worker.min.mjs && (test -f public/srgb.icc || curl -sS -o public/srgb.icc 'https://www.color.org/srgb/sRGB_v2_ICC_preference.icc' || curl -sSL -o public/srgb.icc 'https://github.com/saucecontrol/Compact-ICC-Profiles/raw/master/profiles/sRGB-v2-nano.icc')",
     "dev": "next dev",
-    "build": "mkdir -p public && cp -r node_modules/@imgly/background-removal/dist public/background-removal && cp -r node_modules/@cantoo/pdf-lib/dist public/cantoo-worker && cp node_modules/pdfjs-dist/build/pdf.worker.min.mjs public/pdf.worker.min.mjs && (test -f public/srgb.icc || curl -sS -o public/srgb.icc 'https://www.color.org/srgb/sRGB_IEC61966-2-1_black_scaled.icc') && next build",
+    "build": "mkdir -p public && cp -r node_modules/@imgly/background-removal/dist public/background-removal && cp -r node_modules/@cantoo/pdf-lib/dist public/cantoo-worker && cp node_modules/pdfjs-dist/build/pdf.worker.min.mjs public/pdf.worker.min.mjs && (test -f public/srgb.icc || curl -sS -o public/srgb.icc 'https://www.color.org/srgb/sRGB_v2_ICC_preference.icc' || curl -sSL -o public/srgb.icc 'https://github.com/saucecontrol/Compact-ICC-Profiles/raw/master/profiles/sRGB-v2-nano.icc') && next build",
     "start": "next start",
     "lint": "eslint",
     "indexnow": "node scripts/ping-indexnow.js"

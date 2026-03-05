@@ -1310,6 +1310,7 @@
       "disclaimerFlatten": "Text ist im Ergebnis nicht auswählbar. Für ISO-Validierung mit",
       "renderingPage": "Seite {current} von {total} wird gerendert...",
       "loadingDocument": "Dokument wird geladen...",
+      "convertAnother": "Weitere Datei konvertieren",
       "errorGeneric": "Konvertierung fehlgeschlagen. Bitte prüfe, ob es eine gültige PDF-Datei ist.",
       "editorialTitle": "Was ist PDF/A und wann brauchst du es",
       "editorialBody": "PDF/A ist der ISO-19005-Standard für die Langzeitarchivierung elektronischer Dokumente. Er wird für Einreichungen bei Behörden, Baugenehmigungen, rechtliche Unterlagen und alle Dokumente verlangt, die über Jahrzehnte lesbar und unverändert bleiben müssen. Im Gegensatz zu normalem PDF bindet PDF/A alle Schriften, Farbprofile und Metadaten für eine eigenständige Bewahrung ein – ohne externe Abhängigkeiten.",

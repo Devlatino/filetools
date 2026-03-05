@@ -1258,6 +1258,7 @@
       "disclaimerFlatten": "输出中的文本不可选择。如需ISO认证验证请使用",
       "renderingPage": "正在渲染第 {current} 页，共 {total} 页...",
       "loadingDocument": "正在加载文档...",
+      "convertAnother": "转换另一个文件",
       "errorGeneric": "转换失败，请确保文件是有效的PDF格式。",
       "editorialTitle": "什么是 PDF/A，何时需要",
       "editorialBody": "PDF/A 是电子文档长期归档的 ISO 19005 标准。适用于提交公共行政部门、建筑许可、法律备案以及任何必须长期可读且不可篡改的文档。与普通 PDF 不同，PDF/A 嵌入字体、色彩配置和元数据，实现自包含保存，不允许外部依赖。",

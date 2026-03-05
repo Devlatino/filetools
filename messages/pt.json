@@ -1307,6 +1307,7 @@
       "disclaimerFlatten": "O texto não é selecionável no resultado. Verifique com",
       "renderingPage": "Renderizando página {current} de {total}...",
       "loadingDocument": "Carregando documento...",
+      "convertAnother": "Converter outro arquivo",
       "errorGeneric": "Falha na conversão. Verifique se o arquivo é um PDF válido.",
       "editorialTitle": "O que é PDF/A e quando você precisa",
       "editorialBody": "PDF/A é o padrão ISO 19005 para arquivamento de longo prazo de documentos eletrônicos. É exigido para submissões à administração pública, licenças de construção, processos legais e qualquer documento que deva permanecer legível e inalterado por décadas. Diferente do PDF comum, o PDF/A incorpora fontes, perfis de cor e metadados necessários para preservação autônoma — sem dependências externas.",
