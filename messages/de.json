@@ -1254,6 +1254,7 @@
     },
     "excelToPdf": {
       "label": "Excel zu PDF",
+      "short": "Excel-Tabellen in PDF konvertieren. Alle Blätter enthalten.",
       "title": "Excel zu PDF",
       "description": "Excel-Dateien online in PDF konvertieren. Kostenlos, schnell, ohne Server-Upload.",
       "metaTitle": "Excel zu PDF Konverter – Kostenlos Online XLSX zu PDF",
@@ -1284,6 +1285,7 @@
     },
     "pdfToPdfa": {
       "label": "PDF zu PDF/A",
+      "short": "PDF in PDF/A für Langzeitarchivierung konvertieren.",
       "title": "PDF zu PDF/A",
       "description": "PDF in PDF/A für Langzeitarchivierung konvertieren. ISO 19005-konform für Rechtsdokumente.",
       "metaTitle": "PDF zu PDF/A Konverter – Kostenlos ISO 19005",
@@ -1319,6 +1321,7 @@
     },
     "csvToPdf": {
       "label": "CSV zu PDF",
+      "short": "CSV-Dateien in formatierte PDF-Tabellen konvertieren.",
       "title": "CSV zu PDF",
       "description": "CSV-Dateien online in PDF-Tabellen konvertieren. Kostenlos, sofort, ohne Server-Upload.",
       "metaTitle": "CSV zu PDF Konverter – Kostenlos Online",

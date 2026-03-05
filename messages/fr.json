@@ -1219,6 +1219,7 @@
     },
     "excelToPdf": {
       "label": "Excel en PDF",
+      "short": "Convertissez des feuilles Excel en PDF. Toutes les feuilles incluses.",
       "title": "Excel en PDF",
       "description": "Convertissez des fichiers Excel en PDF en ligne. Gratuit, rapide, sans envoi vers des serveurs.",
       "metaTitle": "Convertisseur Excel en PDF – Gratuit en ligne XLSX en PDF",
@@ -1249,6 +1250,7 @@
     },
     "pdfToPdfa": {
       "label": "PDF en PDF/A",
+      "short": "Convertissez des PDF en PDF/A pour l'archivage à long terme.",
       "title": "PDF en PDF/A",
       "description": "Convertissez des PDF en PDF/A pour l'archivage à long terme. Conforme à la norme ISO 19005.",
       "metaTitle": "PDF en PDF/A – Convertisseur gratuit ISO 19005",
@@ -1284,6 +1286,7 @@
     },
     "csvToPdf": {
       "label": "CSV en PDF",
+      "short": "Convertissez des fichiers CSV en tableaux PDF formatés.",
       "title": "CSV en PDF",
       "description": "Convertissez des fichiers CSV en tableaux PDF en ligne. Gratuit, instantané.",
       "metaTitle": "CSV en PDF – Convertisseur gratuit en ligne",

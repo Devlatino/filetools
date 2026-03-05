@@ -1263,6 +1263,7 @@
     },
     "excelToPdf": {
       "label": "Excel to PDF",
+      "short": "Convert Excel spreadsheets to PDF. All sheets included.",
       "title": "Excel to PDF",
       "description": "Convert Excel spreadsheets to PDF online. Free, fast, no upload to servers. All sheets included.",
       "metaTitle": "Excel to PDF Converter – Free Online XLSX to PDF",
@@ -1293,6 +1294,7 @@
     },
     "pdfToPdfa": {
       "label": "PDF to PDF/A",
+      "short": "Convert PDF to PDF/A for long-term archiving. ISO 19005.",
       "title": "PDF to PDF/A",
       "description": "Convert PDF to PDF/A for long-term archiving. Compliant with ISO 19005 standard for legal and official documents.",
       "metaTitle": "PDF to PDF/A Converter – Free Online ISO 19005",
@@ -1328,6 +1330,7 @@
     },
     "csvToPdf": {
       "label": "CSV to PDF",
+      "short": "Convert CSV files to formatted PDF tables instantly.",
       "title": "CSV to PDF",
       "description": "Convert CSV files to PDF tables online. Free, instant, no upload to servers.",
       "metaTitle": "CSV to PDF Converter – Free Online Table to PDF",

@@ -1202,6 +1202,7 @@
     },
     "excelToPdf": {
       "label": "Excel से PDF",
+      "short": "Excel स्प्रेडशीट को PDF में बदलें। सभी शीट शामिल।",
       "title": "Excel से PDF",
       "description": "Excel स्प्रेडशीट को ऑनलाइन PDF में बदलें। मुफ़्त, तेज़, सर्वर पर अपलोड नहीं।",
       "metaTitle": "Excel से PDF कनवर्टर – मुफ़्त ऑनलाइन XLSX से PDF",
@@ -1232,6 +1233,7 @@
     },
     "pdfToPdfa": {
       "label": "PDF से PDF/A",
+      "short": "दीर्घकालिक संग्रह के लिए PDF को PDF/A में बदलें।",
       "title": "PDF से PDF/A",
       "description": "दीर्घकालिक संग्रह के लिए PDF को PDF/A में बदलें। ISO 19005 मानक के अनुरूप।",
       "metaTitle": "PDF से PDF/A कनवर्टर – मुफ़्त ISO 19005",
@@ -1267,6 +1269,7 @@
     },
     "csvToPdf": {
       "label": "CSV से PDF",
+      "short": "CSV फ़ाइलों को PDF तालिकाओं में बदलें।",
       "title": "CSV से PDF",
       "description": "CSV फ़ाइलें ऑनलाइन PDF तालिकाओं में बदलें। मुफ़्त, तत्काल।",
       "metaTitle": "CSV से PDF कनवर्टर – मुफ़्त ऑनलाइन",

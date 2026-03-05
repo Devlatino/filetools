@@ -1202,6 +1202,7 @@
     },
     "excelToPdf": {
       "label": "Excel إلى PDF",
+      "short": "تحويل جداول Excel إلى PDF. جميع الأوراق مضمّنة.",
       "title": "Excel إلى PDF",
       "description": "تحويل جداول Excel إلى PDF أونلاين. مجاناً وبسرعة، دون رفع إلى الخوادم.",
       "metaTitle": "محوّل Excel إلى PDF – مجاناً أونلاين XLSX إلى PDF",
@@ -1232,6 +1233,7 @@
     },
     "pdfToPdfa": {
       "label": "PDF إلى PDF/A",
+      "short": "تحويل PDF إلى PDF/A للأرشفة طويلة الأمد.",
       "title": "PDF إلى PDF/A",
       "description": "تحويل PDF إلى PDF/A للأرشفة طويلة الأمد. متوافق مع معيار ISO 19005.",
       "metaTitle": "محوّل PDF إلى PDF/A – مجاناً ISO 19005",
@@ -1267,6 +1269,7 @@
     },
     "csvToPdf": {
       "label": "CSV إلى PDF",
+      "short": "تحويل ملفات CSV إلى جداول PDF منسّقة.",
       "title": "CSV إلى PDF",
       "description": "تحويل ملفات CSV إلى جداول PDF أونلاين. مجاناً وفورياً.",
       "metaTitle": "محوّل CSV إلى PDF – مجاناً أونلاين",

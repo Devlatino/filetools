@@ -1263,6 +1263,7 @@
     },
     "excelToPdf": {
       "label": "Excel in PDF",
+      "short": "Converti fogli Excel in PDF. Tutti i fogli inclusi.",
       "title": "Excel in PDF",
       "description": "Converti fogli Excel in PDF online. Gratis, veloce, senza caricare su server. Tutti i fogli inclusi.",
       "metaTitle": "Converti Excel in PDF – Gratis Online XLSX in PDF",
@@ -1293,6 +1294,7 @@
     },
     "pdfToPdfa": {
       "label": "PDF in PDF/A",
+      "short": "Converti PDF in PDF/A per archiviazione a lungo termine.",
       "title": "PDF in PDF/A",
       "description": "Converti PDF in PDF/A per archiviazione a lungo termine. Conforme allo standard ISO 19005 per documenti legali e ufficiali.",
       "metaTitle": "PDF in PDF/A – Convertitore Gratuito ISO 19005",
@@ -1328,6 +1330,7 @@
     },
     "csvToPdf": {
       "label": "CSV in PDF",
+      "short": "Converti file CSV in tabelle PDF formattate.",
       "title": "CSV in PDF",
       "description": "Converti file CSV in tabelle PDF online. Gratis, immediato, senza upload su server.",
       "metaTitle": "CSV in PDF – Convertitore Gratuito Online",

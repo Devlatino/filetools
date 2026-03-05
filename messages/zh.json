@@ -1202,6 +1202,7 @@
     },
     "excelToPdf": {
       "label": "Excel转PDF",
+      "short": "将Excel表格转换为PDF，包含所有工作表。",
       "title": "Excel转PDF",
       "description": "在线将Excel表格转换为PDF。免费、快速，无需上传至服务器。包含所有工作表。",
       "metaTitle": "Excel转PDF转换器 – 免费在线XLSX转PDF",
@@ -1232,6 +1233,7 @@
     },
     "pdfToPdfa": {
       "label": "PDF转PDF/A",
+      "short": "将PDF转换为PDF/A格式，用于长期归档。",
       "title": "PDF转PDF/A",
       "description": "将PDF转换为PDF/A格式，用于长期归档。符合ISO 19005标准。",
       "metaTitle": "PDF转PDF/A转换器 – 免费ISO 19005",
@@ -1267,6 +1269,7 @@
     },
     "csvToPdf": {
       "label": "CSV转PDF",
+      "short": "将CSV文件转换为格式化PDF表格。",
       "title": "CSV转PDF",
       "description": "在线将CSV文件转换为PDF表格。免费、即时，无需上传至服务器。",
       "metaTitle": "CSV转PDF转换器 – 免费在线",

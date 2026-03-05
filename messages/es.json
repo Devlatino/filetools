@@ -1282,6 +1282,7 @@
     },
     "excelToPdf": {
       "label": "Excel a PDF",
+      "short": "Convierte hojas Excel a PDF. Todas las hojas incluidas.",
       "title": "Excel a PDF",
       "description": "Convierte hojas de Excel a PDF online. Gratis, rápido, sin subir a servidores.",
       "metaTitle": "Convertidor Excel a PDF – Gratis Online XLSX a PDF",
@@ -1312,6 +1313,7 @@
     },
     "pdfToPdfa": {
       "label": "PDF a PDF/A",
+      "short": "Convierte PDF a PDF/A para archivo a largo plazo.",
       "title": "PDF a PDF/A",
       "description": "Convierte PDF a PDF/A para archivo a largo plazo. Conforme con ISO 19005 para documentos legales y oficiales.",
       "metaTitle": "PDF a PDF/A – Convertidor Gratuito ISO 19005",
@@ -1347,6 +1349,7 @@
     },
     "csvToPdf": {
       "label": "CSV a PDF",
+      "short": "Convierte archivos CSV a tablas PDF formateadas.",
       "title": "CSV a PDF",
       "description": "Convierte archivos CSV a tablas PDF online. Gratis, instantáneo, sin subir a servidores.",
       "metaTitle": "CSV a PDF – Convertidor Gratuito Online",
