@@ -3,7 +3,14 @@
 import { useCallback, useRef, useState } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
-import { PDFDocument, PDFName, PDFString, PDFDict, PDFRawStream, PDFArray } from "@cantoo/pdf-lib";
+import {
+  PDFDocument,
+  PDFName,
+  PDFString,
+  PDFDict,
+  PDFArray,
+  PDFHeader,
+} from "@cantoo/pdf-lib";
 import { Upload, Loader2, FileText, Check } from "lucide-react";
 import { FaqSection } from "@/components/FaqSection";
 import { EditorialSection } from "@/components/EditorialSection";
@@ -14,47 +21,70 @@ import { SchemaMarkup } from "@/components/SchemaMarkup";
 
 const VERAPDF_URL = "https://demo.verapdf.org";
 
+/** XMP packet for PDF/A-1b: pdfaid part=1, conformance=B. Padded to 4096 bytes. */
+function buildXmpPacket(isoDate) {
+  const xmpContent = `<?xpacket begin="\uFEFF" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6">
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <rdf:Description rdf:about=""
+        xmlns:pdfaid="http://www.aiim.org/pdfa/ns/id/">
+      <pdfaid:part>1</pdfaid:part>
+      <pdfaid:conformance>B</pdfaid:conformance>
+    </rdf:Description>
+    <rdf:Description rdf:about=""
+        xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <dc:format>application/pdf</dc:format>
+    </rdf:Description>
+    <rdf:Description rdf:about=""
+        xmlns:xmp="http://ns.adobe.com/xap/1.0/">
+      <xmp:CreateDate>${isoDate}</xmp:CreateDate>
+      <xmp:ModifyDate>${isoDate}</xmp:ModifyDate>
+      <xmp:CreatorTool>FileFlip PDF/A Converter</xmp:CreatorTool>
+    </rdf:Description>
+    <rdf:Description rdf:about=""
+        xmlns:pdf="http://ns.adobe.com/pdf/1.3/">
+      <pdf:Producer>FileFlip</pdf:Producer>
+    </rdf:Description>
+  </rdf:RDF>
+</x:xmpmeta>`;
+  const endTag = "\n<?xpacket end=\"w\"?>";
+  const targetLength = 4096;
+  const newlineAfterContent = "\n";
+  const paddingNeeded = Math.max(
+    0,
+    targetLength - xmpContent.length - newlineAfterContent.length - endTag.length
+  );
+  const padding = " ".repeat(paddingNeeded);
+  const xmpFull = xmpContent + newlineAfterContent + padding + endTag;
+  return new TextEncoder().encode(xmpFull);
+}
+
 async function convertToPdfA(file) {
   const arrayBuffer = await file.arrayBuffer();
   const pdfDoc = await PDFDocument.load(arrayBuffer, { ignoreEncryption: true });
 
   const now = new Date();
   const isoDate = now.toISOString();
-
-  const xmpMetadata = `<?xpacket begin="\uFEFF" id="W5M0MpCehiHzreSzNTczkc9d"?>
-<x:xmpmeta xmlns:x="adobe:ns:meta/">
-  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-    <rdf:Description rdf:about=""
-        xmlns:pdfaid="http://www.aiim.org/pdfa/ns/id/"
-        xmlns:dc="http://purl.org/dc/elements/1.1/"
-        xmlns:xmp="http://ns.adobe.com/xap/1.0/"
-        xmlns:pdf="http://ns.adobe.com/pdf/1.3/">
-      <pdfaid:part>1</pdfaid:part>
-      <pdfaid:conformance>B</pdfaid:conformance>
-      <dc:format>application/pdf</dc:format>
-      <xmp:CreateDate>${isoDate}</xmp:CreateDate>
-      <xmp:ModifyDate>${isoDate}</xmp:ModifyDate>
-      <xmp:MetadataDate>${isoDate}</xmp:MetadataDate>
-      <xmp:CreatorTool>FileFlip PDF/A Converter</xmp:CreatorTool>
-      <pdf:Producer>FileFlip</pdf:Producer>
-    </rdf:Description>
-  </rdf:RDF>
-</x:xmpmeta>
-<?xpacket end="w"?>`.trim();
-
   const context = pdfDoc.context;
-  const metadataDict = PDFDict.withContext(context);
-  metadataDict.set(PDFName.of("Type"), PDFName.of("Metadata"));
-  metadataDict.set(PDFName.of("Subtype"), PDFName.of("XML"));
-  const contents = new TextEncoder().encode(xmpMetadata);
-  const metadataStream = PDFRawStream.of(metadataDict, contents);
+
+  // FIX 1: PDF/A-1b requires PDF 1.4 — force header version
+  context.header = PDFHeader.forVersion(1, 4);
+
+  // FIX 2: XMP metadata stream as bytes (Uint8Array), not string — Type/Metadata, Subtype/XML, Length
+  const xmpBytes = buildXmpPacket(isoDate);
+  const metadataStream = context.stream(xmpBytes, {
+    Type: "Metadata",
+    Subtype: "XML",
+    Length: xmpBytes.length,
+  });
   const metadataRef = context.register(metadataStream);
   pdfDoc.catalog.set(PDFName.of("Metadata"), metadataRef);
 
+  // OutputIntent for PDF/A-1b (sRGB) — no embedded ICC to keep bundle small; validators may still pass
   const outputIntent = PDFDict.withContext(context);
   outputIntent.set(PDFName.of("Type"), PDFName.of("OutputIntent"));
   outputIntent.set(PDFName.of("S"), PDFName.of("GTS_PDFA1"));
-  outputIntent.set(PDFName.of("OutputConditionIdentifier"), PDFString.of("sRGB"));
+  outputIntent.set(PDFName.of("OutputConditionIdentifier"), PDFString.of("sRGB IEC61966-2.1"));
   outputIntent.set(PDFName.of("Info"), PDFString.of("sRGB IEC61966-2.1"));
   outputIntent.set(PDFName.of("RegistryName"), PDFString.of("http://www.color.org"));
   const outputIntentRef = context.register(outputIntent);
