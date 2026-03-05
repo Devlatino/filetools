@@ -7,8 +7,6 @@ import {
   PDFDocument,
   PDFName,
   PDFString,
-  PDFDict,
-  PDFArray,
   PDFHeader,
 } from "@cantoo/pdf-lib";
 import { Upload, Loader2, FileText, Check } from "lucide-react";
@@ -20,9 +18,6 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { SchemaMarkup } from "@/components/SchemaMarkup";
 
 const VERAPDF_URL = "https://demo.verapdf.org";
-
-/** Optional: paste base64 from `base64 -i sRGB_IEC61966-2-1_black_scaled.icc` to embed ICC without fetch */
-const ICC_SRGB_BASE64 = "";
 
 function escapeXml(str) {
   return String(str)
@@ -82,21 +77,12 @@ function buildXmpPacket(opts) {
   return new TextEncoder().encode(xmpFull);
 }
 
-async function getIccBytes() {
-  if (ICC_SRGB_BASE64) {
-    return Uint8Array.from(atob(ICC_SRGB_BASE64), (c) => c.charCodeAt(0));
-  }
-  try {
-    const res = await fetch("https://www.color.org/srgb/sRGB_v4_ICC_preference.icc", {
-      mode: "cors",
-      cache: "default",
-    });
-    if (!res.ok) throw new Error("Fetch failed");
-    const buf = await res.arrayBuffer();
-    return new Uint8Array(buf);
-  } catch {
-    return null;
-  }
+/** Fetch sRGB ICC profile from static file in /public (see postinstall/build). */
+async function getIccBytesFromPublic() {
+  const res = await fetch("/srgb.icc");
+  if (!res.ok) throw new Error("ICC profile not found in /public/srgb.icc");
+  const buf = await res.arrayBuffer();
+  return new Uint8Array(buf);
 }
 
 async function convertToPdfA(file) {
@@ -149,28 +135,27 @@ async function convertToPdfA(file) {
   const metadataRef = context.register(metadataStream);
   pdfDoc.catalog.set(PDFName.of("Metadata"), metadataRef);
 
-  // FIX 2 — OutputIntent with real sRGB ICC profile (DestOutputProfile)
-  const iccBytes = await getIccBytes();
-  const outputIntent = PDFDict.withContext(context);
-  outputIntent.set(PDFName.of("Type"), PDFName.of("OutputIntent"));
-  outputIntent.set(PDFName.of("S"), PDFName.of("GTS_PDFA1"));
-  outputIntent.set(PDFName.of("OutputConditionIdentifier"), PDFString.of("sRGB IEC61966-2.1"));
-  outputIntent.set(PDFName.of("Info"), PDFString.of("sRGB IEC61966-2.1"));
-  outputIntent.set(PDFName.of("RegistryName"), PDFString.of("http://www.color.org"));
-  if (iccBytes && iccBytes.length > 0) {
-    const iccStream = context.stream(iccBytes, {
-      N: 3,
-      Alternate: PDFName.of("DeviceRGB"),
-      Length: iccBytes.length,
-    });
-    const iccRef = context.register(iccStream);
-    outputIntent.set(PDFName.of("DestOutputProfile"), iccRef);
-  }
+  // FIX 2 — OutputIntent with sRGB ICC from /public/srgb.icc
+  const iccBytes = await getIccBytesFromPublic();
+  const iccStream = context.stream(iccBytes, {
+    N: 3,
+    Alternate: PDFName.of("DeviceRGB"),
+    Length: iccBytes.length,
+  });
+  const iccRef = context.register(iccStream);
+  const outputIntent = context.obj({
+    Type: PDFName.of("OutputIntent"),
+    S: PDFName.of("GTS_PDFA1"),
+    OutputConditionIdentifier: PDFString.of("sRGB IEC61966-2.1"),
+    Info: PDFString.of("sRGB IEC61966-2.1"),
+    RegistryName: PDFString.of("http://www.color.org"),
+    DestOutputProfile: iccRef,
+  });
   const outputIntentRef = context.register(outputIntent);
-  const outputIntentsArray = new PDFArray(context);
-  outputIntentsArray.push(outputIntentRef);
-  const outputIntentsRef = context.register(outputIntentsArray);
-  pdfDoc.catalog.set(PDFName.of("OutputIntents"), outputIntentsRef);
+  pdfDoc.catalog.set(
+    PDFName.of("OutputIntents"),
+    context.obj([outputIntentRef])
+  );
 
   pdfDoc.catalog.delete(PDFName.of("JavaScript"));
   pdfDoc.catalog.delete(PDFName.of("JS"));
@@ -245,14 +230,23 @@ export default function PdfToPdfaPage() {
 
   const convertFlatten = useCallback(
     async (targetFile) => {
-      setProgress(t("loadingDocument"));
+      setProgress(
+        t("renderingPage")
+          .replace("{current}", "0")
+          .replace("{total}", "...")
+      );
       const pdfjsLib = await import("pdfjs-dist");
       pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
       const { jsPDF } = await import("jspdf");
+      const {
+        PDFDocument,
+        PDFName,
+        PDFString,
+      } = await import("@cantoo/pdf-lib");
       const arrayBuffer = await targetFile.arrayBuffer();
 
       const loadingTask = pdfjsLib.getDocument({
-        data: arrayBuffer,
+        data: new Uint8Array(arrayBuffer),
         cMapUrl: `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/cmaps/`,
         cMapPacked: true,
       });
@@ -262,15 +256,19 @@ export default function PdfToPdfaPage() {
       const doc = new jsPDF({
         orientation: "portrait",
         unit: "pt",
-        format: "a4",
         compress: true,
       });
-      const SCALE = 2.0;
 
       for (let pageNum = 1; pageNum <= numPages; pageNum++) {
-        setProgress(t("renderingPage", { current: pageNum, total: numPages }));
+        setProgress(
+          t("renderingPage")
+            .replace("{current}", String(pageNum))
+            .replace("{total}", String(numPages))
+        );
         const page = await pdfDocument.getPage(pageNum);
-        const viewport = page.getViewport({ scale: SCALE });
+        const origViewport = page.getViewport({ scale: 1.0 });
+        const viewport = page.getViewport({ scale: 2.0 });
+
         const canvas = document.createElement("canvas");
         canvas.width = viewport.width;
         canvas.height = viewport.height;
@@ -282,12 +280,9 @@ export default function PdfToPdfaPage() {
             canvasContext: ctx,
             viewport,
             background: "white",
-            renderInteractiveForms: false,
-            annotationMode: 0,
           })
           .promise;
         const imgData = canvas.toDataURL("image/jpeg", 0.92);
-        const origViewport = page.getViewport({ scale: 1.0 });
         const pdfW = origViewport.width;
         const pdfH = origViewport.height;
         if (pageNum === 1) {
@@ -306,11 +301,8 @@ export default function PdfToPdfaPage() {
       const jsPdfBytes = doc.output("arraybuffer");
       const pdfDoc = await PDFDocument.load(jsPdfBytes);
       const context = pdfDoc.context;
-      context.header = PDFHeader.forVersion(1, 4);
-
       const modDate = new Date();
-      const isoMod = modDate.toISOString().replace(/\.\d{3}Z$/, "Z");
-      const isoCreation = isoMod;
+      const isoDate = modDate.toISOString().replace(/\.\d{3}Z$/, "Z");
       const xmpContent = `<?xpacket begin="\uFEFF" id="W5M0MpCehiHzreSzNTczkc9d"?>
 <x:xmpmeta xmlns:x="adobe:ns:meta/">
   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -321,9 +313,9 @@ export default function PdfToPdfaPage() {
     </rdf:Description>
     <rdf:Description rdf:about=""
         xmlns:xmp="http://ns.adobe.com/xap/1.0/">
-      <xmp:CreateDate>${isoCreation}</xmp:CreateDate>
-      <xmp:ModifyDate>${isoMod}</xmp:ModifyDate>
-      <xmp:MetadataDate>${isoMod}</xmp:MetadataDate>
+      <xmp:CreateDate>${isoDate}</xmp:CreateDate>
+      <xmp:ModifyDate>${isoDate}</xmp:ModifyDate>
+      <xmp:MetadataDate>${isoDate}</xmp:MetadataDate>
       <xmp:CreatorTool>FileFlip PDF/A Converter</xmp:CreatorTool>
     </rdf:Description>
     <rdf:Description rdf:about=""
@@ -340,34 +332,37 @@ export default function PdfToPdfaPage() {
       const encoder = new TextEncoder();
       const xmpBytes = encoder.encode(xmpContent);
       const metadataStream = context.stream(xmpBytes, {
-        Type: "Metadata",
-        Subtype: "XML",
+        Type: PDFName.of("Metadata"),
+        Subtype: PDFName.of("XML"),
         Length: xmpBytes.length,
       });
       const metadataRef = context.register(metadataStream);
       pdfDoc.catalog.set(PDFName.of("Metadata"), metadataRef);
 
-      const iccBytes = await getIccBytes();
-      const outputIntent = PDFDict.withContext(context);
-      outputIntent.set(PDFName.of("Type"), PDFName.of("OutputIntent"));
-      outputIntent.set(PDFName.of("S"), PDFName.of("GTS_PDFA1"));
-      outputIntent.set(PDFName.of("OutputConditionIdentifier"), PDFString.of("sRGB IEC61966-2.1"));
-      outputIntent.set(PDFName.of("Info"), PDFString.of("sRGB IEC61966-2.1"));
-      outputIntent.set(PDFName.of("RegistryName"), PDFString.of("http://www.color.org"));
-      if (iccBytes && iccBytes.length > 0) {
-        const iccStream = context.stream(iccBytes, {
-          N: 3,
-          Alternate: PDFName.of("DeviceRGB"),
-          Length: iccBytes.length,
-        });
-        const iccRef = context.register(iccStream);
-        outputIntent.set(PDFName.of("DestOutputProfile"), iccRef);
-      }
+      const iccResponse = await fetch("/srgb.icc");
+      if (!iccResponse.ok)
+        throw new Error("ICC profile not found in /public/srgb.icc");
+      const iccBuffer = await iccResponse.arrayBuffer();
+      const iccBytes = new Uint8Array(iccBuffer);
+      const iccStream = context.stream(iccBytes, {
+        N: 3,
+        Alternate: PDFName.of("DeviceRGB"),
+        Length: iccBytes.length,
+      });
+      const iccRef = context.register(iccStream);
+      const outputIntent = context.obj({
+        Type: PDFName.of("OutputIntent"),
+        S: PDFName.of("GTS_PDFA1"),
+        OutputConditionIdentifier: PDFString.of("sRGB IEC61966-2.1"),
+        Info: PDFString.of("sRGB IEC61966-2.1"),
+        RegistryName: PDFString.of("http://www.color.org"),
+        DestOutputProfile: iccRef,
+      });
       const outputIntentRef = context.register(outputIntent);
-      const outputIntentsArray = new PDFArray(context);
-      outputIntentsArray.push(outputIntentRef);
-      pdfDoc.catalog.set(PDFName.of("OutputIntents"), context.register(outputIntentsArray));
-
+      pdfDoc.catalog.set(
+        PDFName.of("OutputIntents"),
+        context.obj([outputIntentRef])
+      );
       pdfDoc.setProducer("FileFlip PDF/A Converter");
       pdfDoc.setCreator("FileFlip PDF/A Converter");
       pdfDoc.setModificationDate(modDate);
@@ -377,6 +372,7 @@ export default function PdfToPdfaPage() {
       pdfDoc.catalog.delete(PDFName.of("AA"));
       pdfDoc.catalog.delete(PDFName.of("OpenAction"));
 
+      setProgress(t("converting"));
       const pdfBytes = await pdfDoc.save();
       const blob = new Blob([pdfBytes], { type: "application/pdf" });
       const url = URL.createObjectURL(blob);
@@ -390,7 +386,6 @@ export default function PdfToPdfaPage() {
         icc: true,
         javascript: true,
         identifier: true,
-        datesSynced: true,
         flattened: true,
       });
     },
