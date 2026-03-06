@@ -8,13 +8,16 @@ export async function generateMetadata({ params }) {
   const t = await getTranslations({ locale, namespace: "tools.dxfToPdf" });
   const title = t("metaTitle");
   const description = t("metaDescription");
-  return buildToolMetadata({
-    locale,
-    toolPath: "dxf-to-pdf",
-    title,
-    description,
-    keywords: "dxf to pdf, cad to pdf, convert dxf, free, cloudconvert",
-  });
+  return {
+    ...buildToolMetadata({
+      locale,
+      toolPath: "dxf-to-pdf",
+      title,
+      description,
+      keywords: "dxf to pdf, cad to pdf, convert dxf, free, cloudconvert",
+    }),
+    robots: "noindex, nofollow",
+  };
 }
 
 export default async function Layout({ children }) {

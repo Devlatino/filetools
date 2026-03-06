@@ -4,27 +4,27 @@ import { getAllPosts } from "@/lib/blog";
 import { routing } from "@/i18n/routing";
 import { BlogShell } from "@/components/BlogShell";
 import { ChevronRight } from "lucide-react";
-
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://fileflip.org";
+import { BASE_URL } from "@/lib/constants";
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "blog" });
   const canonical =
-    locale === routing.defaultLocale ? "/blog" : `/${locale}/blog`;
+    locale === routing.defaultLocale ? `${BASE_URL}/blog` : `${BASE_URL}/${locale}/blog`;
   const languages = {};
   for (const loc of routing.locales) {
-    languages[loc] = loc === routing.defaultLocale ? "/blog" : `/${loc}/blog`;
+    languages[loc] =
+      loc === routing.defaultLocale ? `${BASE_URL}/blog` : `${BASE_URL}/${loc}/blog`;
   }
-  languages["x-default"] = "/blog";
+  languages["x-default"] = `${BASE_URL}/blog`;
   return {
     title: t("metaTitle"),
     description: t("metaDescription"),
-    alternates: { canonical: `${BASE_URL}${canonical}`, languages },
+    alternates: { canonical, languages },
     openGraph: {
       title: t("metaTitle"),
       description: t("metaDescription"),
-      url: `${BASE_URL}${canonical}`,
+      url: canonical,
     },
     other: {
       "script:ld+json": JSON.stringify({
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }) {
         "@type": "Blog",
         name: t("metaTitle"),
         description: t("metaDescription"),
-        url: `${BASE_URL}${canonical}`,
+        url: canonical,
       }),
     },
   };
@@ -47,8 +47,8 @@ export default async function BlogIndexPage({ params }) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${BASE_URL}/${locale === "en" ? "" : locale}` },
-      { "@type": "ListItem", position: 2, name: t("title"), item: `${BASE_URL}/${locale === "en" ? "" : locale}/blog` },
+      { "@type": "ListItem", position: 1, name: "Home", item: locale === "en" ? BASE_URL : `${BASE_URL}/${locale}` },
+      { "@type": "ListItem", position: 2, name: t("title"), item: locale === "en" ? `${BASE_URL}/blog` : `${BASE_URL}/${locale}/blog` },
     ],
   };
 

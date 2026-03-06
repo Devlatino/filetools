@@ -3,28 +3,31 @@ import { getTranslations } from "next-intl/server";
 import { BlogShell } from "@/components/BlogShell";
 import { SchemaMarkup } from "@/components/SchemaMarkup";
 import { routing } from "@/i18n/routing";
-
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://fileflip.org";
+import { BASE_URL } from "@/lib/constants";
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "compare" });
   const canonical =
-    locale === routing.defaultLocale ? "/tools/compare" : `/${locale}/tools/compare`;
+    locale === routing.defaultLocale
+      ? `${BASE_URL}/tools/compare`
+      : `${BASE_URL}/${locale}/tools/compare`;
   const languages = {};
   for (const loc of routing.locales) {
     languages[loc] =
-      loc === routing.defaultLocale ? "/tools/compare" : `/${loc}/tools/compare`;
+      loc === routing.defaultLocale
+        ? `${BASE_URL}/tools/compare`
+        : `${BASE_URL}/${loc}/tools/compare`;
   }
-  languages["x-default"] = "/tools/compare";
+  languages["x-default"] = `${BASE_URL}/tools/compare`;
   return {
     title: t("metaTitle"),
     description: t("metaDescription"),
-    alternates: { canonical: `${BASE_URL}${canonical}`, languages },
+    alternates: { canonical, languages },
     openGraph: {
       title: t("metaTitle"),
       description: t("metaDescription"),
-      url: `${BASE_URL}${canonical}`,
+      url: canonical,
     },
     other: {
       "script:ld+json": JSON.stringify({
@@ -32,7 +35,7 @@ export async function generateMetadata({ params }) {
         "@type": "WebPage",
         name: t("title"),
         description: t("metaDescription"),
-        url: `${BASE_URL}${canonical}`,
+        url: canonical,
       }),
     },
   };
@@ -43,13 +46,15 @@ export default async function ComparePage({ params }) {
   const t = await getTranslations({ locale, namespace: "compare" });
   const tCommon = await getTranslations({ locale, namespace: "common" });
   const localePrefix = locale === routing.defaultLocale ? "" : `/${locale}`;
+  const canonical =
+    locale === "en" ? `${BASE_URL}/tools/compare` : `${BASE_URL}/${locale}/tools/compare`;
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: tCommon("breadcrumbHome"), item: `${BASE_URL}${localePrefix || "/"}` },
-      { "@type": "ListItem", position: 2, name: t("title"), item: `${BASE_URL}${localePrefix}/tools/compare` },
+      { "@type": "ListItem", position: 1, name: tCommon("breadcrumbHome"), item: locale === "en" ? BASE_URL : `${BASE_URL}/${locale}` },
+      { "@type": "ListItem", position: 2, name: t("title"), item: canonical },
     ],
   };
 

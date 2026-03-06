@@ -6,7 +6,7 @@ import { routing } from "@/i18n/routing";
 import { BlogShell } from "@/components/BlogShell";
 import { ArrowLeft } from "lucide-react";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://fileflip.org";
+import { BASE_URL } from "@/lib/constants";
 
 export async function generateStaticParams() {
   const slugs = getAllSlugs();
@@ -25,21 +25,25 @@ export async function generateMetadata({ params }) {
   if (!post) return { title: "Blog" };
   const { frontmatter } = post;
   const canonical =
-    locale === routing.defaultLocale ? `/blog/${slug}` : `/${locale}/blog/${slug}`;
+    locale === routing.defaultLocale
+      ? `${BASE_URL}/blog/${slug}`
+      : `${BASE_URL}/${locale}/blog/${slug}`;
   const languages = {};
   for (const loc of routing.locales) {
     languages[loc] =
-      loc === routing.defaultLocale ? `/blog/${slug}` : `/${loc}/blog/${slug}`;
+      loc === routing.defaultLocale
+        ? `${BASE_URL}/blog/${slug}`
+        : `${BASE_URL}/${loc}/blog/${slug}`;
   }
-  languages["x-default"] = `/blog/${slug}`;
+  languages["x-default"] = `${BASE_URL}/blog/${slug}`;
   return {
     title: frontmatter.title,
     description: frontmatter.description,
-    alternates: { canonical: `${BASE_URL}${canonical}`, languages },
+    alternates: { canonical, languages },
     openGraph: {
       title: frontmatter.title,
       description: frontmatter.description,
-      url: `${BASE_URL}${canonical}`,
+      url: canonical,
       type: "article",
       publishedTime: frontmatter.date,
     },
@@ -55,14 +59,16 @@ export default async function BlogPostPage({ params }) {
   const others = allPosts.filter((p) => p.slug !== slug).slice(0, 3);
   const t = await getTranslations({ locale, namespace: "blog" });
 
+  const canonical =
+    locale === routing.defaultLocale
+      ? `${BASE_URL}/blog/${slug}`
+      : `${BASE_URL}/${locale}/blog/${slug}`;
   const localePrefix = locale === routing.defaultLocale ? "" : `/${locale}`;
   const blogHref = localePrefix ? `${localePrefix}/blog` : "/blog";
   const toolPath = frontmatter.relatedTool
     ? `/tools/${frontmatter.relatedTool}`
     : null;
 
-  const blogPath =
-    locale === routing.defaultLocale ? `/blog/${slug}` : `/${locale}/blog/${slug}`;
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -73,29 +79,32 @@ export default async function BlogPostPage({ params }) {
     author: {
       "@type": "Organization",
       name: "FileFlip",
-      url: "https://fileflip.org",
+      url: BASE_URL,
     },
     publisher: {
       "@type": "Organization",
       name: "FileFlip",
-      url: "https://fileflip.org",
+      url: BASE_URL,
       logo: {
         "@type": "ImageObject",
-        url: "https://fileflip.org/fileflip-logo.svg",
+        url: `${BASE_URL}/fileflip-logo.svg`,
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${BASE_URL}${blogPath}`,
+      "@id": canonical,
     },
   };
+  const homeItem = locale === "en" ? BASE_URL : `${BASE_URL}/${locale}`;
+  const blogItem =
+    locale === "en" ? `${BASE_URL}/blog` : `${BASE_URL}/${locale}/blog`;
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${BASE_URL}${localePrefix || "/"}` },
-      { "@type": "ListItem", position: 2, name: t("title"), item: `${BASE_URL}${blogHref}` },
-      { "@type": "ListItem", position: 3, name: frontmatter.title, item: `${BASE_URL}${localePrefix}/blog/${slug}` },
+      { "@type": "ListItem", position: 1, name: "Home", item: homeItem },
+      { "@type": "ListItem", position: 2, name: t("title"), item: blogItem },
+      { "@type": "ListItem", position: 3, name: frontmatter.title, item: canonical },
     ],
   };
 

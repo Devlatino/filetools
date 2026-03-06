@@ -1,20 +1,16 @@
 "use client";
 
 import Link from "next/link";
-
-const BASE_URL =
-  typeof window !== "undefined"
-    ? window.location.origin
-    : process.env.NEXT_PUBLIC_SITE_URL || "https://fileflip.org";
+import { BASE_URL } from "@/lib/constants";
 
 /**
  * Breadcrumb navigation: Home > Tools > [Tool name]
  * Renders clickable links and JSON-LD BreadcrumbList schema.
  */
 export function Breadcrumb({ locale, homeLabel, toolsLabel, toolLabel, toolPath }) {
-  const homeUrl = `${BASE_URL}/${locale}/`;
-  const toolsUrl = `${BASE_URL}/${locale}/#tools`;
-  const toolUrl = `${BASE_URL}/${locale}/tools/${toolPath}`;
+  const homeUrl = locale === "en" ? BASE_URL : `${BASE_URL}/${locale}`;
+  const toolsUrl = locale === "en" ? `${BASE_URL}/#tools` : `${BASE_URL}/${locale}/#tools`;
+  const toolUrl = locale === "en" ? `${BASE_URL}/tools/${toolPath}` : `${BASE_URL}/${locale}/tools/${toolPath}`;
 
   const schema = {
     "@context": "https://schema.org",

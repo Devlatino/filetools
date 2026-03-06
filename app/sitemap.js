@@ -1,7 +1,5 @@
 import { routing } from "@/i18n/routing";
-
-const BASE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://fileflip.org";
+import { BASE_URL } from "@/lib/constants";
 
 const TOOL_PATHS = [
   "/tools/compress-image",
@@ -56,8 +54,6 @@ const TOOL_PATHS = [
   "/tools/reorder-pdf-pages",
   "/tools/word-to-pdf",
   "/tools/favicon-generator",
-  "/tools/dwg-to-pdf",
-  "/tools/dxf-to-pdf",
   "/tools/dxf-viewer",
   "/tools/excel-to-pdf",
   "/tools/pdf-to-pdfa",

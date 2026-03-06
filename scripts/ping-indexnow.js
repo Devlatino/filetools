@@ -5,7 +5,7 @@
 const path = require("path");
 require("dotenv").config({ path: path.resolve(process.cwd(), ".env.local") });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://fileflip.org";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.fileflip.org";
 const SECRET = process.env.INDEXNOW_SECRET;
 
 if (!SECRET) {

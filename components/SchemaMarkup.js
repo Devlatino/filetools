@@ -1,6 +1,7 @@
 "use client";
 
 import Script from "next/script";
+import { BASE_URL } from "@/lib/constants";
 
 export function SchemaMarkup({
   title,
@@ -22,7 +23,7 @@ export function SchemaMarkup({
       price: "0",
       priceCurrency: "USD",
     },
-    url: `https://fileflip.org/${locale === "en" ? "" : `${locale}/`}tools/${slug}`,
+    url: locale === "en" ? `${BASE_URL}/tools/${slug}` : `${BASE_URL}/${locale}/tools/${slug}`,
     description,
     featureList: [
       "No file upload to servers",
@@ -42,8 +43,8 @@ export function SchemaMarkup({
     provider: {
       "@type": "Organization",
       name: "FileFlip",
-      url: "https://fileflip.org",
-      logo: "https://fileflip.org/fileflip-logo.svg",
+      url: BASE_URL,
+      logo: `${BASE_URL}/fileflip-logo.svg`,
       sameAs: ["https://www.producthunt.com/products/fileflip"],
     },
   };

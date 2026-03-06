@@ -16,10 +16,10 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+import { BASE_URL } from "@/lib/constants";
+
 export const metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://fileflip.org"
-  ),
+  metadataBase: new URL(BASE_URL),
   title: {
     default: "FileFlip — Free tools to convert and compress files",
     template: "%s — FileFlip",

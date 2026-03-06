@@ -1,3 +1,5 @@
+import { BASE_URL } from "@/lib/constants";
+
 export async function GET(request) {
   if (request.headers.get('x-indexnow-secret') !== process.env.INDEXNOW_SECRET) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 })
@@ -8,6 +10,7 @@ export async function GET(request) {
     return Response.json({ error: 'INDEXNOW_KEY is not set' }, { status: 500 })
   }
 
+  const host = new URL(BASE_URL).host
   const locales = ['en', 'it', 'es', 'fr', 'de', 'pt', 'zh', 'hi', 'ar']
   const tools = [
     'compress-image', 'merge-pdf', 'heic-to-jpg', 'resize-image',
@@ -22,15 +25,17 @@ export async function GET(request) {
     'resize-video', 'merge-videos', 'loop-video',
     'remove-background', 'resize-image-social', 'add-text-to-image',
     'trim-audio', 'audio-to-mp3', 'qr-code-generator',
-    'stl-viewer', 'obj-to-stl', 'image-to-lithophane'
+    'stl-viewer', 'obj-to-stl', 'image-to-lithophane',
+    'compare', 'pdf-unlock', 'protect-pdf', 'pdf-add-page-numbers',
+    'reorder-pdf-pages', 'word-to-pdf', 'favicon-generator', 'dxf-viewer',
+    'excel-to-pdf', 'pdf-to-pdfa', 'csv-to-pdf',
   ]
 
   const urls = [
-    'https://fileflip.org',
-    ...locales.map(l => `https://fileflip.org/${l}`),
-    ...tools.map(t => `https://fileflip.org/tools/${t}`),
+    BASE_URL,
+    ...locales.filter(l => l !== 'en').map(l => `${BASE_URL}/${l}`),
     ...locales.flatMap(l =>
-      tools.map(t => `https://fileflip.org/${l}/tools/${t}`)
+      tools.map(t => (l === 'en' ? `${BASE_URL}/tools/${t}` : `${BASE_URL}/${l}/tools/${t}`))
     ),
   ]
 
@@ -39,9 +44,9 @@ export async function GET(request) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        host: 'fileflip.org',
+        host,
         key: key,
-        keyLocation: `https://fileflip.org/${key}.txt`,
+        keyLocation: `${BASE_URL}/${key}.txt`,
         urlList: urls,
       }),
     })

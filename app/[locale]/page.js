@@ -9,6 +9,7 @@ import { usePathname, useRouter } from "@/i18n/navigation";
 import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Unlock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat, Eraser, LayoutTemplate, Type, QrCode, Box, FileBox, ImagePlus, Hash, GripVertical } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { locales, localeNames } from "@/i18n.js";
+import { BASE_URL } from "@/lib/constants";
 
 const TOOL_ICONS = {
   compressImage: Image,
@@ -377,24 +378,24 @@ export default function Home() {
             "@context": "https://schema.org",
             "@type": "WebSite",
             name: "FileFlip",
-            url: "https://fileflip.org",
+            url: BASE_URL,
             description:
               "Free online file conversion tools. Convert PDF, images, video and audio files directly in your browser. No upload, no registration, 9 languages.",
             potentialAction: {
               "@type": "SearchAction",
               target: {
                 "@type": "EntryPoint",
-                urlTemplate: "https://fileflip.org/tools/{search_term_string}",
+                urlTemplate: `${BASE_URL}/tools/{search_term_string}`,
               },
               "query-input": "required name=search_term_string",
             },
             publisher: {
               "@type": "Organization",
               name: "FileFlip",
-              url: "https://fileflip.org",
+              url: BASE_URL,
               logo: {
                 "@type": "ImageObject",
-                url: "https://fileflip.org/fileflip-logo.svg",
+                url: `${BASE_URL}/fileflip-logo.svg`,
               },
             },
           }),
