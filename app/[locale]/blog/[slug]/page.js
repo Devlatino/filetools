@@ -44,8 +44,14 @@ export async function generateMetadata({ params }) {
       title: frontmatter.title,
       description: frontmatter.description,
       url: canonical,
+      siteName: "FileFlip",
       type: "article",
       publishedTime: frontmatter.date,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: frontmatter.title,
+      description: frontmatter.description,
     },
   };
 }

@@ -212,10 +212,9 @@
     "filterUtility": "Utilities",
     "filterTools": "Tools",
     "filterCad": "CAD",
-    "filterVideo": "Video",
     "filterAudio": "Audio",
     "filterSocial": "Social",
-  "filter3d": "3D",
+    "filter3d": "3D",
     "faqTitle": "Frequently asked questions",
     "faq1Q": "Are my files uploaded to a server?",
     "faq1A": "No. All processing happens in your browser. Your files never leave your device and are not sent to our servers or any third party. This applies to every FileFlip tool: images, PDFs, videos, and archives are handled locally.",
@@ -232,7 +231,8 @@
     "faq7Q": "Do I need to create an account?",
     "faq7A": "No. You can use every FileFlip tool without signing up or logging in. Open the site, pick a tool, upload your file, and download the result. We do not require an email, password, or any personal data to use the tools. This keeps usage simple and private.",
     "faq8Q": "Is FileFlip really free?",
-    "faq8A": "Yes. FileFlip is free to use, with no hidden fees or premium tiers. The goal is to offer simple, practical tools for everyone. We do not add watermarks to your results or ask for payment. You can use the tools as often as you like at no cost."
+    "faq8A": "Yes. FileFlip is free to use, with no hidden fees or premium tiers. The goal is to offer simple, practical tools for everyone. We do not add watermarks to your results or ask for payment. You can use the tools as often as you like at no cost.",
+    "seoIntro": "FileFlip is a free online file converter that works 100% in your browser. Convert PDFs, images, videos, audio, and 3D files without uploading anything to a server. No registration, no software to install."
   },
   "meta": {
     "defaultTitle": "FileFlip — Free tools to convert and compress files",
@@ -1380,16 +1380,10 @@
       "faq8A": "The tool always treats the first row as headers. If your CSV has no header row, the first data row will be styled as a header. Consider adding a header row to your CSV before converting."
     },
     "faviconGenerator": {
-      "label": "Favicon Generator",
-      "short": "Generate all favicon sizes from any image. Download a complete favicon package for your website.",
-      "metaTitle": "Favicon Generator – Create Favicon from Image Free",
-      "metaDescription": "Generate favicons in all sizes from any image. Download ICO, PNG and webmanifest files instantly.",
-      "dropzone": "Drop your image here or click to upload",
-      "generating": "Generating favicons...",
-      "download": "Download Favicon Package (.zip)",
-      "preview": "Preview",
-      "filesIncluded": "Files included in the package",
-      "errorGeneric": "Failed to generate favicons. Please use a PNG or JPG image."
+      "label": "Favicon generator",
+      "short": "Generate favicons from an image.",
+      "metaTitle": "Favicon Generator Online Free",
+      "metaDescription": "Generate favicons (16x16, 32x32, 48x48, 180x180) from an image. Download single or ZIP. In the browser."
     },
     "dwgToPdf": {
       "label": "DWG to PDF",
@@ -2400,12 +2394,6 @@
       "short": "Convert HEX, RGB and HSL.",
       "metaTitle": "Color Converter HEX RGB HSL Free",
       "metaDescription": "Convert colors between HEX, RGB and HSL. Live preview. No account, in the browser."
-    },
-    "faviconGenerator": {
-      "label": "Favicon generator",
-      "short": "Generate favicons from an image.",
-      "metaTitle": "Favicon Generator Online Free",
-      "metaDescription": "Generate favicons (16x16, 32x32, 48x48, 180x180) from an image. Download single or ZIP. In the browser."
     },
     "extractAudio": {
       "label": "Extract audio",

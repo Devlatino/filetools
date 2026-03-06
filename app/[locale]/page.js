@@ -63,8 +63,6 @@ const TOOL_ICONS = {
   reorderPdf: GripVertical,
   wordToPdf: FileText,
   faviconGenerator: Image,
-  dwgToPdf: FileDown,
-  dxfToPdf: FileDown,
   dxfViewer: Box,
   excelToPdf: FileText,
   pdfToPdfa: FileText,
@@ -108,8 +106,6 @@ const TOOL_IDS = [
   { id: "reorderPdf", href: "/tools/reorder-pdf-pages", category: "pdf", active: true },
   { id: "wordToPdf", href: "/tools/word-to-pdf", category: "pdf", active: true },
   { id: "faviconGenerator", href: "/tools/favicon-generator", category: "tools", active: true },
-  { id: "dwgToPdf", href: "/tools/dwg-to-pdf", category: "cad", active: false },
-  { id: "dxfToPdf", href: "/tools/dxf-to-pdf", category: "cad", active: false },
   { id: "dxfViewer", href: "/tools/dxf-viewer", category: "cad", active: true },
   { id: "excelToPdf", href: "/tools/excel-to-pdf", category: "pdf", active: true },
   { id: "pdfToPdfa", href: "/tools/pdf-to-pdfa", category: "pdf", active: true },
@@ -397,6 +393,10 @@ export default function Home() {
                 "@type": "ImageObject",
                 url: `${BASE_URL}/fileflip-logo.svg`,
               },
+              sameAs: [
+                "https://www.producthunt.com/products/fileflip",
+                "https://www.saashub.com/fileflip",
+              ],
             },
           }),
         }}
@@ -703,6 +703,10 @@ export default function Home() {
                 {tTools("available", { count: filteredTools.length })}
               </span>
             </div>
+
+            <p className="mb-6 max-w-2xl text-sm leading-relaxed text-slate-400">
+              {t("seoIntro")}
+            </p>
 
             <div className="flex flex-wrap gap-2">
               {CATEGORIES.map((cat) => (

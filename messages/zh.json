@@ -161,7 +161,6 @@
     "filterUtility": "实用工具",
     "filterTools": "工具",
     "filterCad": "CAD",
-    "filterVideo": "视频",
     "filterAudio": "音频",
     "filterSocial": "社交",
     "filter3d": "3D",
@@ -181,7 +180,8 @@
     "faq7Q": "需要注册账号吗？",
     "faq7A": "不需要。您无需注册或登录即可使用所有 FileFlip 工具。打开网站、选择工具、上传文件并下载结果即可。我们不需要邮箱、密码或任何个人数据。使用简单且私密。",
     "faq8Q": "FileFlip 真的免费吗？",
-    "faq8A": "是的。FileFlip 免费使用，无隐藏费用或付费档位。我们的目标是为每个人提供简单实用的工具。我们不会在结果上添加水印或要求付款。您可以随时免费使用这些工具。"
+    "faq8A": "是的。FileFlip 免费使用，无隐藏费用或付费档位。我们的目标是为每个人提供简单实用的工具。我们不会在结果上添加水印或要求付款。您可以随时免费使用这些工具。",
+    "seoIntro": "FileFlip 是一款完全在您的浏览器中运行的免费在线文件转换器。无需上传文件到服务器，即可转换 PDF、图像、视频、音频和 3D 文件。无需注册，无需安装软件。"
   },
   "meta": {
     "defaultTitle": "FileFlip — 免费转换与压缩文件工具",
@@ -1319,16 +1319,10 @@
       "faq8A": "工具始终将第一行视为表头。若 CSV 无表头，第一行数据会被样式化为表头。建议在转换前为 CSV 添加表头行。"
     },
     "faviconGenerator": {
-      "label": "Favicon生成器",
-      "short": "从任何图片生成所有尺寸的favicon。下载完整的网站图标包。",
-      "metaTitle": "Favicon生成器 – 从图片免费创建Favicon",
-      "metaDescription": "从任何图片生成所有尺寸的favicon。下载ICO、PNG和webmanifest文件。",
-      "dropzone": "将图片拖放到此处或点击上传",
-      "generating": "正在生成favicon...",
-      "download": "下载Favicon包（.zip）",
-      "preview": "预览",
-      "filesIncluded": "包含的文件",
-      "errorGeneric": "生成favicon失败，请使用PNG或JPG图片。"
+      "label": "Favicon 生成器",
+      "short": "从图片生成 favicon。",
+      "metaTitle": "免费在线 Favicon 生成器",
+      "metaDescription": "生成 favicon（16x16、32x32 等）。ZIP 下载。在浏览器中完成。"
     },
     "dwgToPdf": {
       "label": "DWG转PDF",
@@ -2339,12 +2333,6 @@
       "short": "转换 HEX、RGB 和 HSL。",
       "metaTitle": "免费 HEX RGB HSL 颜色转换",
       "metaDescription": "在 HEX、RGB 和 HSL 之间转换颜色。实时预览。"
-    },
-    "faviconGenerator": {
-      "label": "Favicon 生成器",
-      "short": "从图片生成 favicon。",
-      "metaTitle": "免费在线 Favicon 生成器",
-      "metaDescription": "生成 favicon（16x16、32x32 等）。ZIP 下载。在浏览器中完成。"
     },
     "extractAudio": {
       "label": "提取音频",

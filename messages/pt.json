@@ -207,12 +207,11 @@
     "filterAll": "Todas",
     "filterImages": "Imagens",
     "filterPdf": "PDF",
-    "filterVideo": "Vídeo",
+    "filterVideo": "Video",
     "filterTextCode": "Texto e código",
     "filterUtility": "Utilitários",
     "filterTools": "Ferramentas",
     "filterCad": "CAD",
-    "filterVideo": "Video",
     "filterAudio": "Audio",
     "filterSocial": "Social",
     "filter3d": "3D",
@@ -232,7 +231,8 @@
     "faq7Q": "Preciso de criar uma conta?",
     "faq7A": "Não. Podes usar todas as ferramentas FileFlip sem te registares ou fazeres login. Abre o site, escolhe uma ferramenta, carrega o ficheiro e descarrega o resultado. Não pedimos email, palavra-passe nem dados pessoais. O uso continua simples e privado.",
     "faq8Q": "O FileFlip é mesmo grátis?",
-    "faq8A": "Sim. O FileFlip é gratuito, sem custos escondidos nem planos premium. O objetivo é oferecer ferramentas simples e práticas para todos. Não acrescentamos marcas de água aos resultados nem pedimos pagamento. Podes usar as ferramentas quantas vezes quiseres sem custo."
+    "faq8A": "Sim. O FileFlip é gratuito, sem custos escondidos nem planos premium. O objetivo é oferecer ferramentas simples e práticas para todos. Não acrescentamos marcas de água aos resultados nem pedimos pagamento. Podes usar as ferramentas quantas vezes quiseres sem custo.",
+    "seoIntro": "FileFlip é um conversor de arquivos online gratuito que funciona 100% no seu navegador. Converta PDFs, imagens, vídeos, áudio e arquivos 3D sem enviar nada para um servidor. Sem registro, sem instalação."
   },
   "meta": {
     "defaultTitle": "FileFlip — Ferramentas grátis para converter e comprimir ficheiros",
@@ -1368,16 +1368,10 @@
       "faq8A": "A ferramenta sempre trata a primeira linha como cabeçalho. Se seu CSV não tiver cabeçalho, a primeira linha de dados será estilizada como cabeçalho. Considere adicionar uma linha de cabeçalho ao CSV antes de converter."
     },
     "faviconGenerator": {
-      "label": "Gerador de Favicon",
-      "short": "Gere todos os tamanhos de favicon a partir de qualquer imagem. Baixe o pacote completo.",
-      "metaTitle": "Gerador de Favicon – Criar Favicon de Imagem Grátis",
-      "metaDescription": "Gere favicons em todos os tamanhos a partir de qualquer imagem.",
-      "dropzone": "Arraste sua imagem aqui ou clique para carregar",
-      "generating": "Gerando favicons...",
-      "download": "Baixar Pacote Favicon (.zip)",
-      "preview": "Visualização",
-      "filesIncluded": "Arquivos incluídos no pacote",
-      "errorGeneric": "Falha ao gerar favicons. Use uma imagem PNG ou JPG."
+      "label": "Gerador de favicon",
+      "short": "Gerar favicons a partir de uma imagem.",
+      "metaTitle": "Gerador de favicon online grátis",
+      "metaDescription": "Gerar favicons (16x16, 32x32, etc.). Download ZIP. No browser."
     },
     "dwgToPdf": {
       "label": "DWG para PDF",
@@ -1590,52 +1584,9 @@
     },
     "compressVideo": {
       "label": "Comprimir vídeo",
-      "short": "Reduza o tamanho do vídeo no browser.",
+      "short": "Comprimir MP4 no browser.",
       "metaTitle": "Comprimir vídeo online grátis",
-      "metaDescription": "Comprima vídeo MP4 online. Escolha Leve, Médio ou Forte. Veja o tamanho antes e depois. Sem conta, no browser com FFmpeg.wasm.",
-      "releaseToUpload": "Largar para enviar",
-      "stepIndicatorUpload": "Enviar",
-      "stepIndicatorCompress": "Comprimir",
-      "stepIndicatorDownload": "Descarregar",
-      "levelLabel": "Nível de compressão",
-      "levelLight": "Leve",
-      "levelMedium": "Médio",
-      "levelStrong": "Forte",
-      "compressingLabel": "A comprimir...",
-      "compressButton": "Comprimir vídeo",
-      "progressLabel": "Progresso: {percent}%",
-      "sizeBefore": "Antes",
-      "sizeAfter": "Depois",
-      "step3Description": "O seu vídeo comprimido está pronto.",
-      "downloadButton": "Descarregar vídeo",
-      "warningLongTime": "A compressão pode demorar vários minutos em vídeos longos.",
-      "errorVideoOnly": "Selecione um vídeo MP4.",
-      "errorSelectFirst": "Selecione primeiro um vídeo.",
-      "errorCompressFailed": "Falha ao comprimir. Tente outro vídeo.",
-      "errorLoadFfmpeg": "Falha ao carregar FFmpeg. Verifique a ligação e tente novamente.",
-      "loadingFfmpeg": "A carregar FFmpeg...",
-      "editorialTitle": "Porquê comprimir vídeo online",
-      "editorialBody": "Comprimir reduz o tamanho para partilhar, enviar ou guardar vídeos mais facilmente. Fazer no browser evita enviar para um servidor: o vídeo fica no seu dispositivo.\n\nEsta ferramenta usa FFmpeg.wasm para re-codificar com um CRF mais alto: Leve (CRF 28, ~40% mais pequeno), Médio (CRF 33, ~60% mais pequeno) ou Forte (CRF 38, ~75% mais pequeno). Re-codificar demora, especialmente em vídeos longos; uma barra mostra o progresso. Vê o tamanho original e o novo antes de descarregar.\n\nUse para reduzir tamanho rapidamente quando não puder instalar software. Para compressão pesada ou em lote, uma app de secretária pode ser mais rápida.",
-      "faq1Q": "Como comprimo um vídeo online?",
-      "faq1A": "Envie o seu MP4. Escolha Leve, Médio ou Forte. Clique em \"Comprimir vídeo\". FFmpeg.wasm re-codifica no browser. Quando terminar vê o tamanho original e o novo; descarregue o resultado. O processamento pode demorar vários minutos em vídeos longos.",
-      "faq2Q": "Os meus vídeos são enviados a um servidor?",
-      "faq2A": "Não. A compressão é feita no browser com FFmpeg.wasm. O seu vídeo não sai do dispositivo.",
-      "faq3Q": "O que significam os níveis de compressão?",
-      "faq3A": "Leve: CRF 28, boa qualidade, ~40% mais pequeno. Médio: CRF 33, equilibrado, ~60% mais pequeno. Forte: CRF 38, ficheiro mais pequeno, qualidade mais baixa, ~75% mais pequeno.",
-      "faq4Q": "Porque é que a compressão demora tanto?",
-      "faq4A": "Re-codificar vídeo consome muita CPU. FFmpeg.wasm corre no browser, por isso a velocidade depende do dispositivo. Vídeos longos ou em alta resolução podem demorar vários minutos.",
-      "faq5Q": "Em que formato é a saída?",
-      "faq5A": "A saída é MP4 (vídeo H.264, áudio AAC), adequado para web e partilha.",
-      "faq6Q": "Funciona no telemóvel?",
-      "faq6A": "Sim, mas a compressão consome muita CPU. No telemóvel pode demorar mais; clips curtos funcionam melhor.",
-      "faq7Q": "Posso comprimir WebM ou outros formatos?",
-      "faq7A": "Esta ferramenta aceita MP4 de entrada e produz MP4. Para outros formatos converta primeiro ou use uma app de secretária.",
-      "faq8Q": "Há limite de tamanho de ficheiro?",
-      "faq8A": "Não há limite fixo. Vídeos muito grandes podem usar muita memória e demorar muito. Depende do dispositivo.",
-      "faq9Q": "Porquê comprimir no browser?",
-      "faq9A": "Não envia para nenhum servidor—o vídeo fica no dispositivo. Útil para reduzir tamanho rapidamente quando não puder instalar software.",
-      "faq10Q": "Funciona em todos os browsers?",
-      "faq10A": "FFmpeg.wasm requer um browser moderno com WebAssembly. Chrome, Firefox, Safari e Edge (versões recentes) funcionam."
+      "metaDescription": "Comprimir vídeo MP4. Barra de progresso. WebAssembly no browser."
     },
     "muteVideo": {
       "label": "Silenciar vídeo",
@@ -2388,18 +2339,6 @@
       "short": "Converter HEX, RGB e HSL.",
       "metaTitle": "Conversor HEX RGB HSL grátis",
       "metaDescription": "Converter cores entre HEX, RGB e HSL. Pré-visualização em tempo real."
-    },
-    "faviconGenerator": {
-      "label": "Gerador de favicon",
-      "short": "Gerar favicons a partir de uma imagem.",
-      "metaTitle": "Gerador de favicon online grátis",
-      "metaDescription": "Gerar favicons (16x16, 32x32, etc.). Download ZIP. No browser."
-    },
-    "compressVideo": {
-      "label": "Comprimir vídeo",
-      "short": "Comprimir MP4 no browser.",
-      "metaTitle": "Comprimir vídeo online grátis",
-      "metaDescription": "Comprimir vídeo MP4. Barra de progresso. WebAssembly no browser."
     },
     "extractAudio": {
       "label": "Extrair áudio",

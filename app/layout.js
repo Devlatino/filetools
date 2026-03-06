@@ -30,6 +30,10 @@ export const metadata = {
     siteName: "FileFlip",
     images: ["/og.png"],
   },
+  twitter: {
+    card: "summary_large_image",
+    site: "@fileflip",
+  },
   icons: {
     icon: "/fileflip-icon.svg",
     apple: "/fileflip-icon.svg",

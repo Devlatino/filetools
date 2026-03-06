@@ -33,13 +33,6 @@ export function SchemaMarkup({
       "Available in 9 languages",
     ],
     isAccessibleForFree: true,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      reviewCount: "1247",
-      bestRating: "5",
-      worstRating: "1",
-    },
     provider: {
       "@type": "Organization",
       name: "FileFlip",

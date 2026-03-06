@@ -25,6 +25,13 @@ export async function generateMetadata({ params }) {
       title: t("metaTitle"),
       description: t("metaDescription"),
       url: canonical,
+      siteName: "FileFlip",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("metaTitle"),
+      description: t("metaDescription"),
     },
     other: {
       "script:ld+json": JSON.stringify({

@@ -32,9 +32,11 @@ export default async function Layout({ children, params }) {
     name,
     description,
     applicationCategory: "UtilitiesApplication",
-    operatingSystem: "Web",
-    offers: { "@type": "Offer", price: 0, priceCurrency: "EUR" },
-    aggregateRating: { "@type": "AggregateRating", ratingValue: 4.8, ratingCount: 89 },
+    operatingSystem: "Web Browser",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    isAccessibleForFree: true,
+    browserRequirements: "Requires JavaScript",
+    provider: { "@type": "Organization", name: "FileFlip", url: "https://www.fileflip.org" },
   };
   const faqSchema =
     faqs?.length > 0

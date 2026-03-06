@@ -1,6 +1,13 @@
 import { routing } from "@/i18n/routing";
 import { BASE_URL } from "@/lib/constants";
 
+const HIGH_PRIORITY_TOOLS = [
+  'compress-pdf', 'merge-pdf', 'split-pdf', 'compress-image',
+  'heic-to-jpg', 'remove-background', 'word-to-pdf', 'pdf-to-jpg',
+  'resize-image', 'jpg-to-png', 'png-to-jpg', 'image-to-pdf',
+  'excel-to-pdf', 'qr-code-generator', 'pdf-to-pdfa',
+];
+
 const TOOL_PATHS = [
   "/tools/compress-image",
   "/tools/merge-pdf",
@@ -69,6 +76,9 @@ const BLOG_SLUGS = [
   "what-is-pdfa-and-when-do-you-need-it",
 ];
 
+// Fixed date for tools — update on each deploy
+const TOOL_LAST_MOD = "2025-03-01T00:00:00.000Z";
+
 /**
  * Build alternates.languages for a path segment (e.g. "" for home or "/tools/compress-image").
  * With localePrefix 'as-needed', default locale (en) has no URL prefix.
@@ -97,58 +107,93 @@ function buildAlternatesLanguages(pathSegment) {
  * @returns {import('next').MetadataRoute.Sitemap}
  */
 export default function sitemap() {
-  const lastModified = new Date();
+  const now = new Date().toISOString();
   const entries = [];
 
+  // Homepage — always fresh
   const homeLanguages = buildAlternatesLanguages("");
   for (const locale of routing.locales) {
     const path = locale === routing.defaultLocale ? "" : `/${locale}`;
     entries.push({
       url: `${BASE_URL}${path}`,
-      lastModified,
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 1.0,
       alternates: { languages: homeLanguages },
     });
   }
 
+  // Tools index — high priority
+  const toolsIndexLanguages = buildAlternatesLanguages("/tools");
+  for (const locale of routing.locales) {
+    const pathPrefix = locale === routing.defaultLocale ? "" : `/${locale}`;
+    entries.push({
+      url: `${BASE_URL}${pathPrefix}/tools`,
+      lastModified: TOOL_LAST_MOD,
+      changeFrequency: "weekly",
+      priority: 0.9,
+      alternates: { languages: toolsIndexLanguages },
+    });
+  }
+
+  // Individual tool pages
   for (const path of TOOL_PATHS) {
+    const slug = path.replace("/tools/", "");
+    const isHighPriority = HIGH_PRIORITY_TOOLS.includes(slug);
     const toolLanguages = buildAlternatesLanguages(path);
     for (const locale of routing.locales) {
       const pathPrefix =
         locale === routing.defaultLocale ? "" : `/${locale}`;
       entries.push({
         url: `${BASE_URL}${pathPrefix}${path}`,
-        lastModified,
-        changeFrequency: path === "/tools/compare" ? "monthly" : "monthly",
-        priority: path === "/tools/compare" ? 0.8 : 0.8,
+        lastModified: TOOL_LAST_MOD,
+        changeFrequency: "monthly",
+        priority: isHighPriority ? 0.9 : 0.8,
         alternates: { languages: toolLanguages },
       });
     }
   }
 
+  // Blog index — always fresh
   const blogLanguages = buildAlternatesLanguages("/blog");
   for (const locale of routing.locales) {
     const pathPrefix = locale === routing.defaultLocale ? "" : `/${locale}`;
     entries.push({
       url: `${BASE_URL}${pathPrefix}/blog`,
-      lastModified,
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.7,
       alternates: { languages: blogLanguages },
     });
   }
 
+  // Blog posts
   for (const slug of BLOG_SLUGS) {
     const blogSlugLanguages = buildAlternatesLanguages(`/blog/${slug}`);
     for (const locale of routing.locales) {
       const pathPrefix = locale === routing.defaultLocale ? "" : `/${locale}`;
       entries.push({
         url: `${BASE_URL}${pathPrefix}/blog/${slug}`,
-        lastModified,
+        lastModified: TOOL_LAST_MOD,
         changeFrequency: "monthly",
         priority: 0.6,
         alternates: { languages: blogSlugLanguages },
+      });
+    }
+  }
+
+  // Static pages
+  const staticPages = ["/about", "/privacy", "/terms"];
+  for (const page of staticPages) {
+    const pageLanguages = buildAlternatesLanguages(page);
+    for (const locale of routing.locales) {
+      const pathPrefix = locale === routing.defaultLocale ? "" : `/${locale}`;
+      entries.push({
+        url: `${BASE_URL}${pathPrefix}${page}`,
+        lastModified: TOOL_LAST_MOD,
+        changeFrequency: "yearly",
+        priority: 0.4,
+        alternates: { languages: pageLanguages },
       });
     }
   }

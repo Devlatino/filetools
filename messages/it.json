@@ -212,7 +212,6 @@
     "filterUtility": "Utilità",
     "filterTools": "Strumenti",
     "filterCad": "CAD",
-    "filterVideo": "Video",
     "filterAudio": "Audio",
     "filterSocial": "Social",
     "filter3d": "3D",
@@ -232,7 +231,8 @@
     "faq7Q": "Devo creare un account?",
     "faq7A": "No. Puoi usare ogni tool FileFlip senza registrarti o fare login. Apri il sito, scegli un tool, carica il file e scarica il risultato. Non chiediamo email, password né altri dati personali. L'uso resta semplice e riservato.",
     "faq8Q": "FileFlip è davvero gratuito?",
-    "faq8A": "Sì. FileFlip è gratuito, senza costi nascosti o piani a pagamento. L'obiettivo è offrire strumenti semplici e pratici per tutti. Non aggiungiamo watermark ai risultati né chiediamo pagamenti. Puoi usare i tool quanto vuoi senza costi."
+    "faq8A": "Sì. FileFlip è gratuito, senza costi nascosti o piani a pagamento. L'obiettivo è offrire strumenti semplici e pratici per tutti. Non aggiungiamo watermark ai risultati né chiediamo pagamenti. Puoi usare i tool quanto vuoi senza costi.",
+    "seoIntro": "FileFlip è un convertitore di file online gratuito che funziona al 100% nel tuo browser. Converti PDF, immagini, video, audio e file 3D senza caricare nulla su un server. Nessuna registrazione, nessun software da installare."
   },
   "meta": {
     "defaultTitle": "FileFlip — Tool gratuiti per convertire e comprimere file",
@@ -1380,16 +1380,10 @@
       "faq8A": "Lo strumento considera sempre la prima riga come intestazione. Se il CSV non ha intestazione, la prima riga dati verrà stilizzata come intestazione. Valuta di aggiungere una riga di intestazione al CSV prima di convertire."
     },
     "faviconGenerator": {
-      "label": "Generatore Favicon",
-      "short": "Genera tutte le dimensioni favicon da qualsiasi immagine. Scarica il pacchetto completo per il tuo sito.",
-      "metaTitle": "Generatore Favicon – Crea Favicon da Immagine Gratis",
-      "metaDescription": "Genera favicon in tutte le dimensioni da qualsiasi immagine. Scarica ICO, PNG e webmanifest.",
-      "dropzone": "Trascina qui la tua immagine o clicca per caricarla",
-      "generating": "Generazione favicon in corso...",
-      "download": "Scarica Pacchetto Favicon (.zip)",
-      "preview": "Anteprima",
-      "filesIncluded": "File inclusi nel pacchetto",
-      "errorGeneric": "Generazione favicon fallita. Usa un'immagine PNG o JPG."
+      "label": "Generatore favicon",
+      "short": "Genera favicon da un'immagine.",
+      "metaTitle": "Generatore Favicon Online Gratis",
+      "metaDescription": "Genera favicon (16x16, 32x32, 48x48, 180x180) da un'immagine. Download singolo o ZIP."
     },
     "dwgToPdf": {
       "label": "DWG in PDF",
@@ -1427,49 +1421,9 @@
     },
     "pdfToText": {
       "label": "PDF in testo",
-      "short": "Estrai testo dal PDF per copiare o scaricare.",
+      "short": "Estrai testo da PDF.",
       "metaTitle": "PDF in Testo Online Gratis",
-      "metaDescription": "Estrai testo da un PDF online. Copia o scarica come .txt. Nessun account, nel browser con PDF.js.",
-      "releaseToUpload": "Rilascia per caricare",
-      "stepIndicatorUpload": "Carica",
-      "stepIndicatorExtract": "Estrai",
-      "stepIndicatorDownload": "Scarica",
-      "extractingLabel": "Estrazione in corso...",
-      "extractButton": "Estrai testo",
-      "pageLabel": "Pagina {number}",
-      "statsPages": "{count} pagina/e",
-      "statsChars": "{count} caratteri",
-      "textareaPlaceholder": "Il testo estratto apparirà qui.",
-      "copyButton": "Copia testo",
-      "copySuccess": "Copiato!",
-      "downloadButton": "Scarica .txt",
-      "warningScanOnly": "Questo PDF potrebbe contenere solo immagini (es. una scansione). Il testo estratto potrebbe essere vuoto. Per documenti scansionati serve l'OCR.",
-      "errorPdfOnly": "Seleziona un file PDF.",
-      "errorSelectFirst": "Seleziona prima un file PDF.",
-      "errorExtractFailed": "Estrazione fallita. Prova un altro PDF.",
-      "errorCopyFailed": "Copia negli appunti fallita.",
-      "editorialTitle": "Perché estrarre testo da un PDF",
-      "editorialBody": "Estrarre il testo permette di copiarlo, cercarlo o modificarlo. Lo strumento usa PDF.js nel browser e per ogni pagina estrae il livello di testo. Se il PDF è solo immagini (scansione) il testo può essere vuoto; in quel caso serve l'OCR.\n\nUsa PDF in testo quando ti servono le parole. Usa PDF in JPG/PNG quando ti servono le immagini delle pagine.",
-      "faq1Q": "Come estraggo il testo da un PDF online?",
-      "faq1A": "Carica il PDF, clicca \"Estrai testo\". Il risultato appare in un'area di testo; puoi copiarlo o scaricarlo come .txt. Tutto nel browser.",
-      "faq2Q": "I miei PDF vengono inviati a un server?",
-      "faq2A": "No. L'estrazione avviene nel browser con PDF.js. Il PDF non esce dal dispositivo.",
-      "faq3Q": "Perché il testo estratto è vuoto?",
-      "faq3A": "Se il PDF contiene solo immagini (es. scansione) non c'è testo incorporato. Per le scansioni serve l'OCR.",
-      "faq4Q": "In che formato è l'output?",
-      "faq4A": "Vedi il testo in un'area di testo. Puoi copiarlo o scaricarlo come .txt. Le pagine sono separate da \"--- Pagina N ---\".",
-      "faq5Q": "Funziona con PDF protetti da password?",
-      "faq5A": "I PDF protetti vanno sbloccati prima. Apri con la password in un'altra app, salva senza password e usa quella copia.",
-      "faq6Q": "Funziona su mobile?",
-      "faq6A": "Sì. Carica il PDF, estrai il testo, copia o scarica.",
-      "faq7Q": "Si mantiene l'ordine del testo?",
-      "faq7A": "Sì. Il testo è estratto pagina per pagina in ordine.",
-      "faq8Q": "Posso estrarre testo dalle immagini nel PDF?",
-      "faq8A": "No. Lo strumento estrae solo il livello di testo incorporato. Il testo nelle immagini (scansioni) richiede OCR.",
-      "faq9Q": "C'è un limite di pagine?",
-      "faq9A": "Nessun limite fisso. PDF molto lunghi possono richiedere più tempo.",
-      "faq10Q": "Differenza tra PDF in testo e PDF in JPG?",
-      "faq10A": "PDF in testo estrae le parole. PDF in JPG converte ogni pagina in immagine. Usa il primo per il testo, il secondo per le immagini."
+      "metaDescription": "Estrai testo da PDF online. Copia o scarica come TXT. Nessun account, nel browser."
     },
     "createZip": {
       "label": "Crea ZIP",
@@ -2391,12 +2345,6 @@
       "metaTitle": "Unisci Immagini Online Gratis",
       "metaDescription": "Unisci due immagini orizzontalmente o verticalmente. Anteprima e download. Nel browser."
     },
-    "pdfToText": {
-      "label": "PDF in testo",
-      "short": "Estrai testo da PDF.",
-      "metaTitle": "PDF in Testo Online Gratis",
-      "metaDescription": "Estrai testo da PDF online. Copia o scarica come TXT. Nessun account, nel browser."
-    },
     "addWatermark": {
       "label": "Aggiungi watermark",
       "short": "Aggiungi watermark di testo alle immagini.",
@@ -2408,12 +2356,6 @@
       "short": "Converti HEX, RGB e HSL.",
       "metaTitle": "Convertitore Colori HEX RGB HSL Gratis",
       "metaDescription": "Converti colori tra HEX, RGB e HSL. Anteprima live. Nessun account, nel browser."
-    },
-    "faviconGenerator": {
-      "label": "Generatore favicon",
-      "short": "Genera favicon da un'immagine.",
-      "metaTitle": "Generatore Favicon Online Gratis",
-      "metaDescription": "Genera favicon (16x16, 32x32, 48x48, 180x180) da un'immagine. Download singolo o ZIP."
     },
     "extractAudio": {
       "label": "Estrai audio",
