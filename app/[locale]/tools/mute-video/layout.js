@@ -21,4 +21,13 @@ export async function generateMetadata({ params }) {
   });
 }
 
-
+export default async function Layout({ children, params }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  return (
+    <>
+      <ToolSchemaMarkup locale={locale} />
+      {children}
+    </>
+  );
+}
