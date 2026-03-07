@@ -1,7 +1,6 @@
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 import { BlogShell } from "@/components/BlogShell";
-import { SchemaMarkup } from "@/components/SchemaMarkup";
 import { routing } from "@/i18n/routing";
 import { BASE_URL } from "@/lib/constants";
 
@@ -79,12 +78,6 @@ export default async function ComparePage({ params }) {
 
   return (
     <BlogShell locale={locale}>
-      <SchemaMarkup
-        title={t("metaTitle")}
-        description={t("metaDescription")}
-        slug="compare"
-        locale={locale}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}

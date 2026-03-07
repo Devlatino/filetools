@@ -5,8 +5,8 @@ import { getPostBySlug, getAllPosts, getAllSlugs } from "@/lib/blog";
 import { routing } from "@/i18n/routing";
 import { BlogShell } from "@/components/BlogShell";
 import { ArrowLeft } from "lucide-react";
-
 import { BASE_URL } from "@/lib/constants";
+import { buildAbsoluteLanguageAlternates } from "@/lib/buildAlternates";
 
 export async function generateStaticParams() {
   const slugs = getAllSlugs();
@@ -28,14 +28,12 @@ export async function generateMetadata({ params }) {
     locale === routing.defaultLocale
       ? `${BASE_URL}/blog/${slug}`
       : `${BASE_URL}/${locale}/blog/${slug}`;
-  const languages = {};
-  for (const loc of routing.locales) {
-    languages[loc] =
-      loc === routing.defaultLocale
-        ? `${BASE_URL}/blog/${slug}`
-        : `${BASE_URL}/${loc}/blog/${slug}`;
-  }
-  languages["x-default"] = `${BASE_URL}/blog/${slug}`;
+  const languages = buildAbsoluteLanguageAlternates(`/blog/${slug}`);
+  const publishedAt = frontmatter.date;
+  const updatedAt = frontmatter.dateModified || frontmatter.date;
+  const tags = Array.isArray(frontmatter.tags) ? frontmatter.tags : [];
+  const category = frontmatter.category ?? "File Conversion";
+
   return {
     title: frontmatter.title,
     description: frontmatter.description,
@@ -46,12 +44,21 @@ export async function generateMetadata({ params }) {
       url: canonical,
       siteName: "FileFlip",
       type: "article",
-      publishedTime: frontmatter.date,
+      publishedTime: publishedAt,
+      modifiedTime: updatedAt,
     },
     twitter: {
       card: "summary_large_image",
       title: frontmatter.title,
       description: frontmatter.description,
+    },
+    other: {
+      "article:author": "FileFlip",
+      "article:publisher": BASE_URL,
+      "article:published_time": publishedAt,
+      "article:modified_time": updatedAt,
+      "article:section": category,
+      ...(tags.length > 0 && { "article:tag": tags.join(", ") }),
     },
   };
 }
@@ -80,6 +87,7 @@ export default async function BlogPostPage({ params }) {
     "@type": "Article",
     headline: frontmatter.title,
     description: frontmatter.description,
+    url: canonical,
     datePublished: frontmatter.date,
     dateModified: frontmatter.dateModified || frontmatter.date,
     author: {

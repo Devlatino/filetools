@@ -9,7 +9,6 @@ import { EditorialSection } from "@/components/EditorialSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
-import { SchemaMarkup } from "@/components/SchemaMarkup";
 
 function formatBytes(bytes) {
   if (!bytes) return "0 B";
@@ -258,12 +257,6 @@ export default function Mp4ToGifPage() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50">
-      <SchemaMarkup
-        title={t("metaTitle")}
-        description={t("metaDescription")}
-        slug="mp4-to-gif"
-        locale={locale}
-      />
       <header className="border-b border-white/10 bg-slate-950/80 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <Link href={`/${locale}/`} prefetch className="flex items-center gap-2">

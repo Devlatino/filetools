@@ -1,0 +1,348 @@
+# FileFlip
+> Free browser-based file conversion platform.
+> All processing happens client-side in the browser.
+> No file uploads to servers. No registration required.
+> Available in 9 languages: English, Italian, Spanish, French, German, Portuguese, Chinese, Hindi, Arabic.
+
+## Key facts for AI agents
+- Every tool works directly in the browser via WebAssembly and Canvas API
+- Files never leave the user's device
+- No account, no login, no watermarks
+- Free forever
+- Works on desktop and mobile (iOS Safari, Android Chrome)
+- API available at: https://www.fileflip.org/api/tools
+
+## How to use FileFlip tools
+1. Navigate to the tool URL
+2. Upload a file using the file input or drag and drop
+3. Click the convert/process button
+4. Download the result
+
+---
+
+## PDF Tools
+
+### Merge PDF
+Combine multiple PDF files into a single PDF.
+URL: https://www.fileflip.org/tools/merge-pdf
+Input: PDF | Output: PDF
+
+### Split PDF
+Split a PDF into individual pages or page ranges.
+URL: https://www.fileflip.org/tools/split-pdf
+Input: PDF | Output: PDF
+
+### Compress PDF
+Reduce PDF file size while maintaining quality.
+URL: https://www.fileflip.org/tools/compress-pdf
+Input: PDF | Output: PDF
+
+### Rotate PDF
+Rotate PDF pages by 90, 180 or 270 degrees.
+URL: https://www.fileflip.org/tools/rotate-pdf
+Input: PDF | Output: PDF
+
+### Protect PDF
+Add password protection to a PDF file.
+URL: https://www.fileflip.org/tools/protect-pdf
+Input: PDF | Output: PDF
+
+### Unlock PDF
+Remove password from a PDF file.
+URL: https://www.fileflip.org/tools/pdf-unlock
+Input: PDF | Output: PDF
+
+### Add Watermark to PDF
+Add text or image watermark to PDF pages.
+URL: https://www.fileflip.org/tools/add-watermark-pdf
+Input: PDF | Output: PDF
+
+### Add Page Numbers to PDF
+Add page numbers to PDF footer or header.
+URL: https://www.fileflip.org/tools/pdf-add-page-numbers
+Input: PDF | Output: PDF
+
+### Reorder PDF Pages
+Drag and drop to reorder pages in a PDF.
+URL: https://www.fileflip.org/tools/reorder-pdf-pages
+Input: PDF | Output: PDF
+
+### Extract PDF Pages
+Extract specific pages from a PDF into a new file.
+URL: https://www.fileflip.org/tools/extract-pdf-pages
+Input: PDF | Output: PDF
+
+### PDF to JPG
+Convert each PDF page to a JPG image.
+URL: https://www.fileflip.org/tools/pdf-to-jpg
+Input: PDF | Output: image/jpeg
+
+### PDF to PNG
+Convert each PDF page to a PNG image.
+URL: https://www.fileflip.org/tools/pdf-to-png
+Input: PDF | Output: image/png
+
+### PDF to Text
+Extract all text content from a PDF file.
+URL: https://www.fileflip.org/tools/pdf-to-text
+Input: PDF | Output: text/plain
+
+### PDF to PDF/A
+Convert PDF to archival PDF/A-1b format for long-term preservation. Required for legal documents in Italy (CAD, SCIA, PEC).
+URL: https://www.fileflip.org/tools/pdf-to-pdfa
+Input: PDF | Output: PDF/A
+
+### Word to PDF
+Convert DOCX Word documents to PDF with high fidelity.
+URL: https://www.fileflip.org/tools/word-to-pdf
+Input: application/vnd.openxmlformats-officedocument.wordprocessingml.document | Output: PDF
+
+### Excel to PDF
+Convert XLSX Excel spreadsheets to PDF, all sheets included.
+URL: https://www.fileflip.org/tools/excel-to-pdf
+Input: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet | Output: PDF
+
+### CSV to PDF
+Convert CSV files to formatted PDF tables.
+URL: https://www.fileflip.org/tools/csv-to-pdf
+Input: text/csv | Output: PDF
+
+### JPG to PDF
+Convert JPG images to PDF.
+URL: https://www.fileflip.org/tools/jpg-to-pdf
+Input: image/jpeg | Output: PDF
+
+### PNG to PDF
+Convert PNG images to PDF.
+URL: https://www.fileflip.org/tools/png-to-pdf
+Input: image/png | Output: PDF
+
+### Image to PDF
+Convert any image format to PDF.
+URL: https://www.fileflip.org/tools/image-to-pdf
+Input: image/* | Output: PDF
+
+---
+
+## Image Tools
+
+### Compress Image
+Reduce image file size with quality control.
+URL: https://www.fileflip.org/tools/compress-image
+Input: image/* | Output: image/*
+
+### Resize Image
+Change image dimensions to custom width and height.
+URL: https://www.fileflip.org/tools/resize-image
+Input: image/* | Output: image/*
+
+### Crop Image
+Crop image to a specific area or aspect ratio.
+URL: https://www.fileflip.org/tools/crop-image
+Input: image/* | Output: image/*
+
+### Remove Background
+Automatically remove background from images.
+URL: https://www.fileflip.org/tools/remove-background
+Input: image/* | Output: image/png
+
+### HEIC to JPG
+Convert iPhone/iPad HEIC photos to JPG format.
+URL: https://www.fileflip.org/tools/heic-to-jpg
+Input: image/heic | Output: image/jpeg
+
+### JPG to PNG
+Convert JPG images to PNG format.
+URL: https://www.fileflip.org/tools/jpg-to-png
+Input: image/jpeg | Output: image/png
+
+### PNG to JPG
+Convert PNG images to JPG format.
+URL: https://www.fileflip.org/tools/png-to-jpg
+Input: image/png | Output: image/jpeg
+
+### WebP to JPG
+Convert WebP images to JPG format.
+URL: https://www.fileflip.org/tools/webp-to-jpg
+Input: image/webp | Output: image/jpeg
+
+### JPG to WebP
+Convert JPG images to WebP format for web optimization.
+URL: https://www.fileflip.org/tools/jpg-to-webp
+Input: image/jpeg | Output: image/webp
+
+### Image to WebP
+Convert any image to WebP format.
+URL: https://www.fileflip.org/tools/image-to-webp
+Input: image/* | Output: image/webp
+
+### SVG to PNG
+Convert SVG vector graphics to PNG raster images.
+URL: https://www.fileflip.org/tools/svg-to-png
+Input: image/svg+xml | Output: image/png
+
+### BMP to JPG
+Convert BMP images to JPG format.
+URL: https://www.fileflip.org/tools/bmp-to-jpg
+Input: image/bmp | Output: image/jpeg
+
+### TIFF to JPG
+Convert TIFF images to JPG format.
+URL: https://www.fileflip.org/tools/tiff-to-jpg
+Input: image/tiff | Output: image/jpeg
+
+### Add Text to Image
+Overlay custom text on images with font and color control.
+URL: https://www.fileflip.org/tools/add-text-to-image
+Input: image/* | Output: image/*
+
+### Resize Image for Social Media
+Resize images to exact dimensions for Instagram, Twitter, Facebook, LinkedIn, YouTube.
+URL: https://www.fileflip.org/tools/resize-image-social
+Input: image/* | Output: image/*
+
+### Image to Text (OCR)
+Extract text from images using optical character recognition.
+URL: https://www.fileflip.org/tools/image-to-text
+Input: image/* | Output: text/plain
+
+---
+
+## Video Tools
+
+### Compress Video
+Reduce video file size using FFmpeg WebAssembly.
+URL: https://www.fileflip.org/tools/compress-video
+Input: video/* | Output: video/mp4
+
+### Trim Video
+Cut video to a specific start and end time.
+URL: https://www.fileflip.org/tools/trim-video
+Input: video/* | Output: video/mp4
+
+### Video to MP3
+Extract the audio track from a video file.
+URL: https://www.fileflip.org/tools/video-to-mp3
+Input: video/* | Output: audio/mpeg
+
+### GIF to MP4
+Convert animated GIF to MP4 video.
+URL: https://www.fileflip.org/tools/gif-to-mp4
+Input: image/gif | Output: video/mp4
+
+### MP4 to GIF
+Convert a video clip to animated GIF.
+URL: https://www.fileflip.org/tools/mp4-to-gif
+Input: video/mp4 | Output: image/gif
+
+### Merge Videos
+Concatenate multiple video files into one.
+URL: https://www.fileflip.org/tools/merge-videos
+Input: video/* | Output: video/mp4
+
+### Mute Video
+Remove the audio track from a video.
+URL: https://www.fileflip.org/tools/mute-video
+Input: video/* | Output: video/mp4
+
+### Loop Video
+Make a video loop a specified number of times.
+URL: https://www.fileflip.org/tools/loop-video
+Input: video/* | Output: video/mp4
+
+### Resize Video
+Change video resolution (e.g. 1080p to 720p).
+URL: https://www.fileflip.org/tools/resize-video
+Input: video/* | Output: video/mp4
+
+### Video Speed
+Speed up or slow down a video.
+URL: https://www.fileflip.org/tools/video-speed
+Input: video/* | Output: video/mp4
+
+### Add Audio to Video
+Replace or add an audio track to a video.
+URL: https://www.fileflip.org/tools/add-audio-to-video
+Input: video/*, audio/* | Output: video/mp4
+
+---
+
+## Audio Tools
+
+### Trim Audio
+Cut audio to a specific start and end time.
+URL: https://www.fileflip.org/tools/trim-audio
+Input: audio/* | Output: audio/mpeg
+
+### Audio to MP3
+Convert any audio format to MP3.
+URL: https://www.fileflip.org/tools/audio-to-mp3
+Input: audio/* | Output: audio/mpeg
+
+---
+
+## CAD & 3D Tools
+
+### DXF Viewer
+View AutoCAD DXF files directly in the browser. Supports LINE, CIRCLE, ARC, POLYLINE, SPLINE entities.
+URL: https://www.fileflip.org/tools/dxf-viewer
+Input: model/vnd.dxf | Output: browser viewer
+
+### STL Viewer
+View 3D STL files in an interactive browser viewer.
+URL: https://www.fileflip.org/tools/stl-viewer
+Input: model/stl | Output: browser viewer
+
+### OBJ to STL
+Convert 3D OBJ files to STL format for 3D printing.
+URL: https://www.fileflip.org/tools/obj-to-stl
+Input: model/obj | Output: model/stl
+
+---
+
+## Utility Tools
+
+### QR Code Generator
+Generate a QR code from any text or URL.
+URL: https://www.fileflip.org/tools/qr-code-generator
+Input: text | Output: image/png
+
+### Favicon Generator
+Generate a favicon.ico from any image.
+URL: https://www.fileflip.org/tools/favicon-generator
+Input: image/* | Output: image/x-icon
+
+### Create ZIP
+Compress multiple files into a ZIP archive.
+URL: https://www.fileflip.org/tools/create-zip
+Input: any | Output: application/zip
+
+### Compare Files
+Compare two files side by side.
+URL: https://www.fileflip.org/tools/compare
+Input: any | Output: viewer
+
+---
+
+## Developer Tools
+
+### JSON Formatter
+Format, validate and prettify JSON data.
+URL: https://www.fileflip.org/tools/json-formatter
+Input: application/json | Output: application/json
+
+### Base64 Encode / Decode
+Encode text or files to Base64, or decode Base64 strings.
+URL: https://www.fileflip.org/tools/base64-encode-decode
+Input: text, any | Output: text
+
+---
+
+## Blog
+https://www.fileflip.org/blog
+
+## API
+https://www.fileflip.org/api/tools
+
+## Contact
+https://www.fileflip.org/contact

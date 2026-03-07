@@ -1,9 +1,13 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { buildToolMetadata } from "@/lib/toolMetadata";
+import { getToolMetadataFromSchema } from "@/lib/metaHelpers";
+import ToolSchemaMarkup from "@/components/ToolSchemaMarkup";
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const meta = getToolMetadataFromSchema("image-to-text", locale);
+  if (Object.keys(meta).length > 0) return meta;
   const t = await getTranslations({ locale, namespace: "tools.imageToText" });
   return buildToolMetadata({
     locale,
@@ -17,31 +21,9 @@ export async function generateMetadata({ params }) {
 export default async function Layout({ children, params }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations({ locale, namespace: "tools.imageToText" });
-  const name = t("metaTitle");
-  const description = t("metaDescription");
-
-  const softwareSchema = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name,
-    description,
-    applicationCategory: "UtilitiesApplication",
-    operatingSystem: "Web Browser",
-    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-    isAccessibleForFree: true,
-    browserRequirements: "Requires JavaScript",
-    provider: { "@type": "Organization", name: "FileFlip", url: "https://www.fileflip.org" },
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(softwareSchema).replace(/</g, "\\u003c"),
-        }}
-      />
+      <ToolSchemaMarkup locale={locale} />
       {children}
     </>
   );

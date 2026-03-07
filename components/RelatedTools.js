@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { Image, FileText, Video, FileArchive, Type, ArrowRight, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat, Eraser, LayoutTemplate, QrCode, Box, FileBox, ImagePlus } from "lucide-react";
+import { Image, FileText, Video, FileArchive, Type, ArrowRight, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat, Eraser, LayoutTemplate, QrCode, Box, FileBox, ImagePlus, ScanText, Braces, ArrowLeftRight } from "lucide-react";
 import { RELATED_TOOLS, SLUG_TO_ID } from "@/lib/relatedTools";
 
 /** Icon component by tool slug: image tools, PDF, video, archive, text. */
@@ -55,6 +55,9 @@ const ICON_BY_SLUG = {
   "excel-to-pdf": FileText,
   "pdf-to-pdfa": FileText,
   "csv-to-pdf": FileText,
+  "image-to-text": ScanText,
+  "json-formatter": Braces,
+  "base64-encode-decode": ArrowLeftRight,
 };
 const DEFAULT_ICON = Type;
 
@@ -107,6 +110,9 @@ const BG_BY_SLUG = {
   "excel-to-pdf": "bg-emerald-600",
   "pdf-to-pdfa": "bg-rose-500",
   "csv-to-pdf": "bg-emerald-600",
+  "image-to-text": "bg-sky-500",
+  "json-formatter": "bg-emerald-600",
+  "base64-encode-decode": "bg-violet-500",
 };
 const DEFAULT_BG = "bg-slate-500";
 

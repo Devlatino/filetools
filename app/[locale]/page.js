@@ -6,7 +6,7 @@ import { useMemo, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Unlock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat, Eraser, LayoutTemplate, Type, QrCode, Box, FileBox, ImagePlus, Hash, GripVertical } from "lucide-react";
+import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Unlock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat, Eraser, LayoutTemplate, Type, QrCode, Box, FileBox, ImagePlus, Hash, GripVertical, ScanText, Braces, ArrowLeftRight } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { locales, localeNames } from "@/i18n.js";
 import { BASE_URL } from "@/lib/constants";
@@ -67,9 +67,12 @@ const TOOL_ICONS = {
   excelToPdf: FileText,
   pdfToPdfa: FileText,
   csvToPdf: FileText,
+  imageToText: ScanText,
+  jsonFormatter: Braces,
+  base64EncodeDecode: ArrowLeftRight,
 };
 
-const CATEGORIES = ["all", "images", "pdf", "tools", "cad", "video", "audio", "social", "3d"];
+const CATEGORIES = ["all", "images", "pdf", "tools", "developer", "cad", "video", "audio", "social", "3d"];
 
 const POPULAR_TOOL_IDS = ["compressImage", "heicToJpg", "mergePdf"];
 
@@ -129,8 +132,8 @@ const TOOL_IDS = [
   { id: "stlViewer", href: "/tools/stl-viewer", category: "3d", active: true },
   { id: "objToStl", href: "/tools/obj-to-stl", category: "3d", active: true },
   { id: "lithophane", href: "/tools/image-to-lithophane", category: "3d", active: true },
-  { id: "jsonFormatter", href: "/tools/json-formatter", category: "tools", active: true },
-  { id: "base64EncodeDecode", href: "/tools/base64-encode-decode", category: "tools", active: true },
+  { id: "jsonFormatter", href: "/tools/json-formatter", category: "developer", active: true },
+  { id: "base64EncodeDecode", href: "/tools/base64-encode-decode", category: "developer", active: true },
   { id: "imageToText", href: "/tools/image-to-text", category: "images", active: true },
 ];
 
@@ -140,6 +143,7 @@ const CATEGORY_COLORS = {
   video: { hex: "#8b5cf6", rgb: "139, 92, 246" },
   utility: { hex: "#10b981", rgb: "16, 185, 129" },
   tools: { hex: "#f59e0b", rgb: "245, 158, 11" },
+  developer: { hex: "#22c55e", rgb: "34, 197, 94" },
   cad: { hex: "#6366f1", rgb: "99, 102, 241" },
   audio: { hex: "#ec4899", rgb: "236, 72, 153" },
   social: { hex: "#06b6d4", rgb: "6, 182, 212" },
@@ -369,38 +373,45 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50">
       <Script
-        id="schema-organization"
+        id="schema-website-organization"
         type="application/ld+json"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "WebSite",
-            name: "FileFlip",
-            url: BASE_URL,
-            description:
-              "Free online file conversion tools. Convert PDF, images, video and audio files directly in your browser. No upload, no registration, 9 languages.",
-            potentialAction: {
-              "@type": "SearchAction",
-              target: {
-                "@type": "EntryPoint",
-                urlTemplate: `${BASE_URL}/tools/{search_term_string}`,
+            "@graph": [
+              {
+                "@type": "WebSite",
+                "@id": `${BASE_URL}#website`,
+                name: "FileFlip",
+                url: BASE_URL,
+                description:
+                  "Free browser-based file conversion platform. 61 tools for PDF, images, video, audio, CAD. No server upload. No registration.",
+                inLanguage: ["en", "it", "es", "fr", "de", "pt", "zh", "hi", "ar"],
+                potentialAction: {
+                  "@type": "SearchAction",
+                  target: {
+                    "@type": "EntryPoint",
+                    urlTemplate: `${BASE_URL}/tools/{search_term_string}`,
+                  },
+                  "query-input": "required name=search_term_string",
+                },
               },
-              "query-input": "required name=search_term_string",
-            },
-            publisher: {
-              "@type": "Organization",
-              name: "FileFlip",
-              url: BASE_URL,
-              logo: {
-                "@type": "ImageObject",
-                url: `${BASE_URL}/fileflip-logo.svg`,
+              {
+                "@type": "Organization",
+                "@id": `${BASE_URL}#organization`,
+                name: "FileFlip",
+                url: BASE_URL,
+                logo: {
+                  "@type": "ImageObject",
+                  url: `${BASE_URL}/fileflip-logo.svg`,
+                },
+                sameAs: [
+                  "https://www.producthunt.com/posts/fileflip",
+                  "https://www.saashub.com/fileflip",
+                ],
               },
-              sameAs: [
-                "https://www.producthunt.com/products/fileflip",
-                "https://www.saashub.com/fileflip",
-              ],
-            },
+            ],
           }),
         }}
       />
@@ -748,7 +759,7 @@ export default function Home() {
                     const colors = CATEGORY_COLORS[tool.category] || CATEGORY_COLORS.images;
                     const categoryLabel = Array.isArray(tool.category)
                       ? tool.category.map((c) => t(`filter${c.charAt(0).toUpperCase() + c.slice(1)}`)).join(", ")
-                      : t(`filter${tool.category === "images" ? "Images" : tool.category === "pdf" ? "Pdf" : tool.category === "tools" ? "Tools" : tool.category === "cad" ? "Cad" : tool.category === "video" ? "Video" : tool.category === "audio" ? "Audio" : tool.category === "3d" ? "3d" : "Social"}`);
+                      : t(`filter${tool.category === "images" ? "Images" : tool.category === "pdf" ? "Pdf" : tool.category === "tools" ? "Tools" : tool.category === "developer" ? "Developer" : tool.category === "cad" ? "Cad" : tool.category === "video" ? "Video" : tool.category === "audio" ? "Audio" : tool.category === "3d" ? "3d" : "Social"}`);
                     const showTooltip = comingSoonTooltipId === tool.id;
 
                     const cardContent = (
@@ -943,6 +954,16 @@ export default function Home() {
                 <li>
                   <Link href={locale === "en" ? "/blog" : `/${locale}/blog`} className="text-sm text-slate-300 transition-colors hover:text-white">
                     {tCommon("nav.blog")}
+                  </Link>
+                </li>
+                <li>
+                  <a href="https://www.fileflip.org/api/tools" className="text-sm text-slate-300 transition-colors hover:text-white">
+                    API
+                  </a>
+                </li>
+                <li>
+                  <Link href="/ai-tools" className="text-sm text-slate-300 transition-colors hover:text-white">
+                    For AI Agents
                   </Link>
                 </li>
                 <li>

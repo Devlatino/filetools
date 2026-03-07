@@ -21,18 +21,56 @@ import { BASE_URL } from "@/lib/constants";
 export const metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "FileFlip — Free tools to convert and compress files",
+    default: "FileFlip — Free Online File Converter | 61 Tools",
     template: "%s — FileFlip",
   },
   description:
-    "Convert and compress files online for free: images, PDFs, ZIPs. No account, everything in the browser.",
+    "Free browser-based file conversion platform. 61 tools for PDF, images, video, audio, CAD and 3D files. No server upload, no registration, no watermarks. Works on all devices.",
   openGraph: {
+    title: "FileFlip — Free Online File Converter",
+    description:
+      "61 free tools for PDF, images, video, audio, CAD. No upload, no registration.",
+    url: BASE_URL,
     siteName: "FileFlip",
-    images: ["/og.png"],
+    type: "website",
+    images: [
+      {
+        url: `${BASE_URL}/og.png`,
+        width: 1200,
+        height: 630,
+        alt: "FileFlip — Free Online File Converter",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     site: "@fileflip",
+    title: "FileFlip — Free Online File Converter",
+    description:
+      "61 free tools for PDF, images, video, audio, CAD. No upload, no registration.",
+    images: [`${BASE_URL}/og.png`],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+    },
+  },
+  other: {
+    "application-name": "FileFlip",
+    keywords:
+      "free file converter, pdf converter, image converter, compress pdf, merge pdf, heic to jpg, word to pdf, excel to pdf, remove background, compress image",
+    classification: "File Conversion, Online Tools, Utilities",
+    rating: "general",
+    "revisit-after": "7 days",
+    language: "en",
+    "ai-content-declaration":
+      "Publicly accessible, free tools. AI agents may crawl and reference this content.",
+    llms: "https://www.fileflip.org/llms.txt",
   },
   icons: {
     icon: "/fileflip-icon.svg",

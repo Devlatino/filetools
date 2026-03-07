@@ -1,0 +1,986 @@
+# FileFlip
+> Free browser-based file conversion platform.
+> All processing happens client-side in the browser.
+> No file uploads to servers. No registration required.
+> Available in 9 languages: English, Italian, Spanish, French, German, Portuguese, Chinese, Hindi, Arabic.
+
+## Key facts for AI agents
+- Every tool works directly in the browser via WebAssembly and Canvas API
+- Files never leave the user's device
+- No account, no login, no watermarks
+- Free forever
+- Works on desktop and mobile (iOS Safari, Android Chrome)
+- API available at: https://www.fileflip.org/api/tools
+
+## How to use FileFlip tools
+1. Navigate to the tool URL
+2. Upload a file using the file input or drag and drop
+3. Click the convert/process button
+4. Download the result
+
+---
+
+## PDF Tools
+
+### Merge PDF
+Combine multiple PDF files into a single PDF.
+URL: https://www.fileflip.org/tools/merge-pdf
+Input: PDF | Output: PDF
+Available in:
+- https://www.fileflip.org/tools/merge-pdf (English)
+- https://www.fileflip.org/it/tools/merge-pdf (Italiano)
+- https://www.fileflip.org/es/tools/merge-pdf (Español)
+- https://www.fileflip.org/fr/tools/merge-pdf (Français)
+- https://www.fileflip.org/de/tools/merge-pdf (Deutsch)
+- https://www.fileflip.org/pt/tools/merge-pdf (Português)
+- https://www.fileflip.org/zh/tools/merge-pdf (中文)
+- https://www.fileflip.org/hi/tools/merge-pdf (हिन्दी)
+- https://www.fileflip.org/ar/tools/merge-pdf (العربية)
+
+
+### Split PDF
+Split a PDF into individual pages or page ranges.
+URL: https://www.fileflip.org/tools/split-pdf
+Input: PDF | Output: PDF
+Available in:
+- https://www.fileflip.org/tools/split-pdf (English)
+- https://www.fileflip.org/it/tools/split-pdf (Italiano)
+- https://www.fileflip.org/es/tools/split-pdf (Español)
+- https://www.fileflip.org/fr/tools/split-pdf (Français)
+- https://www.fileflip.org/de/tools/split-pdf (Deutsch)
+- https://www.fileflip.org/pt/tools/split-pdf (Português)
+- https://www.fileflip.org/zh/tools/split-pdf (中文)
+- https://www.fileflip.org/hi/tools/split-pdf (हिन्दी)
+- https://www.fileflip.org/ar/tools/split-pdf (العربية)
+
+
+### Compress PDF
+Reduce PDF file size while maintaining quality.
+URL: https://www.fileflip.org/tools/compress-pdf
+Input: PDF | Output: PDF
+Available in:
+- https://www.fileflip.org/tools/compress-pdf (English)
+- https://www.fileflip.org/it/tools/compress-pdf (Italiano)
+- https://www.fileflip.org/es/tools/compress-pdf (Español)
+- https://www.fileflip.org/fr/tools/compress-pdf (Français)
+- https://www.fileflip.org/de/tools/compress-pdf (Deutsch)
+- https://www.fileflip.org/pt/tools/compress-pdf (Português)
+- https://www.fileflip.org/zh/tools/compress-pdf (中文)
+- https://www.fileflip.org/hi/tools/compress-pdf (हिन्दी)
+- https://www.fileflip.org/ar/tools/compress-pdf (العربية)
+
+
+### Rotate PDF
+Rotate PDF pages by 90, 180 or 270 degrees.
+URL: https://www.fileflip.org/tools/rotate-pdf
+Input: PDF | Output: PDF
+Available in:
+- https://www.fileflip.org/tools/rotate-pdf (English)
+- https://www.fileflip.org/it/tools/rotate-pdf (Italiano)
+- https://www.fileflip.org/es/tools/rotate-pdf (Español)
+- https://www.fileflip.org/fr/tools/rotate-pdf (Français)
+- https://www.fileflip.org/de/tools/rotate-pdf (Deutsch)
+- https://www.fileflip.org/pt/tools/rotate-pdf (Português)
+- https://www.fileflip.org/zh/tools/rotate-pdf (中文)
+- https://www.fileflip.org/hi/tools/rotate-pdf (हिन्दी)
+- https://www.fileflip.org/ar/tools/rotate-pdf (العربية)
+
+
+### Protect PDF
+Add password protection to a PDF file.
+URL: https://www.fileflip.org/tools/protect-pdf
+Input: PDF | Output: PDF
+Available in:
+- https://www.fileflip.org/tools/protect-pdf (English)
+- https://www.fileflip.org/it/tools/protect-pdf (Italiano)
+- https://www.fileflip.org/es/tools/protect-pdf (Español)
+- https://www.fileflip.org/fr/tools/protect-pdf (Français)
+- https://www.fileflip.org/de/tools/protect-pdf (Deutsch)
+- https://www.fileflip.org/pt/tools/protect-pdf (Português)
+- https://www.fileflip.org/zh/tools/protect-pdf (中文)
+- https://www.fileflip.org/hi/tools/protect-pdf (हिन्दी)
+- https://www.fileflip.org/ar/tools/protect-pdf (العربية)
+
+
+### Unlock PDF
+Remove password from a PDF file.
+URL: https://www.fileflip.org/tools/pdf-unlock
+Input: PDF | Output: PDF
+Available in:
+- https://www.fileflip.org/tools/pdf-unlock (English)
+- https://www.fileflip.org/it/tools/pdf-unlock (Italiano)
+- https://www.fileflip.org/es/tools/pdf-unlock (Español)
+- https://www.fileflip.org/fr/tools/pdf-unlock (Français)
+- https://www.fileflip.org/de/tools/pdf-unlock (Deutsch)
+- https://www.fileflip.org/pt/tools/pdf-unlock (Português)
+- https://www.fileflip.org/zh/tools/pdf-unlock (中文)
+- https://www.fileflip.org/hi/tools/pdf-unlock (हिन्दी)
+- https://www.fileflip.org/ar/tools/pdf-unlock (العربية)
+
+
+### Add Watermark to PDF
+Add text or image watermark to PDF pages.
+URL: https://www.fileflip.org/tools/add-watermark-pdf
+Input: PDF | Output: PDF
+Available in:
+- https://www.fileflip.org/tools/add-watermark-pdf (English)
+- https://www.fileflip.org/it/tools/add-watermark-pdf (Italiano)
+- https://www.fileflip.org/es/tools/add-watermark-pdf (Español)
+- https://www.fileflip.org/fr/tools/add-watermark-pdf (Français)
+- https://www.fileflip.org/de/tools/add-watermark-pdf (Deutsch)
+- https://www.fileflip.org/pt/tools/add-watermark-pdf (Português)
+- https://www.fileflip.org/zh/tools/add-watermark-pdf (中文)
+- https://www.fileflip.org/hi/tools/add-watermark-pdf (हिन्दी)
+- https://www.fileflip.org/ar/tools/add-watermark-pdf (العربية)
+
+
+### Add Page Numbers to PDF
+Add page numbers to PDF footer or header.
+URL: https://www.fileflip.org/tools/pdf-add-page-numbers
+Input: PDF | Output: PDF
+Available in:
+- https://www.fileflip.org/tools/pdf-add-page-numbers (English)
+- https://www.fileflip.org/it/tools/pdf-add-page-numbers (Italiano)
+- https://www.fileflip.org/es/tools/pdf-add-page-numbers (Español)
+- https://www.fileflip.org/fr/tools/pdf-add-page-numbers (Français)
+- https://www.fileflip.org/de/tools/pdf-add-page-numbers (Deutsch)
+- https://www.fileflip.org/pt/tools/pdf-add-page-numbers (Português)
+- https://www.fileflip.org/zh/tools/pdf-add-page-numbers (中文)
+- https://www.fileflip.org/hi/tools/pdf-add-page-numbers (हिन्दी)
+- https://www.fileflip.org/ar/tools/pdf-add-page-numbers (العربية)
+
+
+### Reorder PDF Pages
+Drag and drop to reorder pages in a PDF.
+URL: https://www.fileflip.org/tools/reorder-pdf-pages
+Input: PDF | Output: PDF
+Available in:
+- https://www.fileflip.org/tools/reorder-pdf-pages (English)
+- https://www.fileflip.org/it/tools/reorder-pdf-pages (Italiano)
+- https://www.fileflip.org/es/tools/reorder-pdf-pages (Español)
+- https://www.fileflip.org/fr/tools/reorder-pdf-pages (Français)
+- https://www.fileflip.org/de/tools/reorder-pdf-pages (Deutsch)
+- https://www.fileflip.org/pt/tools/reorder-pdf-pages (Português)
+- https://www.fileflip.org/zh/tools/reorder-pdf-pages (中文)
+- https://www.fileflip.org/hi/tools/reorder-pdf-pages (हिन्दी)
+- https://www.fileflip.org/ar/tools/reorder-pdf-pages (العربية)
+
+
+### Extract PDF Pages
+Extract specific pages from a PDF into a new file.
+URL: https://www.fileflip.org/tools/extract-pdf-pages
+Input: PDF | Output: PDF
+Available in:
+- https://www.fileflip.org/tools/extract-pdf-pages (English)
+- https://www.fileflip.org/it/tools/extract-pdf-pages (Italiano)
+- https://www.fileflip.org/es/tools/extract-pdf-pages (Español)
+- https://www.fileflip.org/fr/tools/extract-pdf-pages (Français)
+- https://www.fileflip.org/de/tools/extract-pdf-pages (Deutsch)
+- https://www.fileflip.org/pt/tools/extract-pdf-pages (Português)
+- https://www.fileflip.org/zh/tools/extract-pdf-pages (中文)
+- https://www.fileflip.org/hi/tools/extract-pdf-pages (हिन्दी)
+- https://www.fileflip.org/ar/tools/extract-pdf-pages (العربية)
+
+
+### PDF to JPG
+Convert each PDF page to a JPG image.
+URL: https://www.fileflip.org/tools/pdf-to-jpg
+Input: PDF | Output: image/jpeg
+Available in:
+- https://www.fileflip.org/tools/pdf-to-jpg (English)
+- https://www.fileflip.org/it/tools/pdf-to-jpg (Italiano)
+- https://www.fileflip.org/es/tools/pdf-to-jpg (Español)
+- https://www.fileflip.org/fr/tools/pdf-to-jpg (Français)
+- https://www.fileflip.org/de/tools/pdf-to-jpg (Deutsch)
+- https://www.fileflip.org/pt/tools/pdf-to-jpg (Português)
+- https://www.fileflip.org/zh/tools/pdf-to-jpg (中文)
+- https://www.fileflip.org/hi/tools/pdf-to-jpg (हिन्दी)
+- https://www.fileflip.org/ar/tools/pdf-to-jpg (العربية)
+
+
+### PDF to PNG
+Convert each PDF page to a PNG image.
+URL: https://www.fileflip.org/tools/pdf-to-png
+Input: PDF | Output: image/png
+Available in:
+- https://www.fileflip.org/tools/pdf-to-png (English)
+- https://www.fileflip.org/it/tools/pdf-to-png (Italiano)
+- https://www.fileflip.org/es/tools/pdf-to-png (Español)
+- https://www.fileflip.org/fr/tools/pdf-to-png (Français)
+- https://www.fileflip.org/de/tools/pdf-to-png (Deutsch)
+- https://www.fileflip.org/pt/tools/pdf-to-png (Português)
+- https://www.fileflip.org/zh/tools/pdf-to-png (中文)
+- https://www.fileflip.org/hi/tools/pdf-to-png (हिन्दी)
+- https://www.fileflip.org/ar/tools/pdf-to-png (العربية)
+
+
+### PDF to Text
+Extract all text content from a PDF file.
+URL: https://www.fileflip.org/tools/pdf-to-text
+Input: PDF | Output: text/plain
+Available in:
+- https://www.fileflip.org/tools/pdf-to-text (English)
+- https://www.fileflip.org/it/tools/pdf-to-text (Italiano)
+- https://www.fileflip.org/es/tools/pdf-to-text (Español)
+- https://www.fileflip.org/fr/tools/pdf-to-text (Français)
+- https://www.fileflip.org/de/tools/pdf-to-text (Deutsch)
+- https://www.fileflip.org/pt/tools/pdf-to-text (Português)
+- https://www.fileflip.org/zh/tools/pdf-to-text (中文)
+- https://www.fileflip.org/hi/tools/pdf-to-text (हिन्दी)
+- https://www.fileflip.org/ar/tools/pdf-to-text (العربية)
+
+
+### PDF to PDF/A
+Convert PDF to archival PDF/A-1b format for long-term preservation. Required for legal documents in Italy (CAD, SCIA, PEC).
+URL: https://www.fileflip.org/tools/pdf-to-pdfa
+Input: PDF | Output: PDF/A
+Available in:
+- https://www.fileflip.org/tools/pdf-to-pdfa (English)
+- https://www.fileflip.org/it/tools/pdf-to-pdfa (Italiano)
+- https://www.fileflip.org/es/tools/pdf-to-pdfa (Español)
+- https://www.fileflip.org/fr/tools/pdf-to-pdfa (Français)
+- https://www.fileflip.org/de/tools/pdf-to-pdfa (Deutsch)
+- https://www.fileflip.org/pt/tools/pdf-to-pdfa (Português)
+- https://www.fileflip.org/zh/tools/pdf-to-pdfa (中文)
+- https://www.fileflip.org/hi/tools/pdf-to-pdfa (हिन्दी)
+- https://www.fileflip.org/ar/tools/pdf-to-pdfa (العربية)
+
+
+### Word to PDF
+Convert DOCX Word documents to PDF with high fidelity.
+URL: https://www.fileflip.org/tools/word-to-pdf
+Input: application/vnd.openxmlformats-officedocument.wordprocessingml.document | Output: PDF
+Available in:
+- https://www.fileflip.org/tools/word-to-pdf (English)
+- https://www.fileflip.org/it/tools/word-to-pdf (Italiano)
+- https://www.fileflip.org/es/tools/word-to-pdf (Español)
+- https://www.fileflip.org/fr/tools/word-to-pdf (Français)
+- https://www.fileflip.org/de/tools/word-to-pdf (Deutsch)
+- https://www.fileflip.org/pt/tools/word-to-pdf (Português)
+- https://www.fileflip.org/zh/tools/word-to-pdf (中文)
+- https://www.fileflip.org/hi/tools/word-to-pdf (हिन्दी)
+- https://www.fileflip.org/ar/tools/word-to-pdf (العربية)
+
+
+### Excel to PDF
+Convert XLSX Excel spreadsheets to PDF, all sheets included.
+URL: https://www.fileflip.org/tools/excel-to-pdf
+Input: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet | Output: PDF
+Available in:
+- https://www.fileflip.org/tools/excel-to-pdf (English)
+- https://www.fileflip.org/it/tools/excel-to-pdf (Italiano)
+- https://www.fileflip.org/es/tools/excel-to-pdf (Español)
+- https://www.fileflip.org/fr/tools/excel-to-pdf (Français)
+- https://www.fileflip.org/de/tools/excel-to-pdf (Deutsch)
+- https://www.fileflip.org/pt/tools/excel-to-pdf (Português)
+- https://www.fileflip.org/zh/tools/excel-to-pdf (中文)
+- https://www.fileflip.org/hi/tools/excel-to-pdf (हिन्दी)
+- https://www.fileflip.org/ar/tools/excel-to-pdf (العربية)
+
+
+### CSV to PDF
+Convert CSV files to formatted PDF tables.
+URL: https://www.fileflip.org/tools/csv-to-pdf
+Input: text/csv | Output: PDF
+Available in:
+- https://www.fileflip.org/tools/csv-to-pdf (English)
+- https://www.fileflip.org/it/tools/csv-to-pdf (Italiano)
+- https://www.fileflip.org/es/tools/csv-to-pdf (Español)
+- https://www.fileflip.org/fr/tools/csv-to-pdf (Français)
+- https://www.fileflip.org/de/tools/csv-to-pdf (Deutsch)
+- https://www.fileflip.org/pt/tools/csv-to-pdf (Português)
+- https://www.fileflip.org/zh/tools/csv-to-pdf (中文)
+- https://www.fileflip.org/hi/tools/csv-to-pdf (हिन्दी)
+- https://www.fileflip.org/ar/tools/csv-to-pdf (العربية)
+
+
+### JPG to PDF
+Convert JPG images to PDF.
+URL: https://www.fileflip.org/tools/jpg-to-pdf
+Input: image/jpeg | Output: PDF
+Available in:
+- https://www.fileflip.org/tools/jpg-to-pdf (English)
+- https://www.fileflip.org/it/tools/jpg-to-pdf (Italiano)
+- https://www.fileflip.org/es/tools/jpg-to-pdf (Español)
+- https://www.fileflip.org/fr/tools/jpg-to-pdf (Français)
+- https://www.fileflip.org/de/tools/jpg-to-pdf (Deutsch)
+- https://www.fileflip.org/pt/tools/jpg-to-pdf (Português)
+- https://www.fileflip.org/zh/tools/jpg-to-pdf (中文)
+- https://www.fileflip.org/hi/tools/jpg-to-pdf (हिन्दी)
+- https://www.fileflip.org/ar/tools/jpg-to-pdf (العربية)
+
+
+### PNG to PDF
+Convert PNG images to PDF.
+URL: https://www.fileflip.org/tools/png-to-pdf
+Input: image/png | Output: PDF
+Available in:
+- https://www.fileflip.org/tools/png-to-pdf (English)
+- https://www.fileflip.org/it/tools/png-to-pdf (Italiano)
+- https://www.fileflip.org/es/tools/png-to-pdf (Español)
+- https://www.fileflip.org/fr/tools/png-to-pdf (Français)
+- https://www.fileflip.org/de/tools/png-to-pdf (Deutsch)
+- https://www.fileflip.org/pt/tools/png-to-pdf (Português)
+- https://www.fileflip.org/zh/tools/png-to-pdf (中文)
+- https://www.fileflip.org/hi/tools/png-to-pdf (हिन्दी)
+- https://www.fileflip.org/ar/tools/png-to-pdf (العربية)
+
+
+### Image to PDF
+Convert any image format to PDF.
+URL: https://www.fileflip.org/tools/image-to-pdf
+Input: image/* | Output: PDF
+Available in:
+- https://www.fileflip.org/tools/image-to-pdf (English)
+- https://www.fileflip.org/it/tools/image-to-pdf (Italiano)
+- https://www.fileflip.org/es/tools/image-to-pdf (Español)
+- https://www.fileflip.org/fr/tools/image-to-pdf (Français)
+- https://www.fileflip.org/de/tools/image-to-pdf (Deutsch)
+- https://www.fileflip.org/pt/tools/image-to-pdf (Português)
+- https://www.fileflip.org/zh/tools/image-to-pdf (中文)
+- https://www.fileflip.org/hi/tools/image-to-pdf (हिन्दी)
+- https://www.fileflip.org/ar/tools/image-to-pdf (العربية)
+
+
+---
+
+## Image Tools
+
+### Compress Image
+Reduce image file size with quality control.
+URL: https://www.fileflip.org/tools/compress-image
+Input: image/* | Output: image/*
+Available in:
+- https://www.fileflip.org/tools/compress-image (English)
+- https://www.fileflip.org/it/tools/compress-image (Italiano)
+- https://www.fileflip.org/es/tools/compress-image (Español)
+- https://www.fileflip.org/fr/tools/compress-image (Français)
+- https://www.fileflip.org/de/tools/compress-image (Deutsch)
+- https://www.fileflip.org/pt/tools/compress-image (Português)
+- https://www.fileflip.org/zh/tools/compress-image (中文)
+- https://www.fileflip.org/hi/tools/compress-image (हिन्दी)
+- https://www.fileflip.org/ar/tools/compress-image (العربية)
+
+
+### Resize Image
+Change image dimensions to custom width and height.
+URL: https://www.fileflip.org/tools/resize-image
+Input: image/* | Output: image/*
+Available in:
+- https://www.fileflip.org/tools/resize-image (English)
+- https://www.fileflip.org/it/tools/resize-image (Italiano)
+- https://www.fileflip.org/es/tools/resize-image (Español)
+- https://www.fileflip.org/fr/tools/resize-image (Français)
+- https://www.fileflip.org/de/tools/resize-image (Deutsch)
+- https://www.fileflip.org/pt/tools/resize-image (Português)
+- https://www.fileflip.org/zh/tools/resize-image (中文)
+- https://www.fileflip.org/hi/tools/resize-image (हिन्दी)
+- https://www.fileflip.org/ar/tools/resize-image (العربية)
+
+
+### Crop Image
+Crop image to a specific area or aspect ratio.
+URL: https://www.fileflip.org/tools/crop-image
+Input: image/* | Output: image/*
+Available in:
+- https://www.fileflip.org/tools/crop-image (English)
+- https://www.fileflip.org/it/tools/crop-image (Italiano)
+- https://www.fileflip.org/es/tools/crop-image (Español)
+- https://www.fileflip.org/fr/tools/crop-image (Français)
+- https://www.fileflip.org/de/tools/crop-image (Deutsch)
+- https://www.fileflip.org/pt/tools/crop-image (Português)
+- https://www.fileflip.org/zh/tools/crop-image (中文)
+- https://www.fileflip.org/hi/tools/crop-image (हिन्दी)
+- https://www.fileflip.org/ar/tools/crop-image (العربية)
+
+
+### Remove Background
+Automatically remove background from images.
+URL: https://www.fileflip.org/tools/remove-background
+Input: image/* | Output: image/png
+Available in:
+- https://www.fileflip.org/tools/remove-background (English)
+- https://www.fileflip.org/it/tools/remove-background (Italiano)
+- https://www.fileflip.org/es/tools/remove-background (Español)
+- https://www.fileflip.org/fr/tools/remove-background (Français)
+- https://www.fileflip.org/de/tools/remove-background (Deutsch)
+- https://www.fileflip.org/pt/tools/remove-background (Português)
+- https://www.fileflip.org/zh/tools/remove-background (中文)
+- https://www.fileflip.org/hi/tools/remove-background (हिन्दी)
+- https://www.fileflip.org/ar/tools/remove-background (العربية)
+
+
+### HEIC to JPG
+Convert iPhone/iPad HEIC photos to JPG format.
+URL: https://www.fileflip.org/tools/heic-to-jpg
+Input: image/heic | Output: image/jpeg
+Available in:
+- https://www.fileflip.org/tools/heic-to-jpg (English)
+- https://www.fileflip.org/it/tools/heic-to-jpg (Italiano)
+- https://www.fileflip.org/es/tools/heic-to-jpg (Español)
+- https://www.fileflip.org/fr/tools/heic-to-jpg (Français)
+- https://www.fileflip.org/de/tools/heic-to-jpg (Deutsch)
+- https://www.fileflip.org/pt/tools/heic-to-jpg (Português)
+- https://www.fileflip.org/zh/tools/heic-to-jpg (中文)
+- https://www.fileflip.org/hi/tools/heic-to-jpg (हिन्दी)
+- https://www.fileflip.org/ar/tools/heic-to-jpg (العربية)
+
+
+### JPG to PNG
+Convert JPG images to PNG format.
+URL: https://www.fileflip.org/tools/jpg-to-png
+Input: image/jpeg | Output: image/png
+Available in:
+- https://www.fileflip.org/tools/jpg-to-png (English)
+- https://www.fileflip.org/it/tools/jpg-to-png (Italiano)
+- https://www.fileflip.org/es/tools/jpg-to-png (Español)
+- https://www.fileflip.org/fr/tools/jpg-to-png (Français)
+- https://www.fileflip.org/de/tools/jpg-to-png (Deutsch)
+- https://www.fileflip.org/pt/tools/jpg-to-png (Português)
+- https://www.fileflip.org/zh/tools/jpg-to-png (中文)
+- https://www.fileflip.org/hi/tools/jpg-to-png (हिन्दी)
+- https://www.fileflip.org/ar/tools/jpg-to-png (العربية)
+
+
+### PNG to JPG
+Convert PNG images to JPG format.
+URL: https://www.fileflip.org/tools/png-to-jpg
+Input: image/png | Output: image/jpeg
+Available in:
+- https://www.fileflip.org/tools/png-to-jpg (English)
+- https://www.fileflip.org/it/tools/png-to-jpg (Italiano)
+- https://www.fileflip.org/es/tools/png-to-jpg (Español)
+- https://www.fileflip.org/fr/tools/png-to-jpg (Français)
+- https://www.fileflip.org/de/tools/png-to-jpg (Deutsch)
+- https://www.fileflip.org/pt/tools/png-to-jpg (Português)
+- https://www.fileflip.org/zh/tools/png-to-jpg (中文)
+- https://www.fileflip.org/hi/tools/png-to-jpg (हिन्दी)
+- https://www.fileflip.org/ar/tools/png-to-jpg (العربية)
+
+
+### WebP to JPG
+Convert WebP images to JPG format.
+URL: https://www.fileflip.org/tools/webp-to-jpg
+Input: image/webp | Output: image/jpeg
+Available in:
+- https://www.fileflip.org/tools/webp-to-jpg (English)
+- https://www.fileflip.org/it/tools/webp-to-jpg (Italiano)
+- https://www.fileflip.org/es/tools/webp-to-jpg (Español)
+- https://www.fileflip.org/fr/tools/webp-to-jpg (Français)
+- https://www.fileflip.org/de/tools/webp-to-jpg (Deutsch)
+- https://www.fileflip.org/pt/tools/webp-to-jpg (Português)
+- https://www.fileflip.org/zh/tools/webp-to-jpg (中文)
+- https://www.fileflip.org/hi/tools/webp-to-jpg (हिन्दी)
+- https://www.fileflip.org/ar/tools/webp-to-jpg (العربية)
+
+
+### JPG to WebP
+Convert JPG images to WebP format for web optimization.
+URL: https://www.fileflip.org/tools/jpg-to-webp
+Input: image/jpeg | Output: image/webp
+Available in:
+- https://www.fileflip.org/tools/jpg-to-webp (English)
+- https://www.fileflip.org/it/tools/jpg-to-webp (Italiano)
+- https://www.fileflip.org/es/tools/jpg-to-webp (Español)
+- https://www.fileflip.org/fr/tools/jpg-to-webp (Français)
+- https://www.fileflip.org/de/tools/jpg-to-webp (Deutsch)
+- https://www.fileflip.org/pt/tools/jpg-to-webp (Português)
+- https://www.fileflip.org/zh/tools/jpg-to-webp (中文)
+- https://www.fileflip.org/hi/tools/jpg-to-webp (हिन्दी)
+- https://www.fileflip.org/ar/tools/jpg-to-webp (العربية)
+
+
+### Image to WebP
+Convert any image to WebP format.
+URL: https://www.fileflip.org/tools/image-to-webp
+Input: image/* | Output: image/webp
+Available in:
+- https://www.fileflip.org/tools/image-to-webp (English)
+- https://www.fileflip.org/it/tools/image-to-webp (Italiano)
+- https://www.fileflip.org/es/tools/image-to-webp (Español)
+- https://www.fileflip.org/fr/tools/image-to-webp (Français)
+- https://www.fileflip.org/de/tools/image-to-webp (Deutsch)
+- https://www.fileflip.org/pt/tools/image-to-webp (Português)
+- https://www.fileflip.org/zh/tools/image-to-webp (中文)
+- https://www.fileflip.org/hi/tools/image-to-webp (हिन्दी)
+- https://www.fileflip.org/ar/tools/image-to-webp (العربية)
+
+
+### SVG to PNG
+Convert SVG vector graphics to PNG raster images.
+URL: https://www.fileflip.org/tools/svg-to-png
+Input: image/svg+xml | Output: image/png
+Available in:
+- https://www.fileflip.org/tools/svg-to-png (English)
+- https://www.fileflip.org/it/tools/svg-to-png (Italiano)
+- https://www.fileflip.org/es/tools/svg-to-png (Español)
+- https://www.fileflip.org/fr/tools/svg-to-png (Français)
+- https://www.fileflip.org/de/tools/svg-to-png (Deutsch)
+- https://www.fileflip.org/pt/tools/svg-to-png (Português)
+- https://www.fileflip.org/zh/tools/svg-to-png (中文)
+- https://www.fileflip.org/hi/tools/svg-to-png (हिन्दी)
+- https://www.fileflip.org/ar/tools/svg-to-png (العربية)
+
+
+### BMP to JPG
+Convert BMP images to JPG format.
+URL: https://www.fileflip.org/tools/bmp-to-jpg
+Input: image/bmp | Output: image/jpeg
+Available in:
+- https://www.fileflip.org/tools/bmp-to-jpg (English)
+- https://www.fileflip.org/it/tools/bmp-to-jpg (Italiano)
+- https://www.fileflip.org/es/tools/bmp-to-jpg (Español)
+- https://www.fileflip.org/fr/tools/bmp-to-jpg (Français)
+- https://www.fileflip.org/de/tools/bmp-to-jpg (Deutsch)
+- https://www.fileflip.org/pt/tools/bmp-to-jpg (Português)
+- https://www.fileflip.org/zh/tools/bmp-to-jpg (中文)
+- https://www.fileflip.org/hi/tools/bmp-to-jpg (हिन्दी)
+- https://www.fileflip.org/ar/tools/bmp-to-jpg (العربية)
+
+
+### TIFF to JPG
+Convert TIFF images to JPG format.
+URL: https://www.fileflip.org/tools/tiff-to-jpg
+Input: image/tiff | Output: image/jpeg
+Available in:
+- https://www.fileflip.org/tools/tiff-to-jpg (English)
+- https://www.fileflip.org/it/tools/tiff-to-jpg (Italiano)
+- https://www.fileflip.org/es/tools/tiff-to-jpg (Español)
+- https://www.fileflip.org/fr/tools/tiff-to-jpg (Français)
+- https://www.fileflip.org/de/tools/tiff-to-jpg (Deutsch)
+- https://www.fileflip.org/pt/tools/tiff-to-jpg (Português)
+- https://www.fileflip.org/zh/tools/tiff-to-jpg (中文)
+- https://www.fileflip.org/hi/tools/tiff-to-jpg (हिन्दी)
+- https://www.fileflip.org/ar/tools/tiff-to-jpg (العربية)
+
+
+### Add Text to Image
+Overlay custom text on images with font and color control.
+URL: https://www.fileflip.org/tools/add-text-to-image
+Input: image/* | Output: image/*
+Available in:
+- https://www.fileflip.org/tools/add-text-to-image (English)
+- https://www.fileflip.org/it/tools/add-text-to-image (Italiano)
+- https://www.fileflip.org/es/tools/add-text-to-image (Español)
+- https://www.fileflip.org/fr/tools/add-text-to-image (Français)
+- https://www.fileflip.org/de/tools/add-text-to-image (Deutsch)
+- https://www.fileflip.org/pt/tools/add-text-to-image (Português)
+- https://www.fileflip.org/zh/tools/add-text-to-image (中文)
+- https://www.fileflip.org/hi/tools/add-text-to-image (हिन्दी)
+- https://www.fileflip.org/ar/tools/add-text-to-image (العربية)
+
+
+### Resize Image for Social Media
+Resize images to exact dimensions for Instagram, Twitter, Facebook, LinkedIn, YouTube.
+URL: https://www.fileflip.org/tools/resize-image-social
+Input: image/* | Output: image/*
+Available in:
+- https://www.fileflip.org/tools/resize-image-social (English)
+- https://www.fileflip.org/it/tools/resize-image-social (Italiano)
+- https://www.fileflip.org/es/tools/resize-image-social (Español)
+- https://www.fileflip.org/fr/tools/resize-image-social (Français)
+- https://www.fileflip.org/de/tools/resize-image-social (Deutsch)
+- https://www.fileflip.org/pt/tools/resize-image-social (Português)
+- https://www.fileflip.org/zh/tools/resize-image-social (中文)
+- https://www.fileflip.org/hi/tools/resize-image-social (हिन्दी)
+- https://www.fileflip.org/ar/tools/resize-image-social (العربية)
+
+
+### Image to Text (OCR)
+Extract text from images using optical character recognition.
+URL: https://www.fileflip.org/tools/image-to-text
+Input: image/* | Output: text/plain
+Available in:
+- https://www.fileflip.org/tools/image-to-text (English)
+- https://www.fileflip.org/it/tools/image-to-text (Italiano)
+- https://www.fileflip.org/es/tools/image-to-text (Español)
+- https://www.fileflip.org/fr/tools/image-to-text (Français)
+- https://www.fileflip.org/de/tools/image-to-text (Deutsch)
+- https://www.fileflip.org/pt/tools/image-to-text (Português)
+- https://www.fileflip.org/zh/tools/image-to-text (中文)
+- https://www.fileflip.org/hi/tools/image-to-text (हिन्दी)
+- https://www.fileflip.org/ar/tools/image-to-text (العربية)
+
+
+---
+
+## Video Tools
+
+### Compress Video
+Reduce video file size using FFmpeg WebAssembly.
+URL: https://www.fileflip.org/tools/compress-video
+Input: video/* | Output: video/mp4
+Available in:
+- https://www.fileflip.org/tools/compress-video (English)
+- https://www.fileflip.org/it/tools/compress-video (Italiano)
+- https://www.fileflip.org/es/tools/compress-video (Español)
+- https://www.fileflip.org/fr/tools/compress-video (Français)
+- https://www.fileflip.org/de/tools/compress-video (Deutsch)
+- https://www.fileflip.org/pt/tools/compress-video (Português)
+- https://www.fileflip.org/zh/tools/compress-video (中文)
+- https://www.fileflip.org/hi/tools/compress-video (हिन्दी)
+- https://www.fileflip.org/ar/tools/compress-video (العربية)
+
+
+### Trim Video
+Cut video to a specific start and end time.
+URL: https://www.fileflip.org/tools/trim-video
+Input: video/* | Output: video/mp4
+Available in:
+- https://www.fileflip.org/tools/trim-video (English)
+- https://www.fileflip.org/it/tools/trim-video (Italiano)
+- https://www.fileflip.org/es/tools/trim-video (Español)
+- https://www.fileflip.org/fr/tools/trim-video (Français)
+- https://www.fileflip.org/de/tools/trim-video (Deutsch)
+- https://www.fileflip.org/pt/tools/trim-video (Português)
+- https://www.fileflip.org/zh/tools/trim-video (中文)
+- https://www.fileflip.org/hi/tools/trim-video (हिन्दी)
+- https://www.fileflip.org/ar/tools/trim-video (العربية)
+
+
+### Video to MP3
+Extract the audio track from a video file.
+URL: https://www.fileflip.org/tools/video-to-mp3
+Input: video/* | Output: audio/mpeg
+Available in:
+- https://www.fileflip.org/tools/video-to-mp3 (English)
+- https://www.fileflip.org/it/tools/video-to-mp3 (Italiano)
+- https://www.fileflip.org/es/tools/video-to-mp3 (Español)
+- https://www.fileflip.org/fr/tools/video-to-mp3 (Français)
+- https://www.fileflip.org/de/tools/video-to-mp3 (Deutsch)
+- https://www.fileflip.org/pt/tools/video-to-mp3 (Português)
+- https://www.fileflip.org/zh/tools/video-to-mp3 (中文)
+- https://www.fileflip.org/hi/tools/video-to-mp3 (हिन्दी)
+- https://www.fileflip.org/ar/tools/video-to-mp3 (العربية)
+
+
+### GIF to MP4
+Convert animated GIF to MP4 video.
+URL: https://www.fileflip.org/tools/gif-to-mp4
+Input: image/gif | Output: video/mp4
+Available in:
+- https://www.fileflip.org/tools/gif-to-mp4 (English)
+- https://www.fileflip.org/it/tools/gif-to-mp4 (Italiano)
+- https://www.fileflip.org/es/tools/gif-to-mp4 (Español)
+- https://www.fileflip.org/fr/tools/gif-to-mp4 (Français)
+- https://www.fileflip.org/de/tools/gif-to-mp4 (Deutsch)
+- https://www.fileflip.org/pt/tools/gif-to-mp4 (Português)
+- https://www.fileflip.org/zh/tools/gif-to-mp4 (中文)
+- https://www.fileflip.org/hi/tools/gif-to-mp4 (हिन्दी)
+- https://www.fileflip.org/ar/tools/gif-to-mp4 (العربية)
+
+
+### MP4 to GIF
+Convert a video clip to animated GIF.
+URL: https://www.fileflip.org/tools/mp4-to-gif
+Input: video/mp4 | Output: image/gif
+Available in:
+- https://www.fileflip.org/tools/mp4-to-gif (English)
+- https://www.fileflip.org/it/tools/mp4-to-gif (Italiano)
+- https://www.fileflip.org/es/tools/mp4-to-gif (Español)
+- https://www.fileflip.org/fr/tools/mp4-to-gif (Français)
+- https://www.fileflip.org/de/tools/mp4-to-gif (Deutsch)
+- https://www.fileflip.org/pt/tools/mp4-to-gif (Português)
+- https://www.fileflip.org/zh/tools/mp4-to-gif (中文)
+- https://www.fileflip.org/hi/tools/mp4-to-gif (हिन्दी)
+- https://www.fileflip.org/ar/tools/mp4-to-gif (العربية)
+
+
+### Merge Videos
+Concatenate multiple video files into one.
+URL: https://www.fileflip.org/tools/merge-videos
+Input: video/* | Output: video/mp4
+Available in:
+- https://www.fileflip.org/tools/merge-videos (English)
+- https://www.fileflip.org/it/tools/merge-videos (Italiano)
+- https://www.fileflip.org/es/tools/merge-videos (Español)
+- https://www.fileflip.org/fr/tools/merge-videos (Français)
+- https://www.fileflip.org/de/tools/merge-videos (Deutsch)
+- https://www.fileflip.org/pt/tools/merge-videos (Português)
+- https://www.fileflip.org/zh/tools/merge-videos (中文)
+- https://www.fileflip.org/hi/tools/merge-videos (हिन्दी)
+- https://www.fileflip.org/ar/tools/merge-videos (العربية)
+
+
+### Mute Video
+Remove the audio track from a video.
+URL: https://www.fileflip.org/tools/mute-video
+Input: video/* | Output: video/mp4
+Available in:
+- https://www.fileflip.org/tools/mute-video (English)
+- https://www.fileflip.org/it/tools/mute-video (Italiano)
+- https://www.fileflip.org/es/tools/mute-video (Español)
+- https://www.fileflip.org/fr/tools/mute-video (Français)
+- https://www.fileflip.org/de/tools/mute-video (Deutsch)
+- https://www.fileflip.org/pt/tools/mute-video (Português)
+- https://www.fileflip.org/zh/tools/mute-video (中文)
+- https://www.fileflip.org/hi/tools/mute-video (हिन्दी)
+- https://www.fileflip.org/ar/tools/mute-video (العربية)
+
+
+### Loop Video
+Make a video loop a specified number of times.
+URL: https://www.fileflip.org/tools/loop-video
+Input: video/* | Output: video/mp4
+Available in:
+- https://www.fileflip.org/tools/loop-video (English)
+- https://www.fileflip.org/it/tools/loop-video (Italiano)
+- https://www.fileflip.org/es/tools/loop-video (Español)
+- https://www.fileflip.org/fr/tools/loop-video (Français)
+- https://www.fileflip.org/de/tools/loop-video (Deutsch)
+- https://www.fileflip.org/pt/tools/loop-video (Português)
+- https://www.fileflip.org/zh/tools/loop-video (中文)
+- https://www.fileflip.org/hi/tools/loop-video (हिन्दी)
+- https://www.fileflip.org/ar/tools/loop-video (العربية)
+
+
+### Resize Video
+Change video resolution (e.g. 1080p to 720p).
+URL: https://www.fileflip.org/tools/resize-video
+Input: video/* | Output: video/mp4
+Available in:
+- https://www.fileflip.org/tools/resize-video (English)
+- https://www.fileflip.org/it/tools/resize-video (Italiano)
+- https://www.fileflip.org/es/tools/resize-video (Español)
+- https://www.fileflip.org/fr/tools/resize-video (Français)
+- https://www.fileflip.org/de/tools/resize-video (Deutsch)
+- https://www.fileflip.org/pt/tools/resize-video (Português)
+- https://www.fileflip.org/zh/tools/resize-video (中文)
+- https://www.fileflip.org/hi/tools/resize-video (हिन्दी)
+- https://www.fileflip.org/ar/tools/resize-video (العربية)
+
+
+### Video Speed
+Speed up or slow down a video.
+URL: https://www.fileflip.org/tools/video-speed
+Input: video/* | Output: video/mp4
+Available in:
+- https://www.fileflip.org/tools/video-speed (English)
+- https://www.fileflip.org/it/tools/video-speed (Italiano)
+- https://www.fileflip.org/es/tools/video-speed (Español)
+- https://www.fileflip.org/fr/tools/video-speed (Français)
+- https://www.fileflip.org/de/tools/video-speed (Deutsch)
+- https://www.fileflip.org/pt/tools/video-speed (Português)
+- https://www.fileflip.org/zh/tools/video-speed (中文)
+- https://www.fileflip.org/hi/tools/video-speed (हिन्दी)
+- https://www.fileflip.org/ar/tools/video-speed (العربية)
+
+
+### Add Audio to Video
+Replace or add an audio track to a video.
+URL: https://www.fileflip.org/tools/add-audio-to-video
+Input: video/*, audio/* | Output: video/mp4
+Available in:
+- https://www.fileflip.org/tools/add-audio-to-video (English)
+- https://www.fileflip.org/it/tools/add-audio-to-video (Italiano)
+- https://www.fileflip.org/es/tools/add-audio-to-video (Español)
+- https://www.fileflip.org/fr/tools/add-audio-to-video (Français)
+- https://www.fileflip.org/de/tools/add-audio-to-video (Deutsch)
+- https://www.fileflip.org/pt/tools/add-audio-to-video (Português)
+- https://www.fileflip.org/zh/tools/add-audio-to-video (中文)
+- https://www.fileflip.org/hi/tools/add-audio-to-video (हिन्दी)
+- https://www.fileflip.org/ar/tools/add-audio-to-video (العربية)
+
+
+---
+
+## Audio Tools
+
+### Trim Audio
+Cut audio to a specific start and end time.
+URL: https://www.fileflip.org/tools/trim-audio
+Input: audio/* | Output: audio/mpeg
+Available in:
+- https://www.fileflip.org/tools/trim-audio (English)
+- https://www.fileflip.org/it/tools/trim-audio (Italiano)
+- https://www.fileflip.org/es/tools/trim-audio (Español)
+- https://www.fileflip.org/fr/tools/trim-audio (Français)
+- https://www.fileflip.org/de/tools/trim-audio (Deutsch)
+- https://www.fileflip.org/pt/tools/trim-audio (Português)
+- https://www.fileflip.org/zh/tools/trim-audio (中文)
+- https://www.fileflip.org/hi/tools/trim-audio (हिन्दी)
+- https://www.fileflip.org/ar/tools/trim-audio (العربية)
+
+
+### Audio to MP3
+Convert any audio format to MP3.
+URL: https://www.fileflip.org/tools/audio-to-mp3
+Input: audio/* | Output: audio/mpeg
+Available in:
+- https://www.fileflip.org/tools/audio-to-mp3 (English)
+- https://www.fileflip.org/it/tools/audio-to-mp3 (Italiano)
+- https://www.fileflip.org/es/tools/audio-to-mp3 (Español)
+- https://www.fileflip.org/fr/tools/audio-to-mp3 (Français)
+- https://www.fileflip.org/de/tools/audio-to-mp3 (Deutsch)
+- https://www.fileflip.org/pt/tools/audio-to-mp3 (Português)
+- https://www.fileflip.org/zh/tools/audio-to-mp3 (中文)
+- https://www.fileflip.org/hi/tools/audio-to-mp3 (हिन्दी)
+- https://www.fileflip.org/ar/tools/audio-to-mp3 (العربية)
+
+
+---
+
+## CAD & 3D Tools
+
+### DXF Viewer
+View AutoCAD DXF files directly in the browser. Supports LINE, CIRCLE, ARC, POLYLINE, SPLINE entities.
+URL: https://www.fileflip.org/tools/dxf-viewer
+Input: model/vnd.dxf | Output: browser viewer
+Available in:
+- https://www.fileflip.org/tools/dxf-viewer (English)
+- https://www.fileflip.org/it/tools/dxf-viewer (Italiano)
+- https://www.fileflip.org/es/tools/dxf-viewer (Español)
+- https://www.fileflip.org/fr/tools/dxf-viewer (Français)
+- https://www.fileflip.org/de/tools/dxf-viewer (Deutsch)
+- https://www.fileflip.org/pt/tools/dxf-viewer (Português)
+- https://www.fileflip.org/zh/tools/dxf-viewer (中文)
+- https://www.fileflip.org/hi/tools/dxf-viewer (हिन्दी)
+- https://www.fileflip.org/ar/tools/dxf-viewer (العربية)
+
+
+### STL Viewer
+View 3D STL files in an interactive browser viewer.
+URL: https://www.fileflip.org/tools/stl-viewer
+Input: model/stl | Output: browser viewer
+Available in:
+- https://www.fileflip.org/tools/stl-viewer (English)
+- https://www.fileflip.org/it/tools/stl-viewer (Italiano)
+- https://www.fileflip.org/es/tools/stl-viewer (Español)
+- https://www.fileflip.org/fr/tools/stl-viewer (Français)
+- https://www.fileflip.org/de/tools/stl-viewer (Deutsch)
+- https://www.fileflip.org/pt/tools/stl-viewer (Português)
+- https://www.fileflip.org/zh/tools/stl-viewer (中文)
+- https://www.fileflip.org/hi/tools/stl-viewer (हिन्दी)
+- https://www.fileflip.org/ar/tools/stl-viewer (العربية)
+
+
+### OBJ to STL
+Convert 3D OBJ files to STL format for 3D printing.
+URL: https://www.fileflip.org/tools/obj-to-stl
+Input: model/obj | Output: model/stl
+Available in:
+- https://www.fileflip.org/tools/obj-to-stl (English)
+- https://www.fileflip.org/it/tools/obj-to-stl (Italiano)
+- https://www.fileflip.org/es/tools/obj-to-stl (Español)
+- https://www.fileflip.org/fr/tools/obj-to-stl (Français)
+- https://www.fileflip.org/de/tools/obj-to-stl (Deutsch)
+- https://www.fileflip.org/pt/tools/obj-to-stl (Português)
+- https://www.fileflip.org/zh/tools/obj-to-stl (中文)
+- https://www.fileflip.org/hi/tools/obj-to-stl (हिन्दी)
+- https://www.fileflip.org/ar/tools/obj-to-stl (العربية)
+
+
+---
+
+## Utility Tools
+
+### QR Code Generator
+Generate a QR code from any text or URL.
+URL: https://www.fileflip.org/tools/qr-code-generator
+Input: text | Output: image/png
+Available in:
+- https://www.fileflip.org/tools/qr-code-generator (English)
+- https://www.fileflip.org/it/tools/qr-code-generator (Italiano)
+- https://www.fileflip.org/es/tools/qr-code-generator (Español)
+- https://www.fileflip.org/fr/tools/qr-code-generator (Français)
+- https://www.fileflip.org/de/tools/qr-code-generator (Deutsch)
+- https://www.fileflip.org/pt/tools/qr-code-generator (Português)
+- https://www.fileflip.org/zh/tools/qr-code-generator (中文)
+- https://www.fileflip.org/hi/tools/qr-code-generator (हिन्दी)
+- https://www.fileflip.org/ar/tools/qr-code-generator (العربية)
+
+
+### Favicon Generator
+Generate a favicon.ico from any image.
+URL: https://www.fileflip.org/tools/favicon-generator
+Input: image/* | Output: image/x-icon
+Available in:
+- https://www.fileflip.org/tools/favicon-generator (English)
+- https://www.fileflip.org/it/tools/favicon-generator (Italiano)
+- https://www.fileflip.org/es/tools/favicon-generator (Español)
+- https://www.fileflip.org/fr/tools/favicon-generator (Français)
+- https://www.fileflip.org/de/tools/favicon-generator (Deutsch)
+- https://www.fileflip.org/pt/tools/favicon-generator (Português)
+- https://www.fileflip.org/zh/tools/favicon-generator (中文)
+- https://www.fileflip.org/hi/tools/favicon-generator (हिन्दी)
+- https://www.fileflip.org/ar/tools/favicon-generator (العربية)
+
+
+### Create ZIP
+Compress multiple files into a ZIP archive.
+URL: https://www.fileflip.org/tools/create-zip
+Input: any | Output: application/zip
+Available in:
+- https://www.fileflip.org/tools/create-zip (English)
+- https://www.fileflip.org/it/tools/create-zip (Italiano)
+- https://www.fileflip.org/es/tools/create-zip (Español)
+- https://www.fileflip.org/fr/tools/create-zip (Français)
+- https://www.fileflip.org/de/tools/create-zip (Deutsch)
+- https://www.fileflip.org/pt/tools/create-zip (Português)
+- https://www.fileflip.org/zh/tools/create-zip (中文)
+- https://www.fileflip.org/hi/tools/create-zip (हिन्दी)
+- https://www.fileflip.org/ar/tools/create-zip (العربية)
+
+
+### Compare Files
+Compare two files side by side.
+URL: https://www.fileflip.org/tools/compare
+Input: any | Output: viewer
+Available in:
+- https://www.fileflip.org/tools/compare (English)
+- https://www.fileflip.org/it/tools/compare (Italiano)
+- https://www.fileflip.org/es/tools/compare (Español)
+- https://www.fileflip.org/fr/tools/compare (Français)
+- https://www.fileflip.org/de/tools/compare (Deutsch)
+- https://www.fileflip.org/pt/tools/compare (Português)
+- https://www.fileflip.org/zh/tools/compare (中文)
+- https://www.fileflip.org/hi/tools/compare (हिन्दी)
+- https://www.fileflip.org/ar/tools/compare (العربية)
+
+
+---
+
+## Developer Tools
+
+### JSON Formatter
+Format, validate and prettify JSON data.
+URL: https://www.fileflip.org/tools/json-formatter
+Input: application/json | Output: application/json
+Available in:
+- https://www.fileflip.org/tools/json-formatter (English)
+- https://www.fileflip.org/it/tools/json-formatter (Italiano)
+- https://www.fileflip.org/es/tools/json-formatter (Español)
+- https://www.fileflip.org/fr/tools/json-formatter (Français)
+- https://www.fileflip.org/de/tools/json-formatter (Deutsch)
+- https://www.fileflip.org/pt/tools/json-formatter (Português)
+- https://www.fileflip.org/zh/tools/json-formatter (中文)
+- https://www.fileflip.org/hi/tools/json-formatter (हिन्दी)
+- https://www.fileflip.org/ar/tools/json-formatter (العربية)
+
+
+### Base64 Encode / Decode
+Encode text or files to Base64, or decode Base64 strings.
+URL: https://www.fileflip.org/tools/base64-encode-decode
+Input: text, any | Output: text
+Available in:
+- https://www.fileflip.org/tools/base64-encode-decode (English)
+- https://www.fileflip.org/it/tools/base64-encode-decode (Italiano)
+- https://www.fileflip.org/es/tools/base64-encode-decode (Español)
+- https://www.fileflip.org/fr/tools/base64-encode-decode (Français)
+- https://www.fileflip.org/de/tools/base64-encode-decode (Deutsch)
+- https://www.fileflip.org/pt/tools/base64-encode-decode (Português)
+- https://www.fileflip.org/zh/tools/base64-encode-decode (中文)
+- https://www.fileflip.org/hi/tools/base64-encode-decode (हिन्दी)
+- https://www.fileflip.org/ar/tools/base64-encode-decode (العربية)
+
+
+---
+
+## Blog
+https://www.fileflip.org/blog
+
+## API
+https://www.fileflip.org/api/tools
+
+## Contact
+https://www.fileflip.org/contact

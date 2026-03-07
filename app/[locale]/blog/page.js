@@ -5,18 +5,14 @@ import { routing } from "@/i18n/routing";
 import { BlogShell } from "@/components/BlogShell";
 import { ChevronRight } from "lucide-react";
 import { BASE_URL } from "@/lib/constants";
+import { buildAbsoluteLanguageAlternates } from "@/lib/buildAlternates";
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "blog" });
   const canonical =
     locale === routing.defaultLocale ? `${BASE_URL}/blog` : `${BASE_URL}/${locale}/blog`;
-  const languages = {};
-  for (const loc of routing.locales) {
-    languages[loc] =
-      loc === routing.defaultLocale ? `${BASE_URL}/blog` : `${BASE_URL}/${loc}/blog`;
-  }
-  languages["x-default"] = `${BASE_URL}/blog`;
+  const languages = buildAbsoluteLanguageAlternates("/blog");
   return {
     title: t("metaTitle"),
     description: t("metaDescription"),
