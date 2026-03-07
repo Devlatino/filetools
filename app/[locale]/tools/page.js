@@ -23,7 +23,7 @@ const TOOL_CATEGORIES = [
       "png-to-jpg", "webp-to-jpg", "jpg-to-webp", "image-to-webp",
       "bmp-to-jpg", "tiff-to-jpg", "heic-to-jpg", "svg-to-png",
       "remove-background", "resize-image-social", "add-text-to-image",
-      "favicon-generator", "compare",
+      "favicon-generator", "compare", "image-to-text",
     ],
   },
   {
@@ -49,6 +49,10 @@ const TOOL_CATEGORIES = [
   {
     name: "Utility Tools",
     slugs: ["create-zip", "qr-code-generator"],
+  },
+  {
+    name: "Developer Tools",
+    slugs: ["json-formatter", "base64-encode-decode"],
   },
 ];
 

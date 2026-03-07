@@ -65,6 +65,9 @@ const TOOL_PATHS = [
   "/tools/excel-to-pdf",
   "/tools/pdf-to-pdfa",
   "/tools/csv-to-pdf",
+  "/tools/json-formatter",
+  "/tools/base64-encode-decode",
+  "/tools/image-to-text",
 ];
 
 const BLOG_SLUGS = [

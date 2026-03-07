@@ -129,6 +129,9 @@ const TOOL_IDS = [
   { id: "stlViewer", href: "/tools/stl-viewer", category: "3d", active: true },
   { id: "objToStl", href: "/tools/obj-to-stl", category: "3d", active: true },
   { id: "lithophane", href: "/tools/image-to-lithophane", category: "3d", active: true },
+  { id: "jsonFormatter", href: "/tools/json-formatter", category: "tools", active: true },
+  { id: "base64EncodeDecode", href: "/tools/base64-encode-decode", category: "tools", active: true },
+  { id: "imageToText", href: "/tools/image-to-text", category: "images", active: true },
 ];
 
 const CATEGORY_COLORS = {
