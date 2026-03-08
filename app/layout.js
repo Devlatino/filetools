@@ -104,13 +104,13 @@ export default async function RootLayout({ children }) {
 
         {/* Adsterra Social Bar */}
         <Script
-          src="https://pl28874540.effectivegatecpm.com/71/4e/42/714e421b016e86c8f81c82d15b7aae4e.js"
+          src="https://landslidegraphsystems.com/71/4e/42/714e421b016e86c8f81c82d15b7aae4e.js"
           strategy="afterInteractive"
         />
 
         {/* Adsterra Popunder */}
         <Script
-          src="https://pl28874548.effectivegatecpm.com/7f/f8/0f/7ff80f6c4a924396c6ad6df206e45657.js"
+          src="https://landslidegraphsystems.com/7f/f8/0f/7ff80f6c4a924396c6ad6df206e45657.js"
           strategy="afterInteractive"
         />
       </body>
