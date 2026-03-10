@@ -68,6 +68,9 @@ const TOOL_PATHS = [
   "/tools/json-formatter",
   "/tools/base64-encode-decode",
   "/tools/image-to-text",
+  "/tools/password-generator",
+  "/tools/markdown-to-pdf",
+  "/tools/unit-converter",
 ];
 
 const BLOG_SLUGS = [
@@ -77,6 +80,13 @@ const BLOG_SLUGS = [
   "best-free-pdf-converter-online",
   "how-to-convert-excel-to-pdf",
   "what-is-pdfa-and-when-do-you-need-it",
+  "how-to-compress-images-without-losing-quality",
+  "heic-to-jpg-how-to-convert-iphone-photos",
+  "how-to-remove-background-from-image-free",
+  "merge-pdf-free-online-guide",
+  "word-to-pdf-without-microsoft-office",
+  "how-to-split-pdf-online-free",
+  "best-image-format-for-web-jpg-png-webp",
 ];
 
 // Fixed date for tools — update on each deploy
@@ -186,7 +196,7 @@ export default function sitemap() {
   }
 
   // Static pages
-  const staticPages = ["/about", "/privacy", "/terms"];
+  const staticPages = ["/about", "/privacy", "/contact", "/terms"];
   for (const page of staticPages) {
     const pageLanguages = buildAlternatesLanguages(page);
     for (const locale of routing.locales) {

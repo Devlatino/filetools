@@ -336,6 +336,24 @@ Encode text or files to Base64, or decode Base64 strings.
 URL: https://www.fileflip.org/tools/base64-encode-decode
 Input: text, any | Output: text
 
+### Password Generator
+Generate cryptographically secure random passwords.
+Customize length (8-64) and character sets.
+URL: https://www.fileflip.org/tools/password-generator
+Input: configuration options | Output: text
+
+### Markdown to PDF
+Convert Markdown documents to PDF with live preview.
+Supports CommonMark and GitHub Flavored Markdown.
+URL: https://www.fileflip.org/tools/markdown-to-pdf
+Input: text/markdown | Output: application/pdf
+
+### Unit Converter
+Convert between 60+ units across 7 categories:
+length, weight, temperature, area, volume, speed, data.
+URL: https://www.fileflip.org/tools/unit-converter
+Input: numeric value + unit | Output: converted value
+
 ---
 
 ## Blog

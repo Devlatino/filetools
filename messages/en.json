@@ -131,6 +131,7 @@
       "languagesTitle": "Languages",
       "sitemap": "Sitemap",
       "copyright": "All rights reserved.",
+      "about": "About",
       "privacy": "Privacy",
       "terms": "Terms",
       "contact": "Contact",
@@ -159,6 +160,89 @@
     "processingLabel": "Processing…",
     "successSaved": "{original} → {result}, saved {percent}%",
     "downloadSubline": "File reduced by {percent}% · {result}"
+  },
+  "about": {
+    "title": "About FileFlip",
+    "description": "FileFlip is a free, browser-based file conversion platform. Every conversion happens directly in your web browser — no files are ever uploaded to external servers. We offer 61 tools in 9 languages for PDF, images, video, audio, CAD and 3D files. Our mission is to make file conversion accessible to everyone, without software to install or accounts to create.",
+    "mission": "Our mission is to make file conversion free, fast, and private for everyone. We believe you should not need to install software or create an account to convert a PDF, resize an image, or change a file format. FileFlip runs entirely in your browser using WebAssembly and the Canvas API, so your files never leave your device. We do not store, log, or transmit your files to any server. Privacy by design is at the core of what we build.",
+    "howItWorks": "FileFlip uses modern web technologies to process files locally. When you use a tool, the page loads the necessary code (for example PDF.js or FFmpeg compiled to WebAssembly) and runs it in your browser. You upload a file into the page; it is held in memory and processed on your device. The result is generated in the browser and you download it. No copy of your file is sent to our servers or any third party. This keeps your data private and allows the service to stay free without storing or handling user content.",
+    "privacy": "Privacy by design: we do not collect your files. We do not require registration, so we do not store names, emails, or passwords. Analytics may collect anonymized usage data (for example which tools are used) to improve the service. Your converted files are never uploaded to our infrastructure; processing happens only in your browser. We do not sell or share your data with third parties for advertising.",
+    "team": "FileFlip was founded to provide a simple, free, and privacy-respecting way to convert files online. The platform is developed and maintained by a small team focused on reliability and user privacy. We host the service on secure infrastructure (including Vercel) and keep the product free for everyone. For partnerships or press inquiries, please use our contact page."
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: March 2026",
+    "sections": {
+      "controller": {
+        "title": "Data controller",
+        "body": "The data controller for this website and the FileFlip service is FileFlip. You can reach us at info@fileflip.org for any request related to your personal data or this policy."
+      },
+      "dataCollected": {
+        "title": "Data we collect",
+        "body": "FileFlip does not collect or process the files you convert. All file processing runs in your browser; your files never leave your device and are not uploaded to our servers. We do not require an account, so we do not store names, emails, or passwords. We may collect anonymized usage data (e.g. which tools are used and general traffic statistics) through analytics to improve the service. We do not use this data to identify you or to profile users."
+      },
+      "cookies": {
+        "title": "Cookies",
+        "body": "We use technically necessary cookies to operate the site (e.g. language preference). If we use analytics, they may set cookies to measure usage in an anonymized way. We do not use cookies for advertising or profiling. You can control or disable non-essential cookies in your browser settings."
+      },
+      "rights": {
+        "title": "Your rights (GDPR)",
+        "body": "Under the GDPR (Articles 13–22) you have the right to access, rectify, erase, restrict processing, and port your data where applicable. You may also object to processing and lodge a complaint with a supervisory authority. To exercise these rights, contact us at info@fileflip.org."
+      },
+      "transfers": {
+        "title": "International transfers",
+        "body": "Our site and infrastructure may be hosted in regions outside the EU (e.g. via Vercel). Where we transfer data, we rely on appropriate safeguards (e.g. adequacy decisions or standard contractual clauses) as permitted by applicable law."
+      },
+      "contact": {
+        "title": "Contact",
+        "body": "For any question about this privacy policy or to exercise your rights, please contact us at info@fileflip.org. We will respond within a reasonable time."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "For questions, feedback, or support, get in touch. We aim to reply within 24–48 hours on business days.",
+    "email": "Email us at info@fileflip.org",
+    "name": "Name",
+    "emailLabel": "Email",
+    "message": "Message",
+    "send": "Send",
+    "responseTime": "We usually reply within 24–48 hours on business days. For quick answers, check the FAQ on the homepage.",
+    "faqLink": "FAQ on the homepage"
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: March 2026",
+    "sections": {
+      "acceptance": {
+        "title": "Acceptance of terms",
+        "body": "By using FileFlip you agree to these terms. If you do not agree, please do not use the service."
+      },
+      "service": {
+        "title": "Description of the service",
+        "body": "FileFlip provides free, browser-based tools to convert, compress, and transform files (e.g. PDF, images, video, audio). All processing runs in your browser; we do not upload or store your files on our servers. No account or registration is required. The service is offered free of charge, subject to these terms."
+      },
+      "acceptableUse": {
+        "title": "Acceptable use",
+        "body": "You must not use FileFlip for illegal purposes or to process content you do not have the right to use. You must not attempt to disrupt, overload, or abuse the service (e.g. automated scraping or bypassing technical limits). We may suspend or block access if we detect misuse."
+      },
+      "limitation": {
+        "title": "Limitation of liability",
+        "body": "FileFlip is provided \"as is\". We do not guarantee uninterrupted availability, conversion quality, or fitness for a particular purpose. We are not liable for any loss of data, loss of profits, or indirect damages arising from the use of the service. You use the tools at your own risk and are responsible for backing up your files."
+      },
+      "ip": {
+        "title": "Intellectual property",
+        "body": "The FileFlip website, code, and branding are the property of FileFlip. The files you upload and the outputs you download remain yours; we do not claim ownership of your content. You may not copy, reverse-engineer, or commercially exploit our service without permission."
+      },
+      "changes": {
+        "title": "Changes to the terms",
+        "body": "We may update these terms from time to time. The \"Last updated\" date at the top will be revised. Continued use of FileFlip after changes constitutes acceptance of the updated terms. We encourage you to review this page periodically."
+      },
+      "law": {
+        "title": "Applicable law",
+        "body": "These terms are governed by the laws of Italy and the European Union. Any dispute shall be subject to the exclusive jurisdiction of the competent courts in Italy, unless otherwise required by mandatory law."
+      }
+    }
   },
   "home": {
     "badge": "100% free • No account • Everything in the browser",
@@ -2751,6 +2835,118 @@
       "faq7A": "OCR processing happens entirely in your browser, which requires downloading language data and running complex image analysis. The first use takes longer because language models need to be loaded. Subsequent extractions are faster.",
       "faq8Q": "Can I extract text from PDFs?",
       "faq8A": "For PDF text extraction, use our dedicated PDF to Text tool. This Image to Text tool is designed for image files (JPG, PNG, etc.)."
+    },
+    "passwordGenerator": {
+      "title": "Password Generator",
+      "description": "Generate strong, secure passwords instantly in your browser",
+      "short": "Generate secure passwords",
+      "metaTitle": "Password Generator — Free & Secure | FileFlip",
+      "metaDescription": "Generate strong random passwords instantly. Customize length and characters. 100% browser-side, never sent to servers. Free, no registration.",
+      "length": "Password Length",
+      "uppercase": "Uppercase Letters (A-Z)",
+      "lowercase": "Lowercase Letters (a-z)",
+      "numbers": "Numbers (0-9)",
+      "symbols": "Symbols (!@#$%)",
+      "generate": "Generate Password",
+      "regenerate": "Regenerate",
+      "copy": "Copy",
+      "copied": "Copied!",
+      "strength": "Password Strength",
+      "weak": "Weak",
+      "fair": "Fair",
+      "strong": "Strong",
+      "veryStrong": "Very Strong",
+      "result": "Generated Password",
+      "editorialTitle": "Why Use a Random Password Generator?",
+      "editorialBody": "A strong password is your first line of defense against unauthorized access. FileFlip's password generator uses the Web Crypto API — the same cryptographic standard used by browsers for HTTPS — to generate truly random passwords. Unlike predictable human-chosen passwords, cryptographically random passwords are virtually impossible to guess or brute-force. Your generated passwords are never sent to any server, logged, or stored anywhere. They exist only in your browser for the moment you need them.",
+      "faq1Q": "Is this password generator truly random?",
+      "faq1A": "Yes. FileFlip uses the Web Crypto API (crypto.getRandomValues), which is a cryptographically secure random number generator built into your browser. This is the same technology used by password managers and security tools. The randomness is not predictable or reproducible, making it safe for generating passwords for any account.",
+      "faq2Q": "Are my generated passwords stored anywhere?",
+      "faq2A": "No. The entire password generation process happens in your browser using JavaScript. No data is sent to any server, no passwords are logged, and nothing is stored. Once you close the tab, the password is gone. This makes FileFlip one of the safest password generators available online.",
+      "faq3Q": "How long should a password be?",
+      "faq3A": "Security experts recommend at least 12-16 characters for most accounts. For highly sensitive accounts like banking or email, use 20 or more characters. Longer passwords are exponentially harder to crack: a 16-character password with mixed characters would take billions of years to brute-force with current technology.",
+      "faq4Q": "Should I include symbols in my password?",
+      "faq4A": "Yes, when the website allows it. Including symbols significantly increases password complexity. A 12-character password with letters and numbers has about 3.2 trillion combinations. Adding symbols increases this to over 20 trillion. However, some sites restrict which symbols are accepted, so adjust accordingly.",
+      "faq5Q": "What makes a password strong?",
+      "faq5A": "A strong password combines length (16+ characters), variety (uppercase, lowercase, numbers, symbols), and unpredictability (no dictionary words, names, or patterns). The FileFlip strength indicator evaluates all these factors in real time to help you create a password that meets modern security standards.",
+      "faq6Q": "Can I use this to generate a PIN?",
+      "faq6A": "Yes. Set the length to 4 or 6, enable only Numbers, and disable all other character sets. You will get a cryptographically random numeric PIN suitable for ATMs, phone lock screens, or any service requiring a numeric-only code.",
+      "faq7Q": "How often should I change my passwords?",
+      "faq7A": "Current security guidance from NIST recommends changing passwords only when you suspect a breach, rather than on a fixed schedule. More important than frequency is uniqueness: use a different password for every account. A password manager can store them all securely so you only need to remember one master password.",
+      "faq8Q": "What is the difference between a password and a passphrase?",
+      "faq8A": "A password is typically a random string of characters, while a passphrase is a sequence of random words (e.g. 'purple-elephant-river-42'). Both can be equally secure if long enough. Passphrases are easier to remember but harder to type on mobile. For maximum security with a password manager, use long random character passwords."
+    },
+    "markdownToPdf": {
+      "title": "Markdown to PDF",
+      "description": "Convert Markdown documents to PDF with live preview",
+      "short": "Convert Markdown to PDF",
+      "metaTitle": "Markdown to PDF Converter — Free Online | FileFlip",
+      "metaDescription": "Convert Markdown to PDF online free. Live preview, custom page size and margins. No server upload, works in browser. Perfect for README, docs and notes.",
+      "inputLabel": "Markdown Input",
+      "previewLabel": "Preview",
+      "convert": "Download PDF",
+      "converting": "Generating PDF...",
+      "pageSize": "Page Size",
+      "margins": "Margins",
+      "normal": "Normal",
+      "wide": "Wide",
+      "narrow": "Narrow",
+      "placeholder": "# Your Markdown here\n\nWrite or paste your **Markdown** content.\n\n## Features\n- Headings\n- **Bold** and *italic*\n- Lists and links\n- Code blocks\n\n```\nconst hello = 'world'\n```",
+      "editorialTitle": "Convert Markdown to PDF Without Installing Anything",
+      "editorialBody": "Markdown is the go-to format for developers, technical writers, and documentation teams. But sharing a .md file with non-technical users often requires converting it to a more universal format. FileFlip converts your Markdown directly in the browser — no Pandoc, no LaTeX, no command line needed. Write or paste your Markdown, see the formatted preview in real time, and download a clean PDF in seconds. Perfect for README files, meeting notes, project documentation, and technical reports.",
+      "faq1Q": "Can I convert a README.md file to PDF?",
+      "faq1A": "Yes. Paste the contents of your README.md into the editor, check the live preview, and click Download PDF. FileFlip supports all standard Markdown elements including headings, bold, italic, lists, links, tables and code blocks. GitHub-flavored Markdown extras like task lists are also supported.",
+      "faq2Q": "Does the PDF preserve my Markdown formatting?",
+      "faq2A": "Yes. Headings render at the correct sizes, bold and italic text are preserved, code blocks use a monospace font with background highlight, and bullet lists are properly indented. The PDF output matches the live preview shown on screen.",
+      "faq3Q": "Can I convert Markdown to PDF on my phone?",
+      "faq3A": "Yes. The tool works in mobile browsers on iOS and Android. The editor and preview panels stack vertically on small screens for a comfortable mobile experience. You can paste Markdown from your clipboard or type directly.",
+      "faq4Q": "What Markdown syntax is supported?",
+      "faq4A": "FileFlip supports CommonMark standard Markdown: headings (H1-H6), bold, italic, strikethrough, unordered and ordered lists, links, images, blockquotes, inline code, fenced code blocks, horizontal rules, and tables. Extended GitHub Flavored Markdown elements are also supported.",
+      "faq5Q": "Can I choose the PDF page size?",
+      "faq5A": "Yes. You can select A4 (standard in Europe) or Letter (standard in North America) before downloading. You can also adjust margins between Normal, Wide, and Narrow to control how much content fits on each page.",
+      "faq6Q": "Is my Markdown content sent to a server?",
+      "faq6A": "No. All processing happens in your browser. Your Markdown text is never transmitted to any server. This makes FileFlip safe to use with confidential documents, internal documentation, and private notes.",
+      "faq7Q": "Can I convert multiple Markdown files to PDF?",
+      "faq7A": "Currently the tool processes one Markdown document at a time. For multiple files, simply paste each document, download the PDF, then move to the next. Each conversion takes only a few seconds.",
+      "faq8Q": "How is this different from printing a webpage to PDF?",
+      "faq8A": "Browser print-to-PDF often includes browser UI elements, headers and footers, and inconsistent margins. FileFlip generates a clean PDF with controlled typography, proper margins, and consistent formatting across all pages — without any browser chrome or unwanted elements."
+    },
+    "unitConverter": {
+      "title": "Unit Converter",
+      "description": "Convert between units of length, weight, temperature, area, volume, speed and data",
+      "short": "Convert any unit instantly",
+      "metaTitle": "Unit Converter — Length, Weight, Temperature & More | FileFlip",
+      "metaDescription": "Free online unit converter. Convert length, weight, temperature, area, volume, speed and data storage units instantly. No registration required.",
+      "from": "From",
+      "to": "To",
+      "result": "Result",
+      "swap": "Swap",
+      "length": "Length",
+      "weight": "Weight",
+      "temperature": "Temperature",
+      "area": "Area",
+      "volume": "Volume",
+      "speed": "Speed",
+      "data": "Data Storage",
+      "formula": "Formula",
+      "editorialTitle": "The Fastest Unit Converter Online",
+      "editorialBody": "Whether you need to convert kilometers to miles for a road trip, kilograms to pounds for a recipe, or Celsius to Fahrenheit for the weather, FileFlip's unit converter handles it all instantly. No ads interrupting your workflow, no page reloads, no popups — just type a number and get the result in real time. Supports 7 categories with over 60 units of measurement, covering everything from everyday conversions to technical and scientific needs.",
+      "faq1Q": "How do I convert kilometers to miles?",
+      "faq1A": "Select the Length category, choose Kilometers in the From field, enter your value, and select Miles in the To field. The result appears instantly. 1 kilometer equals 0.621371 miles. You can also click the swap button to reverse the conversion from miles to kilometers.",
+      "faq2Q": "How do I convert Celsius to Fahrenheit?",
+      "faq2A": "Select the Temperature category, choose Celsius as the source unit, enter the temperature value, and select Fahrenheit as the destination. The formula is: °F = (°C × 9/5) + 32. For example, 100°C equals 212°F (boiling point of water).",
+      "faq3Q": "What units of data storage are supported?",
+      "faq3A": "FileFlip supports bit, byte, kilobyte (KB), megabyte (MB), gigabyte (GB), terabyte (TB), and petabyte (PB). Conversions use the decimal system (1 KB = 1000 bytes) standard in storage marketing, not the binary system (1 KiB = 1024 bytes) used in operating systems.",
+      "faq4Q": "Can I convert cooking measurements?",
+      "faq4A": "Yes. The Volume category includes teaspoon, tablespoon, fluid ounce, cup, pint, quart, and gallon alongside metric units (ml, cl, dl, L). This covers all common cooking and baking measurements used in both US and European recipes.",
+      "faq5Q": "How accurate are the conversions?",
+      "faq5A": "Conversions use precise scientific conversion factors and display up to 6 significant decimal places. For everyday use the results are exact. For highly specialized scientific or engineering calculations, we recommend using the displayed formula to verify precision requirements.",
+      "faq6Q": "Can I convert nautical miles and knots?",
+      "faq6A": "Yes. Nautical miles are available in the Length category and knots (nautical miles per hour) are included in the Speed category. These are particularly useful for navigation, aviation, and maritime applications.",
+      "faq7Q": "Is there a way to see multiple conversions at once?",
+      "faq7A": "Yes. Below the main result, FileFlip shows a quick reference table with the most common equivalent values for your input. For example, entering 1 kilometer shows the equivalent in meters, centimeters, miles, feet, yards and inches simultaneously.",
+      "faq8Q": "Does the unit converter work offline?",
+      "faq8A": "Once the page is loaded, all conversions work without an internet connection since they are pure mathematical calculations done in your browser. However, you need to be online to initially load the page."
     }
   }
 }

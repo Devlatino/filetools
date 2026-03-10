@@ -937,6 +937,11 @@ export default function Home() {
               </h3>
               <ul className="space-y-2">
                 <li>
+                  <Link href={`/${locale}/about`} className="text-sm text-slate-300 transition-colors hover:text-white">
+                    {tCommon("footer.about")}
+                  </Link>
+                </li>
+                <li>
                   <Link href={`/${locale}/privacy`} className="text-sm text-slate-300 transition-colors hover:text-white">
                     {tCommon("footer.privacy")}
                   </Link>

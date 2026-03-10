@@ -1,0 +1,98 @@
+---
+title: "JPG vs PNG vs WebP: melhor formato de imagem para a web"
+description: "JPG vs PNG vs WebP: quando usar cada um, prós e contras, tabela comparativa e como converter com FileFlip. Escolha o melhor formato para velocidade e qualidade."
+date: "2026-02-24"
+dateModified: "2026-02-24"
+readTime: "7 min"
+category: "Image"
+tags: ["JPG", "PNG", "WebP", "formato imagem", "otimização web"]
+relatedTool: "image-to-webp"
+relatedToolLabel: "Converter para WebP"
+---
+
+Escolher o formato de imagem certo para a web afeta a velocidade, a qualidade e a compatibilidade. Os três formatos que mais vai usar são **JPG**, **PNG** e **WebP**. Cada um tem vantagens e trade-offs. Este guia explica quando usar JPG, PNG e WebP, prós e contras, uma tabela comparativa, como converter entre eles com FileFlip e um guia de decisão para escolher o formato adequado.
+
+## JPG — quando usar
+
+**O que é** — JPG (JPEG) é um formato com perda: reduz o tamanho descartando parte do pormenor. É o standard para fotos na web e em câmaras há décadas.
+
+**Prós** — Suporte universal em browsers, email e dispositivos. Ficheiros pequenos com boa qualidade para fotos. Sem transparência. Fácil de criar e partilhar.
+
+**Contras** — Sem transparência. A compressão com perda pode introduzir artefactos visíveis a baixa qualidade ou após muitas edições. Não ideal para gráficos com bordos nítidos ou texto.
+
+**Quando usar** — Fotos, imagens realistas, fundos e qualquer imagem onde não precise de transparência. Use JPG quando a compatibilidade com sistemas antigos ou email for mais importante.
+
+## PNG — quando usar
+
+**O que é** — PNG é sem perda: mantém cada pixel exato. Suporta transparência (canal alpha).
+
+**Prós** — Qualidade sem perda; não há perda ao guardar de novo. Transparência completa. Muito bom para gráficos, logótipos, capturas de ecrã e elementos de UI com bordos nítidos e texto.
+
+**Contras** — O tamanho dos ficheiros é muitas vezes bem maior que JPG ou WebP para fotos. Sem animação. Pode atrasar as páginas se usado para imagens grandes tipo foto.
+
+**Quando usar** — Logótipos, ícones, capturas, gráficos com texto e qualquer imagem que precise de transparência ou qualidade pixel-perfeita. Evite PNG para fotos grandes se a velocidade da página importar.
+
+## WebP — o standard moderno
+
+**O que é** — WebP é um formato Google que suporta compressão com e sem perda, transparência e animação. Foi desenhado para dar ficheiros mais pequenos que JPG e PNG com qualidade semelhante.
+
+**Prós** — Tipicamente 25–35% mais pequeno que JPG com qualidade semelhante; muitas vezes muito mais pequeno que PNG para fotos. Suporta transparência e animação. Suportado por todos os browsers modernos.
+
+**Contras** — Browsers muito antigos não suportam; para compatibilidade máxima pode ser preciso fallback JPG ou PNG. Alguns clientes de email ou ferramentas antigas não tratam WebP.
+
+**Quando usar** — Fotos e imagens em sites e apps quando pode servir WebP (ex. com `<picture>` ou content negotiation). Use WebP como formato principal na web quando o seu público usa browsers modernos.
+
+## Tabela comparativa
+
+|                | JPG       | PNG        | WebP           |
+|----------------|-----------|------------|----------------|
+| **Compressão** | Com perda | Sem perda  | Com ou sem perda |
+| **Transparência** | Não    | Sim        | Sim            |
+| **Uso típico** | Fotos     | Gráficos, logos, capturas | Fotos, imagens web |
+| **Tamanho (fotos)** | Pequeno | Grande     | Mais pequeno que JPG/PNG |
+| **Suporte browsers** | Universal | Universal | Só modernos (fallback para antigos) |
+| **Animação**   | Não       | Não        | Sim            |
+
+Use como referência; os tamanhos reais dependem do conteúdo e das definições.
+
+## Como converter entre formatos com FileFlip
+
+Pode converter imagens de um formato para outro no browser sem instalar software. O FileFlip corre no browser; os ficheiros podem ser processados localmente.
+
+- **Para WebP** — Use [Imagem para WebP](/pt/tools/image-to-webp) ou [JPG para WebP](/pt/tools/jpg-to-webp) para ficheiros mais pequenos e adequados à web.
+- **JPG a partir de PNG** — Use [PNG para JPG](/pt/tools/png-to-jpg) quando não precisar de transparência e quiser um ficheiro mais pequeno.
+- **Reduzir tamanho** — Use [Comprimir imagem](/pt/tools/compress-image) para reduzir sem mudar de formato, ou combine com a conversão (ex. PNG → WebP) para poupar ao máximo.
+
+Não é necessária conta. As ferramentas funcionam em desktop e telemóvel.
+
+## Que formato devo usar? (guia de decisão)
+
+1. **Precisa de transparência (áreas transparentes ou semi-transparentes)?**  
+   → Sim: use **PNG** ou **WebP**. Prefira **WebP** para a web quando o browser o suportar.  
+   → Não: continue.
+
+2. **É uma foto ou imagem tipo foto (fundo, banner)?**  
+   → Prefira **WebP** para a web. Use **JPG** quando precisar de compatibilidade máxima (email, sistemas antigos).  
+   → É um gráfico, logo ou captura: use **PNG** ou **WebP**. Prefira **WebP** se quiser ficheiros mais pequenos e puder usá-lo.
+
+3. **O seu público usa browsers muito antigos ou só email?**  
+   → Use **JPG** (e **PNG** para gráficos com transparência) para a maior compatibilidade.
+
+Em resumo: **WebP** para a web moderna quando possível; **JPG** para compatibilidade e fotos em email; **PNG** quando precisar de sem perda ou transparência e WebP não for opção.
+
+## FAQ
+
+**O WebP é suportado em todo o lado?**  
+As versões atuais do Chrome, Firefox, Safari e Edge suportam WebP. Browsers muito antigos não. Para esses pode servir JPG ou PNG como fallback (ex. com `<picture>`).
+
+**Posso usar WebP em email?**  
+O suporte varia. Muitos clientes modernos sim; alguns corporativos ou antigos não. Para emails críticos, JPG ou PNG é mais seguro.
+
+**Converter para WebP reduz a qualidade?**  
+WebP com perda é como JPG: escolhe o nível de qualidade. Com definições semelhantes WebP costuma dar ficheiros mais pequenos. WebP sem perda mantém a qualidade como PNG.
+
+**E se o meu CMS não aceitar WebP?** — Converta para JPG ou PNG para upload, ou use um plugin que gere WebP na publicação. Pode preparar recursos em WebP com FileFlip e usá-los onde WebP for aceite.
+
+---
+
+Otimize as suas imagens para a web: converta com [Imagem para WebP](/pt/tools/image-to-webp) ou [JPG para WebP](/pt/tools/jpg-to-webp), use [PNG para JPG](/pt/tools/png-to-jpg) quando não precisar de transparência e [Comprimir imagem](/pt/tools/compress-image) para reduzir mais o tamanho.

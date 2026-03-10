@@ -1,8 +1,19 @@
 import { setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { BASE_URL } from "@/lib/constants";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+
+const TERMS_SECTION_KEYS = [
+  "acceptance",
+  "service",
+  "acceptableUse",
+  "limitation",
+  "ip",
+  "changes",
+  "law",
+];
 
 export async function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -10,6 +21,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "terms" });
   const pathSegment = "/terms";
   const canonical =
     locale === routing.defaultLocale
@@ -25,24 +37,23 @@ export async function generateMetadata({ params }) {
   }
   languages["x-default"] = `${BASE_URL}${pathSegment}`;
 
+  const title = t("title");
+  const description = t("sections.service.body");
   return {
-    title: "Terms of Service",
-    description:
-      "FileFlip terms of service. By using FileFlip, you agree to these terms. Files are processed in your browser and are not stored on our servers.",
+    title,
+    description,
     alternates: { canonical, languages },
     openGraph: {
-      title: "Terms of Service | FileFlip",
-      description:
-        "FileFlip terms of service. Files are processed in your browser and are not stored on our servers.",
+      title: `${title} | FileFlip`,
+      description,
       url: canonical,
       siteName: "FileFlip",
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title: "Terms of Service | FileFlip",
-      description:
-        "FileFlip terms of service. Files are processed in your browser and are not stored on our servers.",
+      title: `${title} | FileFlip`,
+      description,
     },
   };
 }
@@ -50,6 +61,8 @@ export async function generateMetadata({ params }) {
 export default async function TermsPage({ params }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "terms" });
+  const tCommon = await getTranslations({ locale, namespace: "common" });
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50">
@@ -58,7 +71,7 @@ export default async function TermsPage({ params }) {
           <Link href="/" prefetch className="flex items-center gap-2">
             <img
               src="/fileflip-logo.svg"
-              alt="FileFlip"
+              alt={tCommon("siteName")}
               className="h-11 w-auto"
               width={170}
               height={44}
@@ -71,53 +84,28 @@ export default async function TermsPage({ params }) {
       <main className="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
         <nav className="mb-6 text-sm text-slate-400">
           <Link href="/" className="hover:text-slate-200">
-            Home
+            {tCommon("breadcrumbHome")}
           </Link>
           <span className="mx-2">/</span>
-          <span className="text-slate-200">Terms of Service</span>
+          <span className="text-slate-200">{t("title")}</span>
         </nav>
 
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          Terms of Service
+          {t("title")}
         </h1>
-        <p className="mt-2 text-sm text-slate-500">Last updated: March 2026</p>
+        <p className="mt-2 text-sm text-slate-500">{t("lastUpdated")}</p>
 
-        <div className="mt-6 space-y-6 leading-relaxed text-slate-300">
-          <p>By using FileFlip, you agree to these terms.</p>
-
-          <section>
-            <h2 className="text-lg font-semibold text-slate-100">Service</h2>
-            <p className="mt-2">
-              FileFlip provides free online file conversion tools. Files are processed in
-              your browser and are not stored on our servers (except where noted for
-              specific tools that require server-side processing).
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-semibold text-slate-100">No Warranty</h2>
-            <p className="mt-2">
-              Tools are provided &quot;as is&quot;. We do not guarantee conversion quality or
-              availability. FileFlip is not liable for any loss of data or damages arising
-              from use of the service.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-semibold text-slate-100">Acceptable Use</h2>
-            <p className="mt-2">
-              Do not use FileFlip for illegal purposes or to process files you do not have
-              rights to. Do not attempt to disrupt or overload the service.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-semibold text-slate-100">Changes</h2>
-            <p className="mt-2">
-              We may update these terms at any time. Continued use of FileFlip after
-              changes constitutes acceptance of the new terms.
-            </p>
-          </section>
+        <div className="mt-6 space-y-6">
+          {TERMS_SECTION_KEYS.map((key) => (
+            <section key={key}>
+              <h2 className="text-lg font-semibold text-slate-100">
+                {t(`sections.${key}.title`)}
+              </h2>
+              <p className="mt-2 leading-relaxed text-slate-300">
+                {t(`sections.${key}.body`)}
+              </p>
+            </section>
+          ))}
         </div>
       </main>
 
