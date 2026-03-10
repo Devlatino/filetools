@@ -2579,6 +2579,7 @@
       "faq8A": "请使用我们专用的PDF转文字工具提取PDF中的文字。本工具专为图片文件（JPG、PNG等）设计。"
     },
     "passwordGenerator": {
+      "label": "密码生成器",
       "title": "密码生成器",
       "description": "在浏览器中即时生成强密码",
       "short": "生成安全密码",
@@ -2619,6 +2620,7 @@
       "faq8A": "密码通常是随机字符串；密码短语是随机词序列（如「紫象-河-42」）。只要足够长，两者都同样安全。"
     },
     "markdownToPdf": {
+      "label": "Markdown 转 PDF",
       "title": "Markdown 转 PDF",
       "description": "将 Markdown 文档转换为 PDF，支持实时预览",
       "short": "将 Markdown 转为 PDF",
@@ -2654,6 +2656,7 @@
       "faq8A": "浏览器打印为 PDF 常带界面、页眉页脚和边距不一致。FileFlip 生成版式与边距统一的整洁 PDF。"
     },
     "unitConverter": {
+      "label": "单位换算",
       "title": "单位换算",
       "description": "在长度、重量、温度、面积、体积、速度与数据单位之间换算",
       "short": "即时换算任意单位",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { Upload, Loader2, Check, Download, AudioLines } from "lucide-react";
@@ -9,6 +9,7 @@ import { EditorialSection } from "@/components/EditorialSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import AudioWaveform from "@/components/AudioWaveform";
 
 function StepIndicator({ step1, step2, step3, t }) {
   return (
@@ -78,9 +79,16 @@ export default function AddAudioToVideoPage() {
   const [currentStep, setCurrentStep] = useState(1);
   const [videoDragOver, setVideoDragOver] = useState(false);
   const [audioDragOver, setAudioDragOver] = useState(false);
+  const [audioBuffer, setAudioBuffer] = useState(null);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
   const videoInputRef = useRef(null);
   const audioInputRef = useRef(null);
   const ffmpegRef = useRef(null);
+  const audioCtxRef = useRef(null);
+  const sourceRef = useRef(null);
+  const startTimeRef = useRef(0);
+  const animFrameRef = useRef(null);
 
   const step1Status = currentStep >= 2 ? "done" : currentStep === 1 ? "active" : "pending";
   const step2Status = currentStep >= 3 ? "done" : currentStep === 2 ? "active" : "pending";
@@ -135,6 +143,8 @@ export default function AddAudioToVideoPage() {
   const setAudio = useCallback((file) => {
     if (!file) {
       setAudioFile(null);
+      setAudioBuffer(null);
+      setCurrentTime(0);
       setCurrentStep(1);
       setResultBlob(null);
       setResultUrl((u) => {
@@ -157,6 +167,75 @@ export default function AddAudioToVideoPage() {
     setAudioFile(file);
     if (videoFile) setCurrentStep(2);
   }, [t, videoFile]);
+
+  useEffect(() => {
+    if (!audioFile) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const arrayBuffer = await audioFile.arrayBuffer();
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        audioCtxRef.current = audioCtx;
+        const buffer = await audioCtx.decodeAudioData(arrayBuffer);
+        if (!cancelled) {
+          setAudioBuffer(buffer);
+          setCurrentTime(0);
+        }
+      } catch (err) {
+        if (!cancelled) console.error("Audio decode failed:", err);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [audioFile]);
+
+  const playAudio = useCallback(
+    (seekTime) => {
+      if (!audioBuffer) return;
+      const audioCtx = audioCtxRef.current;
+      if (!audioCtx) return;
+      sourceRef.current?.stop();
+      const source = audioCtx.createBufferSource();
+      source.buffer = audioBuffer;
+      source.connect(audioCtx.destination);
+      const offset = seekTime !== undefined ? seekTime : currentTime;
+      source.start(0, offset);
+      sourceRef.current = source;
+      startTimeRef.current = audioCtx.currentTime - offset;
+      setIsPlaying(true);
+      const animate = () => {
+        const t = audioCtx.currentTime - startTimeRef.current;
+        setCurrentTime(Math.min(t, audioBuffer.duration));
+        if (t < audioBuffer.duration) {
+          animFrameRef.current = requestAnimationFrame(animate);
+        } else {
+          setIsPlaying(false);
+          setCurrentTime(0);
+        }
+      };
+      animFrameRef.current = requestAnimationFrame(animate);
+      source.onended = () => setIsPlaying(false);
+    },
+    [audioBuffer, currentTime]
+  );
+
+  const stopAudio = useCallback(() => {
+    sourceRef.current?.stop();
+    if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
+    setIsPlaying(false);
+  }, []);
+
+  const handleSeek = useCallback(
+    (time) => {
+      setCurrentTime(time);
+      if (isPlaying) {
+        stopAudio();
+        setTimeout(() => playAudio(time), 50);
+      }
+    },
+    [isPlaying, stopAudio, playAudio]
+  );
 
   const handleVideoChange = useCallback((e) => setVideo(e.target.files?.[0] ?? null), [setVideo]);
   const handleAudioChange = useCallback((e) => setAudio(e.target.files?.[0] ?? null), [setAudio]);
@@ -317,6 +396,37 @@ export default function AddAudioToVideoPage() {
                       <AudioLines size={20} className="text-pink-400" />
                     </div>
                     <p className="truncate text-sm font-medium text-slate-100">{audioFile.name}</p>
+                  </div>
+                )}
+                {audioBuffer && audioFile && (
+                  <div className="mt-3 space-y-3">
+                    <AudioWaveform
+                      audioBuffer={audioBuffer}
+                      currentTime={currentTime}
+                      duration={audioBuffer.duration}
+                      onSeek={handleSeek}
+                      mode="playback"
+                      isPlaying={isPlaying}
+                    />
+                    <div className="flex flex-wrap items-center gap-3">
+                      <button
+                        type="button"
+                        onClick={isPlaying ? stopAudio : () => playAudio()}
+                        className="rounded-lg border border-white/10 bg-slate-800 px-4 py-2 text-sm font-medium text-slate-100 transition hover:bg-slate-700"
+                      >
+                        {isPlaying ? "⏸ Pause" : "▶ Play"}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          stopAudio();
+                          setCurrentTime(0);
+                        }}
+                        className="rounded-lg border border-white/10 bg-slate-800 px-4 py-2 text-sm font-medium text-slate-100 transition hover:bg-slate-700"
+                      >
+                        ⏹ Stop
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>

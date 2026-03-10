@@ -2837,6 +2837,7 @@
       "faq8A": "For PDF text extraction, use our dedicated PDF to Text tool. This Image to Text tool is designed for image files (JPG, PNG, etc.)."
     },
     "passwordGenerator": {
+      "label": "Password Generator",
       "title": "Password Generator",
       "description": "Generate strong, secure passwords instantly in your browser",
       "short": "Generate secure passwords",
@@ -2877,6 +2878,7 @@
       "faq8A": "A password is typically a random string of characters, while a passphrase is a sequence of random words (e.g. 'purple-elephant-river-42'). Both can be equally secure if long enough. Passphrases are easier to remember but harder to type on mobile. For maximum security with a password manager, use long random character passwords."
     },
     "markdownToPdf": {
+      "label": "Markdown to PDF",
       "title": "Markdown to PDF",
       "description": "Convert Markdown documents to PDF with live preview",
       "short": "Convert Markdown to PDF",
@@ -2912,6 +2914,7 @@
       "faq8A": "Browser print-to-PDF often includes browser UI elements, headers and footers, and inconsistent margins. FileFlip generates a clean PDF with controlled typography, proper margins, and consistent formatting across all pages — without any browser chrome or unwanted elements."
     },
     "unitConverter": {
+      "label": "Unit Converter",
       "title": "Unit Converter",
       "description": "Convert between units of length, weight, temperature, area, volume, speed and data",
       "short": "Convert any unit instantly",

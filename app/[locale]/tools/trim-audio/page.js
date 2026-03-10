@@ -9,6 +9,7 @@ import { EditorialSection } from "@/components/EditorialSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import AudioWaveform from "@/components/AudioWaveform";
 
 function StepIndicator({ step1, step2, step3, t }) {
   return (
@@ -73,6 +74,14 @@ function getExt(file) {
   return match ? match[1].toLowerCase() : "mp3";
 }
 
+function formatTime(seconds) {
+  if (!seconds || isNaN(seconds)) return "0:00.0";
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  const ms = Math.floor((seconds % 1) * 10);
+  return `${m}:${s.toString().padStart(2, "0")}.${ms}`;
+}
+
 export default function TrimAudioPage() {
   const locale = useLocale();
   const t = useTranslations("tools.trimAudio");
@@ -91,9 +100,18 @@ export default function TrimAudioPage() {
   const [error, setError] = useState("");
   const [currentStep, setCurrentStep] = useState(1);
   const [isDragOver, setIsDragOver] = useState(false);
+  const [audioBuffer, setAudioBuffer] = useState(null);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [trimStart, setTrimStart] = useState(0);
+  const [trimEnd, setTrimEnd] = useState(0);
   const fileInputRef = useRef(null);
   const audioRef = useRef(null);
   const ffmpegRef = useRef(null);
+  const audioCtxRef = useRef(null);
+  const sourceRef = useRef(null);
+  const startTimeRef = useRef(0);
+  const animFrameRef = useRef(null);
 
   const step1Status = currentStep >= 2 ? "done" : currentStep === 1 ? "active" : "pending";
   const step2Status = currentStep >= 3 ? "done" : currentStep === 2 ? "active" : "pending";
@@ -134,9 +152,13 @@ export default function TrimAudioPage() {
     (file) => {
       if (!file) {
         setAudioFile(null);
+        setAudioBuffer(null);
         setDuration(null);
         setStartSec("");
         setEndSec("");
+        setTrimStart(0);
+        setTrimEnd(0);
+        setCurrentTime(0);
         setCurrentStep(1);
         setResultBlob(null);
         setResultUrl((u) => {
@@ -173,6 +195,73 @@ export default function TrimAudioPage() {
     return () => URL.revokeObjectURL(url);
   }, [audioFile]);
 
+  const handleFileLoadDecode = useCallback(async (file) => {
+    if (!file) return;
+    try {
+      const arrayBuffer = await file.arrayBuffer();
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      audioCtxRef.current = audioCtx;
+      const buffer = await audioCtx.decodeAudioData(arrayBuffer);
+      setAudioBuffer(buffer);
+      setTrimStart(0);
+      setTrimEnd(buffer.duration);
+      setCurrentTime(0);
+    } catch (err) {
+      console.error("Audio decode failed:", err);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (audioFile) handleFileLoadDecode(audioFile);
+  }, [audioFile, handleFileLoadDecode]);
+
+  const playAudio = useCallback(
+    (seekTime) => {
+      if (!audioBuffer) return;
+      const audioCtx = audioCtxRef.current;
+      if (!audioCtx) return;
+      sourceRef.current?.stop();
+      const source = audioCtx.createBufferSource();
+      source.buffer = audioBuffer;
+      source.connect(audioCtx.destination);
+      const offset = seekTime !== undefined ? seekTime : currentTime;
+      source.start(0, offset);
+      sourceRef.current = source;
+      startTimeRef.current = audioCtx.currentTime - offset;
+      setIsPlaying(true);
+      const animate = () => {
+        const t = audioCtx.currentTime - startTimeRef.current;
+        setCurrentTime(Math.min(t, audioBuffer.duration));
+        if (t < audioBuffer.duration) {
+          animFrameRef.current = requestAnimationFrame(animate);
+        } else {
+          setIsPlaying(false);
+          setCurrentTime(0);
+        }
+      };
+      animFrameRef.current = requestAnimationFrame(animate);
+      source.onended = () => setIsPlaying(false);
+    },
+    [audioBuffer, currentTime]
+  );
+
+  const stopAudio = useCallback(() => {
+    sourceRef.current?.stop();
+    if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
+    setIsPlaying(false);
+  }, []);
+
+  const handleSeek = useCallback(
+    (time) => {
+      setCurrentTime(time);
+      if (isPlaying) {
+        stopAudio();
+        setTimeout(() => playAudio(time), 50);
+      }
+    },
+    [isPlaying, stopAudio, playAudio]
+  );
+
   const handleFileChange = useCallback((e) => processFile(e.target.files?.[0] ?? null), [processFile]);
   const handleDragOver = useCallback((e) => {
     e.preventDefault();
@@ -197,13 +286,14 @@ export default function TrimAudioPage() {
       setError(t("errorSelectFirst"));
       return;
     }
-    const start = Number(startSec);
-    const end = Number(endSec);
+    const start = audioBuffer ? trimStart : Number(startSec);
+    const end = audioBuffer ? trimEnd : Number(endSec);
     if (!Number.isFinite(start) || start < 0 || !Number.isFinite(end) || end <= start) {
       setError(t("errorInvalidRange"));
       return;
     }
-    if (duration != null && end > duration) {
+    const maxDur = audioBuffer ? audioBuffer.duration : duration;
+    if (maxDur != null && end > maxDur) {
       setError(t("errorInvalidRange"));
       return;
     }
@@ -245,7 +335,7 @@ export default function TrimAudioPage() {
       setIsTrimming(false);
       setProgress(0);
     }
-  }, [audioFile, startSec, endSec, duration, loadFfmpeg, t]);
+  }, [audioFile, startSec, endSec, duration, audioBuffer, trimStart, trimEnd, loadFfmpeg, t]);
 
   const handleDownload = useCallback(() => {
     if (!resultBlob || !resultUrl) return;
@@ -315,7 +405,77 @@ export default function TrimAudioPage() {
 
               <audio ref={audioRef} className="hidden" onLoadedMetadata={onAudioLoadedMetadata} />
 
-              {audioFile && duration != null && !resultBlob && (
+              {audioBuffer && !resultBlob && (
+                <div className="mt-4 space-y-3">
+                  <AudioWaveform
+                    audioBuffer={audioBuffer}
+                    currentTime={currentTime}
+                    duration={audioBuffer.duration}
+                    trimStart={trimStart}
+                    trimEnd={trimEnd}
+                    onSeek={handleSeek}
+                    onTrimChange={({ start, end }) => {
+                      setTrimStart(start);
+                      setTrimEnd(end);
+                    }}
+                    mode="trim"
+                    isPlaying={isPlaying}
+                  />
+                  <div className="flex flex-wrap items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={isPlaying ? stopAudio : playAudio}
+                      className="rounded-lg border border-white/10 bg-slate-800 px-4 py-2 text-sm font-medium text-slate-100 transition hover:bg-slate-700"
+                    >
+                      {isPlaying ? "⏸ Pause" : "▶ Play"}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        stopAudio();
+                        setCurrentTime(0);
+                      }}
+                      className="rounded-lg border border-white/10 bg-slate-800 px-4 py-2 text-sm font-medium text-slate-100 transition hover:bg-slate-700"
+                    >
+                      ⏹ Stop
+                    </button>
+                    <span className="font-mono text-sm text-slate-400">
+                      {formatTime(trimEnd - trimStart)} selected
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-4">
+                    <label className="block">
+                      <span className="mb-1 block text-xs font-medium text-slate-400">{t("startLabel")}</span>
+                      <input
+                        type="number"
+                        value={trimStart.toFixed(1)}
+                        step={0.1}
+                        min={0}
+                        max={trimEnd - 0.1}
+                        onChange={(e) => setTrimStart(Math.max(0, Math.min(Number(e.target.value), trimEnd - 0.1)))}
+                        className="w-full rounded-lg border border-white/10 bg-slate-800 px-3 py-2 text-sm text-slate-100 sm:w-24"
+                      />
+                    </label>
+                    <label className="block">
+                      <span className="mb-1 block text-xs font-medium text-slate-400">{t("endLabel")}</span>
+                      <input
+                        type="number"
+                        value={trimEnd.toFixed(1)}
+                        step={0.1}
+                        min={trimStart + 0.1}
+                        max={audioBuffer.duration}
+                        onChange={(e) =>
+                          setTrimEnd(
+                            Math.min(audioBuffer.duration, Math.max(Number(e.target.value), trimStart + 0.1))
+                          )}
+                        className="w-full rounded-lg border border-white/10 bg-slate-800 px-3 py-2 text-sm text-slate-100 sm:w-24"
+                      />
+                    </label>
+                  </div>
+                </div>
+              )}
+
+              {audioFile && duration != null && !resultBlob && !audioBuffer && (
                 <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-2">
                   <div>
                     <label className="mb-1 block text-xs font-medium text-slate-400">{t("startLabel")}</label>
@@ -353,7 +513,7 @@ export default function TrimAudioPage() {
 
               {error && <p className="mt-2 text-sm text-rose-400">{error}</p>}
 
-              {audioFile && !resultBlob && !isLoadingFfmpeg && duration != null && (
+              {audioFile && !resultBlob && !isLoadingFfmpeg && (duration != null || audioBuffer) && (
                 <button
                   type="button"
                   disabled={isTrimming}

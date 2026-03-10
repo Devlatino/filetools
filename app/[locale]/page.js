@@ -70,6 +70,9 @@ const TOOL_ICONS = {
   imageToText: ScanText,
   jsonFormatter: Braces,
   base64EncodeDecode: ArrowLeftRight,
+  passwordGenerator: Lock,
+  markdownToPdf: FileText,
+  unitConverter: Gauge,
 };
 
 const CATEGORIES = ["all", "images", "pdf", "tools", "developer", "cad", "video", "audio", "social", "3d"];
@@ -134,7 +137,10 @@ const TOOL_IDS = [
   { id: "lithophane", href: "/tools/image-to-lithophane", category: "3d", active: true },
   { id: "jsonFormatter", href: "/tools/json-formatter", category: "developer", active: true },
   { id: "base64EncodeDecode", href: "/tools/base64-encode-decode", category: "developer", active: true },
+  { id: "passwordGenerator", href: "/tools/password-generator", category: "developer", active: true },
+  { id: "markdownToPdf", href: "/tools/markdown-to-pdf", category: "developer", active: true },
   { id: "imageToText", href: "/tools/image-to-text", category: "images", active: true },
+  { id: "unitConverter", href: "/tools/unit-converter", category: "tools", active: true },
 ];
 
 const CATEGORY_COLORS = {

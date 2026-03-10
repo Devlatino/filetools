@@ -9,6 +9,7 @@ import { EditorialSection } from "@/components/EditorialSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import AudioWaveform from "@/components/AudioWaveform";
 
 function StepIndicator({ step1, step2, step3, t }) {
   return (
@@ -76,9 +77,16 @@ export default function TrimVideoPage() {
   const [error, setError] = useState("");
   const [currentStep, setCurrentStep] = useState(1);
   const [isDragOver, setIsDragOver] = useState(false);
+  const [audioBuffer, setAudioBuffer] = useState(null);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
   const fileInputRef = useRef(null);
   const videoRef = useRef(null);
   const ffmpegRef = useRef(null);
+  const audioCtxRef = useRef(null);
+  const sourceRef = useRef(null);
+  const startTimeRef = useRef(0);
+  const animFrameRef = useRef(null);
 
   const step1Status = currentStep >= 2 ? "done" : currentStep === 1 ? "active" : "pending";
   const step2Status = currentStep >= 3 ? "done" : currentStep === 2 ? "active" : "pending";
@@ -119,9 +127,11 @@ export default function TrimVideoPage() {
     (file) => {
       if (!file) {
         setVideoFile(null);
+        setAudioBuffer(null);
         setDuration(null);
         setStartSec("");
         setEndSec("");
+        setCurrentTime(0);
         setCurrentStep(1);
         setResultBlob(null);
         setResultUrl((u) => {
@@ -157,6 +167,78 @@ export default function TrimVideoPage() {
     videoRef.current.src = url;
     return () => URL.revokeObjectURL(url);
   }, [videoFile]);
+
+  useEffect(() => {
+    if (!videoFile) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const arrayBuffer = await videoFile.arrayBuffer();
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        audioCtxRef.current = audioCtx;
+        const buffer = await audioCtx.decodeAudioData(arrayBuffer);
+        if (!cancelled) {
+          setAudioBuffer(buffer);
+          setCurrentTime(0);
+        }
+      } catch (err) {
+        if (!cancelled) console.error("Video audio decode failed:", err);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [videoFile]);
+
+  const playAudio = useCallback(
+    (seekTime) => {
+      if (!audioBuffer) return;
+      const audioCtx = audioCtxRef.current;
+      if (!audioCtx) return;
+      sourceRef.current?.stop();
+      const source = audioCtx.createBufferSource();
+      source.buffer = audioBuffer;
+      source.connect(audioCtx.destination);
+      const offset = seekTime !== undefined ? seekTime : currentTime;
+      source.start(0, offset);
+      sourceRef.current = source;
+      startTimeRef.current = audioCtx.currentTime - offset;
+      setIsPlaying(true);
+      const animate = () => {
+        const t = audioCtx.currentTime - startTimeRef.current;
+        setCurrentTime(Math.min(t, audioBuffer.duration));
+        if (t < audioBuffer.duration) {
+          animFrameRef.current = requestAnimationFrame(animate);
+        } else {
+          setIsPlaying(false);
+          setCurrentTime(0);
+        }
+      };
+      animFrameRef.current = requestAnimationFrame(animate);
+      source.onended = () => setIsPlaying(false);
+    },
+    [audioBuffer, currentTime]
+  );
+
+  const stopAudio = useCallback(() => {
+    sourceRef.current?.stop();
+    if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
+    setIsPlaying(false);
+  }, []);
+
+  const handleSeek = useCallback(
+    (time) => {
+      setCurrentTime(time);
+      if (isPlaying) {
+        stopAudio();
+        setTimeout(() => playAudio(time), 50);
+      }
+    },
+    [isPlaying, stopAudio, playAudio]
+  );
+
+  const trimStartNum = Number(startSec) || 0;
+  const trimEndNum = Number(endSec) || (duration ?? audioBuffer?.duration ?? 0);
 
   const handleFileChange = useCallback((e) => processFile(e.target.files?.[0] ?? null), [processFile]);
   const handleDragOver = useCallback((e) => {
@@ -299,6 +381,44 @@ export default function TrimVideoPage() {
               )}
 
               <video ref={videoRef} className="hidden" onLoadedMetadata={onVideoLoadedMetadata} muted playsInline />
+
+              {audioBuffer && !resultBlob && (
+                <div className="mt-4 space-y-3">
+                  <AudioWaveform
+                    audioBuffer={audioBuffer}
+                    currentTime={currentTime}
+                    duration={audioBuffer.duration}
+                    trimStart={trimStartNum}
+                    trimEnd={trimEndNum}
+                    onSeek={handleSeek}
+                    onTrimChange={({ start, end }) => {
+                      setStartSec(String(start.toFixed(1)));
+                      setEndSec(String(end.toFixed(1)));
+                    }}
+                    mode="trim"
+                    isPlaying={isPlaying}
+                  />
+                  <div className="flex flex-wrap items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={isPlaying ? stopAudio : () => playAudio()}
+                      className="rounded-lg border border-white/10 bg-slate-800 px-4 py-2 text-sm font-medium text-slate-100 transition hover:bg-slate-700"
+                    >
+                      {isPlaying ? "⏸ Pause" : "▶ Play"}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        stopAudio();
+                        setCurrentTime(0);
+                      }}
+                      className="rounded-lg border border-white/10 bg-slate-800 px-4 py-2 text-sm font-medium text-slate-100 transition hover:bg-slate-700"
+                    >
+                      ⏹ Stop
+                    </button>
+                  </div>
+                </div>
+              )}
 
               {videoFile && duration != null && !resultBlob && (
                 <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-2">

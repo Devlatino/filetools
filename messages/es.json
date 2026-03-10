@@ -2743,6 +2743,7 @@
       "faq8A": "Para extracción de texto de PDF, usa nuestra herramienta dedicada PDF a Texto. Esta herramienta está diseñada para archivos de imagen."
     },
     "passwordGenerator": {
+      "label": "Generador de contraseñas",
       "title": "Generador de contraseñas",
       "description": "Genera contraseñas seguras al instante en tu navegador",
       "short": "Genera contraseñas seguras",
@@ -2783,6 +2784,7 @@
       "faq8A": "Una contraseña es una cadena aleatoria de caracteres; una frase de contraseña es una secuencia de palabras aleatorias (ej. 'elefante-púrpura-río-42'). Ambas pueden ser igual de seguras si son largas."
     },
     "markdownToPdf": {
+      "label": "Markdown a PDF",
       "title": "Markdown a PDF",
       "description": "Convierte documentos Markdown a PDF con vista previa en tiempo real",
       "short": "Convertir Markdown a PDF",
@@ -2818,6 +2820,7 @@
       "faq8A": "Imprimir a PDF desde el navegador suele incluir interfaz, cabeceras y márgenes inconsistentes. FileFlip genera un PDF limpio con tipografía y márgenes controlados."
     },
     "unitConverter": {
+      "label": "Convertidor de unidades",
       "title": "Convertidor de unidades",
       "description": "Convierte entre unidades de longitud, peso, temperatura, área, volumen, velocidad y datos",
       "short": "Convierte cualquier unidad al instante",

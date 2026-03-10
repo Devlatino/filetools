@@ -2585,6 +2585,7 @@
       "faq8A": "Para extração de texto de PDF, use nossa ferramenta dedicada PDF para Texto. Esta ferramenta é para arquivos de imagem."
     },
     "passwordGenerator": {
+      "label": "Gerador de senhas",
       "title": "Gerador de senhas",
       "description": "Gere senhas fortes e seguras diretamente no navegador",
       "short": "Gerar senhas seguras",
@@ -2625,6 +2626,7 @@
       "faq8A": "Uma senha é uma sequência aleatória de caracteres; uma frase-senha é uma sequência de palavras aleatórias (ex.: 'elefante-roxo-rio-42'). Ambas podem ser igualmente seguras se longas o suficiente."
     },
     "markdownToPdf": {
+      "label": "Markdown para PDF",
       "title": "Markdown para PDF",
       "description": "Converta documentos Markdown em PDF com pré-visualização em tempo real",
       "short": "Converter Markdown em PDF",
@@ -2660,6 +2662,7 @@
       "faq8A": "Imprimir a página em PDF no navegador costuma incluir interface, cabeçalhos e margens inconsistentes. O FileFlip gera um PDF limpo com tipografia e margens controladas."
     },
     "unitConverter": {
+      "label": "Conversor de unidades",
       "title": "Conversor de unidades",
       "description": "Converta entre unidades de comprimento, peso, temperatura, área, volume, velocidade e dados",
       "short": "Converta qualquer unidade instantaneamente",

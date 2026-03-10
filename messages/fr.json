@@ -2478,6 +2478,7 @@
       "faq8A": "Pour l'extraction de texte PDF, utilisez notre outil dédié PDF en Texte. Cet outil est conçu pour les fichiers image."
     },
     "passwordGenerator": {
+      "label": "Générateur de mots de passe",
       "title": "Générateur de mots de passe",
       "description": "Générez des mots de passe robustes directement dans votre navigateur",
       "short": "Générer des mots de passe sécurisés",
@@ -2518,6 +2519,7 @@
       "faq8A": "Un mot de passe est une chaîne aléatoire de caractères ; une phrase de passe est une séquence de mots aléatoires (ex. « éléphant-violet-rivière-42 »). Les deux peuvent être aussi sûrs si assez longs."
     },
     "markdownToPdf": {
+      "label": "Markdown en PDF",
       "title": "Markdown en PDF",
       "description": "Convertissez des documents Markdown en PDF avec aperçu en temps réel",
       "short": "Convertir Markdown en PDF",
@@ -2553,6 +2555,7 @@
       "faq8A": "L'impression navigateur en PDF inclut souvent l'interface, en-têtes et marges incohérentes. FileFlip génère un PDF propre avec typographie et marges maîtrisées."
     },
     "unitConverter": {
+      "label": "Convertisseur d'unités",
       "title": "Convertisseur d'unités",
       "description": "Convertissez entre unités de longueur, poids, température, surface, volume, vitesse et données",
       "short": "Convertissez n'importe quelle unité instantanément",

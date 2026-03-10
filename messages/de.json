@@ -2749,6 +2749,7 @@
       "faq8A": "Für PDF-Textextraktion verwenden Sie bitte unser dediziertes PDF zu Text-Tool. Dieses Tool ist für Bilddateien konzipiert."
     },
     "passwordGenerator": {
+      "label": "Passwort-Generator",
       "title": "Passwort-Generator",
       "description": "Erzeugen Sie sichere Passwörter direkt im Browser",
       "short": "Sichere Passwörter erzeugen",
@@ -2789,6 +2790,7 @@
       "faq8A": "Ein Passwort ist eine zufällige Zeichenkette; eine Passphrase eine Folge zufälliger Wörter (z. B. „lila-elefant-fluss-42“). Beide können gleich sicher sein, wenn lang genug."
     },
     "markdownToPdf": {
+      "label": "Markdown zu PDF",
       "title": "Markdown zu PDF",
       "description": "Markdown-Dokumente mit Live-Vorschau in PDF umwandeln",
       "short": "Markdown in PDF umwandeln",
@@ -2824,6 +2826,7 @@
       "faq8A": "Browser-Druck als PDF bringt oft UI, Kopf-/Fußzeilen und uneinheitliche Ränder mit. FileFlip erzeugt ein sauberes PDF mit kontrollierter Typografie."
     },
     "unitConverter": {
+      "label": "Einheitenumrechner",
       "title": "Einheitenumrechner",
       "description": "Umrechnen zwischen Länge, Gewicht, Temperatur, Fläche, Volumen, Geschwindigkeit und Daten",
       "short": "Alle Einheiten sofort umrechnen",

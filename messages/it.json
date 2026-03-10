@@ -2760,6 +2760,7 @@
       "faq8A": "Per l'estrazione di testo da PDF, usa il nostro strumento dedicato PDF a Testo. Questo strumento è progettato per file immagine (JPG, PNG, ecc.)."
     },
     "passwordGenerator": {
+      "label": "Generatore di Password",
       "title": "Generatore di Password",
       "description": "Genera password sicure e robuste direttamente nel browser",
       "short": "Genera password sicure",
@@ -2800,6 +2801,7 @@
       "faq8A": "Una password è tipicamente una stringa casuale di caratteri, una passphrase è una sequenza di parole casuali (es. 'elefante-viola-fiume-42'). Entrambe possono essere ugualmente sicure se sufficientemente lunghe. Le passphrase sono più facili da ricordare ma più difficili da digitare su mobile."
     },
     "markdownToPdf": {
+      "label": "Markdown in PDF",
       "title": "Markdown in PDF",
       "description": "Converti documenti Markdown in PDF con anteprima in tempo reale",
       "short": "Converti Markdown in PDF",
@@ -2835,6 +2837,7 @@
       "faq8A": "La stampa del browser include spesso elementi dell'interfaccia, intestazioni e piè di pagina indesiderati. FileFlip genera un PDF pulito con tipografia controllata, margini precisi e formattazione coerente su tutte le pagine."
     },
     "unitConverter": {
+      "label": "Convertitore di Unità",
       "title": "Convertitore di Unità",
       "description": "Converti unità di lunghezza, peso, temperatura, area, volume, velocità e dati",
       "short": "Converti qualsiasi unità",
