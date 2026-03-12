@@ -2695,6 +2695,8 @@
       "faq8A": "浏览器打印为 PDF 常带界面、页眉页脚和边距不一致。FileFlip 生成版式与边距统一的整洁 PDF。"
     },
     "wordCounter": {
+      "label": "字数统计",
+      "short": "实时统计字数、字符数和阅读时间",
       "title": "字数统计",
       "description": "实时统计字数、字符数、句数和阅读时间。关键词密度与社交媒体字数限制。",
       "metaTitle": "字数统计 — 在线免费统计字数和字符数",
@@ -2747,6 +2749,8 @@
       "faq8A": "是。工具免费且完全在浏览器中运行。文字不会发送到任何服务器，因此完全私密。可用于敏感文档或草稿而无需担心隐私。"
     },
     "textCaseConverter": {
+      "label": "文字大小写转换器",
+      "short": "将文字转换为大写、小写、驼峰式、下划线式等",
       "title": "文字大小写转换器",
       "description": "将文字转换为大写、小写、标题式、驼峰式、下划线式等。免费在线。",
       "metaTitle": "文字大小写转换器 — 大写、小写、驼峰命名免费转换",
@@ -2794,6 +2798,8 @@
       "faq8A": "视转换类型而定。大写和小写只改字母。标题式和句首大写主要影响字母。camelCase、snake_case、kebab-case 会替换或去掉空格，并常去掉非字母数字字符。数字通常保留。"
     },
     "loremIpsumGenerator": {
+      "label": "Lorem Ipsum 生成器",
+      "short": "按段落、词或 HTML 生成占位符文字",
       "title": "Lorem Ipsum 生成器",
       "description": "按段落、句子、词、列表或 HTML 生成占位符文字。免费在线。",
       "metaTitle": "Lorem Ipsum 生成器 — 段落、单词和 HTML 免费生成",

@@ -2914,6 +2914,8 @@
       "faq8A": "Browser print-to-PDF often includes browser UI elements, headers and footers, and inconsistent margins. FileFlip generates a clean PDF with controlled typography, proper margins, and consistent formatting across all pages — without any browser chrome or unwanted elements."
     },
     "wordCounter": {
+      "label": "Word Counter",
+      "short": "Count words, characters and reading time in real time",
       "title": "Word Counter",
       "description": "Count words, characters, sentences and reading time in real time. Keyword density and social media limits.",
       "metaTitle": "Word Counter — Count Words, Characters & Reading Time Free",
@@ -2966,6 +2968,8 @@
       "faq8A": "Yes. The tool is free and runs entirely in your browser. Your text is never sent to any server, so it is completely private. You can use it for sensitive documents, drafts, or any content without privacy concerns."
     },
     "textCaseConverter": {
+      "label": "Text Case Converter",
+      "short": "Convert text to uppercase, lowercase, camelCase, snake_case and more",
       "title": "Text Case Converter",
       "description": "Convert text to uppercase, lowercase, title case, sentence case, camelCase, PascalCase, snake_case, kebab-case and more. Free online.",
       "metaTitle": "Text Case Converter — UPPERCASE, lowercase, camelCase Free",
@@ -3013,6 +3017,8 @@
       "faq8A": "Behavior depends on the conversion. UPPERCASE and lowercase only change letters. Title and Sentence case mostly affect letters. camelCase, PascalCase, snake_case and kebab-case strip or replace spaces and often remove characters that are not letters, numbers, or the chosen separator. Numbers are usually kept. For non-ASCII characters, results may vary by mode."
     },
     "loremIpsumGenerator": {
+      "label": "Lorem Ipsum Generator",
+      "short": "Generate placeholder text as paragraphs, words or HTML",
       "title": "Lorem Ipsum Generator",
       "description": "Generate placeholder text as paragraphs, sentences, words, lists or HTML. Free online.",
       "metaTitle": "Lorem Ipsum Generator — Paragraphs, Words & HTML Free",

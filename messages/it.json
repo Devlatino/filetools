@@ -2837,6 +2837,8 @@
       "faq8A": "La stampa del browser include spesso elementi dell'interfaccia, intestazioni e piè di pagina indesiderati. FileFlip genera un PDF pulito con tipografia controllata, margini precisi e formattazione coerente su tutte le pagine."
     },
     "wordCounter": {
+      "label": "Contatore Parole",
+      "short": "Conta parole, caratteri e tempo di lettura in tempo reale",
       "title": "Contatore Parole",
       "description": "Conta parole, caratteri, frasi e tempo di lettura in tempo reale. Densità keyword e limiti social.",
       "metaTitle": "Contatore Parole — Conta Parole e Caratteri Online Gratis",
@@ -2889,6 +2891,8 @@
       "faq8A": "Sì. Lo strumento è gratuito e funziona interamente nel browser. Il testo non viene mai inviato a nessun server, quindi è completamente privato. Puoi usarlo per documenti sensibili o bozze senza preoccupazioni."
     },
     "textCaseConverter": {
+      "label": "Convertitore Maiuscole Minuscole",
+      "short": "Converti testo in maiuscolo, minuscolo, camelCase, snake_case e altro",
       "title": "Convertitore Maiuscole Minuscole",
       "description": "Converti testo in maiuscolo, minuscolo, title case, camelCase, snake_case e altro. Online gratuito.",
       "metaTitle": "Convertitore Maiuscole Minuscole — UPPERCASE, camelCase Gratis",
@@ -2936,6 +2940,8 @@
       "faq8A": "Dipende dalla conversione. MAIUSCOLO e minuscolo cambiano solo le lettere. Title e Sentence case agiscono soprattutto sulle lettere. camelCase, snake_case e kebab-case sostituiscono o rimuovono spazi e spesso caratteri non alfanumerici. I numeri di solito vengono mantenuti."
     },
     "loremIpsumGenerator": {
+      "label": "Generatore Lorem Ipsum",
+      "short": "Genera testo segnaposto in paragrafi, parole o HTML",
       "title": "Generatore Lorem Ipsum",
       "description": "Genera testo segnaposto in paragrafi, frasi, parole, liste o HTML. Online gratuito.",
       "metaTitle": "Generatore Lorem Ipsum — Paragrafi, Parole e HTML Gratis",

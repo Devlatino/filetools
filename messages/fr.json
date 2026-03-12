@@ -2555,6 +2555,8 @@
       "faq8A": "L'impression navigateur en PDF inclut souvent l'interface, en-têtes et marges incohérentes. FileFlip génère un PDF propre avec typographie et marges maîtrisées."
     },
     "wordCounter": {
+      "label": "Compteur de Mots",
+      "short": "Comptez mots, caractères et temps de lecture en temps réel",
       "title": "Compteur de Mots",
       "description": "Comptez mots, caractères, phrases et temps de lecture en temps réel. Densité de mots-clés et limites réseaux sociaux.",
       "metaTitle": "Compteur de Mots — Compter Mots et Caractères Gratuitement",
@@ -2607,6 +2609,8 @@
       "faq8A": "Oui. L'outil est gratuit et fonctionne entièrement dans le navigateur. Votre texte n'est jamais envoyé à aucun serveur, il est donc totalement privé."
     },
     "textCaseConverter": {
+      "label": "Convertisseur de Casse",
+      "short": "Convertissez du texte en majuscules, minuscules, camelCase, snake_case et plus",
       "title": "Convertisseur de Casse",
       "description": "Convertissez du texte en majuscules, minuscules, title case, camelCase, snake_case et plus. En ligne gratuit.",
       "metaTitle": "Convertisseur de Casse — MAJUSCULES, camelCase Gratuit",
@@ -2654,6 +2658,8 @@
       "faq8A": "Cela dépend de la conversion. MAJUSCULES et minuscules ne changent que les lettres. camelCase, snake_case et kebab-case remplacent ou suppriment les espaces et souvent les caractères non alphanumériques. Les chiffres sont en général conservés."
     },
     "loremIpsumGenerator": {
+      "label": "Générateur Lorem Ipsum",
+      "short": "Générez du texte de remplissage en paragraphes, mots ou HTML",
       "title": "Générateur Lorem Ipsum",
       "description": "Générez du texte de remplissage en paragraphes, phrases, mots, listes ou HTML. En ligne gratuit.",
       "metaTitle": "Générateur Lorem Ipsum — Paragraphes, Mots et HTML Gratuit",

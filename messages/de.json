@@ -2826,6 +2826,8 @@
       "faq8A": "Browser-Druck als PDF bringt oft UI, Kopf-/Fußzeilen und uneinheitliche Ränder mit. FileFlip erzeugt ein sauberes PDF mit kontrollierter Typografie."
     },
     "wordCounter": {
+      "label": "Wörterzähler",
+      "short": "Wörter, Zeichen und Lesezeit in Echtzeit zählen",
       "title": "Wörterzähler",
       "description": "Zählen Sie Wörter, Zeichen, Sätze und Lesezeit in Echtzeit. Keyword-Dichte und Social-Media-Limits.",
       "metaTitle": "Wörterzähler — Wörter und Zeichen Online Zählen Kostenlos",
@@ -2878,6 +2880,8 @@
       "faq8A": "Ja. Das Tool ist kostenlos und läuft vollständig im Browser. Ihr Text wird an keinen Server gesendet, er bleibt also völlig privat."
     },
     "textCaseConverter": {
+      "label": "Groß-/Kleinschreibung Konverter",
+      "short": "Text in Großbuchstaben, Kleinbuchstaben, camelCase, snake_case umwandeln",
       "title": "Groß-/Kleinschreibung Konverter",
       "description": "Text in Großbuchstaben, Kleinbuchstaben, Title Case, camelCase, snake_case und mehr umwandeln. Kostenlos online.",
       "metaTitle": "Groß-/Kleinschreibung Konverter — GROSSBUCHSTABEN, camelCase",
@@ -2925,6 +2929,8 @@
       "faq8A": "Das hängt von der Konvertierung ab. GROSSBUCHSTABEN und Kleinbuchstaben ändern nur Buchstaben. camelCase, snake_case und kebab-case ersetzen oder entfernen Leerzeichen und oft nicht-alphanumerische Zeichen. Zahlen werden in der Regel beibehalten."
     },
     "loremIpsumGenerator": {
+      "label": "Lorem-Ipsum-Generator",
+      "short": "Platzhaltertext als Absätze, Wörter oder HTML erzeugen",
       "title": "Lorem-Ipsum-Generator",
       "description": "Platzhaltertext als Absätze, Sätze, Wörter, Listen oder HTML erzeugen. Kostenlos online.",
       "metaTitle": "Lorem Ipsum Generator — Absätze, Wörter und HTML Kostenlos",

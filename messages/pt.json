@@ -2701,6 +2701,8 @@
       "faq8A": "Imprimir a página em PDF no navegador costuma incluir interface, cabeçalhos e margens inconsistentes. O FileFlip gera um PDF limpo com tipografia e margens controladas."
     },
     "wordCounter": {
+      "label": "Contador de Palavras",
+      "short": "Conte palavras, caracteres e tempo de leitura em tempo real",
       "title": "Contador de Palavras",
       "description": "Conte palavras, caracteres, frases e tempo de leitura em tempo real. Densidade de palavras-chave e limites de redes sociais.",
       "metaTitle": "Contador de Palavras — Contar Palavras e Caracteres Grátis",
@@ -2753,6 +2755,8 @@
       "faq8A": "Sim. A ferramenta é gratuita e funciona inteiramente no navegador. Seu texto nunca é enviado a nenhum servidor, portanto é totalmente privado."
     },
     "textCaseConverter": {
+      "label": "Conversor de Maiúsculas",
+      "short": "Converta texto para maiúsculas, minúsculas, camelCase, snake_case e mais",
       "title": "Conversor de Maiúsculas",
       "description": "Converta texto para maiúsculas, minúsculas, title case, camelCase, snake_case e mais. Online gratuito.",
       "metaTitle": "Conversor de Maiúsculas — UPPERCASE, camelCase Grátis",
@@ -2800,6 +2804,8 @@
       "faq8A": "Depende da conversão. MAIÚSCULAS e minúsculas só alteram letras. camelCase, snake_case e kebab-case substituem ou removem espaços e muitas vezes caracteres não alfanuméricos. Os números costumam ser mantidos."
     },
     "loremIpsumGenerator": {
+      "label": "Gerador Lorem Ipsum",
+      "short": "Gere texto de preenchimento em parágrafos, palavras ou HTML",
       "title": "Gerador Lorem Ipsum",
       "description": "Gere texto de preenchimento em parágrafos, frases, palavras, listas ou HTML. Online gratuito.",
       "metaTitle": "Gerador Lorem Ipsum — Parágrafos, Palavras e HTML Grátis",

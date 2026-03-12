@@ -72,6 +72,9 @@ const TOOL_ICONS = {
   base64EncodeDecode: ArrowLeftRight,
   passwordGenerator: Lock,
   markdownToPdf: FileText,
+  wordCounter: FileText,
+  textCaseConverter: Type,
+  loremIpsumGenerator: FileText,
   unitConverter: Gauge,
 };
 
@@ -139,6 +142,9 @@ const TOOL_IDS = [
   { id: "base64EncodeDecode", href: "/tools/base64-encode-decode", category: "developer", active: true },
   { id: "passwordGenerator", href: "/tools/password-generator", category: "developer", active: true },
   { id: "markdownToPdf", href: "/tools/markdown-to-pdf", category: "developer", active: true },
+  { id: "wordCounter", href: "/tools/word-counter", category: "developer", active: true },
+  { id: "textCaseConverter", href: "/tools/text-case-converter", category: "developer", active: true },
+  { id: "loremIpsumGenerator", href: "/tools/lorem-ipsum-generator", category: "developer", active: true },
   { id: "imageToText", href: "/tools/image-to-text", category: "images", active: true },
   { id: "unitConverter", href: "/tools/unit-converter", category: "tools", active: true },
 ];
