@@ -58,6 +58,9 @@ const ICON_BY_SLUG = {
   "image-to-text": ScanText,
   "json-formatter": Braces,
   "base64-encode-decode": ArrowLeftRight,
+  "word-counter": FileText,
+  "text-case-converter": Type,
+  "lorem-ipsum-generator": FileText,
 };
 const DEFAULT_ICON = Type;
 
@@ -113,6 +116,9 @@ const BG_BY_SLUG = {
   "image-to-text": "bg-sky-500",
   "json-formatter": "bg-emerald-600",
   "base64-encode-decode": "bg-violet-500",
+  "word-counter": "bg-sky-500",
+  "text-case-converter": "bg-violet-500",
+  "lorem-ipsum-generator": "bg-amber-500",
 };
 const DEFAULT_BG = "bg-slate-500";
 

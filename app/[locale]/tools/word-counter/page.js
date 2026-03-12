@@ -165,7 +165,7 @@ export default function WordCounterPage() {
     <div className="min-h-screen bg-slate-950 text-slate-50">
       <header className="border-b border-white/10 bg-slate-950/80 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-          <Link href={`/${basePath || ""}/`} prefetch className="flex items-center gap-2">
+          <Link href={basePath ? `/${basePath}/` : "/"} prefetch className="flex items-center gap-2">
             <img src="/fileflip-logo.svg" alt={tCommon("siteName")} className="h-11 w-auto" width={170} height={44} />
             <span className="text-sm text-slate-400">{t("title")}</span>
           </Link>
