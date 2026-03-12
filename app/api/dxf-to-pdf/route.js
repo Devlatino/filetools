@@ -94,13 +94,23 @@ export async function POST(request) {
     const outputUrl = finalTask.result.files[0].url;
     const outputFilename = finalTask.result.files[0].filename || "output.pdf";
 
+    // SSRF protection: only fetch from cloudconvert.com domains
+    const parsedUrl = new URL(outputUrl);
+    if (!parsedUrl.hostname.endsWith(".cloudconvert.com") && parsedUrl.hostname !== "cloudconvert.com") {
+      throw new Error("Invalid output URL host");
+    }
+
     const pdfResponse = await fetch(outputUrl);
     const pdfBuffer = await pdfResponse.arrayBuffer();
+
+    // Safe Content-Disposition with RFC 5987 encoding
+    const safeFilename = outputFilename.replace(/[^\w.\-]/g, "_");
+    const encodedFilename = encodeURIComponent(outputFilename);
 
     return new NextResponse(pdfBuffer, {
       headers: {
         "Content-Type": "application/pdf",
-        "Content-Disposition": `attachment; filename="${outputFilename}"`,
+        "Content-Disposition": `attachment; filename="${safeFilename}"; filename*=UTF-8''${encodedFilename}`,
       },
     });
   } catch (err) {

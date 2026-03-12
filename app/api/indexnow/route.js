@@ -29,6 +29,13 @@ export async function GET(request) {
     'compare', 'pdf-unlock', 'protect-pdf', 'pdf-add-page-numbers',
     'reorder-pdf-pages', 'word-to-pdf', 'favicon-generator', 'dxf-viewer',
     'excel-to-pdf', 'pdf-to-pdfa', 'csv-to-pdf',
+    'json-formatter', 'base64-encode-decode', 'image-to-text',
+    'password-generator', 'markdown-to-pdf', 'unit-converter',
+    'add-watermark', 'color-converter', 'color-palette', 'csv-tools',
+    'encrypt-text', 'extract-audio', 'extract-frames', 'extract-zip',
+    'markdown-to-html', 'merge-images', 'pdf-to-images', 'pdf-to-pptx',
+    'qr-generator', 'remove-metadata', 'text-diff',
+    'lorem-ipsum-generator', 'word-counter', 'text-case-converter',
   ]
 
   const urls = [

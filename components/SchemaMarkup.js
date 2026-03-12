@@ -47,7 +47,7 @@ export function SchemaMarkup({
       id={`schema-${slug}`}
       type="application/ld+json"
       strategy="afterInteractive"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }}
     />
   );
 }

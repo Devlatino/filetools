@@ -29,6 +29,7 @@
     "heic2any": "^0.0.4",
     "highlight.js": "^11.11.1",
     "html2canvas": "^1.4.1",
+    "icojs": "^0.20.1",
     "jspdf": "^4.2.0",
     "jspdf-autotable": "^5.0.7",
     "jszip": "^3.10.1",

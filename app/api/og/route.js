@@ -7,11 +7,12 @@ const HEIGHT = 630;
 
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
-  const title = searchParams.get("title") || "FileFlip";
-  const description =
+  const title = (searchParams.get("title") || "FileFlip").slice(0, 120);
+  const description = (
     searchParams.get("description") ||
-    "Convert and compress files online for free. No account, everything in the browser.";
-  const siteName = searchParams.get("siteName") || "FileFlip";
+    "Convert and compress files online for free. No account, everything in the browser."
+  ).slice(0, 200);
+  const siteName = (searchParams.get("siteName") || "FileFlip").slice(0, 50);
 
   return new ImageResponse(
     (

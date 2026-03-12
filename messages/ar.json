@@ -119,12 +119,30 @@
     "title": "Privacy Policy",
     "lastUpdated": "Last updated: March 2026",
     "sections": {
-      "controller": { "title": "Data controller", "body": "The data controller for this website and the FileFlip service is FileFlip. You can reach us at info@fileflip.org for any request related to your personal data or this policy." },
-      "dataCollected": { "title": "Data we collect", "body": "FileFlip does not collect or process the files you convert. All file processing runs in your browser; your files never leave your device and are not uploaded to our servers. We do not require an account, so we do not store names, emails, or passwords. We may collect anonymized usage data (e.g. which tools are used and general traffic statistics) through analytics to improve the service. We do not use this data to identify you or to profile users." },
-      "cookies": { "title": "Cookies", "body": "We use technically necessary cookies to operate the site (e.g. language preference). If we use analytics, they may set cookies to measure usage in an anonymized way. We do not use cookies for advertising or profiling. You can control or disable non-essential cookies in your browser settings." },
-      "rights": { "title": "Your rights (GDPR)", "body": "Under the GDPR (Articles 13–22) you have the right to access, rectify, erase, restrict processing, and port your data where applicable. You may also object to processing and lodge a complaint with a supervisory authority. To exercise these rights, contact us at info@fileflip.org." },
-      "transfers": { "title": "International transfers", "body": "Our site and infrastructure may be hosted in regions outside the EU (e.g. via Vercel). Where we transfer data, we rely on appropriate safeguards (e.g. adequacy decisions or standard contractual clauses) as permitted by applicable law." },
-      "contact": { "title": "Contact", "body": "For any question about this privacy policy or to exercise your rights, please contact us at info@fileflip.org. We will respond within a reasonable time." }
+      "controller": {
+        "title": "Data controller",
+        "body": "The data controller for this website and the FileFlip service is FileFlip. You can reach us at info@fileflip.org for any request related to your personal data or this policy."
+      },
+      "dataCollected": {
+        "title": "Data we collect",
+        "body": "FileFlip does not collect or process the files you convert. All file processing runs in your browser; your files never leave your device and are not uploaded to our servers. We do not require an account, so we do not store names, emails, or passwords. We may collect anonymized usage data (e.g. which tools are used and general traffic statistics) through analytics to improve the service. We do not use this data to identify you or to profile users."
+      },
+      "cookies": {
+        "title": "Cookies",
+        "body": "We use technically necessary cookies to operate the site (e.g. language preference). If we use analytics, they may set cookies to measure usage in an anonymized way. We do not use cookies for advertising or profiling. You can control or disable non-essential cookies in your browser settings."
+      },
+      "rights": {
+        "title": "Your rights (GDPR)",
+        "body": "Under the GDPR (Articles 13–22) you have the right to access, rectify, erase, restrict processing, and port your data where applicable. You may also object to processing and lodge a complaint with a supervisory authority. To exercise these rights, contact us at info@fileflip.org."
+      },
+      "transfers": {
+        "title": "International transfers",
+        "body": "Our site and infrastructure may be hosted in regions outside the EU (e.g. via Vercel). Where we transfer data, we rely on appropriate safeguards (e.g. adequacy decisions or standard contractual clauses) as permitted by applicable law."
+      },
+      "contact": {
+        "title": "Contact",
+        "body": "For any question about this privacy policy or to exercise your rights, please contact us at info@fileflip.org. We will respond within a reasonable time."
+      }
     }
   },
   "contact": {
@@ -142,13 +160,34 @@
     "title": "Terms of Service",
     "lastUpdated": "Last updated: March 2026",
     "sections": {
-      "acceptance": { "title": "Acceptance of terms", "body": "By using FileFlip you agree to these terms. If you do not agree, please do not use the service." },
-      "service": { "title": "Description of the service", "body": "FileFlip provides free, browser-based tools to convert, compress, and transform files (e.g. PDF, images, video, audio). All processing runs in your browser; we do not upload or store your files on our servers. No account or registration is required. The service is offered free of charge, subject to these terms." },
-      "acceptableUse": { "title": "Acceptable use", "body": "You must not use FileFlip for illegal purposes or to process content you do not have the right to use. You must not attempt to disrupt, overload, or abuse the service (e.g. automated scraping or bypassing technical limits). We may suspend or block access if we detect misuse." },
-      "limitation": { "title": "Limitation of liability", "body": "FileFlip is provided \"as is\". We do not guarantee uninterrupted availability, conversion quality, or fitness for a particular purpose. We are not liable for any loss of data, loss of profits, or indirect damages arising from the use of the service. You use the tools at your own risk and are responsible for backing up your files." },
-      "ip": { "title": "Intellectual property", "body": "The FileFlip website, code, and branding are the property of FileFlip. The files you upload and the outputs you download remain yours; we do not claim ownership of your content. You may not copy, reverse-engineer, or commercially exploit our service without permission." },
-      "changes": { "title": "Changes to the terms", "body": "We may update these terms from time to time. The \"Last updated\" date at the top will be revised. Continued use of FileFlip after changes constitutes acceptance of the updated terms. We encourage you to review this page periodically." },
-      "law": { "title": "Applicable law", "body": "These terms are governed by the laws of Italy and the European Union. Any dispute shall be subject to the exclusive jurisdiction of the competent courts in Italy, unless otherwise required by mandatory law." }
+      "acceptance": {
+        "title": "Acceptance of terms",
+        "body": "By using FileFlip you agree to these terms. If you do not agree, please do not use the service."
+      },
+      "service": {
+        "title": "Description of the service",
+        "body": "FileFlip provides free, browser-based tools to convert, compress, and transform files (e.g. PDF, images, video, audio). All processing runs in your browser; we do not upload or store your files on our servers. No account or registration is required. The service is offered free of charge, subject to these terms."
+      },
+      "acceptableUse": {
+        "title": "Acceptable use",
+        "body": "You must not use FileFlip for illegal purposes or to process content you do not have the right to use. You must not attempt to disrupt, overload, or abuse the service (e.g. automated scraping or bypassing technical limits). We may suspend or block access if we detect misuse."
+      },
+      "limitation": {
+        "title": "Limitation of liability",
+        "body": "FileFlip is provided \"as is\". We do not guarantee uninterrupted availability, conversion quality, or fitness for a particular purpose. We are not liable for any loss of data, loss of profits, or indirect damages arising from the use of the service. You use the tools at your own risk and are responsible for backing up your files."
+      },
+      "ip": {
+        "title": "Intellectual property",
+        "body": "The FileFlip website, code, and branding are the property of FileFlip. The files you upload and the outputs you download remain yours; we do not claim ownership of your content. You may not copy, reverse-engineer, or commercially exploit our service without permission."
+      },
+      "changes": {
+        "title": "Changes to the terms",
+        "body": "We may update these terms from time to time. The \"Last updated\" date at the top will be revised. Continued use of FileFlip after changes constitutes acceptance of the updated terms. We encourage you to review this page periodically."
+      },
+      "law": {
+        "title": "Applicable law",
+        "body": "These terms are governed by the laws of Italy and the European Union. Any dispute shall be subject to the exclusive jurisdiction of the competent courts in Italy, unless otherwise required by mandatory law."
+      }
     }
   },
   "tool": {
@@ -2692,6 +2731,101 @@
       "faq7A": "نعم. تحت النتيجة الرئيسية يعرض FileFlip القيم المكافئة الشائعة (مثلاً 1 km بالمتر، سم، أميال، أقدام...).",
       "faq8Q": "هل يعمل محول الوحدات دون اتصال؟",
       "faq8A": "بعد تحميل الصفحة، كل التحويلات تعمل دون اتصال لأنها حسابات رياضية بحتة في المتصفح. تحميل الصفحة أول مرة يحتاج اتصالاً."
+    },
+    "textCaseConverter": {
+      "title": "Text Case Converter",
+      "description": "Convert text to uppercase, lowercase, title case, sentence case, camelCase, PascalCase, snake_case, kebab-case and more. Free online.",
+      "metaTitle": "Text Case Converter — UPPERCASE, lowercase, camelCase Free",
+      "metaDescription": "Convert text to uppercase, lowercase, title case, sentence case, camelCase, PascalCase, snake_case or kebab-case instantly. Free online tool, no registration.",
+      "inputPlaceholder": "Enter your text here...",
+      "outputPlaceholder": "Converted text appears here...",
+      "uppercase": "UPPERCASE",
+      "lowercase": "lowercase",
+      "titleCase": "Title Case",
+      "sentenceCase": "Sentence case",
+      "camelCase": "camelCase",
+      "pascalCase": "PascalCase",
+      "snakeCase": "snake_case",
+      "kebabCase": "kebab-case",
+      "alternatingCase": "aLtErNaTiNg",
+      "inverseCase": "Inverse Case",
+      "copyOutput": "Copy Output",
+      "swap": "Swap ↕",
+      "clear": "Clear",
+      "download": "Download .txt",
+      "copied": "Copied! ✓",
+      "characters": "characters",
+      "words": "words",
+      "activeConversion": "Active",
+      "howToUse": "How to Use",
+      "step1": "Paste or type your text in the input box",
+      "step2": "Click any conversion button to transform the text",
+      "step3": "Copy the result or download as a .txt file",
+      "faq": "Frequently Asked Questions",
+      "faq1Q": "What is text case conversion and why is it useful?",
+      "faq1A": "Text case conversion changes how capital and lowercase letters are used in text. It is useful for programming (variable names, file names), writing (headings, titles), and SEO (meta tags). For example, you might need a title in Title Case, a URL in kebab-case, or a variable name in camelCase. Doing it by hand is tedious; this tool does it instantly.",
+      "faq2Q": "What is the difference between camelCase and PascalCase?",
+      "faq2A": "In camelCase the first letter of the first word is lowercase and the first letter of each following word is uppercase (e.g. helloWorld). In PascalCase every word starts with an uppercase letter (e.g. HelloWorld). camelCase is common for JavaScript variables and functions; PascalCase is used for class names and types in many languages.",
+      "faq3Q": "When should I use snake_case?",
+      "faq3A": "snake_case uses lowercase letters and underscores between words (e.g. user_name). It is the standard in Python for variables and functions, often used in databases and config keys, and in URLs or file names when spaces are not allowed. Many APIs and style guides prefer snake_case for consistency.",
+      "faq4Q": "When should I use kebab-case?",
+      "faq4A": "kebab-case uses lowercase letters and hyphens (e.g. my-file-name). It is ideal for HTML class and id attributes, URL slugs, and CSS custom properties. Browsers and URLs handle hyphens well, and kebab-case is easy to read in long identifiers.",
+      "faq5Q": "What is Title Case and what are the rules?",
+      "faq5A": "Title Case capitalizes the first letter of each word. Many style guides leave short words (articles, prepositions, conjunctions like 'a', 'the', 'and', 'in') in lowercase unless they are the first or last word. This tool applies that rule: the first word and important words are capitalized; small words in the middle stay lowercase.",
+      "faq6Q": "What is Sentence case?",
+      "faq6A": "Sentence case means only the first letter of the first word of each sentence is capitalized, and the rest of the sentence is lowercase (unless proper nouns or acronyms). It is the standard for most body text and is easier to read than ALL CAPS or Title Case for long content.",
+      "faq7Q": "Can I use this to convert programming variable names?",
+      "faq7A": "Yes. You can paste a name in one style and convert it to another. For example, convert snake_case to camelCase for JavaScript, or camelCase to kebab-case for CSS or URLs. Use Swap to move the result back to input and try another conversion. Helpful when refactoring or moving code between languages.",
+      "faq8Q": "Does the converter preserve special characters and numbers?",
+      "faq8A": "Behavior depends on the conversion. UPPERCASE and lowercase only change letters. Title and Sentence case mostly affect letters. camelCase, PascalCase, snake_case and kebab-case strip or replace spaces and often remove characters that are not letters, numbers, or the chosen separator. Numbers are usually kept. For non-ASCII characters, results may vary by mode."
+    },
+    "loremIpsumGenerator": {
+      "title": "Lorem Ipsum Generator",
+      "description": "Generate placeholder text as paragraphs, sentences, words, lists or HTML. Free online.",
+      "metaTitle": "Lorem Ipsum Generator — Paragraphs, Words & HTML Free",
+      "metaDescription": "Free Lorem Ipsum generator online. Create placeholder text by paragraphs, sentences, words or HTML format. Instant copy and .txt download. No registration.",
+      "type": "Type",
+      "paragraphs": "Paragraphs",
+      "sentences": "Sentences",
+      "words": "Words",
+      "list": "HTML List",
+      "html": "Full HTML",
+      "amount": "Amount",
+      "startWithLorem": "Start with \"Lorem ipsum...\"",
+      "includeHtmlTags": "Include HTML tags",
+      "sentenceLength": "Sentence Length",
+      "short": "Short",
+      "medium": "Medium",
+      "long": "Long",
+      "generate": "Generate",
+      "copy": "Copy",
+      "download": "Download .txt",
+      "copied": "Copied!",
+      "rawText": "Raw Text",
+      "htmlPreview": "HTML Preview",
+      "wordCount": "words",
+      "charCount": "characters",
+      "howToUse": "How to Use",
+      "step1": "Choose the output type: paragraphs, sentences, words, list or full HTML",
+      "step2": "Adjust the amount and options using the controls",
+      "step3": "Click Generate, then Copy or Download the result",
+      "faq": "Frequently Asked Questions",
+      "faq1Q": "What is Lorem Ipsum and why is it used?",
+      "faq1A": "Lorem Ipsum is placeholder text commonly used in design and publishing. It looks like Latin but is scrambled so readers focus on layout and typography instead of meaning. Designers use it in mockups, wireframes, and templates to see how text blocks, headings, and spacing look without writing real content. It has been the industry standard for decades.",
+      "faq2Q": "Is Lorem Ipsum real Latin?",
+      "faq2A": "It comes from passages of Cicero's 'De finibus bonorum et malorum' (45 BC), but the text has been altered, scrambled, and mixed so that it is not readable Latin. Some words and phrases remain recognizable, but the result is gibberish. It was deliberately made nonsensical so it would not distract from the visual design.",
+      "faq3Q": "Can I generate Lorem Ipsum in HTML format?",
+      "faq3A": "Yes. You can choose paragraphs (with optional p tags), sentences, words, a bullet list (with optional ul/li), or full HTML sections with headings, paragraphs, and lists. The full HTML option is useful for testing CSS and layout with a structure similar to a real article or page.",
+      "faq4Q": "How many paragraphs do I need for a webpage mockup?",
+      "faq4A": "It depends on the section. A hero or banner often needs one short paragraph. A main content area might use two to three paragraphs. A sidebar might use one. Start with a few and add more if you need to test scrolling or longer layouts. You can always generate again or adjust the amount slider.",
+      "faq5Q": "Can I use Lorem Ipsum on a live website?",
+      "faq5A": "No. Search engines may treat it as thin or duplicate content and it does not help users. Visitors can tell the site is not finished. Use Lorem Ipsum only in design mockups, staging sites, or prototypes. Replace it with real content before launch.",
+      "faq6Q": "What is the difference between Lorem Ipsum and random text?",
+      "faq6A": "Lorem Ipsum has a word length and letter distribution similar to English, so it behaves more like real text for line breaks, wrapping, and readability. Random character or word generators do not, so they are less useful for judging typography and layout. Lorem Ipsum is designed to look and flow like natural text.",
+      "faq7Q": "Who invented Lorem Ipsum?",
+      "faq7A": "The phrase has been used in printing since the 1500s. In the 1990s Richard McClintock identified the source as passages from Cicero's 'De finibus bonorum et malorum'. The modern use as placeholder text in design and publishing became standard in the late 20th century. The exact origin of the scrambled version is unclear.",
+      "faq8Q": "Can I download the Lorem Ipsum as a file?",
+      "faq8A": "Yes. Use the Download .txt button to save the generated text as a plain text file. You can then use it in design tools, documentation, or automated tests. Useful for design handoff, style guides, or any case where you need a file instead of pasting from the page."
     }
   }
 }

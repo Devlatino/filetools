@@ -11,8 +11,17 @@ export async function POST(request) {
   if (!file || typeof file.arrayBuffer !== "function") {
     return NextResponse.json({ error: "Missing file" }, { status: 400 });
   }
+  if (file.type && !file.type.includes("pdf")) {
+    return NextResponse.json({ error: "Only PDF files are allowed" }, { status: 400 });
+  }
+  if (typeof file.name === "string" && !file.name.toLowerCase().endsWith(".pdf")) {
+    return NextResponse.json({ error: "File must have a .pdf extension" }, { status: 400 });
+  }
   if (!password || typeof password !== "string") {
     return NextResponse.json({ error: "Missing password" }, { status: 400 });
+  }
+  if (password.length > 32) {
+    return NextResponse.json({ error: "Password must be 32 characters or fewer" }, { status: 400 });
   }
 
   try {

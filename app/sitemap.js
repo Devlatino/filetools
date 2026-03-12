@@ -71,6 +71,24 @@ const TOOL_PATHS = [
   "/tools/password-generator",
   "/tools/markdown-to-pdf",
   "/tools/unit-converter",
+  "/tools/add-watermark",
+  "/tools/color-converter",
+  "/tools/color-palette",
+  "/tools/csv-tools",
+  "/tools/encrypt-text",
+  "/tools/extract-audio",
+  "/tools/extract-frames",
+  "/tools/extract-zip",
+  "/tools/markdown-to-html",
+  "/tools/merge-images",
+  "/tools/pdf-to-images",
+  "/tools/pdf-to-pptx",
+  "/tools/qr-generator",
+  "/tools/remove-metadata",
+  "/tools/text-diff",
+  "/tools/lorem-ipsum-generator",
+  "/tools/word-counter",
+  "/tools/text-case-converter",
 ];
 
 const BLOG_SLUGS = [
@@ -92,7 +110,7 @@ const BLOG_SLUGS = [
 ];
 
 // Fixed date for tools — update on each deploy
-const TOOL_LAST_MOD = "2025-03-01T00:00:00.000Z";
+const TOOL_LAST_MOD = "2026-03-12T00:00:00.000Z";
 
 /**
  * Build alternates.languages for a path segment (e.g. "" for home or "/tools/compress-image").
