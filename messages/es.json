@@ -110,6 +110,7 @@
     "step3Text": "Descarga el archivo listo. Repetible cuando quieras."
   },
   "common": {
+    "relatedArticle": "Artículo relacionado",
     "siteName": "FileFlip",
     "tagline": "Convierte y comprime archivos",
     "nav": {
@@ -437,7 +438,8 @@
       "faq11Q": "¿Qué pasa si un PDF está dañado o no carga?",
       "faq11A": "Si uno de tus PDF está dañado o en un formato no soportado, la unión puede fallar o la herramienta mostrar un error. Quita el archivo problemático de la lista e inténtalo de nuevo con el resto. Si el PDF se abre en otro lector pero no aquí, puede usar funciones (p. ej. cifrado o adjuntos) que la librería del navegador no soporta. Guardar una copia nueva desde ese lector como PDF estándar suele solucionarlo.",
       "faq12Q": "¿El PDF unido es buscable si los originales lo eran?",
-      "faq12A": "Sí. Si unes PDF que contienen texto seleccionable (PDF buscables), el archivo unido conserva esa capa de texto. Puedes seguir buscando y copiando texto en el resultado. Si unes PDF que son solo escaneos (solo imágenes) sin capa de texto, el PDF unido tampoco tendrá texto buscable salvo que uses OCR por separado. La herramienta no añade ni quita texto; solo combina las páginas tal cual."
+      "faq12A": "Sí. Si unes PDF que contienen texto seleccionable (PDF buscables), el archivo unido conserva esa capa de texto. Puedes seguir buscando y copiando texto en el resultado. Si unes PDF que son solo escaneos (solo imágenes) sin capa de texto, el PDF unido tampoco tendrá texto buscable salvo que uses OCR por separado. La herramienta no añade ni quita texto; solo combina las páginas tal cual.",
+      "relatedBlogTitle": "Cómo Combinar Archivos PDF Gratis — Unir PDF Online"
     },
     "compressPdf": {
       "label": "Comprimir PDF",
@@ -804,7 +806,8 @@
       "faq9Q": "¿Puedo convertir PNG a PDF?",
       "faq9A": "Esta herramienta es solo de JPG a PDF. Para PNG o varias imágenes usa la herramienta PNG a PDF o Imágenes a PDF.",
       "faq10Q": "¿Hay límite de tamaño de archivo?",
-      "faq10A": "No hay un límite fijo. JPG muy grandes pueden tardar más. Para imágenes típicas (p. ej. menos de 20 MB) funciona bien."
+      "faq10A": "No hay un límite fijo. JPG muy grandes pueden tardar más. Para imágenes típicas (p. ej. menos de 20 MB) funciona bien.",
+      "relatedBlogTitle": "JPG a PDF — Convertir Imágenes a PDF Gratis Online"
     },
     "svgToPng": {
       "label": "SVG → PNG",
@@ -2827,7 +2830,8 @@
       "faq7Q": "¿Por qué la extracción es lenta?",
       "faq7A": "El procesamiento OCR ocurre completamente en tu navegador y requiere descargar datos de idioma. El primer uso tarda más porque los modelos de idioma deben cargarse.",
       "faq8Q": "¿Puedo extraer texto de PDFs?",
-      "faq8A": "Para extracción de texto de PDF, usa nuestra herramienta dedicada PDF a Texto. Esta herramienta está diseñada para archivos de imagen."
+      "faq8A": "Para extracción de texto de PDF, usa nuestra herramienta dedicada PDF a Texto. Esta herramienta está diseñada para archivos de imagen.",
+      "relatedBlogTitle": "Cómo Convertir Imagen a Texto Gratis — OCR Online"
     },
     "passwordGenerator": {
       "label": "Generador de contraseñas",

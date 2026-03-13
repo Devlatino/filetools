@@ -94,6 +94,9 @@ const BLOG_SLUGS = [
   "word-to-pdf-without-microsoft-office",
   "how-to-split-pdf-online-free",
   "best-image-format-for-web-jpg-png-webp",
+  "jpg-to-pdf",
+  "how-to-merge-pdf-files",
+  "how-to-convert-image-to-text",
 ];
 
 // Fixed date for tools — update on each deploy
@@ -196,7 +199,7 @@ export default function sitemap() {
         url: `${BASE_URL}${pathPrefix}/blog/${slug}`,
         lastModified: TOOL_LAST_MOD,
         changeFrequency: "monthly",
-        priority: 0.6,
+        priority: 0.7,
         alternates: { languages: blogSlugLanguages },
       });
     }

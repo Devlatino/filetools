@@ -110,6 +110,7 @@
     "step3Text": "Download the finished file. Repeat as often as you like."
   },
   "common": {
+    "relatedArticle": "Related article",
     "siteName": "FileFlip",
     "tagline": "Convert and compress files",
     "nav": {
@@ -437,7 +438,8 @@
       "faq11Q": "What happens if a PDF is corrupted or won't load?",
       "faq11A": "If one of your PDFs is damaged or in an unsupported format, the merge may fail or the tool may show an error. Remove the problematic file from the list and try again with the rest. If the PDF opens in another reader but not here, it may use features (e.g. certain encryption or attachments) that the in-browser library does not support. Saving a fresh copy from that reader as a standard PDF often fixes the issue.",
       "faq12Q": "Is the merged PDF searchable if the originals were searchable?",
-      "faq12A": "Yes. When you merge PDFs that contain selectable text (searchable PDFs), the merged file keeps that text layer. You can still search and copy text in the result. If you merge PDFs that are scan-only (image-based) with no text layer, the merged PDF will also have no searchable text unless you run OCR separately. The tool does not add or remove text; it only combines the pages as they are."
+      "faq12A": "Yes. When you merge PDFs that contain selectable text (searchable PDFs), the merged file keeps that text layer. You can still search and copy text in the result. If you merge PDFs that are scan-only (image-based) with no text layer, the merged PDF will also have no searchable text unless you run OCR separately. The tool does not add or remove text; it only combines the pages as they are.",
+      "relatedBlogTitle": "How to Merge PDF Files Free — Combine PDFs Online"
     },
     "compressPdf": {
       "label": "Compress PDF",
@@ -804,7 +806,8 @@
       "faq9Q": "Can I convert PNG to PDF?",
       "faq9A": "This tool is for JPG to PDF only. For PNG or multiple images, use the PNG to PDF or Images to PDF tool.",
       "faq10Q": "Is there a file size limit?",
-      "faq10A": "There is no fixed limit. Very large JPGs may take longer and use more memory. For typical images (e.g. under 20 MB), the tool works well."
+      "faq10A": "There is no fixed limit. Very large JPGs may take longer and use more memory. For typical images (e.g. under 20 MB), the tool works well.",
+      "relatedBlogTitle": "JPG to PDF — Convert Images to PDF Free Online"
     },
     "svgToPng": {
       "label": "SVG → PNG",
@@ -2882,7 +2885,8 @@
       "faq7Q": "Why is the extraction slow?",
       "faq7A": "OCR processing happens entirely in your browser, which requires downloading language data and running complex image analysis. The first use takes longer because language models need to be loaded. Subsequent extractions are faster.",
       "faq8Q": "Can I extract text from PDFs?",
-      "faq8A": "For PDF text extraction, use our dedicated PDF to Text tool. This Image to Text tool is designed for image files (JPG, PNG, etc.)."
+      "faq8A": "For PDF text extraction, use our dedicated PDF to Text tool. This Image to Text tool is designed for image files (JPG, PNG, etc.).",
+      "relatedBlogTitle": "How to Convert Image to Text Free — OCR Online"
     },
     "passwordGenerator": {
       "label": "Password Generator",

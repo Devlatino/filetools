@@ -109,6 +109,31 @@ export default async function BlogPostPage({ params }) {
       "@id": canonical,
     },
   };
+
+  const faqItems = Array.isArray(frontmatter.faq) ? frontmatter.faq : [];
+  const faqSchema =
+    faqItems.length > 0
+      ? {
+          "@type": "FAQPage",
+          mainEntity: faqItems.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: item.answer,
+            },
+          })),
+        }
+      : null;
+
+  const jsonLdGraph =
+    faqSchema !== null
+      ? {
+          "@context": "https://schema.org",
+          "@graph": [articleSchema, faqSchema],
+        }
+      : articleSchema;
+
   const homeItem = locale === "en" ? BASE_URL : `${BASE_URL}/${locale}`;
   const blogItem =
     locale === "en" ? `${BASE_URL}/blog` : `${BASE_URL}/${locale}/blog`;
@@ -126,7 +151,7 @@ export default async function BlogPostPage({ params }) {
     <BlogShell locale={locale}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph) }}
       />
       <script
         type="application/ld+json"

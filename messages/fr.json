@@ -110,6 +110,7 @@
     "step3Text": "Télécharge le fichier prêt à l'emploi. Répétable autant que tu veux."
   },
   "common": {
+    "relatedArticle": "Article connexe",
     "siteName": "FileFlip",
     "tagline": "Convertir et compresser des fichiers",
     "nav": {
@@ -437,7 +438,8 @@
       "faq11Q": "Que se passe-t-il si un PDF est corrompu ou ne charge pas ?",
       "faq11A": "Si l’un de tes PDF est endommagé ou dans un format non pris en charge, la fusion peut échouer ou l’outil afficher une erreur. Retire le fichier problématique de la liste et réessaie avec les autres. Si le PDF s’ouvre dans un autre lecteur mais pas ici, il peut utiliser des fonctionnalités (ex. chiffrement ou pièces jointes) que la librairie du navigateur ne gère pas. Enregistrer une nouvelle copie depuis ce lecteur en PDF standard corrige souvent le problème.",
       "faq12Q": "Le PDF fusionné est-il recherchable si les originaux l’étaient ?",
-      "faq12A": "Oui. Quand tu fusionnes des PDF qui contiennent du texte sélectionnable (PDF recherchables), le fichier fusionné garde cette couche de texte. Tu peux toujours rechercher et copier le texte dans le résultat. Si tu fusionnes des PDF qui ne sont que des scans (basés image) sans couche de texte, le PDF fusionné ne sera pas recherchable non plus sauf à faire de l’OCR à part. L’outil n’ajoute ni ne supprime de texte ; il ne fait que combiner les pages telles quelles."
+      "faq12A": "Oui. Quand tu fusionnes des PDF qui contiennent du texte sélectionnable (PDF recherchables), le fichier fusionné garde cette couche de texte. Tu peux toujours rechercher et copier le texte dans le résultat. Si tu fusionnes des PDF qui ne sont que des scans (basés image) sans couche de texte, le PDF fusionné ne sera pas recherchable non plus sauf à faire de l’OCR à part. L’outil n’ajoute ni ne supprime de texte ; il ne fait que combiner les pages telles quelles.",
+      "relatedBlogTitle": "Comment Fusionner des PDF Gratuitement — Combiner PDF"
     },
     "compressPdf": {
       "label": "Compresser un PDF",
@@ -772,7 +774,8 @@
       "faq9Q": "Puis-je convertir un PNG en PDF ?",
       "faq9A": "Cet outil est uniquement pour JPG vers PDF. Pour PNG ou plusieurs images, utilisez l'outil PNG vers PDF ou Images vers PDF.",
       "faq10Q": "Y a-t-il une limite de taille de fichier ?",
-      "faq10A": "Aucune limite fixe. Les très gros JPG peuvent prendre plus de temps. Pour des images typiques (ex. moins de 20 Mo), l'outil fonctionne bien."
+      "faq10A": "Aucune limite fixe. Les très gros JPG peuvent prendre plus de temps. Pour des images typiques (ex. moins de 20 Mo), l'outil fonctionne bien.",
+      "relatedBlogTitle": "JPG en PDF — Convertir des Images en PDF Gratuitement"
     },
     "svgToPng": {
       "label": "SVG → PNG",
@@ -2562,7 +2565,8 @@
       "faq7Q": "Pourquoi l'extraction est-elle lente ?",
       "faq7A": "Le traitement OCR se passe entièrement dans votre navigateur et nécessite le téléchargement des données linguistiques. La première utilisation est plus longue.",
       "faq8Q": "Puis-je extraire du texte de PDFs ?",
-      "faq8A": "Pour l'extraction de texte PDF, utilisez notre outil dédié PDF en Texte. Cet outil est conçu pour les fichiers image."
+      "faq8A": "Pour l'extraction de texte PDF, utilisez notre outil dédié PDF en Texte. Cet outil est conçu pour les fichiers image.",
+      "relatedBlogTitle": "Comment Convertir une Image en Texte Gratuitement — OCR"
     },
     "passwordGenerator": {
       "label": "Générateur de mots de passe",

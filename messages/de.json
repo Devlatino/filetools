@@ -113,6 +113,7 @@
     "step3Text": "Lade die fertige Datei herunter. Beliebig oft wiederholbar."
   },
   "common": {
+    "relatedArticle": "Weitere Artikel",
     "siteName": "FileFlip",
     "tagline": "Dateien konvertieren und komprimieren",
     "nav": {
@@ -440,7 +441,8 @@
       "faq11Q": "Was passiert, wenn eine PDF beschädigt ist oder nicht geladen wird?",
       "faq11A": "Wenn eine deiner PDFs beschädigt oder in einem nicht unterstützten Format ist, kann das Zusammenführen fehlschlagen oder das Tool einen Fehler anzeigen. Entferne die problematische Datei aus der Liste und versuche es mit den übrigen erneut. Öffnet sich die PDF in einem anderen Reader, aber nicht hier, kann sie Funktionen nutzen (z. B. bestimmte Verschlüsselung oder Anhänge), die die Browser-Bibliothek nicht unterstützt. Eine frische Kopie aus diesem Reader als Standard-PDF zu speichern behebt das oft.",
       "faq12Q": "Ist die zusammengeführte PDF durchsuchbar, wenn die Originale es waren?",
-      "faq12A": "Ja. Wenn du PDFs mit auswählbarem Text (durchsuchbare PDFs) zusammenführst, behält die zusammengeführte Datei diese Textebene. Du kannst im Ergebnis weiterhin suchen und Text kopieren. Führst du nur-Scan-PDFs (bildbasiert) ohne Textebene zusammen, hat die zusammengeführte PDF ebenfalls keinen durchsuchbaren Text, es sei denn, du nutzt separat OCR. Das Tool fügt keinen Text hinzu oder entfernt welchen; es kombiniert nur die Seiten unverändert."
+      "faq12A": "Ja. Wenn du PDFs mit auswählbarem Text (durchsuchbare PDFs) zusammenführst, behält die zusammengeführte Datei diese Textebene. Du kannst im Ergebnis weiterhin suchen und Text kopieren. Führst du nur-Scan-PDFs (bildbasiert) ohne Textebene zusammen, hat die zusammengeführte PDF ebenfalls keinen durchsuchbaren Text, es sei denn, du nutzt separat OCR. Das Tool fügt keinen Text hinzu oder entfernt welchen; es kombiniert nur die Seiten unverändert.",
+      "relatedBlogTitle": "PDF Dateien Zusammenfügen Kostenlos — PDFs Online Verbinden"
     },
     "compressPdf": {
       "label": "PDF komprimieren",
@@ -807,7 +809,8 @@
       "faq9Q": "Kann ich PNG in PDF umwandeln?",
       "faq9A": "Dieses Tool ist nur für JPG in PDF. Für PNG oder mehrere Bilder nutzen Sie das Tool PNG in PDF oder Bilder in PDF.",
       "faq10Q": "Gibt es ein Dateigrößenlimit?",
-      "faq10A": "Es gibt kein festes Limit. Sehr große JPGs können länger dauern. Bei typischen Bildern (z. B. unter 20 MB) funktioniert das Tool gut."
+      "faq10A": "Es gibt kein festes Limit. Sehr große JPGs können länger dauern. Bei typischen Bildern (z. B. unter 20 MB) funktioniert das Tool gut.",
+      "relatedBlogTitle": "JPG in PDF — Bilder kostenlos online in PDF umwandeln"
     },
     "svgToPng": {
       "label": "SVG → PNG",
@@ -2833,7 +2836,8 @@
       "faq7Q": "Warum dauert die Extraktion lange?",
       "faq7A": "OCR-Verarbeitung erfolgt vollständig im Browser und erfordert das Herunterladen von Sprachdaten. Die erste Verwendung dauert länger.",
       "faq8Q": "Kann ich Text aus PDFs extrahieren?",
-      "faq8A": "Für PDF-Textextraktion verwenden Sie bitte unser dediziertes PDF zu Text-Tool. Dieses Tool ist für Bilddateien konzipiert."
+      "faq8A": "Für PDF-Textextraktion verwenden Sie bitte unser dediziertes PDF zu Text-Tool. Dieses Tool ist für Bilddateien konzipiert.",
+      "relatedBlogTitle": "Bild in Text umwandeln Kostenlos — OCR Online"
     },
     "passwordGenerator": {
       "label": "Passwort-Generator",

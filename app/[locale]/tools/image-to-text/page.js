@@ -2,6 +2,7 @@
 
 import { useCallback, useRef, useState } from "react";
 import Link from "next/link";
+import { Link as LocaleLink } from "@/i18n/navigation";
 import { useTranslations, useLocale } from "next-intl";
 import { Upload, Loader2, Copy, Check, Download, FileText, ShieldCheck } from "lucide-react";
 import { FaqSection } from "@/components/FaqSection";
@@ -368,6 +369,16 @@ export default function ImageToTextPage() {
         <div className="mt-10">
           <RelatedTools locale={locale} currentSlug="image-to-text" />
         </div>
+
+        {t("relatedBlogTitle") && (
+          <div className="mt-10 rounded-xl border border-white/10 bg-slate-900/50 p-5">
+            <h2 className="text-sm font-medium text-slate-400">{tCommon("relatedArticle")}</h2>
+            <LocaleLink href="/blog/how-to-convert-image-to-text" className="mt-2 block text-sky-400 hover:underline">
+              {t("relatedBlogTitle")}
+            </LocaleLink>
+          </div>
+        )}
+
         <div className="mt-10">
           <FaqSection namespace="tools.imageToText" />
         </div>

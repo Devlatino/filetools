@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { Link as LocaleLink } from "@/i18n/navigation";
 import { useTranslations, useLocale } from "next-intl";
 import { PDFDocument } from "@cantoo/pdf-lib";
 import { FaqSection } from "@/components/FaqSection";
@@ -322,6 +323,15 @@ export default function MergePdfPage() {
         <div className="mt-10">
           <RelatedTools locale={locale} currentSlug="merge-pdf" />
         </div>
+
+        {t("relatedBlogTitle") && (
+          <div className="mt-10 rounded-xl border border-white/10 bg-slate-900/50 p-5">
+            <h2 className="text-sm font-medium text-slate-400">{tCommon("relatedArticle")}</h2>
+            <LocaleLink href="/blog/how-to-merge-pdf-files" className="mt-2 block text-sky-400 hover:underline">
+              {t("relatedBlogTitle")}
+            </LocaleLink>
+          </div>
+        )}
 
         <div className="mt-10">
           <FaqSection namespace="tools.mergePdf" />

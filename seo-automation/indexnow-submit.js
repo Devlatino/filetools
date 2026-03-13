@@ -19,6 +19,11 @@ const BATCHES = {
     "tools/text-case-converter",
     "tools/lorem-ipsum-generator",
   ],
+  "blog-batch-5": [
+    "blog/jpg-to-pdf",
+    "blog/how-to-merge-pdf-files",
+    "blog/how-to-convert-image-to-text",
+  ],
 };
 
 function buildUrls(pathSegments) {
