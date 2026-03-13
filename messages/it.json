@@ -173,12 +173,30 @@
     "title": "Privacy Policy",
     "lastUpdated": "Last updated: March 2026",
     "sections": {
-      "controller": { "title": "Data controller", "body": "The data controller for this website and the FileFlip service is FileFlip. You can reach us at info@fileflip.org for any request related to your personal data or this policy." },
-      "dataCollected": { "title": "Data we collect", "body": "FileFlip does not collect or process the files you convert. All file processing runs in your browser; your files never leave your device and are not uploaded to our servers. We do not require an account, so we do not store names, emails, or passwords. We may collect anonymized usage data (e.g. which tools are used and general traffic statistics) through analytics to improve the service. We do not use this data to identify you or to profile users." },
-      "cookies": { "title": "Cookies", "body": "We use technically necessary cookies to operate the site (e.g. language preference). If we use analytics, they may set cookies to measure usage in an anonymized way. We do not use cookies for advertising or profiling. You can control or disable non-essential cookies in your browser settings." },
-      "rights": { "title": "Your rights (GDPR)", "body": "Under the GDPR (Articles 13–22) you have the right to access, rectify, erase, restrict processing, and port your data where applicable. You may also object to processing and lodge a complaint with a supervisory authority. To exercise these rights, contact us at info@fileflip.org." },
-      "transfers": { "title": "International transfers", "body": "Our site and infrastructure may be hosted in regions outside the EU (e.g. via Vercel). Where we transfer data, we rely on appropriate safeguards (e.g. adequacy decisions or standard contractual clauses) as permitted by applicable law." },
-      "contact": { "title": "Contact", "body": "For any question about this privacy policy or to exercise your rights, please contact us at info@fileflip.org. We will respond within a reasonable time." }
+      "controller": {
+        "title": "Data controller",
+        "body": "The data controller for this website and the FileFlip service is FileFlip. You can reach us at info@fileflip.org for any request related to your personal data or this policy."
+      },
+      "dataCollected": {
+        "title": "Data we collect",
+        "body": "FileFlip does not collect or process the files you convert. All file processing runs in your browser; your files never leave your device and are not uploaded to our servers. We do not require an account, so we do not store names, emails, or passwords. We may collect anonymized usage data (e.g. which tools are used and general traffic statistics) through analytics to improve the service. We do not use this data to identify you or to profile users."
+      },
+      "cookies": {
+        "title": "Cookies",
+        "body": "We use technically necessary cookies to operate the site (e.g. language preference). If we use analytics, they may set cookies to measure usage in an anonymized way. We do not use cookies for advertising or profiling. You can control or disable non-essential cookies in your browser settings."
+      },
+      "rights": {
+        "title": "Your rights (GDPR)",
+        "body": "Under the GDPR (Articles 13–22) you have the right to access, rectify, erase, restrict processing, and port your data where applicable. You may also object to processing and lodge a complaint with a supervisory authority. To exercise these rights, contact us at info@fileflip.org."
+      },
+      "transfers": {
+        "title": "International transfers",
+        "body": "Our site and infrastructure may be hosted in regions outside the EU (e.g. via Vercel). Where we transfer data, we rely on appropriate safeguards (e.g. adequacy decisions or standard contractual clauses) as permitted by applicable law."
+      },
+      "contact": {
+        "title": "Contact",
+        "body": "For any question about this privacy policy or to exercise your rights, please contact us at info@fileflip.org. We will respond within a reasonable time."
+      }
     }
   },
   "contact": {
@@ -196,13 +214,34 @@
     "title": "Terms of Service",
     "lastUpdated": "Last updated: March 2026",
     "sections": {
-      "acceptance": { "title": "Acceptance of terms", "body": "By using FileFlip you agree to these terms. If you do not agree, please do not use the service." },
-      "service": { "title": "Description of the service", "body": "FileFlip provides free, browser-based tools to convert, compress, and transform files (e.g. PDF, images, video, audio). All processing runs in your browser; we do not upload or store your files on our servers. No account or registration is required. The service is offered free of charge, subject to these terms." },
-      "acceptableUse": { "title": "Acceptable use", "body": "You must not use FileFlip for illegal purposes or to process content you do not have the right to use. You must not attempt to disrupt, overload, or abuse the service (e.g. automated scraping or bypassing technical limits). We may suspend or block access if we detect misuse." },
-      "limitation": { "title": "Limitation of liability", "body": "FileFlip is provided \"as is\". We do not guarantee uninterrupted availability, conversion quality, or fitness for a particular purpose. We are not liable for any loss of data, loss of profits, or indirect damages arising from the use of the service. You use the tools at your own risk and are responsible for backing up your files." },
-      "ip": { "title": "Intellectual property", "body": "The FileFlip website, code, and branding are the property of FileFlip. The files you upload and the outputs you download remain yours; we do not claim ownership of your content. You may not copy, reverse-engineer, or commercially exploit our service without permission." },
-      "changes": { "title": "Changes to the terms", "body": "We may update these terms from time to time. The \"Last updated\" date at the top will be revised. Continued use of FileFlip after changes constitutes acceptance of the updated terms. We encourage you to review this page periodically." },
-      "law": { "title": "Applicable law", "body": "These terms are governed by the laws of Italy and the European Union. Any dispute shall be subject to the exclusive jurisdiction of the competent courts in Italy, unless otherwise required by mandatory law." }
+      "acceptance": {
+        "title": "Acceptance of terms",
+        "body": "By using FileFlip you agree to these terms. If you do not agree, please do not use the service."
+      },
+      "service": {
+        "title": "Description of the service",
+        "body": "FileFlip provides free, browser-based tools to convert, compress, and transform files (e.g. PDF, images, video, audio). All processing runs in your browser; we do not upload or store your files on our servers. No account or registration is required. The service is offered free of charge, subject to these terms."
+      },
+      "acceptableUse": {
+        "title": "Acceptable use",
+        "body": "You must not use FileFlip for illegal purposes or to process content you do not have the right to use. You must not attempt to disrupt, overload, or abuse the service (e.g. automated scraping or bypassing technical limits). We may suspend or block access if we detect misuse."
+      },
+      "limitation": {
+        "title": "Limitation of liability",
+        "body": "FileFlip is provided \"as is\". We do not guarantee uninterrupted availability, conversion quality, or fitness for a particular purpose. We are not liable for any loss of data, loss of profits, or indirect damages arising from the use of the service. You use the tools at your own risk and are responsible for backing up your files."
+      },
+      "ip": {
+        "title": "Intellectual property",
+        "body": "The FileFlip website, code, and branding are the property of FileFlip. The files you upload and the outputs you download remain yours; we do not claim ownership of your content. You may not copy, reverse-engineer, or commercially exploit our service without permission."
+      },
+      "changes": {
+        "title": "Changes to the terms",
+        "body": "We may update these terms from time to time. The \"Last updated\" date at the top will be revised. Continued use of FileFlip after changes constitutes acceptance of the updated terms. We encourage you to review this page periodically."
+      },
+      "law": {
+        "title": "Applicable law",
+        "body": "These terms are governed by the laws of Italy and the European Union. Any dispute shall be subject to the exclusive jurisdiction of the competent courts in Italy, unless otherwise required by mandatory law."
+      }
     }
   },
   "home": {
@@ -2410,10 +2449,58 @@
       "metaDescription": "Estrai audio da video MP4 in MP3. Barra progresso, download. Nel browser."
     },
     "wordCounter": {
-      "label": "Contatore parole",
-      "short": "Conta parole, caratteri, tempo di lettura.",
-      "metaTitle": "Contatore Parole e Statistiche Testo Gratis",
-      "metaDescription": "Conta parole, caratteri, frasi, paragrafi. Tempo di lettura e parole più frequenti. Nel browser."
+      "label": "Contatore Parole",
+      "short": "Conta parole, caratteri e tempo di lettura in tempo reale",
+      "title": "Contatore Parole",
+      "description": "Conta parole, caratteri, frasi e tempo di lettura in tempo reale. Densità keyword e limiti social.",
+      "metaTitle": "Contatore Parole — Conta Parole e Caratteri Online Gratis",
+      "metaDescription": "Contatore parole online gratuito. Conta parole, caratteri, frasi e paragrafi in tempo reale. Tempo di lettura e densità keyword.",
+      "placeholder": "Incolla o digita il testo qui...",
+      "words": "Parole",
+      "characters": "Caratteri",
+      "charactersNoSpaces": "Caratteri (senza spazi)",
+      "sentences": "Frasi",
+      "paragraphs": "Paragrafi",
+      "lines": "Righe",
+      "readingTime": "Tempo di lettura",
+      "speakingTime": "Tempo di parlato",
+      "minutes": "min",
+      "seconds": "sec",
+      "topKeywords": "Keyword principali",
+      "readabilityLevel": "Leggibilità",
+      "easy": "Facile",
+      "medium": "Medio",
+      "hard": "Difficile",
+      "socialLimits": "Limiti Social Media",
+      "metaDescLabel": "Meta description SEO",
+      "titleTagLabel": "Title tag SEO",
+      "twitterLabel": "Twitter/X",
+      "instagramLabel": "Didascalia Instagram",
+      "linkedinLabel": "Post LinkedIn",
+      "clearText": "Svuota",
+      "copyText": "Copia",
+      "copied": "Copiato!",
+      "howToUse": "Come usare",
+      "step1": "Incolla o digita il testo nella casella",
+      "step2": "Le statistiche si aggiornano automaticamente in tempo reale",
+      "step3": "Controlla i limiti social e la densità delle keyword",
+      "faq": "Domande frequenti",
+      "faq1Q": "Come funziona il contatore parole?",
+      "faq1A": "Il contatore analizza il testo in tempo reale mentre digiti. Usa un breve ritardo (100 ms) per evitare aggiornamenti eccessivi. Conta le parole dividendole per spazi, le frasi per punti e punteggiatura simile, i paragrafi per doppie newline. Tutto avviene nel browser; nulla viene inviato a nessun server.",
+      "faq2Q": "Cos'è il tempo di lettura e come si calcola?",
+      "faq2A": "Il tempo di lettura stima quanto tempo serve per leggere il testo in silenzio. Lo strumento usa una media di 225 parole al minuto (lettura silenziosa) e 130 parole al minuto per il parlato. Il risultato è mostrato in minuti e secondi per pianificare articoli o discorsi.",
+      "faq3Q": "Cos'è la densità delle keyword?",
+      "faq3A": "La densità delle keyword è la frequenza di ogni parola significativa nel testo. Lo strumento conta quante volte appare ogni parola, escludendo stop word comuni come 'il' e 'e', e mostra le prime 10 con una barra. Utile per SEO e bilanciamento dei contenuti.",
+      "faq4Q": "Come si determina la leggibilità?",
+      "faq4A": "La leggibilità si basa sulla media di parole per frase: Facile meno di 14, Medio tra 14 e 20, Difficile oltre 20. Frasi più brevi sono generalmente più leggibili, quindi hai un'idea rapida di quanto sia accessibile il testo.",
+      "faq5Q": "Il contatore supporta tutte le lingue?",
+      "faq5A": "Sì. Lo strumento accetta qualsiasi testo UTF-8. Conteggio parole e caratteri funziona per tutte le lingue. Frasi e paragrafi usano punteggiatura e a capo comuni. La lista keyword principali usa stop word in inglese; per altre lingue la lista può includere più parole comuni.",
+      "faq6Q": "Posso usarlo per contenuti SEO?",
+      "faq6A": "Sì. Puoi controllare la lunghezza dell'articolo, tenere le meta description entro 160 caratteri, i title tag entro 60, e vedere la densità keyword. La sezione limiti social mostra Twitter (280), Instagram (2.200), LinkedIn (3.000) e i limiti SEO.",
+      "faq7Q": "Quali sono i limiti di caratteri per i social?",
+      "faq7A": "Lo strumento mostra cinque limiti: meta description SEO (160), title tag SEO (60), Twitter/X (280), didascalia Instagram (2.200), post LinkedIn (3.000). Ogni barra diventa verde sotto l'80%, gialla fino al 100%, rossa oltre il limite.",
+      "faq8Q": "Il contatore è gratuito e privato?",
+      "faq8A": "Sì. Lo strumento è gratuito e funziona interamente nel browser. Il testo non viene mai inviato a nessun server, quindi è completamente privato. Puoi usarlo per documenti sensibili o bozze senza preoccupazioni."
     },
     "heicToJpg": {
       "label": "HEIC in JPG",
@@ -2674,7 +2761,7 @@
       "title": "Formattatore JSON e Validatore",
       "description": "Formatta, abbellisci, minimizza e valida dati JSON istantaneamente nel tuo browser. Nessun upload richiesto.",
       "short": "Formatta, valida e abbellisci JSON online",
-      "metaTitle": "Formattatore JSON Online Gratis | FileFlip",
+      "metaTitle": "Formattatore JSON Online Gratis",
       "metaDescription": "Formattatore e validatore JSON online gratuito. Incolla il tuo JSON, formatta o minimizza al volo. Nessun upload, funziona nel browser.",
       "dropzone": "Incolla il tuo JSON qui sotto o carica un file .json",
       "convert": "Formatta JSON",
@@ -2704,7 +2791,7 @@
       "title": "Encoder e Decoder Base64",
       "description": "Codifica testo o file in Base64 e decodifica Base64 in testo o file. Funziona interamente nel browser.",
       "short": "Codifica e decodifica Base64 online",
-      "metaTitle": "Base64 Encoder e Decoder Online Gratis | FileFlip",
+      "metaTitle": "Base64 Encoder e Decoder Online Gratis",
       "metaDescription": "Encoder e decoder Base64 online gratuito. Converti testo o file in Base64 e viceversa. Supporta Unicode e file binari. Nessun upload su server.",
       "dropzone": "Incolla testo o Base64 qui sotto, o carica un file",
       "convert": "Codifica",
@@ -2734,7 +2821,7 @@
       "title": "Immagine a Testo (OCR)",
       "description": "Estrai testo dalle immagini con tecnologia OCR. Funziona al 100% nel tuo browser — nessuna immagine caricata su server.",
       "short": "Estrai testo dalle immagini con OCR gratuito",
-      "metaTitle": "OCR Online Gratis — Immagine a Testo | FileFlip",
+      "metaTitle": "OCR Online Gratis — Immagine a Testo",
       "metaDescription": "Strumento OCR online gratuito. Estrai testo da immagini (JPG, PNG, BMP) direttamente nel browser. Supporta 15+ lingue. Nessun upload su server.",
       "dropzone": "Trascina la tua immagine qui o clicca per caricare",
       "convert": "Estrai Testo",
@@ -2764,7 +2851,7 @@
       "title": "Generatore di Password",
       "description": "Genera password sicure e robuste direttamente nel browser",
       "short": "Genera password sicure",
-      "metaTitle": "Generatore di Password Sicure — Gratis | FileFlip",
+      "metaTitle": "Generatore di Password Sicure — Gratis",
       "metaDescription": "Genera password casuali e sicure. Personalizza lunghezza e caratteri. 100% nel browser, mai inviate a server. Gratis, senza registrazione.",
       "length": "Lunghezza Password",
       "uppercase": "Lettere Maiuscole (A-Z)",
@@ -2805,7 +2892,7 @@
       "title": "Markdown in PDF",
       "description": "Converti documenti Markdown in PDF con anteprima in tempo reale",
       "short": "Converti Markdown in PDF",
-      "metaTitle": "Markdown in PDF — Convertitore Gratuito Online | FileFlip",
+      "metaTitle": "Markdown in PDF — Convertitore Gratuito Online",
       "metaDescription": "Converti Markdown in PDF online gratis. Anteprima live, dimensione pagina e margini personalizzabili. Nessun upload, funziona nel browser.",
       "inputLabel": "Input Markdown",
       "previewLabel": "Anteprima",
@@ -2835,60 +2922,6 @@
       "faq7A": "Il tool elabora un documento alla volta. Per più file incolla ciascun documento, scarica il PDF e passa al successivo. Ogni conversione richiede solo pochi secondi.",
       "faq8Q": "Che differenza c'è con la stampa in PDF del browser?",
       "faq8A": "La stampa del browser include spesso elementi dell'interfaccia, intestazioni e piè di pagina indesiderati. FileFlip genera un PDF pulito con tipografia controllata, margini precisi e formattazione coerente su tutte le pagine."
-    },
-    "wordCounter": {
-      "label": "Contatore Parole",
-      "short": "Conta parole, caratteri e tempo di lettura in tempo reale",
-      "title": "Contatore Parole",
-      "description": "Conta parole, caratteri, frasi e tempo di lettura in tempo reale. Densità keyword e limiti social.",
-      "metaTitle": "Contatore Parole — Conta Parole e Caratteri Online Gratis",
-      "metaDescription": "Contatore parole online gratuito. Conta parole, caratteri, frasi e paragrafi in tempo reale. Tempo di lettura e densità keyword.",
-      "placeholder": "Incolla o digita il testo qui...",
-      "words": "Parole",
-      "characters": "Caratteri",
-      "charactersNoSpaces": "Caratteri (senza spazi)",
-      "sentences": "Frasi",
-      "paragraphs": "Paragrafi",
-      "lines": "Righe",
-      "readingTime": "Tempo di lettura",
-      "speakingTime": "Tempo di parlato",
-      "minutes": "min",
-      "seconds": "sec",
-      "topKeywords": "Keyword principali",
-      "readabilityLevel": "Leggibilità",
-      "easy": "Facile",
-      "medium": "Medio",
-      "hard": "Difficile",
-      "socialLimits": "Limiti Social Media",
-      "metaDescLabel": "Meta description SEO",
-      "titleTagLabel": "Title tag SEO",
-      "twitterLabel": "Twitter/X",
-      "instagramLabel": "Didascalia Instagram",
-      "linkedinLabel": "Post LinkedIn",
-      "clearText": "Svuota",
-      "copyText": "Copia",
-      "copied": "Copiato!",
-      "howToUse": "Come usare",
-      "step1": "Incolla o digita il testo nella casella",
-      "step2": "Le statistiche si aggiornano automaticamente in tempo reale",
-      "step3": "Controlla i limiti social e la densità delle keyword",
-      "faq": "Domande frequenti",
-      "faq1Q": "Come funziona il contatore parole?",
-      "faq1A": "Il contatore analizza il testo in tempo reale mentre digiti. Usa un breve ritardo (100 ms) per evitare aggiornamenti eccessivi. Conta le parole dividendole per spazi, le frasi per punti e punteggiatura simile, i paragrafi per doppie newline. Tutto avviene nel browser; nulla viene inviato a nessun server.",
-      "faq2Q": "Cos'è il tempo di lettura e come si calcola?",
-      "faq2A": "Il tempo di lettura stima quanto tempo serve per leggere il testo in silenzio. Lo strumento usa una media di 225 parole al minuto (lettura silenziosa) e 130 parole al minuto per il parlato. Il risultato è mostrato in minuti e secondi per pianificare articoli o discorsi.",
-      "faq3Q": "Cos'è la densità delle keyword?",
-      "faq3A": "La densità delle keyword è la frequenza di ogni parola significativa nel testo. Lo strumento conta quante volte appare ogni parola, escludendo stop word comuni come 'il' e 'e', e mostra le prime 10 con una barra. Utile per SEO e bilanciamento dei contenuti.",
-      "faq4Q": "Come si determina la leggibilità?",
-      "faq4A": "La leggibilità si basa sulla media di parole per frase: Facile meno di 14, Medio tra 14 e 20, Difficile oltre 20. Frasi più brevi sono generalmente più leggibili, quindi hai un'idea rapida di quanto sia accessibile il testo.",
-      "faq5Q": "Il contatore supporta tutte le lingue?",
-      "faq5A": "Sì. Lo strumento accetta qualsiasi testo UTF-8. Conteggio parole e caratteri funziona per tutte le lingue. Frasi e paragrafi usano punteggiatura e a capo comuni. La lista keyword principali usa stop word in inglese; per altre lingue la lista può includere più parole comuni.",
-      "faq6Q": "Posso usarlo per contenuti SEO?",
-      "faq6A": "Sì. Puoi controllare la lunghezza dell'articolo, tenere le meta description entro 160 caratteri, i title tag entro 60, e vedere la densità keyword. La sezione limiti social mostra Twitter (280), Instagram (2.200), LinkedIn (3.000) e i limiti SEO.",
-      "faq7Q": "Quali sono i limiti di caratteri per i social?",
-      "faq7A": "Lo strumento mostra cinque limiti: meta description SEO (160), title tag SEO (60), Twitter/X (280), didascalia Instagram (2.200), post LinkedIn (3.000). Ogni barra diventa verde sotto l'80%, gialla fino al 100%, rossa oltre il limite.",
-      "faq8Q": "Il contatore è gratuito e privato?",
-      "faq8A": "Sì. Lo strumento è gratuito e funziona interamente nel browser. Il testo non viene mai inviato a nessun server, quindi è completamente privato. Puoi usarlo per documenti sensibili o bozze senza preoccupazioni."
     },
     "textCaseConverter": {
       "label": "Convertitore Maiuscole Minuscole",
@@ -2941,7 +2974,7 @@
     },
     "loremIpsumGenerator": {
       "label": "Generatore Lorem Ipsum",
-      "short": "Genera testo segnaposto in paragrafi, parole o HTML",
+      "short": "Corte",
       "title": "Generatore Lorem Ipsum",
       "description": "Genera testo segnaposto in paragrafi, frasi, parole, liste o HTML. Online gratuito.",
       "metaTitle": "Generatore Lorem Ipsum — Paragrafi, Parole e HTML Gratis",
@@ -2956,7 +2989,6 @@
       "startWithLorem": "Inizia con \"Lorem ipsum...\"",
       "includeHtmlTags": "Includi tag HTML",
       "sentenceLength": "Lunghezza frasi",
-      "short": "Corte",
       "medium": "Medie",
       "long": "Lunghe",
       "generate": "Genera",
@@ -2994,7 +3026,7 @@
       "title": "Convertitore di Unità",
       "description": "Converti unità di lunghezza, peso, temperatura, area, volume, velocità e dati",
       "short": "Converti qualsiasi unità",
-      "metaTitle": "Convertitore di Unità — Lunghezza, Peso, Temperatura | FileFlip",
+      "metaTitle": "Convertitore di Unità — Lunghezza, Peso, Temperatura",
       "metaDescription": "Convertitore di unità online gratuito. Converti lunghezza, peso, temperatura, area, volume, velocità e dati in tempo reale. Senza registrazione.",
       "from": "Da",
       "to": "A",

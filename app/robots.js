@@ -1,3 +1,5 @@
+import { BASE_URL } from "@/lib/constants";
+
 export default function robots() {
   return {
     rules: [
@@ -66,7 +68,7 @@ export default function robots() {
         disallow: ["/_next/", "/cdn-cgi/"],
       },
     ],
-    sitemap: "https://www.fileflip.org/sitemap.xml",
-    host: "https://www.fileflip.org",
+    sitemap: `${BASE_URL}/sitemap.xml`,
+    host: BASE_URL,
   };
 }

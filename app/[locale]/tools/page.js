@@ -40,19 +40,25 @@ const TOOL_CATEGORIES = [
   },
   {
     name: "3D & CAD Tools",
-    slugs: ["stl-viewer", "obj-to-stl", "image-to-lithophane", "dxf-viewer"],
+    slugs: [
+      "stl-viewer", "obj-to-stl", "image-to-lithophane",
+      "dxf-viewer", "dwg-to-pdf", "dxf-to-pdf",
+    ],
   },
   {
     name: "Document Tools",
-    slugs: ["word-to-pdf", "excel-to-pdf", "csv-to-pdf"],
+    slugs: ["word-to-pdf", "excel-to-pdf", "csv-to-pdf", "markdown-to-pdf"],
   },
   {
     name: "Utility Tools",
-    slugs: ["create-zip", "qr-code-generator"],
+    slugs: ["create-zip", "qr-code-generator", "unit-converter"],
   },
   {
     name: "Developer Tools",
-    slugs: ["json-formatter", "base64-encode-decode"],
+    slugs: [
+      "json-formatter", "base64-encode-decode", "password-generator",
+      "word-counter", "text-case-converter", "lorem-ipsum-generator",
+    ],
   },
 ];
 
@@ -80,21 +86,29 @@ export async function generateMetadata({ params }) {
   return {
     title: "All Free Online File Tools",
     description:
-      "Browse 56+ free online tools for PDF, image, video, audio, and document conversion. No upload, no registration, works in your browser.",
+      "Browse 80+ free online tools for PDF, image, video, audio, and document conversion. No upload, no registration, works in your browser.",
     alternates: { canonical, languages },
     openGraph: {
-      title: "All Free Online File Tools | FileFlip",
+      title: "All Free Online File Tools — FileFlip",
       description:
-        "Browse 56+ free online tools for PDF, image, video, audio, and document conversion. No upload, no registration, works in your browser.",
+        "Browse 80+ free online tools for PDF, image, video, audio, and document conversion. No upload, no registration, works in your browser.",
       url: canonical,
       siteName: "FileFlip",
       type: "website",
+      images: [
+        {
+          url: `${BASE_URL}/og.png`,
+          width: 1200,
+          height: 630,
+          alt: "All Free Online File Tools — FileFlip",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
-      title: "All Free Online File Tools | FileFlip",
+      title: "All Free Online File Tools — FileFlip",
       description:
-        "Browse 56+ free online tools for PDF, image, video, audio, and document conversion.",
+        "Browse 80+ free online tools for PDF, image, video, audio, and document conversion.",
     },
   };
 }
@@ -114,7 +128,7 @@ export default async function ToolsIndexPage({ params }) {
     "@type": "CollectionPage",
     name: "All Free Online File Tools — FileFlip",
     description:
-      "Browse 56+ free online tools for PDF, image, video, audio, and document conversion.",
+      "Browse 80+ free online tools for PDF, image, video, audio, and document conversion.",
     url: canonical,
     provider: {
       "@type": "Organization",
@@ -160,7 +174,7 @@ export default async function ToolsIndexPage({ params }) {
           All Free Online Tools
         </h1>
         <p className="mt-3 text-slate-400">
-          56+ free tools for PDF, image, video, audio, and document processing — all in your browser.
+          80+ free tools for PDF, image, video, audio, and document processing — all in your browser.
         </p>
 
         <div className="mt-10 space-y-12">

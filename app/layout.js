@@ -21,15 +21,15 @@ import { BASE_URL } from "@/lib/constants";
 export const metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "FileFlip — Free Online File Converter | 61 Tools",
+    default: "FileFlip — Free Online File Converter | 80+ Tools",
     template: "%s — FileFlip",
   },
   description:
-    "Free browser-based file conversion platform. 61 tools for PDF, images, video, audio, CAD and 3D files. No server upload, no registration, no watermarks. Works on all devices.",
+    "Free browser-based file conversion platform. 80+ tools for PDF, images, video, audio, CAD and 3D files. No server upload, no registration, no watermarks. Works on all devices.",
   openGraph: {
     title: "FileFlip — Free Online File Converter",
     description:
-      "61 free tools for PDF, images, video, audio, CAD. No upload, no registration.",
+      "80+ free tools for PDF, images, video, audio, CAD. No upload, no registration.",
     url: BASE_URL,
     siteName: "FileFlip",
     type: "website",
@@ -47,7 +47,7 @@ export const metadata = {
     site: "@fileflip",
     title: "FileFlip — Free Online File Converter",
     description:
-      "61 free tools for PDF, images, video, audio, CAD. No upload, no registration.",
+      "80+ free tools for PDF, images, video, audio, CAD. No upload, no registration.",
     images: [`${BASE_URL}/og.png`],
   },
   robots: {
