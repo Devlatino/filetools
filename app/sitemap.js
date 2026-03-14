@@ -76,6 +76,9 @@ const TOOL_PATHS = [
   "/tools/unit-converter",
   "/tools/dwg-to-pdf",
   "/tools/dxf-to-pdf",
+  "/tools/color-picker",
+  "/tools/url-encoder-decoder",
+  "/tools/hash-generator",
 ];
 
 const BLOG_SLUGS = [

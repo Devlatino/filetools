@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { Image, FileText, Video, FileArchive, Type, ArrowRight, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat, Eraser, LayoutTemplate, QrCode, Box, FileBox, ImagePlus, ScanText, Braces, ArrowLeftRight } from "lucide-react";
+import { Image, FileText, Video, FileArchive, Type, ArrowRight, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat, Eraser, LayoutTemplate, QrCode, Box, FileBox, ImagePlus, ScanText, Braces, ArrowLeftRight, Palette, Link2, Hash } from "lucide-react";
 import { RELATED_TOOLS, SLUG_TO_ID } from "@/lib/relatedTools";
 
 /** Icon component by tool slug: image tools, PDF, video, archive, text. */
@@ -61,6 +61,9 @@ const ICON_BY_SLUG = {
   "word-counter": FileText,
   "text-case-converter": Type,
   "lorem-ipsum-generator": FileText,
+  "color-picker": Palette,
+  "url-encoder-decoder": Link2,
+  "hash-generator": Hash,
 };
 const DEFAULT_ICON = Type;
 
@@ -119,6 +122,9 @@ const BG_BY_SLUG = {
   "word-counter": "bg-sky-500",
   "text-case-converter": "bg-violet-500",
   "lorem-ipsum-generator": "bg-amber-500",
+  "color-picker": "bg-rose-500",
+  "url-encoder-decoder": "bg-sky-500",
+  "hash-generator": "bg-violet-500",
 };
 const DEFAULT_BG = "bg-slate-500";
 

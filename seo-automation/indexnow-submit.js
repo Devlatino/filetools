@@ -14,6 +14,11 @@ const KEY = process.env.INDEXNOW_KEY;
 const LOCALES = ["en", "it", "es", "fr", "de", "pt", "zh", "hi", "ar"];
 
 const BATCHES = {
+  "batch-22": [
+    "tools/color-picker",
+    "tools/url-encoder-decoder",
+    "tools/hash-generator",
+  ],
   "batch-21": [
     "tools/word-counter",
     "tools/text-case-converter",
