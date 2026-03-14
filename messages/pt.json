@@ -2887,6 +2887,7 @@
     },
     "colorPicker": {
       "label": "Seletor de Cor",
+      "short": "Escolha e converta cores. HEX, RGB, HSL, CMYK.",
       "title": "Seletor de Cor",
       "description": "Escolha e converta cores entre HEX, RGB, HSL, CMYK. Gere harmonias e verifique o contraste WCAG.",
       "metaTitle": "Seletor de Cor — HEX, RGB, HSL, CMYK Grátis",
@@ -2940,6 +2941,7 @@
     },
     "urlEncoderDecoder": {
       "label": "Codificador URL",
+      "short": "Codificar, decodificar ou analisar URLs.",
       "title": "Codificador URL",
       "description": "Codifique, decodifique ou analise URLs. Codificação percentual e componentes.",
       "metaTitle": "Codificador URL — Codificar e Decodificar URLs Grátis",
@@ -2993,6 +2995,7 @@
     },
     "hashGenerator": {
       "label": "Gerador de Hash",
+      "short": "MD5, SHA-256, SHA-512. Hash de texto ou arquivos.",
       "title": "Gerador de Hash",
       "description": "Gere hashes MD5, SHA-1, SHA-256, SHA-384, SHA-512. Hash de texto ou ficheiros. HMAC e verificação.",
       "metaTitle": "Gerador de Hash — MD5, SHA-1, SHA-256, SHA-512 Grátis",

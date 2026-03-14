@@ -2881,6 +2881,7 @@
     },
     "colorPicker": {
       "label": "颜色选择器",
+      "short": "选择并转换颜色。HEX、RGB、HSL、CMYK。",
       "title": "颜色选择器",
       "description": "在 HEX、RGB、HSL、CMYK 之间选择并转换颜色。生成和谐色、检查 WCAG 对比度。",
       "metaTitle": "颜色选择器 — HEX、RGB、HSL、CMYK 免费转换",
@@ -2934,6 +2935,7 @@
     },
     "urlEncoderDecoder": {
       "label": "URL 编码解码器",
+      "short": "编码、解码或解析 URL。",
       "title": "URL 编码解码器",
       "description": "对 URL 进行编码、解码或解析。百分号编码与 URL 组件。",
       "metaTitle": "URL 编码解码器 — 免费在线编码和解码 URL",
@@ -2987,6 +2989,7 @@
     },
     "hashGenerator": {
       "label": "哈希生成器",
+      "short": "MD5、SHA-256、SHA-512。文本或文件哈希。",
       "title": "哈希生成器",
       "description": "生成 MD5、SHA-1、SHA-256、SHA-384、SHA-512 哈希。对文本或文件做哈希。支持 HMAC 与验证。",
       "metaTitle": "哈希生成器 — MD5、SHA-1、SHA-256、SHA-512 免费",

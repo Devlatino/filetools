@@ -6,7 +6,7 @@ import { useMemo, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Unlock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat, Eraser, LayoutTemplate, Type, QrCode, Box, FileBox, ImagePlus, Hash, GripVertical, ScanText, Braces, ArrowLeftRight } from "lucide-react";
+import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Unlock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat, Eraser, LayoutTemplate, Type, QrCode, Box, FileBox, ImagePlus, Hash, GripVertical, ScanText, Braces, ArrowLeftRight, Palette, Link2 } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { locales, localeNames } from "@/i18n.js";
 import { BASE_URL } from "@/lib/constants";
@@ -76,6 +76,9 @@ const TOOL_ICONS = {
   textCaseConverter: Type,
   loremIpsumGenerator: FileText,
   unitConverter: Gauge,
+  colorPicker: Palette,
+  urlEncoderDecoder: Link2,
+  hashGenerator: Hash,
 };
 
 const CATEGORIES = ["all", "images", "pdf", "tools", "developer", "cad", "video", "audio", "social", "3d"];
@@ -145,6 +148,9 @@ const TOOL_IDS = [
   { id: "wordCounter", href: "/tools/word-counter", category: "developer", active: true },
   { id: "textCaseConverter", href: "/tools/text-case-converter", category: "developer", active: true },
   { id: "loremIpsumGenerator", href: "/tools/lorem-ipsum-generator", category: "developer", active: true },
+  { id: "colorPicker", href: "/tools/color-picker", category: "developer", active: true },
+  { id: "urlEncoderDecoder", href: "/tools/url-encoder-decoder", category: "developer", active: true },
+  { id: "hashGenerator", href: "/tools/hash-generator", category: "developer", active: true },
   { id: "imageToText", href: "/tools/image-to-text", category: "images", active: true },
   { id: "unitConverter", href: "/tools/unit-converter", category: "tools", active: true },
 ];

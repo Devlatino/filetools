@@ -58,6 +58,7 @@ const TOOL_CATEGORIES = [
     slugs: [
       "json-formatter", "base64-encode-decode", "password-generator",
       "word-counter", "text-case-converter", "lorem-ipsum-generator",
+      "color-picker", "url-encoder-decoder", "hash-generator",
     ],
   },
 ];

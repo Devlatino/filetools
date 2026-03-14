@@ -2881,6 +2881,7 @@
     },
     "colorPicker": {
       "label": "कलर पिकर",
+      "short": "रंग चुनें और बदलें. HEX, RGB, HSL, CMYK.",
       "title": "कलर पिकर",
       "description": "HEX, RGB, HSL, CMYK के बीच रंग चुनें और कन्वर्ट करें। हार्मनी बनाएं, WCAG कंट्रास्ट चेक करें।",
       "metaTitle": "कलर पिकर — HEX, RGB, HSL, CMYK मुफ्त कन्वर्टर",
@@ -2934,6 +2935,7 @@
     },
     "urlEncoderDecoder": {
       "label": "URL एनकोडर डिकोडर",
+      "short": "URL एनकोड, डिकोड या पार्स करें.",
       "title": "URL एनकोडर डिकोडर",
       "description": "URL को एनकोड, डिकोड या पार्स करें। परसेंट-एन्कोडिंग और URL कंपोनेंट।",
       "metaTitle": "URL एनकोडर डिकोडर — URL एनकोड और डिकोड मुफ्त करें",
@@ -2987,6 +2989,7 @@
     },
     "hashGenerator": {
       "label": "हैश जनरेटर",
+      "short": "MD5, SHA-256, SHA-512. टेक्स्ट या फाइल हैश करें.",
       "title": "हैश जनरेटर",
       "description": "MD5, SHA-1, SHA-256, SHA-384, SHA-512 हैश बनाएं। टेक्स्ट या फाइल हैश करें। HMAC और वेरिफाई।",
       "metaTitle": "हैश जनरेटर — MD5, SHA-1, SHA-256, SHA-512 मुफ्त",

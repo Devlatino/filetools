@@ -3054,6 +3054,7 @@
     },
     "colorPicker": {
       "label": "Farbwähler",
+      "short": "Farben auswählen und konvertieren. HEX, RGB, HSL, CMYK.",
       "title": "Farbwähler",
       "description": "Farben zwischen HEX, RGB, HSL, CMYK wählen und umrechnen. Harmonien erzeugen, WCAG-Kontrast prüfen.",
       "metaTitle": "Farbwähler — HEX, RGB, HSL, CMYK Konverter Kostenlos",
@@ -3107,6 +3108,7 @@
     },
     "urlEncoderDecoder": {
       "label": "URL-Encoder/Decoder",
+      "short": "URLs encodieren, decodieren oder parsen.",
       "title": "URL-Encoder/Decoder",
       "description": "URLs kodieren, dekodieren oder parsen. Prozentkodierung und URL-Komponenten.",
       "metaTitle": "URL Encoder Decoder — URLs kostenlos kodieren & dekodieren",
@@ -3160,6 +3162,7 @@
     },
     "hashGenerator": {
       "label": "Hash-Generator",
+      "short": "MD5, SHA-256, SHA-512. Text oder Dateien hashen.",
       "title": "Hash-Generator",
       "description": "MD5-, SHA-1-, SHA-256-, SHA-384-, SHA-512-Hashes erzeugen. Text oder Dateien hashen. HMAC und Prüfung.",
       "metaTitle": "Hash Generator — MD5, SHA-1, SHA-256, SHA-512 Kostenlos",
