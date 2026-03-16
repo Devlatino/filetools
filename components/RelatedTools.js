@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { Image, FileText, Video, FileArchive, Type, ArrowRight, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat, Eraser, LayoutTemplate, QrCode, Box, FileBox, ImagePlus, ScanText, Braces, ArrowLeftRight, Palette, Link2, Hash } from "lucide-react";
+import { Image, FileText, Video, FileArchive, Type, ArrowRight, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat, Eraser, LayoutTemplate, QrCode, Box, FileBox, ImagePlus, ScanText, Braces, ArrowLeftRight, Palette, Link2, Hash, Calendar, DollarSign } from "lucide-react";
 import { RELATED_TOOLS, SLUG_TO_ID } from "@/lib/relatedTools";
 
 /** Icon component by tool slug: image tools, PDF, video, archive, text. */
@@ -64,6 +64,8 @@ const ICON_BY_SLUG = {
   "color-picker": Palette,
   "url-encoder-decoder": Link2,
   "hash-generator": Hash,
+  "age-calculator": Calendar,
+  "tip-calculator": DollarSign,
 };
 const DEFAULT_ICON = Type;
 
@@ -125,6 +127,8 @@ const BG_BY_SLUG = {
   "color-picker": "bg-rose-500",
   "url-encoder-decoder": "bg-sky-500",
   "hash-generator": "bg-violet-500",
+  "age-calculator": "bg-amber-500",
+  "tip-calculator": "bg-emerald-500",
 };
 const DEFAULT_BG = "bg-slate-500";
 

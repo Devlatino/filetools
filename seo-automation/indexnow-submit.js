@@ -14,6 +14,14 @@ const KEY = process.env.INDEXNOW_KEY;
 const LOCALES = ["en", "it", "es", "fr", "de", "pt", "zh", "hi", "ar"];
 
 const BATCHES = {
+  "batch-23": [
+    "tools/qr-code-generator",
+    "tools/age-calculator",
+    "tools/tip-calculator",
+  ],
+  "batch-qr-update": [
+    "tools/qr-code-generator",
+  ],
   "batch-22": [
     "tools/color-picker",
     "tools/url-encoder-decoder",

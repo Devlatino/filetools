@@ -79,6 +79,8 @@ const TOOL_PATHS = [
   "/tools/color-picker",
   "/tools/url-encoder-decoder",
   "/tools/hash-generator",
+  "/tools/age-calculator",
+  "/tools/tip-calculator",
 ];
 
 const BLOG_SLUGS = [
