@@ -2747,6 +2747,8 @@
       "faq8A": "ब्राउज़र प्रिंट-टू-PDF में अक्सर UI, हेडर/फूटर और असंगत मार्जिन आ जाते हैं। FileFlip टाइपोग्राफी और मार्जिन कंट्रोल के साथ साफ PDF बनाता है।"
     },
     "textCaseConverter": {
+      "label": "टेक्स्ट केस कन्वर्टर",
+      "short": "टेक्स्ट को अपरकेस, लोअरकेस, camelCase, snake_case आदि में बदलें",
       "title": "Text Case Converter",
       "description": "Convert text to uppercase, lowercase, title case, sentence case, camelCase, PascalCase, snake_case, kebab-case and more. Free online.",
       "metaTitle": "Text Case Converter — UPPERCASE, lowercase, camelCase Free",
@@ -2794,6 +2796,7 @@
       "faq8A": "Behavior depends on the conversion. UPPERCASE and lowercase only change letters. Title and Sentence case mostly affect letters. camelCase, PascalCase, snake_case and kebab-case strip or replace spaces and often remove characters that are not letters, numbers, or the chosen separator. Numbers are usually kept. For non-ASCII characters, results may vary by mode."
     },
     "loremIpsumGenerator": {
+      "label": "Lorem Ipsum जनरेटर",
       "title": "Lorem Ipsum Generator",
       "description": "Generate placeholder text as paragraphs, sentences, words, lists or HTML. Free online.",
       "metaTitle": "Lorem Ipsum Generator — Paragraphs, Words & HTML Free",

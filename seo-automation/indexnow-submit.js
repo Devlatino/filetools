@@ -19,6 +19,14 @@ const BATCHES = {
     "tools/url-encoder-decoder",
     "tools/hash-generator",
   ],
+  "batch-21-fix": [
+    "tools/text-case-converter",
+    "zh/tools/text-case-converter",
+    "ar/tools/text-case-converter",
+    "zh/tools/word-counter",
+    "ar/tools/word-counter",
+    "hi/tools/lorem-ipsum-generator",
+  ],
   "batch-21": [
     "tools/word-counter",
     "tools/text-case-converter",
@@ -56,7 +64,10 @@ async function main() {
   }
 
   const pathSegments = BATCHES[batchName];
-  const urlList = buildUrls(pathSegments);
+  const urlList =
+    batchName === "batch-21-fix"
+      ? pathSegments.map((seg) => `${BASE_URL}/${seg}`)
+      : buildUrls(pathSegments);
   const host = new URL(BASE_URL).host;
 
   console.log(`Submitting batch "${batchName}" (${urlList.length} URLs) to IndexNow...`);

@@ -1,10 +1,15 @@
 import { setRequestLocale } from "next-intl/server";
 import { getTranslations } from "next-intl/server";
+import { routing } from "@/i18n/routing";
 import { buildToolMetadata } from "@/lib/toolMetadata";
 import ToolSchemaMarkup from "@/components/ToolSchemaMarkup";
 
 export async function generateMetadata({ params }) {
-  const { locale } = await params;
+  const resolved = await params;
+  const locale =
+    resolved?.locale && routing.locales.includes(resolved.locale)
+      ? resolved.locale
+      : routing.defaultLocale;
   setRequestLocale(locale);
   const t = await getTranslations({
     locale,
@@ -21,7 +26,11 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function Layout({ children, params }) {
-  const { locale } = await params;
+  const resolved = await params;
+  const locale =
+    resolved?.locale && routing.locales.includes(resolved.locale)
+      ? resolved.locale
+      : routing.defaultLocale;
   setRequestLocale(locale);
   return (
     <>

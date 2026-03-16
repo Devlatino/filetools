@@ -143,7 +143,7 @@ export function RelatedTools({ locale, currentSlug }) {
         {slugs.map((slug) => {
           const id = SLUG_TO_ID[slug];
           const label = id ? t(`tools.${id}.label`) : slug;
-          const href = `/${locale}/tools/${slug}`;
+          const href = locale === "en" ? `/tools/${slug}` : `/${locale}/tools/${slug}`;
           const IconComponent = ICON_BY_SLUG[slug] || DEFAULT_ICON;
           const iconBg = BG_BY_SLUG[slug] || DEFAULT_BG;
           return (

@@ -46,7 +46,7 @@ export function Breadcrumb({ locale, homeLabel, toolsLabel, toolLabel, toolPath 
         className="mb-6 flex items-center gap-2 text-sm text-slate-300"
       >
         <Link
-          href={`/${locale}/`}
+          href={locale === "en" ? "/" : `/${locale}/`}
           prefetch
           className="transition-colors hover:text-sky-400"
         >
@@ -54,7 +54,7 @@ export function Breadcrumb({ locale, homeLabel, toolsLabel, toolLabel, toolPath 
         </Link>
         <span aria-hidden="true">›</span>
         <Link
-          href={`/${locale}/#tools`}
+          href={locale === "en" ? "/#tools" : `/${locale}/#tools`}
           prefetch
           className="transition-colors hover:text-sky-400"
         >
