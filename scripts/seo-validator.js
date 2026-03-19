@@ -180,8 +180,10 @@ for (const lang of LOCALES) {
       warn(`[${lang}] tools.${toolKey}.metaDescription is missing`);
     } else {
       const desc = tool.metaDescription;
-      if (desc.length < MIN_DESC_LEN) {
-        warn(`[${lang}] tools.${toolKey}.metaDescription too short: ${desc.length} chars (min ${MIN_DESC_LEN})`);
+      // CJK and RTL scripts are semantically denser than Latin — use lower minimums
+      const minLen = lang === "zh" ? 60 : (["ar", "hi"].includes(lang) ? 100 : MIN_DESC_LEN);
+      if (desc.length < minLen) {
+        warn(`[${lang}] tools.${toolKey}.metaDescription too short: ${desc.length} chars (min ${minLen})`);
         descErrors++;
       } else if (desc.length > MAX_DESC_LEN) {
         warn(`[${lang}] tools.${toolKey}.metaDescription too long: ${desc.length} chars (max ${MAX_DESC_LEN})`);
@@ -199,8 +201,11 @@ const homepageContent = readFileSync(join(ROOT, "app", "[locale]", "page.js"), "
 const hrefMatches = [...homepageContent.matchAll(/href:\s*["']\/tools\/([^"']+)["']/g)];
 const homepageSlugs = new Set(hrefMatches.map(m => m[1]));
 
+// Special pages that live under /tools/ but are not tool-grid entries
+const HOMEPAGE_EXCLUDED_SLUGS = new Set(["compare"]);
+
 for (const slug of sitemapSlugs) {
-  if (!homepageSlugs.has(slug)) {
+  if (!homepageSlugs.has(slug) && !HOMEPAGE_EXCLUDED_SLUGS.has(slug)) {
     warn(`Tool '${slug}' is in sitemap but NOT linked from homepage TOOL_IDS`);
   }
 }

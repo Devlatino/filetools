@@ -51,7 +51,7 @@ const TOOL_CATEGORIES = [
   },
   {
     name: "Utility Tools",
-    slugs: ["create-zip", "qr-code-generator", "unit-converter"],
+    slugs: ["create-zip", "qr-code-generator", "unit-converter", "age-calculator", "tip-calculator"],
   },
   {
     name: "Developer Tools",

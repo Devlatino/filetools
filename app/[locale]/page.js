@@ -6,7 +6,7 @@ import { useMemo, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Unlock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat, Eraser, LayoutTemplate, Type, QrCode, Box, FileBox, ImagePlus, Hash, GripVertical, ScanText, Braces, ArrowLeftRight, Palette, Link2 } from "lucide-react";
+import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Unlock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat, Eraser, LayoutTemplate, Type, QrCode, Box, FileBox, ImagePlus, Hash, GripVertical, ScanText, Braces, ArrowLeftRight, Palette, Link2, Calendar, DollarSign } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { locales, localeNames } from "@/i18n.js";
 import { BASE_URL } from "@/lib/constants";
@@ -79,9 +79,13 @@ const TOOL_ICONS = {
   colorPicker: Palette,
   urlEncoderDecoder: Link2,
   hashGenerator: Hash,
+  ageCalculator: Calendar,
+  tipCalculator: DollarSign,
+  dwgToPdf: FileOutput,
+  dxfToPdf: FileOutput,
 };
 
-const CATEGORIES = ["all", "images", "pdf", "tools", "developer", "cad", "video", "audio", "social", "3d"];
+const CATEGORIES = ["all", "images", "pdf", "tools", "utility", "developer", "cad", "video", "audio", "social", "3d"];
 
 const POPULAR_TOOL_IDS = ["compressImage", "heicToJpg", "mergePdf"];
 
@@ -153,6 +157,10 @@ const TOOL_IDS = [
   { id: "hashGenerator", href: "/tools/hash-generator", category: "developer", active: true },
   { id: "imageToText", href: "/tools/image-to-text", category: "images", active: true },
   { id: "unitConverter", href: "/tools/unit-converter", category: "tools", active: true },
+  { id: "ageCalculator", href: "/tools/age-calculator", category: "utility", active: true },
+  { id: "tipCalculator", href: "/tools/tip-calculator", category: "utility", active: true },
+  { id: "dwgToPdf", href: "/tools/dwg-to-pdf", category: "cad", active: true },
+  { id: "dxfToPdf", href: "/tools/dxf-to-pdf", category: "cad", active: true },
 ];
 
 const CATEGORY_COLORS = {
@@ -777,7 +785,7 @@ export default function Home() {
                     const colors = CATEGORY_COLORS[tool.category] || CATEGORY_COLORS.images;
                     const categoryLabel = Array.isArray(tool.category)
                       ? tool.category.map((c) => t(`filter${c.charAt(0).toUpperCase() + c.slice(1)}`)).join(", ")
-                      : t(`filter${tool.category === "images" ? "Images" : tool.category === "pdf" ? "Pdf" : tool.category === "tools" ? "Tools" : tool.category === "developer" ? "Developer" : tool.category === "cad" ? "Cad" : tool.category === "video" ? "Video" : tool.category === "audio" ? "Audio" : tool.category === "3d" ? "3d" : "Social"}`);
+                      : t(`filter${tool.category === "images" ? "Images" : tool.category === "pdf" ? "Pdf" : tool.category === "tools" ? "Tools" : tool.category === "utility" ? "Utility" : tool.category === "developer" ? "Developer" : tool.category === "cad" ? "Cad" : tool.category === "video" ? "Video" : tool.category === "audio" ? "Audio" : tool.category === "3d" ? "3d" : "Social"}`);
                     const showTooltip = comingSoonTooltipId === tool.id;
 
                     const cardContent = (
