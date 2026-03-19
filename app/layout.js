@@ -108,11 +108,13 @@ export default async function RootLayout({ children }) {
           strategy="afterInteractive"
         />
 
-        {/* Adsterra Popunder */}
+        {/* Adsterra Native Banner */}
         <Script
-          src="https://landslidegraphsystems.com/7f/f8/0f/7ff80f6c4a924396c6ad6df206e45657.js"
+          src="https://landslidegraphsystems.com/824f4a738212c0f6443b882ebd79139f/invoke.js"
           strategy="afterInteractive"
+          data-cfasync="false"
         />
+        <div id="container-824f4a738212c0f6443b882ebd79139f"></div>
       </body>
     </html>
   );
