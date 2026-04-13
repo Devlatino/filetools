@@ -43,8 +43,10 @@ export default function MarkdownToPdfPage() {
 
   const renderMarkdown = useCallback(async (text) => {
     const { marked } = await import("marked");
+    const DOMPurify = (await import("dompurify")).default;
     const raw = await marked.parse(text || "");
-    setHtmlPreview(typeof raw === "string" ? raw : "");
+    const sanitized = DOMPurify.sanitize(typeof raw === "string" ? raw : "");
+    setHtmlPreview(sanitized);
   }, []);
 
   useEffect(() => {
