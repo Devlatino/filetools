@@ -88,33 +88,14 @@ export default async function RootLayout({ children }) {
     <html lang={locale} dir={dir}>
       <head>
         <meta name="theme-color" content="#1e40af" />
-        <meta name="google-adsense-account" content="ca-pub-4903529383886232" />
-        <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Script
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4903529383886232"
-          strategy="lazyOnload"
-          crossOrigin="anonymous"
-        />
         {children}
         <Analytics />
 
-        {/* Adsterra Social Bar */}
-        <Script
-          src="https://landslidegraphsystems.com/71/4e/42/714e421b016e86c8f81c82d15b7aae4e.js"
-          strategy="afterInteractive"
-        />
 
-        {/* Adsterra Native Banner */}
-        <Script
-          src="https://landslidegraphsystems.com/824f4a738212c0f6443b882ebd79139f/invoke.js"
-          strategy="afterInteractive"
-          data-cfasync="false"
-        />
-        <div id="container-824f4a738212c0f6443b882ebd79139f"></div>
       </body>
     </html>
   );
