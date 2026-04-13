@@ -10,6 +10,7 @@ const PRIVACY_SECTION_KEYS = [
   "cookies",
   "rights",
   "transfers",
+  "adsense",
   "contact",
 ];
 

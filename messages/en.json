@@ -194,6 +194,10 @@
         "title": "International transfers",
         "body": "Our site and infrastructure may be hosted in regions outside the EU (e.g. via Vercel). Where we transfer data, we rely on appropriate safeguards (e.g. adequacy decisions or standard contractual clauses) as permitted by applicable law."
       },
+      "adsense": {
+        "title": "Google AdSense & DoubleClick Cookie",
+        "body": "Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to this website or other websites. Google's use of advertising cookies enables it and its partners to serve ads to users based on their visit to your sites and/or other sites on the Internet. Users may opt out of personalized advertising by visiting Ads Settings or www.aboutads.info."
+      },
       "contact": {
         "title": "Contact",
         "body": "For any question about this privacy policy or to exercise your rights, please contact us at info@fileflip.org. We will respond within a reasonable time."
@@ -296,7 +300,6 @@
     "filterTextCode": "Text & Code",
     "filterUtility": "Utilities",
     "filterTools": "Tools",
-    "filterUtility": "Utility",
     "filterDeveloper": "Developer",
     "filterCad": "CAD",
     "filterAudio": "Audio",

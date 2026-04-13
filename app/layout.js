@@ -88,6 +88,14 @@ export default async function RootLayout({ children }) {
     <html lang={locale} dir={dir}>
       <head>
         <meta name="theme-color" content="#1e40af" />
+        {/* Google AdSense & CMP Cookie Consent Loader */}
+        <meta name="google-adsense-account" content="ca-pub-4903529383886232" />
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4903529383886232"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
