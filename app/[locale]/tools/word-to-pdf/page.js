@@ -9,6 +9,7 @@ import { EditorialSection } from "@/components/EditorialSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import posthog from "posthog-js";
 
 export default function WordToPdfPage() {
   const locale = useLocale();
@@ -144,8 +145,14 @@ export default function WordToPdfPage() {
 
         setProgress("Saving PDF...");
         pdf.save(docxFile.name.replace(/\.docx?$/i, ".pdf"));
+        posthog.capture("tool_conversion_completed", {
+          tool: "word-to-pdf",
+          file_size_bytes: docxFile.size,
+        });
       } catch (err) {
         console.error("word-to-pdf error:", err);
+        posthog.captureException(err, { tool: "word-to-pdf" });
+        posthog.capture("tool_conversion_failed", { tool: "word-to-pdf", error: err?.message });
         setError(t("errorGeneric"));
       } finally {
         if (container && container.parentNode) {

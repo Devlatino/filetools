@@ -11,6 +11,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { ToolSteps } from "@/components/ToolSteps";
+import posthog from "posthog-js";
 
 function formatBytes(bytes) {
   if (!bytes) return "0 B";
@@ -72,7 +73,13 @@ export default function HeicToJpgPage() {
       }
       setResults(out);
       setCurrentStep(3);
+      posthog.capture("tool_conversion_completed", {
+        tool: "heic-to-jpg",
+        file_count: files.length,
+        total_input_size_bytes: files.reduce((a, f) => a + f.file.size, 0),
+      });
     } catch (err) {
+      posthog.captureException(err, { tool: "heic-to-jpg" });
       setError(t("errorConversionFailed"));
       console.error(err);
     } finally {

@@ -10,6 +10,7 @@ import { EditorialSection } from "@/components/EditorialSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import posthog from "posthog-js";
 
 function formatBytes(bytes) {
   if (!bytes) return "0 B";
@@ -189,8 +190,14 @@ export default function CompressPdfPage() {
         return URL.createObjectURL(blob);
       });
       setCurrentStep(3);
+      posthog.capture("tool_conversion_completed", {
+        tool: "compress-pdf",
+        file_size_bytes: pdfFile.size,
+        result_size_bytes: blob.size,
+      });
     } catch (err) {
       console.error(err);
+      posthog.captureException(err, { tool: "compress-pdf" });
       setError(t("errorCompressionFailed"));
     } finally {
       setIsCompressing(false);
@@ -206,6 +213,10 @@ export default function CompressPdfPage() {
     document.body.appendChild(link);
     link.click();
     link.remove();
+    posthog.capture("tool_file_downloaded", {
+      tool: "compress-pdf",
+      result_size_bytes: resultBlob.size,
+    });
   }, [resultBlob, resultUrl, pdfFile]);
 
   return (

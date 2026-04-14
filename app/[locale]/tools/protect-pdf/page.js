@@ -9,6 +9,7 @@ import { EditorialSection } from "@/components/EditorialSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import posthog from "posthog-js";
 
 function StepIndicator({ step1, step2, step3, t }) {
   return (
@@ -152,8 +153,14 @@ export default function ProtectPdfPage() {
       const blob = await response.blob();
       setResultBlob(blob);
       setCurrentStep(3);
+      posthog.capture("tool_conversion_completed", {
+        tool: "protect-pdf",
+        file_size_bytes: pdfFile.size,
+        allow_print: allowPrint,
+      });
     } catch (err) {
       console.error("Tool error:", err);
+      posthog.captureException(err, { tool: "protect-pdf" });
       setError(t("errorGeneric"));
     } finally {
       setIsProtecting(false);
@@ -171,6 +178,10 @@ export default function ProtectPdfPage() {
     a.click();
     a.remove();
     URL.revokeObjectURL(url);
+    posthog.capture("tool_file_downloaded", {
+      tool: "protect-pdf",
+      result_size_bytes: resultBlob.size,
+    });
   }, [resultBlob, pdfFile]);
 
   return (

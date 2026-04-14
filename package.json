@@ -43,6 +43,7 @@
     "next-mdx-remote": "^6.0.0",
     "papaparse": "^5.5.3",
     "pdfjs-dist": "^4.10.38",
+    "posthog-js": "^1.369.0",
     "pptxgenjs": "^4.0.1",
     "qrcode": "^1.5.4",
     "react": "19.2.3",

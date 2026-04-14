@@ -10,6 +10,7 @@ import { EditorialSection } from "@/components/EditorialSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import posthog from "posthog-js";
 
 function formatBytes(bytes) {
   if (!bytes) return "0 B";
@@ -294,7 +295,15 @@ export default function CompressImagePage() {
       if (compressedUrl) URL.revokeObjectURL(compressedUrl);
       setCompressedUrl(URL.createObjectURL(compressed));
       setCurrentStep(3);
+      posthog.capture("tool_conversion_completed", {
+        tool: "compress-image",
+        file_type: originalFile.type,
+        file_size_bytes: originalFile.size,
+        result_size_bytes: compressed.size,
+        quality,
+      });
     } catch (err) {
+      posthog.captureException(err, { tool: "compress-image" });
       setError(t("errorCompressionFailed"));
       console.error(err);
     } finally {
@@ -310,6 +319,11 @@ export default function CompressImagePage() {
     document.body.appendChild(link);
     link.click();
     link.remove();
+    posthog.capture("tool_file_downloaded", {
+      tool: "compress-image",
+      file_type: originalFile?.type,
+      result_size_bytes: compressedFile.size,
+    });
   }, [compressedFile, compressedUrl, originalFile]);
 
   const successSubline = useMemo(() => {

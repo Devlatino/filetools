@@ -9,6 +9,7 @@ import { EditorialSection } from "@/components/EditorialSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import posthog from "posthog-js";
 
 function formatBytes(bytes) {
   if (!bytes) return "0 B";
@@ -217,7 +218,14 @@ export default function CompressVideoPage() {
         return URL.createObjectURL(blob);
       });
       setCurrentStep(3);
+      posthog.capture("tool_conversion_completed", {
+        tool: "compress-video",
+        file_size_bytes: videoFile.size,
+        result_size_bytes: blob.size,
+        compression_level: level,
+      });
     } catch (err) {
+      posthog.captureException(err, { tool: "compress-video" });
       setError(t("errorCompressFailed"));
       console.error(err);
     } finally {
@@ -234,7 +242,12 @@ export default function CompressVideoPage() {
     a.href = resultUrl;
     a.download = `${base}-compressed.mp4`;
     a.click();
-  }, [resultBlob, resultUrl, videoFile]);
+    posthog.capture("tool_file_downloaded", {
+      tool: "compress-video",
+      result_size_bytes: resultBlob.size,
+      compression_level: level,
+    });
+  }, [resultBlob, resultUrl, videoFile, level]);
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50">

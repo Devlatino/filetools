@@ -10,6 +10,7 @@ import { EditorialSection } from "@/components/EditorialSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import posthog from "posthog-js";
 
 const ACCEPT = "image/jpeg,image/png,image/webp";
 
@@ -208,8 +209,14 @@ export default function RemoveBackgroundPage() {
         return URL.createObjectURL(blob);
       });
       setCurrentStep(3);
+      posthog.capture("tool_conversion_completed", {
+        tool: "remove-background",
+        file_type: originalFile.type,
+        file_size_bytes: originalFile.size,
+      });
     } catch (err) {
       console.error("Tool error:", err);
+      posthog.captureException(err, { tool: "remove-background" });
       setError(t("errorRemoveFailed"));
     } finally {
       setStatus("idle");
@@ -226,6 +233,10 @@ export default function RemoveBackgroundPage() {
     document.body.appendChild(link);
     link.click();
     link.remove();
+    posthog.capture("tool_file_downloaded", {
+      tool: "remove-background",
+      result_size_bytes: resultBlob.size,
+    });
   }, [resultBlob, resultUrl, originalFile]);
 
   return (

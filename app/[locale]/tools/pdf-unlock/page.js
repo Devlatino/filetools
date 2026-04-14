@@ -10,6 +10,7 @@ import { EditorialSection } from "@/components/EditorialSection";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { RelatedTools } from "@/components/RelatedTools";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import posthog from "posthog-js";
 
 function StepIndicator({ step1, step2, step3, t }) {
   return (
@@ -136,6 +137,10 @@ export default function PdfUnlockPage() {
       const blob = new Blob([unlockedPdf], { type: "application/pdf" });
       setResultBlob(blob);
       setCurrentStep(3);
+      posthog.capture("tool_conversion_completed", {
+        tool: "pdf-unlock",
+        file_size_bytes: pdfFile.size,
+      });
       const baseName = pdfFile.name.replace(/\.pdf$/i, "");
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -147,6 +152,7 @@ export default function PdfUnlockPage() {
       URL.revokeObjectURL(url);
     } catch (err) {
       console.error("Tool error:", err);
+      posthog.captureException(err, { tool: "pdf-unlock" });
       const msg = err?.message?.toLowerCase() || "";
       if (msg.includes("password") || msg.includes("decrypt") || msg.includes("encrypted")) {
         setError(t("errorWrongPassword"));
@@ -169,6 +175,10 @@ export default function PdfUnlockPage() {
     a.click();
     a.remove();
     URL.revokeObjectURL(url);
+    posthog.capture("tool_file_downloaded", {
+      tool: "pdf-unlock",
+      result_size_bytes: resultBlob.size,
+    });
   }, [resultBlob, pdfFile]);
 
   return (
