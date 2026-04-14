@@ -6,7 +6,7 @@ import { useMemo, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Unlock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat, Eraser, LayoutTemplate, Type, QrCode, Box, FileBox, ImagePlus, Hash, GripVertical, ScanText, Braces, ArrowLeftRight, Palette, Link2, Calendar, DollarSign } from "lucide-react";
+import { Image, FileText, Smartphone, Star, Search, ArrowRight, Upload, Download, Lock, Unlock, Zap, Globe, Twitter, Github, Linkedin, ChevronUp, Maximize2, FileImage, FileOutput, FilePlus, FileDown, Scissors, RotateCw, Film, Crop, FileSearch, Stamp, Archive, Music, FileVideo, VolumeX, Gauge, AudioLines, RectangleHorizontal, ListVideo, Repeat, Eraser, LayoutTemplate, Type, QrCode, Box, FileBox, ImagePlus, Hash, GripVertical, ScanText, Braces, ArrowLeftRight, Palette, Link2, Calendar, DollarSign, Database, FileSpreadsheet, FileDiff } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { locales, localeNames } from "@/i18n.js";
 import { BASE_URL } from "@/lib/constants";
@@ -83,6 +83,12 @@ const TOOL_ICONS = {
   tipCalculator: DollarSign,
   dwgToPdf: FileOutput,
   dxfToPdf: FileOutput,
+  csvToExcel: FileSpreadsheet,
+  excelToCsv: FileSpreadsheet,
+  audioConverter: AudioLines,
+  compare: FileDiff,
+  encryptFile: Lock,
+  sqlFormatter: Database,
 };
 
 const CATEGORIES = ["all", "images", "pdf", "tools", "utility", "developer", "cad", "video", "audio", "social", "3d"];
@@ -161,6 +167,12 @@ const TOOL_IDS = [
   { id: "tipCalculator", href: "/tools/tip-calculator", category: "utility", active: true },
   { id: "dwgToPdf", href: "/tools/dwg-to-pdf", category: "cad", active: true },
   { id: "dxfToPdf", href: "/tools/dxf-to-pdf", category: "cad", active: true },
+  { id: "csvToExcel", href: "/tools/csv-to-excel", category: "developer", active: true },
+  { id: "excelToCsv", href: "/tools/excel-to-csv", category: "developer", active: true },
+  { id: "audioConverter", href: "/tools/audio-converter", category: "audio", active: true },
+  { id: "compare", href: "/tools/compare", category: "utility", active: true },
+  { id: "encryptFile", href: "/tools/encrypt-file", category: "utility", active: true },
+  { id: "sqlFormatter", href: "/tools/sql-formatter", category: "developer", active: true },
 ];
 
 const CATEGORY_COLORS = {
