@@ -13,10 +13,11 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 async function handleConvert(file) {
   const XLSX = await import("xlsx");
   const { jsPDF } = await import("jspdf");
-  await import("jspdf-autotable");
+  const { default: autoTable } = await import("jspdf-autotable");
 
   const arrayBuffer = await file.arrayBuffer();
-  const workbook = XLSX.read(arrayBuffer, { type: "array" });
+  const dataArray = new Uint8Array(arrayBuffer);
+  const workbook = XLSX.read(dataArray, { type: "array" });
 
   const doc = new jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
   let isFirstSheet = true;
@@ -25,7 +26,7 @@ async function handleConvert(file) {
     const worksheet = workbook.Sheets[sheetName];
     const data = XLSX.utils.sheet_to_json(worksheet, { header: 1, defval: "" });
 
-    if (data.length === 0) return;
+    if (!data || data.length === 0 || !data[0] || data[0].length === 0) return;
 
     if (!isFirstSheet) doc.addPage();
     isFirstSheet = false;
@@ -37,7 +38,7 @@ async function handleConvert(file) {
     const headers = data[0].map((h) => String(h));
     const rows = data.slice(1).map((row) => headers.map((_, i) => String(row[i] ?? "")));
 
-    doc.autoTable({
+    autoTable(doc, {
       head: [headers],
       body: rows,
       startY: 16,
@@ -51,6 +52,11 @@ async function handleConvert(file) {
       margin: { left: 14, right: 14 },
     });
   });
+
+  if (isFirstSheet) {
+    // Se tutte le schede erano vuote
+    throw new Error("Empty Excel file");
+  }
 
   doc.save(file.name.replace(/\.(xlsx|xls)$/i, ".pdf"));
 }
@@ -89,7 +95,8 @@ export default function ExcelToPdfPage() {
       selectedFile.arrayBuffer().then(async (buf) => {
         try {
           const XLSX = await import("xlsx");
-          const wb = XLSX.read(buf, { type: "array" });
+          const dataArray = new Uint8Array(buf);
+          const wb = XLSX.read(dataArray, { type: "array" });
           setSheetCount(wb.SheetNames.length);
         } catch {
           setSheetCount(0);

@@ -15,7 +15,7 @@ const SEPARATORS = { comma: ",", semicolon: ";", tab: "\t" };
 
 async function convertCsvToPdf(file, options = {}) {
   const { jsPDF } = await import("jspdf");
-  await import("jspdf-autotable");
+  const { default: autoTable } = await import("jspdf-autotable");
 
   const text = await file.text();
   const separator = options.separator ?? ",";
@@ -43,7 +43,7 @@ async function convertCsvToPdf(file, options = {}) {
   doc.setFont("helvetica", "bold");
   doc.text(file.name.replace(/\.csv$/i, ""), 14, 12);
 
-  doc.autoTable({
+  autoTable(doc, {
     head: [headers],
     body: rows,
     startY: 18,
