@@ -33,7 +33,7 @@ export default function ToolLayout({
       )}
 
       {faqs && faqs.length > 0 && (
-        <FaqSection faqs={faqs} />
+        <FaqSection faqs={faqs.map(f => ({ question: f.q || f.question, answer: f.a || f.answer }))} />
       )}
 
       <RelatedTools currentSlug="" />

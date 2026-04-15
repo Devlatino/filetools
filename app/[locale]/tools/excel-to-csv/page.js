@@ -8,6 +8,7 @@ import ToolLayout from "@/components/ToolLayout";
 
 export default function ExcelToCsvTool() {
   const t = useTranslations();
+  const tCommon = useTranslations("common");
   const tTool = useTranslations("tools.excelToCsv");
 
   const [file, setFile] = useState(null);
@@ -115,7 +116,7 @@ export default function ExcelToCsvTool() {
                   onClick={reset}
                   className="text-slate-500 hover:text-slate-800 whitespace-nowrap"
                 >
-                  {t("tool.changeFile")}
+                  {tCommon("changeFile")}
                 </button>
               </div>
             )}

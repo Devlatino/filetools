@@ -7,16 +7,20 @@ import { useTranslations } from "next-intl";
  * Legge editorialTitle e editorialBody dal namespace; se mancano, non renderizza nulla.
  * @param {{ namespace: string }} props
  */
-export function EditorialSection({ namespace }) {
-  const t = useTranslations(namespace);
-  let title;
-  let body;
+export function EditorialSection({ namespace, title: propTitle, body: propBody }) {
+  const t = useTranslations(namespace || "common");
+  let title = propTitle;
+  let body = propBody;
+  
   try {
-    title = t("editorialTitle");
-    body = t("editorialBody");
+    if (namespace) {
+      title = t("editorialTitle");
+      body = t("editorialBody");
+    }
   } catch {
-    return null;
+    // ignore missing keys
   }
+
   if (!title || !body) return null;
 
   const paragraphs = body.split(/\n\n+/).filter(Boolean);

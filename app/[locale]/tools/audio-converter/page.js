@@ -8,6 +8,7 @@ import ToolLayout from "@/components/ToolLayout";
 
 export default function AudioConverterTool() {
   const t = useTranslations();
+  const tCommon = useTranslations("common");
   const tTool = useTranslations("tools.audioConverter");
 
   const [file, setFile] = useState(null);
@@ -22,11 +23,8 @@ export default function AudioConverterTool() {
   // Lazy FFmpeg loading
   const getFfmpeg = async () => {
     if (window.ffmpegInstance) return window.ffmpegInstance;
-    const { createFFmpeg } = await import("@ffmpeg/ffmpeg");
-    const ffmpeg = createFFmpeg({
-      corePath: "https://unpkg.com/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js",
-      log: true
-    });
+    const { FFmpeg } = await import("@ffmpeg/ffmpeg");
+    const ffmpeg = new FFmpeg();
     await ffmpeg.load();
     window.ffmpegInstance = ffmpeg;
     return ffmpeg;
@@ -47,9 +45,9 @@ export default function AudioConverterTool() {
 
     try {
       const ffmpeg = await getFfmpeg();
-      const { fetchFile } = await import("@ffmpeg/ffmpeg");
+      const { fetchFile } = await import("@ffmpeg/util");
 
-      ffmpeg.FS("writeFile", file.name, await fetchFile(file));
+      await ffmpeg.writeFile(file.name, await fetchFile(file));
 
       const outName = `${file.name.replace(/\.[^/.]+$/, "")}.${outputFormat}`;
 
@@ -59,18 +57,18 @@ export default function AudioConverterTool() {
       if (outputFormat === "ogg") mimeType = "audio/ogg";
       if (outputFormat === "aac") mimeType = "audio/aac";
 
-      await ffmpeg.run("-i", file.name, "-y", outName);
+      await ffmpeg.exec(["-i", file.name, "-y", outName]);
 
-      const data = ffmpeg.FS("readFile", outName);
-      const blob = new Blob([data.buffer], { type: mimeType });
+      const data = await ffmpeg.readFile(outName);
+      const blob = new Blob([data.buffer || data], { type: mimeType });
 
       setResultUrl(URL.createObjectURL(blob));
       setResultName(outName);
 
       // Clean up
       try {
-        ffmpeg.FS("unlink", file.name);
-        ffmpeg.FS("unlink", outName);
+        await ffmpeg.deleteFile(file.name);
+        await ffmpeg.deleteFile(outName);
       } catch (e) {}
 
     } catch (err) {
@@ -140,7 +138,7 @@ export default function AudioConverterTool() {
                   onClick={reset}
                   className="text-slate-500 hover:text-slate-800 whitespace-nowrap"
                 >
-                  {t("tool.changeFile")}
+                  {tCommon("changeFile")}
                 </button>
               </div>
             )}

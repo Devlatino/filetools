@@ -8,6 +8,7 @@ import ToolLayout from "@/components/ToolLayout";
 
 export default function EncryptFileTool() {
   const t = useTranslations();
+  const tCommon = useTranslations("common");
   const tTool = useTranslations("tools.encryptFile");
 
   const [mode, setMode] = useState("encrypt"); // "encrypt" or "decrypt"
@@ -230,7 +231,7 @@ export default function EncryptFileTool() {
                   onClick={reset}
                   className="text-slate-500 hover:text-slate-800 whitespace-nowrap"
                 >
-                  {t("tool.changeFile")}
+                  {tCommon("changeFile")}
                 </button>
               </div>
             )}
