@@ -6,6 +6,7 @@ const HIGH_PRIORITY_TOOLS = [
   'heic-to-jpg', 'remove-background', 'word-to-pdf', 'pdf-to-jpg',
   'resize-image', 'jpg-to-png', 'png-to-jpg', 'image-to-pdf',
   'excel-to-pdf', 'qr-code-generator', 'pdf-to-pdfa',
+  'pdf-to-word', 'pdf-to-excel', 'pdf-to-pptx', 'powerpoint-to-pdf',
 ];
 
 const TOOL_PATHS = [
@@ -63,6 +64,10 @@ const TOOL_PATHS = [
   "/tools/favicon-generator",
   "/tools/dxf-viewer",
   "/tools/excel-to-pdf",
+  "/tools/pdf-to-word",
+  "/tools/pdf-to-excel",
+  "/tools/pdf-to-pptx",
+  "/tools/powerpoint-to-pdf",
   "/tools/pdf-to-pdfa",
   "/tools/csv-to-pdf",
   "/tools/json-formatter",

@@ -14,6 +14,7 @@ const TOOL_CATEGORIES = [
       "jpg-to-pdf", "image-to-pdf", "extract-pdf-pages",
       "add-watermark-pdf", "pdf-add-page-numbers", "reorder-pdf-pages",
       "pdf-to-pdfa", "pdf-unlock", "protect-pdf",
+      "pdf-to-word", "pdf-to-excel", "pdf-to-pptx",
     ],
   },
   {
@@ -47,7 +48,7 @@ const TOOL_CATEGORIES = [
   },
   {
     name: "Document Tools",
-    slugs: ["word-to-pdf", "excel-to-pdf", "csv-to-pdf", "markdown-to-pdf"],
+    slugs: ["word-to-pdf", "excel-to-pdf", "powerpoint-to-pdf", "csv-to-pdf", "markdown-to-pdf"],
   },
   {
     name: "Utility Tools",
